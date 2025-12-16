@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X, ArrowRight, Users, Zap, Target, RefreshCw, Building2, GraduationCap, CheckCircle2, Quote, ChevronDown, Sparkles, Brain, Compass, Layers, TrendingUp, Shield, Calendar, MessageCircle } from 'lucide-react';
 import ColorExplorer from './ColorExplorer';
 import { COLOR_PALETTES, generateTheme, applyTheme } from './theme-system';
+import logoImage from './mvp-club-logo.jpeg';
 
 // MVP Club Consulting - Complete Single Page Website
 // Brand colors from skill + Section-level content depth + warm approachable voice
@@ -121,11 +122,16 @@ const MVPClubWebsite = () => {
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           {/* Logo */}
           <div
-            className="font-display text-2xl font-medium cursor-pointer"
+            className="flex items-center gap-3 font-display text-2xl font-medium cursor-pointer"
             style={{ color: 'var(--color-accent-lifted)' }}
             onClick={() => scrollToSection('hero')}
           >
-            MVP Club
+            <img
+              src={logoImage}
+              alt="MVP Club Logo"
+              className="h-10 w-10 rounded-lg object-cover"
+            />
+            <span>MVP Club</span>
           </div>
 
           {/* Desktop Navigation */}
