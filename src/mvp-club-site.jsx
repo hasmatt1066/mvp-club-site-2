@@ -3,6 +3,7 @@ import { Menu, X, ArrowRight, Users, Zap, Target, RefreshCw, Building2, Graduati
 import ColorExplorer from './ColorExplorer';
 import { COLOR_PALETTES, generateTheme, applyTheme } from './theme-system';
 import logoImage from './mvp-club-logo.jpeg';
+import AnimatedValley from './AnimatedValley';
 
 // MVP Club Consulting - Complete Single Page Website
 // Brand colors from skill + Section-level content depth + warm approachable voice
@@ -20,6 +21,7 @@ const MVPClubWebsite = () => {
   const sections = [
     { id: 'hero', label: 'Home' },
     { id: 'problem', label: 'The Problem' },
+    { id: 'journey', label: 'The Journey' },
     { id: 'philosophy', label: 'Our Philosophy' },
     { id: 'methodology', label: 'The Work Loop' },
     { id: 'organizations', label: 'For Organizations' },
@@ -454,6 +456,9 @@ const MVPClubWebsite = () => {
           </AnimatedSection>
         </div>
       </section>
+
+      {/* Journey Section - Animated Valley */}
+      <AnimatedValley />
 
       {/* Philosophy Section */}
       <section id="philosophy" className="py-24" style={{ backgroundColor: 'var(--color-secondary)' }}>
