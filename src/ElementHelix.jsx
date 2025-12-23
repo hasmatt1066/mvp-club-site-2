@@ -545,7 +545,7 @@ const ElementHelix = () => {
       <div className="helix-wrapper">
         <div className="helix-header-section">
           <div className="helix-header-label">Symbiotic Intelligence</div>
-          <div className="helix-header-title">Human + AI: Greater Than The Sum</div>
+          <div className="helix-header-title">Human + AI: Greater Than The Sum of Parts</div>
         </div>
 
         <div className="helix-main-section">
