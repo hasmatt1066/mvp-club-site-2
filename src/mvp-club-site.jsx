@@ -831,25 +831,25 @@ const MVPClubWebsite = () => {
               </div>
 
               <div
-                className="p-8 rounded-xl bg-white"
+                className="p-6 md:p-8 rounded-xl bg-white"
                 style={{ boxShadow: '0 4px 24px rgba(0,0,0,0.06)', border: '2px solid var(--color-accent)' }}
               >
                 <h3 className="font-display text-xl mb-6" style={{ color: 'var(--color-primary)' }}>Target Outcomes</h3>
-                <div className="space-y-6">
+                <div className="space-y-5 md:space-y-6">
                   {[
                     { label: 'Faster project delivery (measured in days saved)', icon: TrendingUp },
                     { label: 'Reduced employee workload (same output, less time)', icon: Target },
                     { label: 'Sustainable AI capability (practice builds lasting skills)', icon: Layers },
                     { label: 'Clear path to scale (pilot proves the model)', icon: Brain }
                   ].map((outcome, i) => (
-                    <div key={i} className="flex items-center gap-4">
+                    <div key={i} className="flex items-start md:items-center gap-3 md:gap-4">
                       <div
-                        className="w-10 h-10 rounded-lg flex items-center justify-center"
+                        className="w-11 h-11 md:w-10 md:h-10 rounded-lg flex items-center justify-center flex-shrink-0"
                         style={{ backgroundColor: 'var(--color-accent)' }}
                       >
-                        <outcome.icon size={20} style={{ color: 'white' }} />
+                        <outcome.icon size={22} className="md:w-5 md:h-5" style={{ color: 'white' }} />
                       </div>
-                      <span className="text-gray-700">{outcome.label}</span>
+                      <span className="text-gray-700 text-sm md:text-base leading-snug">{outcome.label}</span>
                     </div>
                   ))}
                 </div>
