@@ -53,6 +53,28 @@ const AnimatedValley = () => {
   const [hasPlayed, setHasPlayed] = useState(false);
   const sectionRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect mobile screen size
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Responsive font sizes for SVG (larger on mobile for readability)
+  const fontSize = {
+    label: isMobile ? 14 : 10,
+    labelLarge: isMobile ? 16 : 11,
+    axis: isMobile ? 14 : 11,
+    button: isMobile ? 20 : 16,
+    coach: isMobile ? 20 : 16,
+    coachSmall: isMobile ? 16 : 14,
+    coachTiny: isMobile ? 14 : 12,
+  };
 
   const phases = [
     { name: "The Journey Begins", duration: 2000 },
@@ -296,12 +318,12 @@ const AnimatedValley = () => {
         >
           {/* Phase indicator - only show during animation */}
           {isPlaying && phase >= 0 && (
-            <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-10">
+            <div className="absolute top-2 md:top-4 left-1/2 transform -translate-x-1/2 z-10">
               <div
-                className="px-6 py-2 rounded-full bg-white"
+                className="px-4 md:px-6 py-1.5 md:py-2 rounded-full bg-white"
                 style={{ boxShadow: '0 2px 12px rgba(0,0,0,0.15)' }}
               >
-                <div className="text-sm font-semibold whitespace-nowrap" style={{ color: themeColors.primary }}>
+                <div className="text-base md:text-sm font-semibold whitespace-nowrap" style={{ color: themeColors.primary }}>
                   {phases[phase].name}
                 </div>
               </div>
@@ -355,7 +377,7 @@ const AnimatedValley = () => {
               x="10"
               y="210"
               fill="#9ca3af"
-              fontSize="11"
+              fontSize={fontSize.axis}
               fontFamily="system-ui"
               fontWeight="600"
               textAnchor="middle"
@@ -377,11 +399,11 @@ const AnimatedValley = () => {
                   strokeOpacity="0.3"
                   strokeWidth="1"
                 />
-                <text 
-                  x="240" y="340" 
-                  fill="#f87171" 
-                  fontSize="10" 
-                  fontFamily="system-ui" 
+                <text
+                  x="240" y="340"
+                  fill="#f87171"
+                  fontSize={fontSize.label}
+                  fontFamily="system-ui"
                   textAnchor="middle"
                 >
                   THE VALLEY
@@ -407,7 +429,7 @@ const AnimatedValley = () => {
               <g className="valley-fade-in">
                 <circle cx={points.start.x} cy={points.start.y} r="12" fill={themeColors.accentLifted} filter="url(#glow)" />
                 <circle cx={points.start.x} cy={points.start.y} r="5" fill={themeColors.primary} />
-                <text x={points.start.x} y={points.start.y - 20} fill={themeColors.primary} fontSize="10" fontWeight="600" textAnchor="middle">
+                <text x={points.start.x} y={points.start.y - 20} fill={themeColors.primary} fontSize={fontSize.label} fontWeight="600" textAnchor="middle">
                   Initial Excitement
                 </text>
               </g>
@@ -447,10 +469,10 @@ const AnimatedValley = () => {
                   strokeLinecap="round"
                   className="valley-quit-path"
                 />
-                <text x="450" y="398" fill="#ef4444" fontSize="11" fontWeight="500">
+                <text x="450" y="398" fill="#ef4444" fontSize={fontSize.labelLarge} fontWeight="500">
                   Without coaching: quit
                 </text>
-                <text x="450" y="414" fill="#94a3b8" fontSize="9">
+                <text x="450" y="414" fill="#94a3b8" fontSize={fontSize.label}>
                   "It's faster to just do it myself"
                 </text>
               </g>
@@ -470,7 +492,7 @@ const AnimatedValley = () => {
                   x={points.valley1.x}
                   y={points.valley1.y - 39}
                   fill={themeColors.accentLifted}
-                  fontSize="16"
+                  fontSize={fontSize.coach}
                   fontWeight="700"
                   textAnchor="middle"
                 >
@@ -497,7 +519,7 @@ const AnimatedValley = () => {
               <g className="valley-pop-in">
                 <circle cx={points.win1.x} cy={points.win1.y} r="12" fill="#22c55e" filter="url(#glow)" />
                 <circle cx={points.win1.x} cy={points.win1.y} r="5" fill="#ffffff" />
-                <text x={points.win1.x} y={points.win1.y - 20} fill="#16a34a" fontSize="10" fontWeight="600" textAnchor="middle">
+                <text x={points.win1.x} y={points.win1.y - 20} fill="#16a34a" fontSize={fontSize.label} fontWeight="600" textAnchor="middle">
                   First Win
                 </text>
               </g>
@@ -538,7 +560,7 @@ const AnimatedValley = () => {
                   x={points.dip2.x}
                   y={points.dip2.y - 30}
                   fill={themeColors.accentLifted}
-                  fontSize="14"
+                  fontSize={fontSize.coachSmall}
                   fontWeight="700"
                   textAnchor="middle"
                 >
@@ -604,7 +626,7 @@ const AnimatedValley = () => {
                   x={points.dip3.x}
                   y={points.dip3.y - 25}
                   fill={themeColors.accentLifted}
-                  fontSize="12"
+                  fontSize={fontSize.coachTiny}
                   fontWeight="700"
                   textAnchor="middle"
                 >
@@ -631,7 +653,7 @@ const AnimatedValley = () => {
               <g className="valley-pop-in">
                 <circle cx={points.fluency.x} cy={points.fluency.y} r="12" fill={themeColors.secondaryLifted} filter="url(#glow)" />
                 <circle cx={points.fluency.x} cy={points.fluency.y} r="5" fill="#ffffff" />
-                <text x={points.fluency.x} y={points.fluency.y - 20} fill={themeColors.secondary} fontSize="10" fontWeight="600" textAnchor="middle">
+                <text x={points.fluency.x} y={points.fluency.y - 20} fill={themeColors.secondary} fontSize={fontSize.label} fontWeight="600" textAnchor="middle">
                   Fluency
                 </text>
               </g>
@@ -656,10 +678,10 @@ const AnimatedValley = () => {
               <g className="valley-pop-in" style={{ animationDelay: '1s' }}>
                 <circle cx={points.mastery.x} cy={points.mastery.y} r="16" fill="#22c55e" filter="url(#glowStrong)" />
                 <circle cx={points.mastery.x} cy={points.mastery.y} r="6" fill="#ffffff" />
-                <text x={points.mastery.x} y={points.mastery.y - 25} fill={themeColors.primary} fontSize="11" fontWeight="700" textAnchor="middle">
+                <text x={points.mastery.x} y={points.mastery.y - 25} fill={themeColors.primary} fontSize={fontSize.labelLarge} fontWeight="700" textAnchor="middle">
                   AI-First Mindset
                 </text>
-                <text x={points.mastery.x} y={points.mastery.y + 35} fill="#16a34a" fontSize="9" textAnchor="middle">
+                <text x={points.mastery.x} y={points.mastery.y + 35} fill="#16a34a" fontSize={fontSize.label} textAnchor="middle">
                   Self-sustaining
                 </text>
               </g>
@@ -706,7 +728,7 @@ const AnimatedValley = () => {
                   x="345"
                   y={hasPlayed ? "397" : "205"}
                   fill="white"
-                  fontSize="16"
+                  fontSize={fontSize.button}
                   fontWeight="600"
                   fontFamily="system-ui"
                 >
@@ -718,73 +740,73 @@ const AnimatedValley = () => {
 
           {/* Phase-specific caption */}
           <div
-            className="mt-8 p-6 rounded-xl text-center bg-gray-50"
+            className="mt-6 md:mt-8 p-4 md:p-6 rounded-xl text-center bg-gray-50"
             style={{ minHeight: '80px' }}
           >
             {phase === 0 && (
               <div className="valley-fade-in">
-                <div className="text-lg mb-2" style={{ color: themeColors.primary }}>Everyone starts excited. The potential feels real.</div>
-                <div className="text-sm text-gray-500">"AI will change everything!"</div>
+                <div className="text-xl md:text-lg mb-2" style={{ color: themeColors.primary }}>Everyone starts excited. The potential feels real.</div>
+                <div className="text-base md:text-sm text-gray-500">"AI will change everything!"</div>
               </div>
             )}
             {phase === 1 && (
               <div className="valley-fade-in">
-                <div className="text-lg mb-2" style={{ color: '#dc2626' }}>Then you hit The Valley. Outputs aren't working. It feels slow.</div>
-                <div className="text-sm text-gray-500">"I could have done this myself faster."</div>
+                <div className="text-xl md:text-lg mb-2" style={{ color: '#dc2626' }}>Then you hit The Valley. Outputs aren't working. It feels slow.</div>
+                <div className="text-base md:text-sm text-gray-500">"I could have done this myself faster."</div>
               </div>
             )}
             {phase === 2 && (
               <div className="valley-fade-in">
-                <div className="text-lg mb-2" style={{ color: '#dc2626' }}>Without support, people rationally quit.</div>
-                <div className="text-sm text-gray-500">Back to old ways. "I'll try again later." They never do.</div>
+                <div className="text-xl md:text-lg mb-2" style={{ color: '#dc2626' }}>Without support, people rationally quit.</div>
+                <div className="text-base md:text-sm text-gray-500">Back to old ways. "I'll try again later." They never do.</div>
               </div>
             )}
             {phase === 3 && (
               <div className="valley-fade-in">
-                <div className="text-lg mb-2" style={{ color: themeColors.secondary }}>But with coaching at the friction point...</div>
-                <div className="text-sm text-gray-500">Accountability. Encouragement. Someone who helps you push through.</div>
+                <div className="text-xl md:text-lg mb-2" style={{ color: themeColors.secondary }}>But with coaching at the friction point...</div>
+                <div className="text-base md:text-sm text-gray-500">Accountability. Encouragement. Someone who helps you push through.</div>
               </div>
             )}
             {phase === 4 && (
               <div className="valley-fade-in">
-                <div className="text-lg mb-2" style={{ color: '#16a34a' }}>You get your first real win.</div>
-                <div className="text-sm text-gray-500">"Wait... that actually worked." The effort starts to feel worth it.</div>
+                <div className="text-xl md:text-lg mb-2" style={{ color: '#16a34a' }}>You get your first real win.</div>
+                <div className="text-base md:text-sm text-gray-500">"Wait... that actually worked." The effort starts to feel worth it.</div>
               </div>
             )}
             {phase === 5 && (
               <div className="valley-fade-in">
-                <div className="text-lg mb-2" style={{ color: themeColors.accent }}>But then another setback. Progress plateaus.</div>
-                <div className="text-sm text-gray-500">"I'm in a rut. Same prompts, same results."</div>
+                <div className="text-xl md:text-lg mb-2" style={{ color: themeColors.accent }}>But then another setback. Progress plateaus.</div>
+                <div className="text-base md:text-sm text-gray-500">"I'm in a rut. Same prompts, same results."</div>
               </div>
             )}
             {phase === 6 && (
               <div className="valley-fade-in">
-                <div className="text-lg mb-2" style={{ color: themeColors.secondary }}>Coaching again—expanding your approach.</div>
-                <div className="text-sm text-gray-500">New use cases. New workflows. Breaking through the plateau.</div>
+                <div className="text-xl md:text-lg mb-2" style={{ color: themeColors.secondary }}>Coaching again—expanding your approach.</div>
+                <div className="text-base md:text-sm text-gray-500">New use cases. New workflows. Breaking through the plateau.</div>
               </div>
             )}
             {phase === 7 && (
               <div className="valley-fade-in">
-                <div className="text-lg mb-2" style={{ color: '#16a34a' }}>Another breakthrough. Momentum is building.</div>
-                <div className="text-sm text-gray-500">You're starting to see opportunities everywhere.</div>
+                <div className="text-xl md:text-lg mb-2" style={{ color: '#16a34a' }}>Another breakthrough. Momentum is building.</div>
+                <div className="text-base md:text-sm text-gray-500">You're starting to see opportunities everywhere.</div>
               </div>
             )}
             {phase === 8 && (
               <div className="valley-fade-in">
-                <div className="text-lg mb-2" style={{ color: themeColors.accent }}>A smaller wobble. But you're more resilient now.</div>
-                <div className="text-sm text-gray-500">The setbacks get smaller. The recoveries get faster.</div>
+                <div className="text-xl md:text-lg mb-2" style={{ color: themeColors.accent }}>A smaller wobble. But you're more resilient now.</div>
+                <div className="text-base md:text-sm text-gray-500">The setbacks get smaller. The recoveries get faster.</div>
               </div>
             )}
             {phase === 9 && (
               <div className="valley-fade-in">
-                <div className="text-lg mb-2" style={{ color: themeColors.secondary }}>Light-touch coaching. You're almost there.</div>
-                <div className="text-sm text-gray-500">Less intervention needed. The skill is becoming yours.</div>
+                <div className="text-xl md:text-lg mb-2" style={{ color: themeColors.secondary }}>Light-touch coaching. You're almost there.</div>
+                <div className="text-base md:text-sm text-gray-500">Less intervention needed. The skill is becoming yours.</div>
               </div>
             )}
             {phase === 10 && (
               <div className="valley-fade-in">
-                <div className="text-lg mb-2" style={{ color: '#16a34a' }}>Self-sustaining. Wins drive practice. Practice drives wins.</div>
-                <div className="text-sm text-gray-500">The value is self-evident. This is just how you work now.</div>
+                <div className="text-xl md:text-lg mb-2" style={{ color: '#16a34a' }}>Self-sustaining. Wins drive practice. Practice drives wins.</div>
+                <div className="text-base md:text-sm text-gray-500">The value is self-evident. This is just how you work now.</div>
               </div>
             )}
           </div>
@@ -793,35 +815,35 @@ const AnimatedValley = () => {
         {/* Bottom insight - shows after animation */}
         {phase >= 10 && !isPlaying && (
           <div
-            className="mt-12 grid md:grid-cols-2 gap-6 valley-fade-in"
+            className="mt-8 md:mt-12 grid md:grid-cols-2 gap-4 md:gap-6 valley-fade-in"
           >
             <div
-              className="p-10 rounded-2xl"
+              className="p-6 md:p-10 rounded-2xl"
               style={{ backgroundColor: themeColors.secondary }}
             >
               <div
-                className="text-base font-semibold uppercase tracking-widest mb-6"
+                className="text-sm md:text-base font-semibold uppercase tracking-widest mb-4 md:mb-6"
                 style={{ color: themeColors.accentLifted }}
               >
                 Why Training Doesn't Work
               </div>
-              <p className="text-white leading-relaxed text-xl">
+              <p className="text-white leading-relaxed text-lg md:text-xl">
                 Training is knowledge transfer—one-time, front-loaded. But the problem isn't knowledge.
                 It's <strong className="text-white">sustained practice through a period where it doesn't feel worth it yet.</strong>
               </p>
             </div>
 
             <div
-              className="p-10 rounded-2xl bg-white"
+              className="p-6 md:p-10 rounded-2xl bg-white"
               style={{ boxShadow: '0 4px 24px rgba(0,0,0,0.08)' }}
             >
               <div
-                className="text-base font-semibold uppercase tracking-widest mb-6"
+                className="text-sm md:text-base font-semibold uppercase tracking-widest mb-4 md:mb-6"
                 style={{ color: themeColors.accent }}
               >
                 Why Coaching Works
               </div>
-              <p className="leading-relaxed text-xl" style={{ color: themeColors.primary }}>
+              <p className="leading-relaxed text-lg md:text-xl" style={{ color: themeColors.primary }}>
                 Coaching keeps you in practice long enough to become someone who sees the value.
                 <strong> It's the bridge that sustains practice until the value becomes self-evident.</strong>
               </p>
