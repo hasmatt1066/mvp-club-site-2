@@ -1288,8 +1288,8 @@ const MVPClubWebsite = () => {
         </div>
       </footer>
 
-      {/* Color Explorer Dev Mode */}
-      <ColorExplorer />
+      {/* Color Explorer Dev Mode - set to true to show color picker */}
+      {false && <ColorExplorer />}
     </div>
   );
 };
