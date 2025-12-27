@@ -2,12 +2,12 @@
 
 ## 🎨 Style System
 
-### Brand Colors (CSS Variables)
-- **Primary** (`--color-primary`): Deep Navy `#1a365d` - Headers, nav, primary buttons
-- **Secondary** (`--color-secondary`): Deep Teal `#115e59` - Stats, accent sections
+### Brand Colors - Dusk Palette (CSS Variables)
+- **Primary** (`--color-primary`): Dark Navy `#081f3f` - Headers, nav, primary buttons
+- **Secondary** (`--color-secondary`): Slate Blue `#15465b` - Stats, accent sections
 - **Accent** (`--color-accent`): Amber `#d97706` - CTAs, badges
 - **Accent Lifted** (`--color-accent-lifted`): Golden `#fbbf24` - Text on dark backgrounds
-- **Accent Soft** (`--color-accent-soft`): Coral `#f87171` - Decorative accents
+- **Accent Soft** (`--color-accent-soft`): Golden Yellow `#eba714` - Decorative accents
 - **Background** (`--color-background`): Warm Stone `#faf5f0` - Page background
 
 ### Auto-Generated Variants
