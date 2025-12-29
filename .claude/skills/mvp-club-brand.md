@@ -55,7 +55,7 @@ Use this skill when creating any content, communications, or marketing materials
 ### Foundational Phrases (Use These)
 - "AI is going to be the most disruptive moment of our careers, and it is better to go through this moment together than alone."
 - "The only way to understand what AI means for you and your career is to pick up the tool and use it every day."
-- "We make the road by walking."
+- "The only way to learn is by doing—understanding comes through practice, not preparation."
 - "AI is a do-first, understand-later tool."
 - "Using AI is a managerial relationship—you manage the inputs, goals, and evaluate the outputs."
 - "We need to reassess where our understanding is important vs. where our vision is important."
@@ -159,7 +159,7 @@ AI augments human capability—it doesn't replace human judgment. The goal is to
 ### Key Concepts
 - **Managerial relationship**: You're the manager. AI is a capable direct report. You set goals, provide context, and evaluate outputs.
 - **Vision over understanding**: Sometimes knowing *what* you want matters more than knowing *how* it works. AI lets you offload understanding to reduce friction.
-- **Practice creates understanding**: You won't understand AI by reading about it. You understand by using it daily. "We make the road by walking."
+- **Practice creates understanding**: You won't understand AI by reading about it. You understand by using it daily—the path forward reveals itself through action.
 - **Do first, understand later**: Unlike traditional tools, AI rewards action over preparation.
 
 ### What We Advocate For
