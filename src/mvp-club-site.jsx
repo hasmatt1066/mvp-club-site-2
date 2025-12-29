@@ -6,12 +6,14 @@ import logoImage from './mvp-club-logo.jpeg';
 import AnimatedValley from './AnimatedValley';
 import ElementHelix from './ElementHelix';
 import WorkLoop from './WorkLoop';
+import SignupOverlay, { useSignupOverlay } from './SignupOverlay';
 
 // MVP Club Consulting - Complete Single Page Website
 // Brand colors from skill + Section-level content depth + warm approachable voice
 
 const MVPClubWebsite = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { shouldShow: showOverlay, dismiss: dismissOverlay } = useSignupOverlay();
 
   // Initialize theme on mount
   useEffect(() => {
@@ -71,6 +73,9 @@ const MVPClubWebsite = () => {
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: 'var(--color-background)', fontFamily: 'Inter, system-ui, sans-serif' }}>
+      {/* Signup Overlay */}
+      {showOverlay && <SignupOverlay onDismiss={dismissOverlay} />}
+
       {/* Google Fonts */}
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500&family=Inter:wght@400;500;600&display=swap');
