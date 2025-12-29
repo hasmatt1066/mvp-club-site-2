@@ -1,5 +1,5 @@
 ---
-name: MVP Club Brand
+name: mvp-club-brand
 description: Use when creating content, marketing materials, or communications for MVP Club. Ensures brand consistency with voice, messaging, and prohibited language guidelines.
 ---
 
