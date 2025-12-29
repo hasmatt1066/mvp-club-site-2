@@ -70,7 +70,7 @@ const AnimatedValley = () => {
     label: isMobile ? 14 : 10,
     labelLarge: isMobile ? 16 : 11,
     axis: isMobile ? 14 : 11,
-    button: isMobile ? 24 : 16,
+    button: isMobile ? 18 : 16,
     coach: isMobile ? 20 : 16,
     coachSmall: isMobile ? 16 : 14,
     coachTiny: isMobile ? 14 : 12,
@@ -78,17 +78,17 @@ const AnimatedValley = () => {
 
   // Responsive button dimensions (much larger on mobile)
   const buttonDims = {
-    width: isMobile ? 340 : 240,
-    height: isMobile ? 80 : 60,
-    x: isMobile ? 230 : 280,
-    yInitial: isMobile ? 160 : 170,
+    width: isMobile ? 280 : 240,
+    height: isMobile ? 60 : 60,
+    x: isMobile ? 260 : 280,
+    yInitial: isMobile ? 170 : 170,
     yReplay: isMobile ? 350 : 360,
-    rx: isMobile ? 16 : 12,
+    rx: isMobile ? 12 : 12,
     // Play icon triangle points
-    iconX: isMobile ? 260 : 305,
-    iconSize: isMobile ? 30 : 20,
-    // Text position
-    textX: isMobile ? 400 : 345,
+    iconX: isMobile ? 285 : 305,
+    iconSize: isMobile ? 20 : 20,
+    // Text position (starts after icon with padding)
+    textX: isMobile ? 320 : 330,
   };
 
   const phases = [
@@ -746,7 +746,7 @@ const AnimatedValley = () => {
                   fontSize={fontSize.button}
                   fontWeight="600"
                   fontFamily="system-ui"
-                  textAnchor="middle"
+                  textAnchor="start"
                 >
                   {hasPlayed ? 'Replay Journey' : 'Watch the Journey'}
                 </text>
