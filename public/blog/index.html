@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog | MVP Club</title>
+  <meta name="description" content="Insights on AI adoption, practice-based learning, and human-AI collaboration from the MVP Club team.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="MVP Club Blog">
+  <meta property="og:description" content="Insights on AI adoption, practice-based learning, and human-AI collaboration.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mvpclub.co/blog">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Zilla+Slab&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background-color: #faf5f0;
+      color: #1a365d;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: #ffffff;
+      border-bottom: 1px solid rgba(26, 54, 93, 0.1);
+      padding: 1rem 2rem;
+      z-index: 100;
+    }
+
+    .nav-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-family: 'Zilla Slab', serif;
+      font-size: 1.5rem;
+      color: #1a365d;
+      text-decoration: none;
+    }
+
+    .nav-links a {
+      color: #1a365d;
+      text-decoration: none;
+      margin-left: 2rem;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      color: #d97706;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 8rem 1.5rem 4rem;
+    }
+
+    .page-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .page-header h1 {
+      font-family: 'Zilla Slab', serif;
+      font-size: 3rem;
+      font-weight: 400;
+      color: #1a365d;
+      margin-bottom: 1rem;
+    }
+
+    .page-header p {
+      font-size: 1.25rem;
+      color: #115e59;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .posts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .post-card {
+      background: #ffffff;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: block;
+    }
+
+    .post-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(26, 54, 93, 0.1);
+    }
+
+    .post-card .post-pillar {
+      display: inline-block;
+      background: #d97706;
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.2rem 0.6rem;
+      border-radius: 2rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .post-card h2 {
+      font-family: 'Zilla Slab', serif;
+      font-size: 1.375rem;
+      font-weight: 400;
+      color: #1a365d;
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
+    }
+
+    .post-excerpt {
+      color: #115e59;
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .post-card-meta {
+      font-size: 0.85rem;
+      color: #115e59;
+      display: flex;
+      gap: 1rem;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 4rem 2rem;
+      color: #115e59;
+    }
+
+    .empty-state h2 {
+      font-family: 'Zilla Slab', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      margin-bottom: 1rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 3rem 1.5rem;
+      color: #115e59;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 640px) {
+      .page-header h1 { font-size: 2.25rem; }
+      main { padding-top: 6rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-content">
+      <a href="/" class="nav-logo">MVP Club</a>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        <a href="/#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <header class="page-header">
+      <h1>Blog</h1>
+      <p>Insights on AI adoption, practice-based learning, and building effective human-AI teams.</p>
+    </header>
+
+    
+      <div class="posts-grid">
+        
+      <a href="/blog/why-ai-projects-fail/" class="post-card">
+        <span class="post-pillar">AI Adoption Crisis</span>
+        <h2>Why 95% of AI Projects Fail (And What To Do Instead)</h2>
+        <p class="post-excerpt">The real barrier to AI adoption isn&#039;t technical—it&#039;s the gap between understanding and practice. Here&#039;s what actually works.</p>
+        <div class="post-card-meta">
+          <span>Matt Hastings</span>
+          <span>Jan 2, 2025</span>
+        </div>
+      </a>
+    
+      </div>
+    
+  </main>
+
+  <footer>
+    <p>&copy; 2026 MVP Club. All rights reserved.</p>
+  </footer>
+</body>
+</html>

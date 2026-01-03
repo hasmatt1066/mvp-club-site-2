@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite-react-ssg build",
+    "build:blog": "node scripts/generate-blog.js",
+    "build": "npm run build:blog && vite-react-ssg build",
     "preview": "vite preview",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
