@@ -156,6 +156,17 @@ const MVPClubWebsite = () => {
                 {section.label}
               </button>
             ))}
+            <a
+              href="/blog/"
+              className="text-sm font-medium transition-colors duration-200"
+              style={{
+                color: 'rgba(255,255,255,0.8)'
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.color = 'var(--color-accent-lifted)'}
+              onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(255,255,255,0.8)'}
+            >
+              Blog
+            </a>
             <button
               onClick={() => scrollToSection('contact')}
               className="px-5 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200"
@@ -177,7 +188,7 @@ const MVPClubWebsite = () => {
 
         {/* Mobile Menu */}
         {menuOpen && (
-          <div 
+          <div
             className="lg:hidden absolute top-full left-0 right-0 py-6 px-6"
             style={{ backgroundColor: 'var(--color-primary)' }}
           >
@@ -190,6 +201,13 @@ const MVPClubWebsite = () => {
                 {section.label}
               </button>
             ))}
+            <a
+              href="/blog/"
+              className="block w-full text-left py-3 text-white/80 hover:text-white transition-colors font-medium"
+              onClick={() => setMenuOpen(false)}
+            >
+              Blog
+            </a>
           </div>
         )}
       </nav>
