@@ -1,5 +1,13 @@
 [
   {
+    "slug": "probabilistic-vs-deterministic-ai",
+    "title": "Why AI Doesn't Work Like Regular Software: Probabilistic vs Deterministic Tools",
+    "date": "2025-01-06",
+    "author": "Matt Hastings",
+    "description": "AI is probabilistic, not deterministic. Learn why this matters and how to shift your approach for better results.",
+    "pillar": "Human + AI Teams"
+  },
+  {
     "slug": "why-ai-projects-fail",
     "title": "Why 95% of AI Projects Fail (And What To Do Instead)",
     "date": "2025-01-03",
