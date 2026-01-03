@@ -217,6 +217,37 @@ function postTemplate(post) {
       font-weight: 600;
     }
 
+    .post-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-size: 0.95rem;
+    }
+
+    .post-content thead {
+      background: ${COLORS.primary};
+      color: white;
+    }
+
+    .post-content th {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      font-weight: 600;
+    }
+
+    .post-content td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid rgba(26, 54, 93, 0.1);
+    }
+
+    .post-content tbody tr:nth-child(even) {
+      background: rgba(26, 54, 93, 0.03);
+    }
+
+    .post-content tbody tr:hover {
+      background: rgba(26, 54, 93, 0.06);
+    }
+
     .back-link {
       display: inline-flex;
       align-items: center;
