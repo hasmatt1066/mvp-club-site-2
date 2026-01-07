@@ -7,12 +7,14 @@ import AnimatedValley from './AnimatedValley';
 import ElementHelix from './ElementHelix';
 import WorkLoop from './WorkLoop';
 import SignupOverlay, { useSignupOverlay } from './SignupOverlay';
+import WaitlistOverlay from './WaitlistOverlay';
 
 // MVP Club Consulting - Complete Single Page Website
 // Brand colors from skill + Section-level content depth + warm approachable voice
 
 const MVPClubWebsite = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [showWaitlist, setShowWaitlist] = useState(false);
   const { shouldShow: showOverlay, dismiss: dismissOverlay } = useSignupOverlay();
 
   // Initialize theme on mount
@@ -75,6 +77,9 @@ const MVPClubWebsite = () => {
     <div className="min-h-screen" style={{ backgroundColor: 'var(--color-background)', fontFamily: 'Inter, system-ui, sans-serif' }}>
       {/* Signup Overlay */}
       {showOverlay && <SignupOverlay onDismiss={dismissOverlay} />}
+
+      {/* Waitlist Overlay */}
+      {showWaitlist && <WaitlistOverlay onClose={() => setShowWaitlist(false)} />}
 
       {/* Google Fonts */}
       <style>{`
@@ -266,9 +271,9 @@ const MVPClubWebsite = () => {
                     Start a 4-Week Pilot
                   </button>
                   <button
-                    onClick={() => scrollToSection('practitioners')}
+                    onClick={() => setShowWaitlist(true)}
                     className="px-8 py-4 rounded-lg font-semibold transition-all duration-200 hover:scale-105"
-                    style={{ 
+                    style={{
                       backgroundColor: 'transparent',
                       border: '2px solid rgba(255,255,255,0.3)',
                       color: 'white'
@@ -974,7 +979,7 @@ const MVPClubWebsite = () => {
                 collaboration skills through practice, not just theory.
               </p>
               <button
-                onClick={() => scrollToSection('contact')}
+                onClick={() => setShowWaitlist(true)}
                 className="px-8 py-4 rounded-lg font-semibold transition-all duration-200 hover:scale-105"
                 style={{ backgroundColor: 'var(--color-accent-lifted)', color: 'var(--color-primary)' }}
               >
@@ -1252,15 +1257,13 @@ const MVPClubWebsite = () => {
                     </div>
                   ))}
                 </div>
-                <a
-                  href="https://mvpclub.mn.co"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button
+                  onClick={() => setShowWaitlist(true)}
                   className="block w-full py-4 rounded-lg font-semibold text-center transition-all duration-200 hover:scale-105"
                   style={{ backgroundColor: 'var(--color-accent)', color: 'white' }}
                 >
                   Join the Community
-                </a>
+                </button>
               </div>
             </AnimatedSection>
           </div>
