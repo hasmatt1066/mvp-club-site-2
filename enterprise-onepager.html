@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MVP Club - Enterprise One Pager</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a365d;
+            --secondary: #115e59;
+            --accent: #d97706;
+            --accent-soft: #f87171;
+            --background: #faf5f0;
+            --text-dark: #1f2937;
+            --text-muted: #6b7280;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background-color: var(--background);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 8.5in;
+            height: 11in;
+            margin: 0 auto;
+            background: white;
+            padding: 0.5in 0.6in;
+            display: flex;
+            flex-direction: column;
+        }
+
+        @media print {
+            @page {
+                margin: 0;
+                size: letter;
+            }
+
+            body {
+                background: white;
+                margin: 0;
+                padding: 0;
+            }
+
+            .container {
+                padding: 0.4in 0.5in;
+                page-break-after: avoid;
+                page-break-inside: avoid;
+            }
+
+            /* Ensure gradients print */
+            .ready-section,
+            .col-section.why,
+            .col-section.how,
+            .cta-box {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                color-adjust: exact;
+            }
+
+            /* Prevent page breaks */
+            .two-col,
+            .ready-section,
+            .cta-box {
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .logo-link {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo {
+            height: 40px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-family: 'Zilla Slab', serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .cta-link {
+            color: var(--accent-soft);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Hero */
+        .hero {
+            margin-bottom: 0.75rem;
+        }
+
+        .hero h1 {
+            font-family: 'Zilla Slab', serif;
+            font-size: 2.25rem;
+            line-height: 1.15;
+            color: var(--primary);
+            margin-bottom: 0.4rem;
+            font-weight: 600;
+        }
+
+        .hero .tagline {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* Section Headings */
+        .section-divider {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, var(--secondary), var(--accent));
+            margin: 0.5rem 0;
+        }
+
+        h2 {
+            font-family: 'Zilla Slab', serif;
+            font-size: 1.2rem;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        /* Two Column Layout */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .col-section {
+            padding: 1rem 1.25rem;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .col-section.why {
+            background: linear-gradient(135deg, rgba(17, 94, 89, 0.1) 0%, rgba(26, 54, 93, 0.08) 100%);
+        }
+
+        .col-section.how {
+            background: rgba(217, 119, 6, 0.08);
+        }
+
+        .col-section h2 {
+            min-height: 2rem;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Why Partner Section */
+        .benefit {
+            margin-bottom: 1rem;
+        }
+
+        .benefit h3 {
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.2rem;
+            font-size: 0.95rem;
+        }
+
+        .benefit p {
+            color: var(--text-dark);
+            font-size: 0.85rem;
+            line-height: 1.45;
+        }
+
+        /* How It Works */
+        .step {
+            margin-bottom: 1rem;
+        }
+
+        .step:first-of-type {
+            margin-top: 0;
+        }
+
+        .step h3 {
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.2rem;
+            font-size: 0.95rem;
+        }
+
+        .step p {
+            color: var(--text-dark);
+            font-size: 0.85rem;
+            line-height: 1.45;
+        }
+
+        /* Ready Section */
+        .ready-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            padding: 1rem 1.25rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .ready-section h2 {
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+            font-size: 1.3rem;
+        }
+
+        .checklist {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .check-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .check-icon {
+            width: 24px;
+            height: 24px;
+            background: var(--accent);
+            border-radius: 50%;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            margin-top: 2px;
+        }
+
+        .check-item p {
+            color: white;
+            font-size: 0.88rem;
+            font-weight: 500;
+            margin: 0;
+        }
+
+        /* CTA */
+        .cta-box {
+            background: var(--primary);
+            color: white;
+            padding: 1rem 1.5rem;
+            text-align: center;
+            border-radius: 8px;
+            margin-top: auto;
+        }
+
+        .cta-box h3 {
+            font-family: 'Zilla Slab', serif;
+            font-size: 1.2rem;
+            margin-bottom: 0.4rem;
+            font-weight: 600;
+        }
+
+        .cta-box p {
+            font-size: 0.88rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent-soft);
+            color: white;
+            padding: 0.65rem 1.75rem;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 700;
+            margin-top: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <a href="https://mvpclub.ai" class="logo-link">
+                <img src="./public/mvp-club-logo.jpeg" alt="MVP Club" class="logo">
+                <span class="logo-text">MVPClub.ai</span>
+            </a>
+            <a href="https://calendly.com/d/cybv-947-s8m/discovery-call" class="cta-link">Book a Consult Now</a>
+        </div>
+
+        <!-- Hero -->
+        <div class="hero">
+            <h1>AI-Powered Productivity.<br>Delivered, Not Taught.</h1>
+            <p class="tagline">Done-with-you workflow acceleration for teams who need results, not training.</p>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- Two Column: Why Partner / How It Works -->
+        <div class="two-col">
+            <div class="col-section why">
+                <h2>Why Partner With Us?</h2>
+
+                <div class="benefit">
+                    <h3>Real Outcomes, Fast</h3>
+                    <p>Your team delivers AI-powered workflows for actual business challenges—faster proposals, better messaging, reduced cycle times.</p>
+                </div>
+
+                <div class="benefit">
+                    <h3>No Heavy Lift</h3>
+                    <p>We embed into your team with lightweight sprints. No lengthy rollouts, no time drain, no tool overload.</p>
+                </div>
+
+                <div class="benefit">
+                    <h3>Consultancy Quality, Without the Cost</h3>
+                    <p>Get custom playbooks and tailored workflows at a fraction of the consultant timeline and price.</p>
+                </div>
+            </div>
+
+            <div class="col-section how">
+                <h2>How It Works</h2>
+
+                <div class="step">
+                    <h3>4-Week Productivity Sprint</h3>
+                    <p>We work with one team on one high-value workflow. Build it together, see immediate impact.</p>
+                </div>
+
+                <div class="step">
+                    <h3>Custom Workflows, Not Generic Training</h3>
+                    <p>Role-based playbooks with copy/paste prompts, templates, and automations for your specific use cases.</p>
+                </div>
+
+                <div class="step">
+                    <h3>Results Tracking</h3>
+                    <p>Measure what matters: productivity gains, cycle-time reductions, output increases—not just "engagement."</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- Is Your Team Ready -->
+        <div class="ready-section">
+            <h2>Is Your Team Ready?</h2>
+            <div class="checklist">
+                <div class="check-item">
+                    <div class="check-icon">✓</div>
+                    <p>Your team is wearing more hats with less time—efficiency isn't optional anymore.</p>
+                </div>
+                <div class="check-item">
+                    <div class="check-icon">✓</div>
+                    <p>Your team is drowning in tools and needs curation, not more complexity.</p>
+                </div>
+                <div class="check-item">
+                    <div class="check-icon">✓</div>
+                    <p>You want to experiment with AI, but you need it to be low-risk and high-impact.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-box">
+            <h3>Start With a Pilot</h3>
+            <p>One team. One workflow. Four weeks. Let's prove the value together.</p>
+            <a href="https://calendly.com/d/cybv-947-s8m/discovery-call" class="cta-button">Book a Consult</a>
+        </div>
+    </div>
+</body>
+</html>
