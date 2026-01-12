@@ -1,5 +1,13 @@
 [
   {
+    "slug": "ai-time-paradox",
+    "title": "The AI Time Paradox: Why You Can't Find Time for the Skill You Need Most",
+    "date": "2026-01-11",
+    "author": "Matt Hastings",
+    "description": "AI adoption is a practice skill, but the workplace pressure driving the need for AI is the same pressure stealing your time to learn it. Here's what to do about it.",
+    "pillar": "AI Adoption Crisis"
+  },
+  {
     "slug": "probabilistic-vs-deterministic-ai",
     "title": "Why AI Doesn't Work Like Regular Software: Probabilistic vs Deterministic Tools",
     "date": "2025-01-06",
