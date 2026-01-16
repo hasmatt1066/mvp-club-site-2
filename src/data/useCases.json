@@ -1,0 +1,171 @@
+{
+  "sectionTitle": "Transformation Stories",
+  "sectionSubtitle": "See how MVP Club coaching transforms everyday workflows",
+  "useCases": [
+    {
+      "id": "marketing-content-machine",
+      "title": "Marketing Content Machine",
+      "currentState": {
+        "headline": "The Old Way",
+        "description": "Write content separately for each channel. Inconsistent voice across platforms. Hours spent per piece.",
+        "icon": "FileText",
+        "painPoints": [
+          "Hours per content piece",
+          "Inconsistent brand voice",
+          "Channel-by-channel rewriting"
+        ]
+      },
+      "transformation": {
+        "headline": "MVP Club Coaching",
+        "description": "Build AI directory with brand guidelines, persona docs, and multi-channel templates",
+        "icon": "Sparkles"
+      },
+      "futureState": {
+        "headline": "The New Way",
+        "description": "One conversation generates on-brand content for LinkedIn, newsletter, blog, and community. Text and visual assets together.",
+        "icon": "Zap",
+        "wins": [
+          "Minutes, not hours",
+          "Consistent brand voice",
+          "Multi-channel from one conversation"
+        ]
+      },
+      "outcome": {
+        "metric": "90%",
+        "description": "time reduction per content piece"
+      }
+    },
+    {
+      "id": "meeting-prep-followup",
+      "title": "Meeting Prep & Follow-Up",
+      "currentState": {
+        "headline": "The Old Way",
+        "description": "30+ minutes preparing for each meeting. Scattered notes across apps. Action items get lost or forgotten.",
+        "icon": "Calendar",
+        "painPoints": [
+          "30+ min prep time",
+          "Lost context between meetings",
+          "Dropped follow-ups"
+        ]
+      },
+      "transformation": {
+        "headline": "MVP Club Coaching",
+        "description": "Build AI workflow for meeting briefs, real-time notes, and auto-generated follow-ups",
+        "icon": "Sparkles"
+      },
+      "futureState": {
+        "headline": "The New Way",
+        "description": "AI prepares context brief before meetings, captures notes during, and drafts follow-up emails after. Nothing falls through the cracks.",
+        "icon": "CheckCircle2",
+        "wins": [
+          "5-minute prep",
+          "Perfect context recall",
+          "Same-day follow-ups"
+        ]
+      },
+      "outcome": {
+        "metric": "80%",
+        "description": "reduction in meeting overhead"
+      }
+    },
+    {
+      "id": "research-synthesis",
+      "title": "Research Synthesis",
+      "currentState": {
+        "headline": "The Old Way",
+        "description": "Hours reading through sources. Manual summarizing and note-taking. Connections between sources missed.",
+        "icon": "Layers",
+        "painPoints": [
+          "Hours of reading",
+          "Manual summarization",
+          "Missed connections"
+        ]
+      },
+      "transformation": {
+        "headline": "MVP Club Coaching",
+        "description": "Build research workflow with structured extraction templates and synthesis prompts",
+        "icon": "Sparkles"
+      },
+      "futureState": {
+        "headline": "The New Way",
+        "description": "AI synthesizes key findings, identifies patterns across sources, and surfaces gaps in your research. You focus on insights.",
+        "icon": "Brain",
+        "wins": [
+          "Pattern recognition",
+          "Gap identification",
+          "Insight-focused work"
+        ]
+      },
+      "outcome": {
+        "metric": "5x",
+        "description": "faster research-to-insight"
+      }
+    },
+    {
+      "id": "email-triage-response",
+      "title": "Email Triage & Response",
+      "currentState": {
+        "headline": "The Old Way",
+        "description": "2+ hours daily on email. Constant context switching. Important messages buried. Delayed responses.",
+        "icon": "MessageCircle",
+        "painPoints": [
+          "2+ hours daily",
+          "Context switching",
+          "Delayed responses"
+        ]
+      },
+      "transformation": {
+        "headline": "MVP Club Coaching",
+        "description": "Build priority scoring workflow and response template library tuned to your voice",
+        "icon": "Sparkles"
+      },
+      "futureState": {
+        "headline": "The New Way",
+        "description": "AI categorizes incoming mail, drafts responses in your voice, and flags truly urgent items. You review and send.",
+        "icon": "Zap",
+        "wins": [
+          "Prioritized inbox",
+          "Draft responses ready",
+          "Focus on what matters"
+        ]
+      },
+      "outcome": {
+        "metric": "60%",
+        "description": "reduction in email time"
+      }
+    },
+    {
+      "id": "proposal-document-drafting",
+      "title": "Proposal & Document Drafting",
+      "currentState": {
+        "headline": "The Old Way",
+        "description": "Start from scratch each time. Inconsistent structure between documents. Slow iteration and revision cycles.",
+        "icon": "FileText",
+        "painPoints": [
+          "Starting from scratch",
+          "Inconsistent structure",
+          "Slow iteration"
+        ]
+      },
+      "transformation": {
+        "headline": "MVP Club Coaching",
+        "description": "Build proposal templates, past work library, and brand voice guides for AI drafting",
+        "icon": "Sparkles"
+      },
+      "futureState": {
+        "headline": "The New Way",
+        "description": "AI drafts complete proposals based on your templates and past work. You refine, personalize, and add strategic thinking.",
+        "icon": "Target",
+        "wins": [
+          "First draft in minutes",
+          "Consistent structure",
+          "Focus on strategy"
+        ]
+      },
+      "outcome": {
+        "metric": "15 min",
+        "description": "first draft vs 4 hours"
+      }
+    }
+  ]
+}
