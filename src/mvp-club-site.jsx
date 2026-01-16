@@ -8,6 +8,10 @@ import ElementHelix from './ElementHelix';
 import WorkLoop from './WorkLoop';
 import SignupOverlay, { useSignupOverlay } from './SignupOverlay';
 import WaitlistOverlay from './WaitlistOverlay';
+// import { ChatButton, ChatWindow } from './chat'; // DEACTIVATED - not ready for production yet
+import { HeroSection } from './components/hero';
+import TransformationStories from './components/use-cases/TransformationStories';
+import UseCaseGenerator from './components/UseCaseGenerator';
 
 // MVP Club Consulting - Complete Single Page Website
 // Brand colors from skill + Section-level content depth + warm approachable voice
@@ -15,6 +19,7 @@ import WaitlistOverlay from './WaitlistOverlay';
 const MVPClubWebsite = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showWaitlist, setShowWaitlist] = useState(false);
+  // const [showChat, setShowChat] = useState(false); // DEACTIVATED - chat not ready yet
   const { shouldShow: showOverlay, dismiss: dismissOverlay } = useSignupOverlay();
 
   // Initialize theme on mount
@@ -217,132 +222,8 @@ const MVPClubWebsite = () => {
         )}
       </nav>
 
-      {/* Hero Section */}
-      <section 
-        id="hero" 
-        className="min-h-screen flex items-center relative"
-        style={{ backgroundColor: 'var(--color-primary)' }}
-      >
-        {/* Background elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div 
-            className="absolute top-20 right-10 w-96 h-96 rounded-full opacity-10 animate-float"
-            style={{ backgroundColor: 'var(--color-secondary)' }}
-          />
-          <div 
-            className="absolute bottom-20 left-10 w-64 h-64 rounded-full opacity-10 animate-float"
-            style={{ backgroundColor: 'var(--color-accent)', animationDelay: '-2s' }}
-          />
-        </div>
-
-        <div className="max-w-7xl mx-auto px-6 pt-32 pb-20 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <AnimatedSection>
-                <p
-                  className="text-lg font-semibold uppercase tracking-wider mb-4"
-                  style={{ color: 'var(--color-accent-lifted)' }}
-                >
-                  Strategic AI Transformation
-                </p>
-              </AnimatedSection>
-              
-              <AnimatedSection delay={100}>
-                <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-white leading-tight mb-6">
-                  Turn AI Access Into{' '}
-                  <span className="gradient-text">Genuine Capability</span>
-                </h1>
-              </AnimatedSection>
-              
-              <AnimatedSection delay={200}>
-                <p className="text-lg text-white/80 mb-8 leading-relaxed max-w-xl">
-                  We coach your team to bring an AI-first mindset to real work and implement AI workflows.
-                  Get measurable productivity gains in 4 weeks by doing actual work, not sitting through programs.
-                </p>
-              </AnimatedSection>
-              
-              <AnimatedSection delay={300}>
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <button
-                    onClick={() => scrollToSection('organizations')}
-                    className="px-8 py-4 rounded-lg text-white font-semibold transition-all duration-200 hover:scale-105"
-                    style={{ backgroundColor: 'var(--color-accent)' }}
-                  >
-                    Start a 4-Week Pilot
-                  </button>
-                  <button
-                    onClick={() => setShowWaitlist(true)}
-                    className="px-8 py-4 rounded-lg font-semibold transition-all duration-200 hover:scale-105"
-                    style={{
-                      backgroundColor: 'transparent',
-                      border: '2px solid rgba(255,255,255,0.3)',
-                      color: 'white'
-                    }}
-                  >
-                    Join the Community
-                  </button>
-                </div>
-              </AnimatedSection>
-            </div>
-
-            {/* Hero Visual - Element Helix */}
-            <AnimatedSection delay={400} className="hidden lg:block">
-              <div
-                className="relative p-10 rounded-2xl"
-                style={{ backgroundColor: 'var(--color-primary-lifted)' }}
-              >
-                <div className="space-y-6">
-                  {/* Visual representation of Human + AI */}
-                  <div className="flex items-center gap-5">
-                    <div
-                      className="w-20 h-20 rounded-full flex items-center justify-center flex-shrink-0"
-                      style={{ backgroundColor: 'var(--color-accent-lifted)' }}
-                    >
-                      <Users size={32} style={{ color: 'var(--color-primary)' }} />
-                    </div>
-                    <div className="flex-1">
-                      <div className="text-white font-display text-2xl mb-1">Human</div>
-                      <div className="text-white/70 text-sm">Strategy • Judgment • Context</div>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center justify-center py-2">
-                    <div className="flex-1 h-0.5" style={{ backgroundColor: 'var(--color-accent-muted)' }} />
-                    <div
-                      className="w-14 h-14 rounded-full flex items-center justify-center text-2xl font-bold mx-6 flex-shrink-0"
-                      style={{ backgroundColor: 'var(--color-accent)', color: 'white' }}
-                    >
-                      +
-                    </div>
-                    <div className="flex-1 h-0.5" style={{ backgroundColor: 'var(--color-accent-muted)' }} />
-                  </div>
-
-                  <div className="flex items-center gap-5">
-                    <div
-                      className="w-20 h-20 rounded-full flex items-center justify-center flex-shrink-0"
-                      style={{ backgroundColor: 'var(--color-primary)' }}
-                    >
-                      <Sparkles size={32} style={{ color: 'var(--color-accent-lifted)' }} />
-                    </div>
-                    <div className="flex-1">
-                      <div className="text-white font-display text-2xl mb-1">AI</div>
-                      <div className="text-white/70 text-sm">Speed • Pattern Recognition • Scale</div>
-                    </div>
-                  </div>
-
-                  <div
-                    className="mt-6 p-6 rounded-xl text-center"
-                    style={{ backgroundColor: 'var(--color-secondary)' }}
-                  >
-                    <div className="text-sm font-semibold uppercase tracking-widest mb-2 text-white/70">The Result</div>
-                    <div className="text-white font-display text-xl leading-tight">Genuine Competitive Advantage</div>
-                  </div>
-                </div>
-              </div>
-            </AnimatedSection>
-          </div>
-        </div>
-      </section>
+      {/* Hero Section with Interactive Generator */}
+      <HeroSection scrollToSection={scrollToSection} setShowWaitlist={setShowWaitlist} />
 
       {/* Problem Section */}
       <section id="problem" className="py-24" style={{ backgroundColor: 'var(--color-background)' }}>
@@ -707,6 +588,12 @@ const MVPClubWebsite = () => {
           </div>
         </div>
       </section>
+
+      {/* Transformation Stories Section - DEACTIVATED: Now integrated into hero */}
+      {/* <TransformationStories /> */}
+
+      {/* Interactive Use Case Generator - DEACTIVATED: Now integrated into hero */}
+      {/* <UseCaseGenerator /> */}
 
       {/* Methodology Section - The Work Loop */}
       <section id="methodology" style={{ backgroundColor: '#faf5f0' }}>
@@ -1318,6 +1205,16 @@ const MVPClubWebsite = () => {
 
       {/* Color Explorer Dev Mode - set to true to show color picker */}
       {false && <ColorExplorer />}
+
+      {/* Chat Assistant - DEACTIVATED: Not ready for production yet */}
+      {/* <ChatButton
+        isOpen={showChat}
+        onClick={() => setShowChat((prev) => !prev)}
+      />
+      <ChatWindow
+        isOpen={showChat}
+        onClose={() => setShowChat(false)}
+      /> */}
     </div>
   );
 };

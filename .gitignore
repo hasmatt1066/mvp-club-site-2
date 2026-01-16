@@ -36,3 +36,6 @@ dist-ssr/
 *.tmp
 .cache/
 fix-quotes.py
+
+.vercel
+.env*.local
