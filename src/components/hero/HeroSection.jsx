@@ -138,17 +138,20 @@ const HeroSection = ({ scrollToSection, setShowWaitlist }) => {
                 >
                   Start a 4-Week Pilot
                 </button>
-                <button
-                  onClick={() => setShowWaitlist(true)}
-                  className="px-8 py-4 rounded-xl font-semibold transition-all duration-200 hover:scale-105"
+                <a
+                  href="https://mvp-club.mn.co/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block px-8 py-4 rounded-xl font-semibold transition-all duration-200 hover:scale-105"
                   style={{
                     backgroundColor: 'transparent',
                     border: '2px solid rgba(255,255,255,0.3)',
-                    color: 'white'
+                    color: 'white',
+                    textDecoration: 'none'
                   }}
                 >
                   Join the Community
-                </button>
+                </a>
               </div>
             </div>
 

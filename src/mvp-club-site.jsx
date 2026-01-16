@@ -865,13 +865,15 @@ const MVPClubWebsite = () => {
                 Join a community of practitioners who are actively developing their Human + AI 
                 collaboration skills through practice, not just theory.
               </p>
-              <button
-                onClick={() => setShowWaitlist(true)}
-                className="px-8 py-4 rounded-lg font-semibold transition-all duration-200 hover:scale-105"
-                style={{ backgroundColor: 'var(--color-accent-lifted)', color: 'var(--color-primary)' }}
+              <a
+                href="https://mvp-club.mn.co/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block px-8 py-4 rounded-lg font-semibold transition-all duration-200 hover:scale-105"
+                style={{ backgroundColor: 'var(--color-accent-lifted)', color: 'var(--color-primary)', textDecoration: 'none' }}
               >
                 Join the Community
-              </button>
+              </a>
             </div>
           </AnimatedSection>
         </div>
@@ -1144,13 +1146,15 @@ const MVPClubWebsite = () => {
                     </div>
                   ))}
                 </div>
-                <button
-                  onClick={() => setShowWaitlist(true)}
+                <a
+                  href="https://mvp-club.mn.co/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="block w-full py-4 rounded-lg font-semibold text-center transition-all duration-200 hover:scale-105"
-                  style={{ backgroundColor: 'var(--color-accent)', color: 'white' }}
+                  style={{ backgroundColor: 'var(--color-accent)', color: 'white', textDecoration: 'none' }}
                 >
                   Join the Community
-                </button>
+                </a>
               </div>
             </AnimatedSection>
           </div>
