@@ -107,7 +107,7 @@ const HeroSection = ({ scrollToSection, setShowWaitlist }) => {
         </div>
 
         <div className="max-w-7xl mx-auto px-6 pt-32 pb-20 relative z-10 w-full">
-          <div className="grid lg:grid-cols-[40%_60%] gap-12 lg:gap-16 items-center">
+          <div className="grid lg:grid-cols-[40%_60%] gap-12 lg:gap-16 items-start">
             {/* Left: Value Prop */}
             <div>
               <p

@@ -112,24 +112,34 @@ const MobileCarousel = ({ useCases }) => {
       <div
         ref={containerRef}
         onScroll={handleScroll}
-        className="overflow-x-auto snap-x snap-mandatory scrollbar-hide -mx-6 px-6"
+        className="scrollbar-hide"
         style={{
           scrollbarWidth: 'none',
           msOverflowStyle: 'none',
           WebkitOverflowScrolling: 'touch',
+          overflowX: 'auto',
+          display: 'flex',
+          gap: '1rem',
+          paddingBottom: '1rem',
+          marginLeft: '-1.5rem',
+          marginRight: '-1.5rem',
+          paddingLeft: '1.5rem',
+          paddingRight: '1.5rem',
+          minHeight: '700px',
         }}
       >
-        <div className="flex gap-4" style={{ width: 'max-content' }}>
-          {useCases.map((useCase) => (
-            <div
-              key={useCase.id}
-              className="snap-center flex-shrink-0"
-              style={{ width: 'calc(100vw - 48px)' }}
-            >
-              <TransformationCard useCase={useCase} />
-            </div>
-          ))}
-        </div>
+        {useCases.map((useCase) => (
+          <div
+            key={useCase.id}
+            className="flex-shrink-0"
+            style={{
+              width: 'calc(100vw - 3rem)',
+              scrollSnapAlign: 'center',
+            }}
+          >
+            <TransformationCard useCase={useCase} />
+          </div>
+        ))}
       </div>
 
       {/* Dot Indicators */}
