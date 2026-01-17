@@ -806,14 +806,8 @@ const MVPClubWebsite = () => {
             </p>
           </AnimatedSection>
 
-          <div className="grid md:grid-cols-3 gap-8 mb-16">
+          <div className="grid md:grid-cols-2 gap-8 mb-16 max-w-4xl mx-auto">
             {[
-              {
-                icon: Layers,
-                title: 'Structured Courses',
-                desc: 'Self-paced curriculum based on the Work Loop methodology. From mindset shift to advanced practice.',
-                features: ['9-module AI-First Practitioner course', 'Hands-on exercises with real tasks', 'Progress tracking and milestones']
-              },
               {
                 icon: Users,
                 title: 'Active Community',
@@ -1020,7 +1014,7 @@ const MVPClubWebsite = () => {
               },
               {
                 quote: "I used to feel overwhelmed by AI. Now I feel like I have a genuine superpower. The confidence came from actually practicing, not just reading about it.",
-                name: "Course Graduate",
+                name: "Community Member",
                 role: "Operations Lead",
                 highlight: "Confidence through practice"
               },
@@ -1134,12 +1128,12 @@ const MVPClubWebsite = () => {
                   For Practitioners
                 </h3>
                 <p className="text-gray-600 mb-6 flex-grow">
-                  Join our community of AI-first practitioners. Access courses, 
-                  live events, and a supportive community to build your skills 
+                  Join our community of AI-first practitioners. Access live events,
+                  embedded coaching, and a supportive community to build your skills
                   through practice.
                 </p>
                 <div className="space-y-3 mb-6">
-                  {['Immediate community access', 'Self-paced courses', 'Live workshops & events'].map((item, i) => (
+                  {['Immediate community access', 'Embedded coaching support', 'Live workshops & events'].map((item, i) => (
                     <div key={i} className="flex items-center gap-2">
                       <CheckCircle2 size={16} style={{ color: 'var(--color-secondary)' }} />
                       <span className="text-sm text-gray-700">{item}</span>

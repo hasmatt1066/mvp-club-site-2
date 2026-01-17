@@ -35,7 +35,7 @@ FOR ORGANIZATIONS (4-Week Productivity Sprint):
 
 FOR PRACTITIONERS (AI-First Community):
 - Launching soon on Mighty Networks
-- Structured courses, live events, peer support
+- Embedded coaching, live events, peer support
 - Learn alongside others navigating the same transformation
 - Better to go through this moment together than alone
 

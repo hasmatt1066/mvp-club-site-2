@@ -202,7 +202,7 @@ const SignupOverlay = ({ onDismiss }) => {
               style={{ color: 'rgba(255,255,255,0.8)' }}
             >
               Join practitioners learning to work with AI through practice,
-              not just theory. Get updates on workshops, courses, and community events.
+              not just theory. Get updates on workshops and community events.
             </p>
 
             {/* Email form */}
