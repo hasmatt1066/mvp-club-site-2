@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>I Took Three Months Off from AI. Here&#039;s What I Learned When I Came Back. | MVP Club Blog</title>
+  <meta name="description" content="The biggest barrier to AI adoption isn&#039;t technical skill—it&#039;s the belief that you&#039;ve missed too much to start. Here&#039;s why that&#039;s wrong.">
+  <meta name="author" content="Jill Ozovek">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="I Took Three Months Off from AI. Here&#039;s What I Learned When I Came Back.">
+  <meta property="og:description" content="The biggest barrier to AI adoption isn&#039;t technical skill—it&#039;s the belief that you&#039;ve missed too much to start. Here&#039;s why that&#039;s wrong.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://mvpclub.co/blog/three-months-off-from-ai">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="I Took Three Months Off from AI. Here&#039;s What I Learned When I Came Back.">
+  <meta name="twitter:description" content="The biggest barrier to AI adoption isn&#039;t technical skill—it&#039;s the belief that you&#039;ve missed too much to start. Here&#039;s why that&#039;s wrong.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Zilla+Slab&display=swap" rel="stylesheet">
+
+  <!-- Schema.org Article markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "I Took Three Months Off from AI. Here&#039;s What I Learned When I Came Back.",
+    "author": {
+      "@type": "Person",
+      "name": "Jill Ozovek"
+    },
+    "datePublished": "2026-01-14",
+    "description": "The biggest barrier to AI adoption isn&#039;t technical skill—it&#039;s the belief that you&#039;ve missed too much to start. Here&#039;s why that&#039;s wrong.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "MVP Club",
+      "url": "https://mvpclub.co"
+    }
+  }
+  </script>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background-color: #faf5f0;
+      color: #1a365d;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: #ffffff;
+      border-bottom: 1px solid rgba(26, 54, 93, 0.1);
+      padding: 1rem 2rem;
+      z-index: 100;
+    }
+
+    .nav-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-family: 'Zilla Slab', serif;
+      font-size: 1.5rem;
+      color: #1a365d;
+      text-decoration: none;
+    }
+
+    .nav-links a {
+      color: #1a365d;
+      text-decoration: none;
+      margin-left: 2rem;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      color: #d97706;
+    }
+
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 8rem 1.5rem 4rem;
+    }
+
+    .post-meta {
+      margin-bottom: 2rem;
+    }
+
+    .post-pillar {
+      display: inline-block;
+      background: #d97706;
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.25rem 0.75rem;
+      border-radius: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-family: 'Zilla Slab', serif;
+      font-size: 2.5rem;
+      font-weight: 400;
+      line-height: 1.2;
+      color: #1a365d;
+      margin-bottom: 1rem;
+    }
+
+    .post-info {
+      color: #115e59;
+      font-size: 0.95rem;
+    }
+
+    .post-info span {
+      margin-right: 1rem;
+    }
+
+    .post-content {
+      font-size: 1.1rem;
+    }
+
+    .post-content p {
+      margin-bottom: 1.5rem;
+    }
+
+    .post-content h2 {
+      font-family: 'Zilla Slab', serif;
+      font-size: 1.75rem;
+      font-weight: 400;
+      color: #1a365d;
+      margin: 2.5rem 0 1rem;
+    }
+
+    .post-content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #1a365d;
+      margin: 2rem 0 0.75rem;
+    }
+
+    .post-content ul, .post-content ol {
+      margin: 0 0 1.5rem 1.5rem;
+    }
+
+    .post-content li {
+      margin-bottom: 0.5rem;
+    }
+
+    .post-content a {
+      color: #d97706;
+      text-decoration: underline;
+    }
+
+    .post-content blockquote {
+      border-left: 4px solid #d97706;
+      padding-left: 1.5rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: #115e59;
+    }
+
+    .post-content strong {
+      font-weight: 600;
+    }
+
+    .post-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-size: 0.95rem;
+    }
+
+    .post-content thead {
+      background: #1a365d;
+      color: white;
+    }
+
+    .post-content th {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      font-weight: 600;
+    }
+
+    .post-content td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid rgba(26, 54, 93, 0.1);
+    }
+
+    .post-content tbody tr:nth-child(even) {
+      background: rgba(26, 54, 93, 0.03);
+    }
+
+    .post-content tbody tr:hover {
+      background: rgba(26, 54, 93, 0.06);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #115e59;
+      text-decoration: none;
+      font-weight: 500;
+      margin-bottom: 2rem;
+    }
+
+    .back-link:hover {
+      color: #d97706;
+    }
+
+    .cta-section {
+      background: #ffffff;
+      border: 1px solid rgba(26, 54, 93, 0.1);
+      border-radius: 1rem;
+      padding: 2rem;
+      margin-top: 3rem;
+      text-align: center;
+    }
+
+    .cta-section h3 {
+      font-family: 'Zilla Slab', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      margin-bottom: 0.75rem;
+    }
+
+    .cta-section p {
+      color: #115e59;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: #d97706;
+      color: white;
+      font-weight: 600;
+      padding: 0.875rem 2rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3);
+    }
+
+    footer {
+      text-align: center;
+      padding: 3rem 1.5rem;
+      color: #115e59;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 640px) {
+      h1 { font-size: 1.875rem; }
+      main { padding-top: 6rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-content">
+      <a href="/" class="nav-logo">MVP Club</a>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        <a href="/#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <a href="/blog/" class="back-link">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+      Back to Blog
+    </a>
+
+    <article>
+      <header class="post-meta">
+        <span class="post-pillar">Mindset/Coaching</span>
+        <h1>I Took Three Months Off from AI. Here&#039;s What I Learned When I Came Back.</h1>
+        <div class="post-info">
+          <span>By Jill Ozovek</span>
+          <span>January 13, 2026</span>
+        </div>
+      </header>
+
+      <div class="post-content">
+        <p>There's a reason so many people feel like AI "isn't for them," and it's not because they're not technical enough or because they missed the boat two years ago. It's because they're trying to learn AI the way they learned every other professional skill—and that approach just doesn't work here.</p>
+<p>Think about how you learned project management, or whatever tool defined your early career. You took a course, you practiced, you got competent, and then you more or less moved on. Maybe you took a refresher every few years. The skill stayed relatively stable, and so did you.</p>
+<p>AI doesn't work like that. There's no "competent" state you reach and coast from. The tools shift, the capabilities expand, and what was impossible six months ago is now a Tuesday afternoon. And here's where most people get stuck—they see that constant change and think, <em>I'll never catch up, so why bother starting?</em></p>
+<p>I get it. I lived it.</p>
+<p>Last year, I stepped away from all of this for about three months after a loss in my family. When I finally came back, I told my co-founder Matt that maybe I should just stop—I'd missed too much, the landscape had shifted while I was gone, and it felt pointless to try to catch up. He convinced me otherwise, and he was right.</p>
+<p>Because here's what I've learned: there is no "caught up." That's not the game. The game is staying in motion.</p>
+<p>For me, that looks like about two hours a week dedicated to understanding what's new—what tools have dropped, what's changed, what people are excited about. We do a tooling deep dive every Monday in our community, which helps. That's my "staying current" time. But the real learning happens in my actual work. I'm not practicing AI on the side and then applying it later—I'm using it to do my job (writing, building workflows, solving problems) and learning through the doing. When something better comes along, I switch. When a tool doesn't fit, I drop it.</p>
+<p>It's not about mastering anything. It's about staying loose, staying curious, and letting the learning happen inside the work instead of before it.</p>
+<p>If you've been sitting on the sidelines thinking you're not technical enough, or you've missed too much, or it's all moving too fast—I want to offer you a different frame. You don't need to catch up. You just need to start moving. And you don't need to do it alone (that's kind of the whole point of what we're building).</p>
+<p><strong>→ <a href="https://mvp-club.mn.co">Come check us out</a></strong></p>
+      </div>
+
+      <div class="cta-section">
+        <h3>Ready to transform your AI practice?</h3>
+        <p>Join MVP Club and learn alongside peers who are navigating the same journey.</p>
+        <a href="/#contact" class="cta-button">Get Started</a>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 MVP Club. All rights reserved.</p>
+  </footer>
+</body>
+</html>

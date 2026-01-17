@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Why AI Doesn&#039;t Work Like Regular Software: Probabilistic vs Deterministic Tools | MVP Club Blog</title>
+  <meta name="description" content="AI is probabilistic, not deterministic. Learn why this matters and how to shift your approach for better results.">
+  <meta name="author" content="Matt Hastings">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Why AI Doesn&#039;t Work Like Regular Software: Probabilistic vs Deterministic Tools">
+  <meta property="og:description" content="AI is probabilistic, not deterministic. Learn why this matters and how to shift your approach for better results.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://mvpclub.co/blog/probabilistic-vs-deterministic-ai">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Why AI Doesn&#039;t Work Like Regular Software: Probabilistic vs Deterministic Tools">
+  <meta name="twitter:description" content="AI is probabilistic, not deterministic. Learn why this matters and how to shift your approach for better results.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Zilla+Slab&display=swap" rel="stylesheet">
+
+  <!-- Schema.org Article markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Why AI Doesn&#039;t Work Like Regular Software: Probabilistic vs Deterministic Tools",
+    "author": {
+      "@type": "Person",
+      "name": "Matt Hastings"
+    },
+    "datePublished": "2025-01-06",
+    "description": "AI is probabilistic, not deterministic. Learn why this matters and how to shift your approach for better results.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "MVP Club",
+      "url": "https://mvpclub.co"
+    }
+  }
+  </script>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background-color: #faf5f0;
+      color: #1a365d;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: #ffffff;
+      border-bottom: 1px solid rgba(26, 54, 93, 0.1);
+      padding: 1rem 2rem;
+      z-index: 100;
+    }
+
+    .nav-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-family: 'Zilla Slab', serif;
+      font-size: 1.5rem;
+      color: #1a365d;
+      text-decoration: none;
+    }
+
+    .nav-links a {
+      color: #1a365d;
+      text-decoration: none;
+      margin-left: 2rem;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      color: #d97706;
+    }
+
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 8rem 1.5rem 4rem;
+    }
+
+    .post-meta {
+      margin-bottom: 2rem;
+    }
+
+    .post-pillar {
+      display: inline-block;
+      background: #d97706;
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.25rem 0.75rem;
+      border-radius: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-family: 'Zilla Slab', serif;
+      font-size: 2.5rem;
+      font-weight: 400;
+      line-height: 1.2;
+      color: #1a365d;
+      margin-bottom: 1rem;
+    }
+
+    .post-info {
+      color: #115e59;
+      font-size: 0.95rem;
+    }
+
+    .post-info span {
+      margin-right: 1rem;
+    }
+
+    .post-content {
+      font-size: 1.1rem;
+    }
+
+    .post-content p {
+      margin-bottom: 1.5rem;
+    }
+
+    .post-content h2 {
+      font-family: 'Zilla Slab', serif;
+      font-size: 1.75rem;
+      font-weight: 400;
+      color: #1a365d;
+      margin: 2.5rem 0 1rem;
+    }
+
+    .post-content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #1a365d;
+      margin: 2rem 0 0.75rem;
+    }
+
+    .post-content ul, .post-content ol {
+      margin: 0 0 1.5rem 1.5rem;
+    }
+
+    .post-content li {
+      margin-bottom: 0.5rem;
+    }
+
+    .post-content a {
+      color: #d97706;
+      text-decoration: underline;
+    }
+
+    .post-content blockquote {
+      border-left: 4px solid #d97706;
+      padding-left: 1.5rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: #115e59;
+    }
+
+    .post-content strong {
+      font-weight: 600;
+    }
+
+    .post-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-size: 0.95rem;
+    }
+
+    .post-content thead {
+      background: #1a365d;
+      color: white;
+    }
+
+    .post-content th {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      font-weight: 600;
+    }
+
+    .post-content td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid rgba(26, 54, 93, 0.1);
+    }
+
+    .post-content tbody tr:nth-child(even) {
+      background: rgba(26, 54, 93, 0.03);
+    }
+
+    .post-content tbody tr:hover {
+      background: rgba(26, 54, 93, 0.06);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #115e59;
+      text-decoration: none;
+      font-weight: 500;
+      margin-bottom: 2rem;
+    }
+
+    .back-link:hover {
+      color: #d97706;
+    }
+
+    .cta-section {
+      background: #ffffff;
+      border: 1px solid rgba(26, 54, 93, 0.1);
+      border-radius: 1rem;
+      padding: 2rem;
+      margin-top: 3rem;
+      text-align: center;
+    }
+
+    .cta-section h3 {
+      font-family: 'Zilla Slab', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      margin-bottom: 0.75rem;
+    }
+
+    .cta-section p {
+      color: #115e59;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: #d97706;
+      color: white;
+      font-weight: 600;
+      padding: 0.875rem 2rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3);
+    }
+
+    footer {
+      text-align: center;
+      padding: 3rem 1.5rem;
+      color: #115e59;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 640px) {
+      h1 { font-size: 1.875rem; }
+      main { padding-top: 6rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-content">
+      <a href="/" class="nav-logo">MVP Club</a>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        <a href="/#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <a href="/blog/" class="back-link">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+      Back to Blog
+    </a>
+
+    <article>
+      <header class="post-meta">
+        <span class="post-pillar">Human + AI Teams</span>
+        <h1>Why AI Doesn&#039;t Work Like Regular Software: Probabilistic vs Deterministic Tools</h1>
+        <div class="post-info">
+          <span>By Matt Hastings</span>
+          <span>January 5, 2025</span>
+        </div>
+      </header>
+
+      <div class="post-content">
+        <p><strong>AI is probabilistic, not deterministic. Traditional software gives you the same output every time you provide the same input. AI gives you a range of possible outputs, and your job is to shift that distribution until your desired outcome becomes most likely. This requires iteration, context-setting, and a managerial mindset—not just finding the right prompt.</strong></p>
+<p>If you've tried AI tools and felt underwhelmed, you're not alone. Most people approach AI the same way they approach every other digital tool they've used. And that approach doesn't work here.</p>
+<h2>What's the difference between deterministic and probabilistic tools?</h2>
+<p><strong>Deterministic tools produce the same output from the same input, every time. Click "save" and the file saves. Run a formula and get a result. Probabilistic tools like AI produce a range of possible outputs—you're influencing likelihood, not guaranteeing results.</strong></p>
+<p>This isn't a limitation or a bug. It's fundamental to how large language models work.</p>
+<table><thead><tr><th>Aspect</th><th>Deterministic Software</th><th>Probabilistic AI</th></tr></thead><tbody><tr><td>Same input produces</td><td>Same output, always</td><td>Range of possible outputs</td></tr><tr><td>User relationship</td><td>Operator</td><td>Manager</td></tr><tr><td>First attempt</td><td>Usually works</td><td>Rarely optimal</td></tr><tr><td>Improvement comes from</td><td>Feature requests</td><td>Iteration and feedback</td></tr><tr><td>Reliability source</td><td>The software</td><td>Your process</td></tr></tbody></table>
+<p>Traditional software is like a vending machine—press a button, get a specific item. AI is like a capable team member—you set goals, provide context, evaluate work, and iterate.</p>
+<h2>Why do people get frustrated with AI?</h2>
+<p><strong>Most frustration comes from expecting deterministic behavior from a probabilistic tool. People try AI once, get a mediocre result, and conclude the technology isn't useful—when actually they haven't yet learned how to shift the distribution of outcomes.</strong></p>
+<p>I've coached over 100 people through their first AI workflows. Almost everyone starts with the same experience:</p>
+<ol><li>Ask AI something</li><li>Get an okay-but-not-great response</li><li>Assume the tool isn't that good</li><li>Give up</li></ol>
+<p>The problem isn't the tool. It's the expectation that one input should produce the perfect output.</p>
+<p>With traditional software, that expectation is correct. With AI, it's a recipe for disappointment.</p>
+<h2>How do you get better results from AI?</h2>
+<p><strong>Treat AI like a capable team member, not a button you press. Set clear goals, provide relevant context, evaluate outputs, give feedback, and iterate. Each cycle shifts the distribution of possible outcomes closer to what you want.</strong></p>
+<p>Here's the managerial approach that actually works:</p>
+<h3>1. Provide context</h3>
+<p>The more relevant background you give, the more AI understands what "good" looks like for your specific situation. Not abstract good—your version of good.</p>
+<h3>2. Set clear goals</h3>
+<p>Don't just ask for "a blog post." Describe the audience, the tone, the purpose, what success looks like. You're managing, not just requesting.</p>
+<h3>3. Evaluate outputs</h3>
+<p>Look at what you get. What's working? What's not? Where did AI miss your intent?</p>
+<h3>4. Give specific feedback</h3>
+<p>"This is too formal" or "the second paragraph nails it but the intro is weak" helps more than "try again."</p>
+<h3>5. Iterate</h3>
+<p>Run it again with your feedback incorporated. Each cycle, you're refining the target.</p>
+<p>You keep doing this until you're confident the tool is more likely than not to give you what you're looking for.</p>
+<h2>What's the tradeoff?</h2>
+<p><strong>AI takes longer to get an output than traditional software, but can produce a wider range of outcomes tailored to your specific situation—not just situations the developers anticipated.</strong></p>
+<p>Traditional software: Fast, predictable, limited to what was built. When you hit an edge case, you submit a feature request and wait.</p>
+<p>AI: Slower, requires iteration, but can dynamically respond to novel situations. It creates new capabilities on the fly.</p>
+<p>The ceiling is higher. The floor is lower. And the path between them requires a completely different skill set than we're used to.</p>
+<table><thead><tr><th>Factor</th><th>Traditional Software</th><th>AI</th></tr></thead><tbody><tr><td>Speed to output</td><td>Fast</td><td>Slower (iteration required)</td></tr><tr><td>Predictability</td><td>High</td><td>Variable</td></tr><tr><td>Customization</td><td>Limited to features built</td><td>Adapts to your situation</td></tr><tr><td>Edge case handling</td><td>Feature request needed</td><td>Dynamic generation</td></tr><tr><td>Skill required</td><td>Learning the interface</td><td>Managing the process</td></tr></tbody></table>
+<h2>Is this harder than using regular software?</h2>
+<p><strong>It's different, not harder. The skills that matter—clear communication, setting goals, evaluating work, giving feedback—are management skills most professionals already have. You're not learning to code; you're learning to delegate.</strong></p>
+<p>The people who succeed with AI aren't the most technical. They're the ones who make the mental shift fastest—from "user of a tool" to "manager of a collaborator."</p>
+<p>If you've ever managed a person, you have the core skills. You wouldn't hand a new team member a task with no context and expect perfection immediately. You'd explain the goal, share background, check their work, and adjust based on what you see.</p>
+<p>AI works the same way.</p>
+<h2>Frequently Asked Questions</h2>
+<h3>Is AI unreliable then?</h3>
+<p><strong>AI outputs are variable, but your process can be reliable. By managing inputs, evaluating outputs, and iterating systematically, you create consistency through your approach rather than depending on the tool to be deterministic.</strong></p>
+<h3>How many iterations does it typically take?</h3>
+<p><strong>It varies by task complexity, but expect 3-5 cycles for non-trivial work. Simple tasks might work on the first try; complex tasks might take more iteration. The key is accepting iteration as normal, not failure.</strong></p>
+<h3>Does this mean prompt engineering isn't important?</h3>
+<p><strong>Prompts matter, but they're not magic incantations. A good prompt is one part of providing context—along with examples, background information, clear goals, and iterative feedback. No single prompt replaces the iteration cycle.</strong></p>
+<h3>Can AI get more reliable over time?</h3>
+<p><strong>Yes—as you develop your process. Many people create reusable context documents, templates, and workflows that shift the distribution reliably for repeated tasks. The AI doesn't learn your preferences, but your system can encode them.</strong></p>
+<h2>The mental shift that changes everything</h2>
+<p>This is genuinely new territory. Not "new feature." Not "new interface." A fundamentally different relationship between human and digital tool.</p>
+<p>The people who thrive with AI aren't waiting for it to become more predictable. They're developing the skill of working with probabilistic tools—managing distributions instead of expecting deterministic outputs.</p>
+<p>That skill is learnable. And it starts with accepting that iteration isn't failure. It's the process.</p>
+      </div>
+
+      <div class="cta-section">
+        <h3>Ready to transform your AI practice?</h3>
+        <p>Join MVP Club and learn alongside peers who are navigating the same journey.</p>
+        <a href="/#contact" class="cta-button">Get Started</a>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 MVP Club. All rights reserved.</p>
+  </footer>
+</body>
+</html>
