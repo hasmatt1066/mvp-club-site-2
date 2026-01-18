@@ -72,14 +72,14 @@ const HeroCarousel = () => {
 
       {/* Carousel Container */}
       <div
-        className="relative h-80 overflow-hidden rounded-2xl bg-white"
+        className="relative md:h-80 md:overflow-hidden rounded-2xl bg-white"
         style={{ boxShadow: '0 4px 24px rgba(0,0,0,0.06)' }}
       >
         {transformations.map((transformation, index) => (
           <div
             key={transformation.id}
-            className={`absolute inset-0 px-6 py-7 flex items-center transition-opacity duration-600 ${
-              index === currentSlide ? 'opacity-100' : 'opacity-0'
+            className={`md:absolute md:inset-0 px-6 py-7 flex items-center transition-opacity duration-600 ${
+              index === currentSlide ? 'opacity-100' : 'opacity-0 hidden md:flex'
             }`}
           >
             {/* Desktop: 3-Column Layout */}
@@ -148,7 +148,7 @@ const HeroCarousel = () => {
             </div>
 
             {/* Mobile: Stacked Layout */}
-            <div className="md:hidden w-full space-y-4 overflow-y-auto max-h-full">
+            <div className="md:hidden w-full space-y-4">
               {/* Old Way */}
               <div
                 className="p-4 rounded-xl"
