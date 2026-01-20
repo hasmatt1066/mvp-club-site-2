@@ -217,6 +217,26 @@ function postTemplate(post) {
       font-weight: 600;
     }
 
+    .post-content figure.blog-image {
+      margin: 2rem 0;
+      text-align: center;
+    }
+
+    .post-content figure.blog-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .post-content figure.blog-image figcaption {
+      margin-top: 0.75rem;
+      font-size: 0.9rem;
+      color: ${COLORS.secondary};
+      font-style: italic;
+    }
+
     .post-content table {
       width: 100%;
       border-collapse: collapse;
