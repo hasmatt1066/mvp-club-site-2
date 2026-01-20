@@ -1,10 +1,17 @@
 [
   {
+    "slug": "corporation-in-your-pocket",
+    "title": "A Corporation in Your Pocket: What Happens When White-Collar Work Becomes Infrastructure",
+    "date": "2026-01-20",
+    "author": "Matt Hastings",
+    "description": "As AI abstracts away white-collar work, the power to create value shifts from corporations to individuals. What does it mean to have a corporation in your pocket?"
+  },
+  {
     "slug": "three-months-off-from-ai",
     "title": "I Took Three Months Off from AI. Here's What I Learned When I Came Back.",
     "date": "2026-01-14",
     "author": "Jill Ozovek",
-    "description": "The biggest barrier to AI adoption isn't technical skill\u2014it's the belief that you've missed too much to start. Here's why that's wrong."
+    "description": "The biggest barrier to AI adoption isn't technical skill—it's the belief that you've missed too much to start. Here's why that's wrong."
   },
   {
     "slug": "can-you-use-ai-to-replace-your-employer-a-different-way-to-think-about-the-future-of-work",
@@ -32,6 +39,6 @@
     "title": "Why 95% of AI Projects Fail (And What To Do Instead)",
     "date": "2025-01-03",
     "author": "Matt Hastings",
-    "description": "The real barrier to AI adoption isn't technical\u2014it's the gap between understanding and practice. Here's what actually works."
+    "description": "The real barrier to AI adoption isn't technical—it's the gap between understanding and practice. Here's what actually works."
   }
 ]
