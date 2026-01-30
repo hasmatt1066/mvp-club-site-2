@@ -8,6 +8,7 @@ const POPUP_DELAY_MS = 20000; // 20 seconds
 const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwhtkf5MnX4Tl3Z2LyO60Ki01la72MmLqPuALMQhvkm2yXvpNYyE9FKJ09v1LmYONJr/exec';
 
 const LeadMagnetPopup = ({ onDismiss }) => {
+  const [firstName, setFirstName] = useState('');
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -35,6 +36,11 @@ const LeadMagnetPopup = ({ onDismiss }) => {
     e.preventDefault();
     setError('');
 
+    if (!firstName.trim()) {
+      setError('Please enter your first name');
+      return;
+    }
+
     if (!email || !email.includes('@')) {
       setError('Please enter a valid email address');
       return;
@@ -52,6 +58,7 @@ const LeadMagnetPopup = ({ onDismiss }) => {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
+            firstName,
             email,
             timestamp: new Date().toISOString(),
             source: 'lead_magnet_popup'
@@ -62,12 +69,18 @@ const LeadMagnetPopup = ({ onDismiss }) => {
       setIsSubmitted(true);
       localStorage.setItem(STORAGE_KEY, Date.now().toString());
       localStorage.setItem('mvpclub_leadmagnet_email', email);
+      localStorage.setItem('mvpclub_leadmagnet_firstname', firstName);
+
+      // Auto-trigger download after submission
+      window.open('/lead-magnet.html', '_blank');
 
     } catch (err) {
       // Even if fetch fails, show success (no-cors mode)
       setIsSubmitted(true);
       localStorage.setItem(STORAGE_KEY, Date.now().toString());
       localStorage.setItem('mvpclub_leadmagnet_email', email);
+      localStorage.setItem('mvpclub_leadmagnet_firstname', firstName);
+      window.open('/lead-magnet.html', '_blank');
     } finally {
       setIsSubmitting(false);
     }
@@ -120,10 +133,10 @@ const LeadMagnetPopup = ({ onDismiss }) => {
               className="text-2xl font-medium mb-2"
               style={{ color: 'white', fontFamily: "'Zilla Slab', serif" }}
             >
-              You're in!
+              You're in, {firstName}!
             </h3>
             <p className="mb-6" style={{ color: 'rgba(255,255,255,0.7)' }}>
-              Your guide is ready. Click below to download it now.
+              Your guide should have opened in a new tab. If not, click below.
             </p>
             <button
               onClick={handleDownload}
@@ -133,9 +146,6 @@ const LeadMagnetPopup = ({ onDismiss }) => {
               <Download size={20} />
               Download Your Guide
             </button>
-            <p className="mt-4 text-sm" style={{ color: 'rgba(255,255,255,0.5)' }}>
-              We've also sent a copy to your inbox.
-            </p>
           </div>
         ) : (
           <>
@@ -170,6 +180,20 @@ const LeadMagnetPopup = ({ onDismiss }) => {
 
             {/* Form */}
             <form onSubmit={handleSubmit}>
+              <input
+                type="text"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+                placeholder="First name"
+                className="w-full px-4 py-3 rounded-lg text-base outline-none mb-3 transition-all duration-200"
+                style={{
+                  backgroundColor: 'rgba(255,255,255,0.1)',
+                  color: 'white',
+                  border: '1px solid rgba(255,255,255,0.2)',
+                }}
+                onFocus={(e) => e.target.style.borderColor = 'var(--color-accent)'}
+                onBlur={(e) => e.target.style.borderColor = 'rgba(255,255,255,0.2)'}
+              />
               <input
                 type="email"
                 value={email}
