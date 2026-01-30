@@ -6,7 +6,6 @@ import logoImage from './mvp-club-logo.jpeg';
 import AnimatedValley from './AnimatedValley';
 import ElementHelix from './ElementHelix';
 import WorkLoop from './WorkLoop';
-import SignupOverlay, { useSignupOverlay } from './SignupOverlay';
 import WaitlistOverlay from './WaitlistOverlay';
 import LeadMagnetPopup, { useLeadMagnetPopup } from './LeadMagnetPopup';
 // import { ChatButton, ChatWindow } from './chat'; // DEACTIVATED - not ready for production yet
@@ -21,7 +20,6 @@ const MVPClubWebsite = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showWaitlist, setShowWaitlist] = useState(false);
   // const [showChat, setShowChat] = useState(false); // DEACTIVATED - chat not ready yet
-  const { shouldShow: showOverlay, dismiss: dismissOverlay } = useSignupOverlay();
   const { shouldShow: showLeadMagnet, dismiss: dismissLeadMagnet } = useLeadMagnetPopup();
 
   // Initialize theme on mount
@@ -82,9 +80,6 @@ const MVPClubWebsite = () => {
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: 'var(--color-background)', fontFamily: 'Inter, system-ui, sans-serif' }}>
-      {/* Signup Overlay */}
-      {showOverlay && <SignupOverlay onDismiss={dismissOverlay} />}
-
       {/* Lead Magnet Popup */}
       {showLeadMagnet && <LeadMagnetPopup onDismiss={dismissLeadMagnet} />}
 

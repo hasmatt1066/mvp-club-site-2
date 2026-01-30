@@ -274,19 +274,12 @@ export const useLeadMagnetPopup = () => {
       }
     }
 
-    // Also don't show if they've already seen the main signup overlay
-    const signupDismissed = localStorage.getItem('mvpclub_overlay_dismissed');
-    if (!signupDismissed) {
-      // Wait for the signup overlay to be dismissed first
-      return;
-    }
-
-    // Time-based trigger
+    // Time-based trigger (20 seconds)
     const timer = setTimeout(() => {
       setShouldShow(true);
     }, POPUP_DELAY_MS);
 
-    // Exit intent trigger
+    // Exit intent trigger (mouse leaves top of viewport)
     const handleMouseLeave = (e) => {
       if (e.clientY <= 0) {
         setShouldShow(true);
