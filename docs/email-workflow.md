@@ -72,7 +72,7 @@ Three components collect signups (all in `/src/`):
 
 **SignupOverlay:** Full-screen overlay shown on first visit. Collects first name and email. Dismissed state stored in localStorage so returning visitors skip it.
 
-**LeadMagnetPopup:** Modal popup triggered after 20 seconds on page OR when user's mouse exits toward browser top (exit intent). Offers free guide download in exchange for email. Won't show again for 7 days after being shown.
+**LeadMagnetPopup:** Modal popup triggered after 5 seconds on page OR when user's mouse exits toward browser top (exit intent). Offers free guide download in exchange for email. Won't show again for 7 days after being shown.
 
 **WaitlistOverlay:** Full-screen overlay for community waitlist signups. Triggered by button clicks elsewhere on the site.
 
