@@ -8,6 +8,7 @@ import ElementHelix from './ElementHelix';
 import WorkLoop from './WorkLoop';
 import SignupOverlay, { useSignupOverlay } from './SignupOverlay';
 import WaitlistOverlay from './WaitlistOverlay';
+import LeadMagnetPopup, { useLeadMagnetPopup } from './LeadMagnetPopup';
 // import { ChatButton, ChatWindow } from './chat'; // DEACTIVATED - not ready for production yet
 import { HeroSection } from './components/hero';
 import TransformationStories from './components/use-cases/TransformationStories';
@@ -21,6 +22,7 @@ const MVPClubWebsite = () => {
   const [showWaitlist, setShowWaitlist] = useState(false);
   // const [showChat, setShowChat] = useState(false); // DEACTIVATED - chat not ready yet
   const { shouldShow: showOverlay, dismiss: dismissOverlay } = useSignupOverlay();
+  const { shouldShow: showLeadMagnet, dismiss: dismissLeadMagnet } = useLeadMagnetPopup();
 
   // Initialize theme on mount
   useEffect(() => {
@@ -82,6 +84,9 @@ const MVPClubWebsite = () => {
     <div className="min-h-screen" style={{ backgroundColor: 'var(--color-background)', fontFamily: 'Inter, system-ui, sans-serif' }}>
       {/* Signup Overlay */}
       {showOverlay && <SignupOverlay onDismiss={dismissOverlay} />}
+
+      {/* Lead Magnet Popup */}
+      {showLeadMagnet && <LeadMagnetPopup onDismiss={dismissLeadMagnet} />}
 
       {/* Waitlist Overlay */}
       {showWaitlist && <WaitlistOverlay onClose={() => setShowWaitlist(false)} />}
