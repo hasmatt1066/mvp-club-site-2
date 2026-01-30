@@ -1,5 +1,12 @@
 [
   {
+    "slug": "you-only-use-10-of-your-computer-vibe-coding-and-the-new-skill-of-work",
+    "title": "You Only Use 10% of Your Computer: Vibe Coding and the New Skill of Work",
+    "date": "2026-01-29",
+    "author": "Matt Hastings",
+    "description": "Most of us dramatically underutilize the computers in front of us\u2014not because we're not smart enough, but because we didn't have access to the translation layer. Vibe coding changes that."
+  },
+  {
     "slug": "getting-started-with-claude-code-non-developer-guide",
     "title": "Getting Started With Claude Code: The Non-Developer's Guide (It's Just a Chat Window)",
     "date": "2026-01-29",
@@ -11,7 +18,7 @@
     "title": "4 Well-Intentioned AI Approaches That Miss the Mark",
     "date": "2026-01-28",
     "author": "Jill Ozovek",
-    "description": "Most organizations approach AI adoption with the same playbook they've used for every other technology rollout. Here's why that doesn't work—and what actually moves the needle."
+    "description": "Most organizations approach AI adoption with the same playbook they've used for every other technology rollout. Here's why that doesn't work\u2014and what actually moves the needle."
   },
   {
     "slug": "nostalgic-for-twelve-months-ago",
@@ -32,7 +39,7 @@
     "title": "I Took Three Months Off from AI. Here's What I Learned When I Came Back.",
     "date": "2026-01-14",
     "author": "Jill Ozovek",
-    "description": "The biggest barrier to AI adoption isn't technical skill—it's the belief that you've missed too much to start. Here's why that's wrong."
+    "description": "The biggest barrier to AI adoption isn't technical skill\u2014it's the belief that you've missed too much to start. Here's why that's wrong."
   },
   {
     "slug": "can-you-use-ai-to-replace-your-employer-a-different-way-to-think-about-the-future-of-work",
@@ -60,6 +67,6 @@
     "title": "Why 95% of AI Projects Fail (And What To Do Instead)",
     "date": "2025-01-03",
     "author": "Matt Hastings",
-    "description": "The real barrier to AI adoption isn't technical—it's the gap between understanding and practice. Here's what actually works."
+    "description": "The real barrier to AI adoption isn't technical\u2014it's the gap between understanding and practice. Here's what actually works."
   }
 ]
