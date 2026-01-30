@@ -36,6 +36,7 @@ const STORAGE_KEY = 'mvpclub_overlay_dismissed';
 const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwhtkf5MnX4Tl3Z2LyO60Ki01la72MmLqPuALMQhvkm2yXvpNYyE9FKJ09v1LmYONJr/exec'; // Paste your Google Apps Script Web App URL here
 
 const SignupOverlay = ({ onDismiss }) => {
+  const [firstName, setFirstName] = useState('');
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -58,6 +59,11 @@ const SignupOverlay = ({ onDismiss }) => {
     e.preventDefault();
     setError('');
 
+    if (!firstName.trim()) {
+      setError('Please enter your first name');
+      return;
+    }
+
     if (!email || !email.includes('@')) {
       setError('Please enter a valid email address');
       return;
@@ -75,6 +81,7 @@ const SignupOverlay = ({ onDismiss }) => {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
+            firstName,
             email,
             timestamp: new Date().toISOString(),
             source: 'landing_overlay'
@@ -82,10 +89,11 @@ const SignupOverlay = ({ onDismiss }) => {
         });
       }
 
-      // Mark as submitted and store email locally as backup
+      // Mark as submitted and store locally as backup
       setIsSubmitted(true);
       localStorage.setItem(STORAGE_KEY, 'true');
       localStorage.setItem('mvpclub_signup_email', email);
+      localStorage.setItem('mvpclub_signup_firstname', firstName);
 
       // Auto-dismiss after showing success
       setTimeout(() => {
@@ -99,6 +107,7 @@ const SignupOverlay = ({ onDismiss }) => {
       setIsSubmitted(true);
       localStorage.setItem(STORAGE_KEY, 'true');
       localStorage.setItem('mvpclub_signup_email', email);
+      localStorage.setItem('mvpclub_signup_firstname', firstName);
 
       setTimeout(() => {
         setIsVisible(false);
@@ -207,13 +216,27 @@ const SignupOverlay = ({ onDismiss }) => {
 
             {/* Email form */}
             <form onSubmit={handleSubmit} className="mb-6">
-              <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+              <div className="flex flex-col gap-3 max-w-md mx-auto">
+                <input
+                  type="text"
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                  placeholder="First name"
+                  className="w-full px-5 py-4 rounded-lg text-base outline-none transition-all duration-200"
+                  style={{
+                    backgroundColor: 'rgba(255,255,255,0.95)',
+                    color: 'var(--color-primary)',
+                    border: '2px solid transparent',
+                  }}
+                  onFocus={(e) => e.target.style.borderColor = 'var(--color-accent)'}
+                  onBlur={(e) => e.target.style.borderColor = 'transparent'}
+                />
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email"
-                  className="flex-1 px-5 py-4 rounded-lg text-base outline-none transition-all duration-200"
+                  placeholder="Email address"
+                  className="w-full px-5 py-4 rounded-lg text-base outline-none transition-all duration-200"
                   style={{
                     backgroundColor: 'rgba(255,255,255,0.95)',
                     color: 'var(--color-primary)',
@@ -225,7 +248,7 @@ const SignupOverlay = ({ onDismiss }) => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="px-6 py-4 rounded-lg font-semibold transition-all duration-200 hover:scale-105 disabled:opacity-70 disabled:hover:scale-100 flex items-center justify-center gap-2"
+                  className="w-full px-6 py-4 rounded-lg font-semibold transition-all duration-200 hover:scale-105 disabled:opacity-70 disabled:hover:scale-100 flex items-center justify-center gap-2"
                   style={{
                     backgroundColor: 'var(--color-accent)',
                     color: 'white',
@@ -241,7 +264,7 @@ const SignupOverlay = ({ onDismiss }) => {
                 </button>
               </div>
               {error && (
-                <p className="mt-3 text-sm" style={{ color: '#f87171' }}>
+                <p className="mt-3 text-sm text-center" style={{ color: '#f87171' }}>
                   {error}
                 </p>
               )}
@@ -289,7 +312,7 @@ const SignupOverlay = ({ onDismiss }) => {
                 fontFamily: "'Zilla Slab', serif"
               }}
             >
-              You're in!
+              You're in{firstName ? `, ${firstName}` : ''}!
             </h2>
             <p
               className="text-lg"
