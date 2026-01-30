@@ -4,8 +4,8 @@ import { X, ArrowRight, Download, CheckCircle } from 'lucide-react';
 const STORAGE_KEY = 'mvpclub_leadmagnet_shown';
 const POPUP_DELAY_MS = 20000; // 20 seconds
 
-// Same Google Script URL as SignupOverlay
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwhtkf5MnX4Tl3Z2LyO60Ki01la72MmLqPuALMQhvkm2yXvpNYyE9FKJ09v1LmYONJr/exec';
+// Google Apps Script in mvpclub.ai workspace - sends to Sheet and triggers welcome email from info@mvpclub.ai
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx6Y6HWGpOddcXmPRfYjpN3RFLHlHNx5hKiZmcgsOtZYV4OGljlwqRyljaLWempXi4ocg/exec';
 
 const LeadMagnetPopup = ({ onDismiss }) => {
   const [firstName, setFirstName] = useState('');

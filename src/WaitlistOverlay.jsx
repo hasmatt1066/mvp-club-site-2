@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { X, ArrowRight, Sparkles, Calendar } from 'lucide-react';
 import logoImage from './mvp-club-logo.jpeg';
 
-// Same Google Script URL as SignupOverlay - emails go to the same sheet
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwhtkf5MnX4Tl3Z2LyO60Ki01la72MmLqPuALMQhvkm2yXvpNYyE9FKJ09v1LmYONJr/exec';
+// Google Apps Script in mvpclub.ai workspace - sends to Sheet and triggers welcome email from info@mvpclub.ai
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx6Y6HWGpOddcXmPRfYjpN3RFLHlHNx5hKiZmcgsOtZYV4OGljlwqRyljaLWempXi4ocg/exec';
 
 const WaitlistOverlay = ({ onClose }) => {
   const [email, setEmail] = useState('');
