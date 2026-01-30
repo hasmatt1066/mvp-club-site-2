@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { X, ArrowRight, Download, CheckCircle } from 'lucide-react';
 
 const STORAGE_KEY = 'mvpclub_leadmagnet_shown';
-const POPUP_DELAY_MS = 20000; // 20 seconds
+const POPUP_DELAY_MS = 5000; // 5 seconds
 
 // Google Apps Script in mvpclub.ai workspace - sends to Sheet and triggers welcome email from info@mvpclub.ai
 const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx6Y6HWGpOddcXmPRfYjpN3RFLHlHNx5hKiZmcgsOtZYV4OGljlwqRyljaLWempXi4ocg/exec';
