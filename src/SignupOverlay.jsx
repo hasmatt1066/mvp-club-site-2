@@ -343,8 +343,8 @@ export const useSignupOverlay = () => {
     // Check if user has already dismissed or signed up
     const dismissed = localStorage.getItem(STORAGE_KEY);
     if (!dismissed) {
-      // Small delay before showing for smoother experience
-      const timer = setTimeout(() => setShouldShow(true), 500);
+      // Show popup after 10 seconds on site
+      const timer = setTimeout(() => setShouldShow(true), 10000);
       return () => clearTimeout(timer);
     }
   }, []);
