@@ -180,6 +180,47 @@
       font-weight: 600;
     }
 
+    .post-content figure.blog-image {
+      margin: 2rem -120px;
+      text-align: center;
+    }
+
+    .post-content figure.blog-image img {
+      max-width: 100%;
+      width: 960px;
+      height: auto;
+      border-radius: 0.5rem;
+      display: block;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 1000px) {
+      .post-content figure.blog-image {
+        margin: 2rem -40px;
+      }
+      .post-content figure.blog-image img {
+        width: calc(100% + 80px);
+        max-width: calc(100vw - 2rem);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .post-content figure.blog-image {
+        margin: 2rem -1rem;
+      }
+      .post-content figure.blog-image img {
+        width: calc(100% + 2rem);
+        border-radius: 0;
+      }
+    }
+
+    .post-content figure.blog-image figcaption {
+      margin-top: 0.75rem;
+      font-size: 0.9rem;
+      color: #115e59;
+      font-style: italic;
+    }
+
     .post-content table {
       width: 100%;
       border-collapse: collapse;

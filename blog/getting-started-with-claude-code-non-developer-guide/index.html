@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Getting Started With Claude Code: The Non-Developer&#039;s Guide (It&#039;s Just a Chat Window) | MVP Club Blog</title>
+  <meta name="description" content="The last tech lesson you&#039;ll ever need. Once you&#039;re set up with Claude Code, you can just ask Claude how to do everything else.">
+  <meta name="author" content="Ryan Brodsky">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Getting Started With Claude Code: The Non-Developer&#039;s Guide (It&#039;s Just a Chat Window)">
+  <meta property="og:description" content="The last tech lesson you&#039;ll ever need. Once you&#039;re set up with Claude Code, you can just ask Claude how to do everything else.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://mvpclub.co/blog/getting-started-with-claude-code-non-developer-guide">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Getting Started With Claude Code: The Non-Developer&#039;s Guide (It&#039;s Just a Chat Window)">
+  <meta name="twitter:description" content="The last tech lesson you&#039;ll ever need. Once you&#039;re set up with Claude Code, you can just ask Claude how to do everything else.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Zilla+Slab&display=swap" rel="stylesheet">
+
+  <!-- Schema.org Article markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Getting Started With Claude Code: The Non-Developer&#039;s Guide (It&#039;s Just a Chat Window)",
+    "author": {
+      "@type": "Person",
+      "name": "Ryan Brodsky"
+    },
+    "datePublished": "2026-01-29",
+    "description": "The last tech lesson you&#039;ll ever need. Once you&#039;re set up with Claude Code, you can just ask Claude how to do everything else.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "MVP Club",
+      "url": "https://mvpclub.co"
+    }
+  }
+  </script>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background-color: #faf5f0;
+      color: #1a365d;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: #ffffff;
+      border-bottom: 1px solid rgba(26, 54, 93, 0.1);
+      padding: 1rem 2rem;
+      z-index: 100;
+    }
+
+    .nav-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-family: 'Zilla Slab', serif;
+      font-size: 1.5rem;
+      color: #1a365d;
+      text-decoration: none;
+    }
+
+    .nav-links a {
+      color: #1a365d;
+      text-decoration: none;
+      margin-left: 2rem;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      color: #d97706;
+    }
+
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 8rem 1.5rem 4rem;
+    }
+
+    .post-meta {
+      margin-bottom: 2rem;
+    }
+
+    .post-pillar {
+      display: inline-block;
+      background: #d97706;
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.25rem 0.75rem;
+      border-radius: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-family: 'Zilla Slab', serif;
+      font-size: 2.5rem;
+      font-weight: 400;
+      line-height: 1.2;
+      color: #1a365d;
+      margin-bottom: 1rem;
+    }
+
+    .post-info {
+      color: #115e59;
+      font-size: 0.95rem;
+    }
+
+    .post-info span {
+      margin-right: 1rem;
+    }
+
+    .post-content {
+      font-size: 1.1rem;
+    }
+
+    .post-content p {
+      margin-bottom: 1.5rem;
+    }
+
+    .post-content h2 {
+      font-family: 'Zilla Slab', serif;
+      font-size: 1.75rem;
+      font-weight: 400;
+      color: #1a365d;
+      margin: 2.5rem 0 1rem;
+    }
+
+    .post-content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #1a365d;
+      margin: 2rem 0 0.75rem;
+    }
+
+    .post-content ul, .post-content ol {
+      margin: 0 0 1.5rem 1.5rem;
+    }
+
+    .post-content li {
+      margin-bottom: 0.5rem;
+    }
+
+    .post-content a {
+      color: #d97706;
+      text-decoration: underline;
+    }
+
+    .post-content blockquote {
+      border-left: 4px solid #d97706;
+      padding-left: 1.5rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: #115e59;
+    }
+
+    .post-content strong {
+      font-weight: 600;
+    }
+
+    .post-content figure.blog-image {
+      margin: 2rem -120px;
+      text-align: center;
+    }
+
+    .post-content figure.blog-image img {
+      max-width: 100%;
+      width: 960px;
+      height: auto;
+      border-radius: 0.5rem;
+      display: block;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 1000px) {
+      .post-content figure.blog-image {
+        margin: 2rem -40px;
+      }
+      .post-content figure.blog-image img {
+        width: calc(100% + 80px);
+        max-width: calc(100vw - 2rem);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .post-content figure.blog-image {
+        margin: 2rem -1rem;
+      }
+      .post-content figure.blog-image img {
+        width: calc(100% + 2rem);
+        border-radius: 0;
+      }
+    }
+
+    .post-content figure.blog-image figcaption {
+      margin-top: 0.75rem;
+      font-size: 0.9rem;
+      color: #115e59;
+      font-style: italic;
+    }
+
+    .post-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-size: 0.95rem;
+    }
+
+    .post-content thead {
+      background: #1a365d;
+      color: white;
+    }
+
+    .post-content th {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      font-weight: 600;
+    }
+
+    .post-content td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid rgba(26, 54, 93, 0.1);
+    }
+
+    .post-content tbody tr:nth-child(even) {
+      background: rgba(26, 54, 93, 0.03);
+    }
+
+    .post-content tbody tr:hover {
+      background: rgba(26, 54, 93, 0.06);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #115e59;
+      text-decoration: none;
+      font-weight: 500;
+      margin-bottom: 2rem;
+    }
+
+    .back-link:hover {
+      color: #d97706;
+    }
+
+    .cta-section {
+      background: #ffffff;
+      border: 1px solid rgba(26, 54, 93, 0.1);
+      border-radius: 1rem;
+      padding: 2rem;
+      margin-top: 3rem;
+      text-align: center;
+    }
+
+    .cta-section h3 {
+      font-family: 'Zilla Slab', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      margin-bottom: 0.75rem;
+    }
+
+    .cta-section p {
+      color: #115e59;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: #d97706;
+      color: white;
+      font-weight: 600;
+      padding: 0.875rem 2rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3);
+    }
+
+    footer {
+      text-align: center;
+      padding: 3rem 1.5rem;
+      color: #115e59;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 640px) {
+      h1 { font-size: 1.875rem; }
+      main { padding-top: 6rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-content">
+      <a href="/" class="nav-logo">MVP Club</a>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        <a href="/#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <a href="/blog/" class="back-link">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+      Back to Blog
+    </a>
+
+    <article>
+      <header class="post-meta">
+        <span class="post-pillar">Practice &gt; Training</span>
+        <h1>Getting Started With Claude Code: The Non-Developer&#039;s Guide (It&#039;s Just a Chat Window)</h1>
+        <div class="post-info">
+          <span>By Ryan Brodsky</span>
+          <span>January 28, 2026</span>
+        </div>
+      </header>
+
+      <div class="post-content">
+        <p>I spent years teaching programming. Loops, functions, debugging, version control, full stack development, the whole deal. And now I'm here to tell you, this could be my first and last lesson for any new software builder.</p>
+<p>Not because I'm retiring. Because once you're set up with Claude Code in your terminal, you can just ask Claude how to do everything else. Every question you have, every error you hit, every "what do I do next" moment, Claude's right there. Claude is never on lunch break or distracted, either! Just get comfortable giving it the situation and information it needs, and it will teach you the rest. It's the only tool you need to know about to start building today.</p>
+<p>So let's get you set up. This is the final tech hurdle. After this, you're in.</p>
+<h2>The terminal barrier</h2>
+<p>I've taught a lot of demos. And I've noticed something: the moment I open a terminal window, some people quietly check out. They don't say anything. They just stop following along. The black box with the blinking cursor feels like it's not for them.</p>
+<p>Here's what I want you to know: once you have Claude Code running, the terminal is just a chat window.</p>
+<p>Seriously. You type something, it responds. That's it. Once Claude Code is running, you're literally just having a conversation. You type "hey Claude, can you help me build a simple website?" and Claude types back and starts building it.</p>
+<p>The only difference between the terminal and any other chat interface is the font.</p>
+<h2>Why the terminal instead of Claude Desktop?</h2>
+<p>You might know that Claude Desktop now has Claude Code built in. That's true, and it works. But in longer conversations, the performance suffers. It gets sluggish. If you're going to use Claude Desktop's version, you'll want to start fresh conversations more frequently, and if you're on Windows there's not much of a choice.</p>
+<p>The terminal version is more stable for extended sessions. And since vibe coding often means long, iterative conversations with Claude, stability matters.</p>
+<p>So let's set you up with the real thing.</p>
+<h2>What you'll need</h2>
+<ol>
+<li><strong>A Mac</strong> (macOS 13.0 or newer)</li>
+<li><strong>A Claude subscription</strong></li>
+</ol>
+<p>If you don't have a Claude subscription yet, head to <a href="https://console.anthropic.com/">Anthropic's console</a> to set that up.</p>
+<p>Windows users: the terminal setup requires some extra steps (Windows Subsystem for Linux) that get complicated fast. I'd recommend using the Claude Desktop version of Claude Code instead, but our co-founder Matt has been running on Windows just fine, and would be happy to help you through the process.</p>
+<h2>Step 1: Install Claude Code</h2>
+<p>Open your terminal. (Don't know how? Hit <code>Cmd + Space</code>, type "Terminal", press Enter.)</p>
+<p>Now copy and paste this command:</p>
+<pre><code>curl -fsSL https://claude.ai/install.sh | bash</code></pre>
+<p>Press Enter. That's it. Claude Code is now installed.</p>
+<p>If you want to verify it worked, type:</p>
+<pre><code>claude doctor</code></pre>
+<p>This runs a quick check and tells you everything's good. If anything didn't work, paste the error into a claude desktop or claude web window and tell it, "Hey Claude, I'm installing Claude Code and this happened. What next?"</p>
+<h2>Step 2: Set up "Open Terminal at Folder" (game changer)</h2>
+<p>Here's a trick that's going to save you so much frustration. Instead of learning terminal navigation commands, let's set up a shortcut so you can right-click any folder in Finder and open a terminal right there.</p>
+<ol>
+<li>Open <strong>System Settings</strong></li>
+<li>Go to <strong>Keyboard</strong> → <strong>Keyboard Shortcuts</strong> → <strong>Services</strong></li>
+<li>Under <strong>Files and Folders</strong>, find <strong>"New Terminal at Folder"</strong></li>
+<li>Check the box to enable it</li>
+</ol>
+<p>Now you can right-click any folder in Finder, go to <strong>Services</strong>, and click <strong>"New Terminal at Folder."</strong> The terminal opens, already in that folder. No <code>cd</code> commands, no path confusion, no headaches.</p>
+<p>This one shortcut eliminates 90% of the "I'm lost in my computer" problems. I've seen too many new devs doing things in the wrong folder, and this will eliminate that guesswork.</p>
+<h2>Step 3: Create your project folder</h2>
+<p>Go to your Documents folder (or wherever you want to keep projects). Create a new folder. Call it whatever you want. "my-first-project" is fine, ideally don't use spaces in the name, but Claude will get over it if you do.</p>
+<p>Right-click that folder. Go to <strong>"New Terminal at Folder."</strong></p>
+<p>A terminal window opens. You're in your project folder. See how the text shows the folder name? That's how you know you're in the right place.</p>
+<h2>Step 4: Start Claude Code</h2>
+<p>In that terminal window, type:</p>
+<pre><code>claude</code></pre>
+<p>Press Enter.</p>
+<p>That's it. You're now talking to Claude.</p>
+<h2>Step 5: Let Claude set you up</h2>
+<p>One thing Claude Code loves is a file called <code>CLAUDE.md</code> at the root of your project. This file tells Claude what your project is about, what you're trying to build, and any preferences you have.</p>
+<p>Don't write it yourself. Ask Claude to do it:</p>
+<blockquote>"Hey Claude, can you create a CLAUDE.md file for this project? I'm going to be building a simple React app to learn how this all works."</blockquote>
+<p>Claude will create the file. It might ask you a few questions about your goals. Answer them. Now your project has context that persists across conversations. If you build a bigger project, you can follow our PRD-creating system to thoroughly map out your project into a comprehensive features document before starting this, and just point Claude Code at that file to start building.</p>
+<h2>Step 6: Build something real</h2>
+<p>Here's where the magic happens. You're sitting in an empty folder. There's nothing here. And you're about to create a working web application by having a conversation.</p>
+<p>Type something like:</p>
+<blockquote>"Claude, I want to build a simple React app. Can you set everything up, install what's needed, and get a development server running so I can see it in my browser?"</blockquote>
+<p>Claude will:</p>
+<ul>
+<li>Create the project files</li>
+<li>Install React and all the dependencies</li>
+<li>Start a development server</li>
+<li>Open your browser to show you the running app</li>
+</ul>
+<p>It'll ask for permission along the way. "Can I run this command?" and you'll say yes. That's the collaboration. You're steering, Claude's building.</p>
+<p>Within a few minutes, you'll have a working React app running on your computer. You didn't need to know npm. You didn't need to know what a package.json is. You just asked Claude and Claude figured it out.</p>
+<h2>The golden rule: Just ask Claude</h2>
+<p>This is the most important thing I can tell you.</p>
+<p>When something goes wrong—and things will go wrong—your first instinct might be to Google the error, read Stack Overflow, watch a YouTube tutorial. That's the old way.</p>
+<p>The new way: screenshot the error (CMD+Shift+4 and drag over the area, then grab it into the claude window is what I do). Paste it into Claude. Ask "what happened and how do I fix it?"</p>
+<p>Claude can see the screenshot. Claude knows your project. Claude will tell you exactly what went wrong and exactly how to fix it. Often it'll just fix it for you.</p>
+<p>This is why I call this my first and last tech lesson. I'm not teaching you a skill you'll need to practice and remember. I'm teaching you how to have a conversation with someone who knows everything about computers. From here on out, just ask Claude.</p>
+<p>Screenshot. Ask Claude. Repeat.</p>
+<h2>A note on Claude Desktop's Claude Code</h2>
+<p>I mentioned earlier that Claude Desktop has Claude Code built in now. If the terminal still feels intimidating, you can use that. It's the same Claude, same capabilities.</p>
+<p>Just know that in longer sessions, it can slow down. If you notice things getting sluggish, start a new conversation. The terminal version handles long sessions better, which is why I recommend it.</p>
+<p>But either way, you're in. You're building with Claude.</p>
+<h2>You're ready</h2>
+<p>That's it. You're set up. The terminal isn't some mystical land for developers only. It's just where you talk to Claude.</p>
+<p>From here, everything else is just asking Claude. Want to add a feature? Ask Claude. Want to deploy your app to the internet? Ask Claude. Want to understand what some code does? Ask Claude. All the complex terminal commands developers memorized over a career of using them are just in Claude's knowledge, and Claude will ask you before executing them. No need for you to type them, ever.</p>
+<p>This is vibe coding. You describe what you want, Claude builds it, you iterate together. The barriers are gone.</p>
+<hr>
+<p><strong>Come join us in <a href="https://mvp-club.mn.co/">MVP Club</a>.</strong> We've got Tool Mondays where we dig into tools like Claude Code and show you what's possible. We've got Demo Wednesdays where members show off what they've built. And we've got a community of people who were exactly where you are right now—staring at a terminal for the first time—who are now building things they never imagined.</p>
+<p>You don't have to figure this out alone. Come through.</p>
+      </div>
+
+      <div class="cta-section">
+        <h3>Ready to transform your AI practice?</h3>
+        <p>Join MVP Club and learn alongside peers who are navigating the same journey.</p>
+        <a href="/#contact" class="cta-button">Get Started</a>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 MVP Club. All rights reserved.</p>
+  </footer>
+</body>
+</html>

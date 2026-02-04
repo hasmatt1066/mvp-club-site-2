@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Build Your First AI Project - MVP Club</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #1a2634;
+      --navy-light: #243447;
+      --orange: #e07830;
+      --orange-light: #f5a066;
+      --white: #ffffff;
+      --gray-50: #fafafa;
+      --gray-100: #f4f4f5;
+      --gray-200: #e4e4e7;
+      --gray-500: #71717a;
+      --gray-600: #52525b;
+      --gray-700: #3f3f46;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+      color: var(--navy);
+      background: var(--white);
+    }
+
+    .page {
+      width: 8.5in;
+      height: 11in;
+      margin: 0 auto;
+      padding: 0.75in;
+      page-break-after: always;
+      page-break-inside: avoid;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page:last-child {
+      page-break-after: auto;
+    }
+
+    /* Cover Page Styles */
+    .cover {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+      color: var(--white);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .logo {
+      margin-bottom: 3rem;
+    }
+
+    .logo svg {
+      width: 80px;
+      height: 80px;
+    }
+
+    .cover h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 3rem;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+    }
+
+    .cover .subtitle {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2rem;
+      font-weight: 500;
+      color: var(--orange);
+      margin-bottom: 2rem;
+    }
+
+    .cover .tagline {
+      font-size: 1.25rem;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 4rem;
+    }
+
+    .cover .brand {
+      position: absolute;
+      bottom: 0.75in;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.1);
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+    }
+
+    .cover .brand .brand-name {
+      color: var(--white);
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+
+    .cover .brand a {
+      color: var(--orange);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* Content Page Styles */
+    .content {
+      background: var(--white);
+    }
+
+    h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid var(--orange);
+      display: inline-block;
+    }
+
+    h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      color: var(--gray-700);
+    }
+
+    strong {
+      color: var(--navy);
+      font-weight: 600;
+    }
+
+    .intro-emphasis {
+      font-size: 1.1rem;
+      color: var(--navy);
+      font-weight: 500;
+    }
+
+    /* Requirements Box */
+    .requirements-box {
+      background: var(--gray-50);
+      border-left: 4px solid var(--orange);
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .requirements-box h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.75rem;
+    }
+
+    .requirements-box ul {
+      margin: 0;
+      padding-left: 1.25rem;
+    }
+
+    .requirements-box li {
+      margin-bottom: 0.5rem;
+      color: var(--gray-600);
+    }
+
+    /* Project Options */
+    .project-option {
+      background: var(--white);
+      border: 2px solid var(--gray-200);
+      border-radius: 12px;
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+      transition: border-color 0.2s;
+    }
+
+    .project-option:hover {
+      border-color: var(--orange);
+    }
+
+    .option-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--orange);
+      margin-bottom: 0.5rem;
+    }
+
+    .option-description {
+      color: var(--gray-700);
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+    }
+
+    .option-fit {
+      font-size: 0.85rem;
+      color: var(--gray-500);
+      font-style: italic;
+    }
+
+    .bring-your-own {
+      background: var(--gray-50);
+      border: 2px dashed var(--gray-200);
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      margin-top: 1rem;
+    }
+
+    .bring-your-own p {
+      margin: 0;
+      color: var(--gray-600);
+    }
+
+    /* Prompt Box */
+    .prompt-box {
+      background: var(--navy);
+      color: var(--white);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      font-family: 'Inter', monospace;
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    .prompt-box .label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--orange);
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .prompt-box .placeholder {
+      color: var(--orange-light);
+    }
+
+    .prompt-box .comment {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .prompt-box .prompt-content {
+      margin-bottom: 0.75rem;
+    }
+
+    .prompt-box .prompt-content:last-child {
+      margin-bottom: 0;
+      margin-top: 0.75rem;
+    }
+
+    .prompt-box .prompt-item {
+      margin-bottom: 0.5rem;
+      padding-left: 1rem;
+    }
+
+    /* Mock Chat UI */
+    .chat-mock {
+      background: var(--gray-50);
+      border: 1px solid var(--gray-200);
+      border-radius: 12px;
+      padding: 1rem;
+      margin: 1.5rem 0;
+      font-size: 0.85rem;
+    }
+
+    .chat-mock-header {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--gray-500);
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--gray-200);
+    }
+
+    .chat-message {
+      margin-bottom: 0.75rem;
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .chat-message:last-child {
+      margin-bottom: 0;
+    }
+
+    .chat-avatar {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      font-weight: 600;
+    }
+
+    .chat-avatar.user {
+      background: var(--orange);
+      color: var(--white);
+    }
+
+    .chat-avatar.claude {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .chat-bubble {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 8px;
+      padding: 0.5rem 0.75rem;
+      color: var(--gray-700);
+      line-height: 1.5;
+      max-width: 90%;
+    }
+
+    .chat-bubble.user {
+      background: var(--orange);
+      border-color: var(--orange);
+      color: var(--white);
+    }
+
+    .chat-bubble strong {
+      color: inherit;
+    }
+
+    .chat-ellipsis {
+      text-align: center;
+      color: var(--gray-400);
+      font-size: 1.2rem;
+      letter-spacing: 0.2em;
+      padding: 0.25rem 0;
+    }
+
+    .chat-continues {
+      text-align: center;
+      color: var(--gray-500);
+      font-size: 0.75rem;
+      font-style: italic;
+      padding: 0.5rem 0 0.25rem;
+      border-top: 1px dashed var(--gray-200);
+      margin-top: 0.5rem;
+    }
+
+    /* Checklist */
+    .checklist {
+      list-style: none;
+      padding: 0;
+      margin: 0.75rem 0;
+    }
+
+    .checklist li {
+      padding: 0.2rem 0 0.2rem 1.5rem;
+      position: relative;
+      color: var(--gray-700);
+      font-size: 0.9rem;
+    }
+
+    .checklist li::before {
+      content: "☐";
+      position: absolute;
+      left: 0;
+      color: var(--orange);
+    }
+
+    .chat-mock-compact {
+      padding: 0.75rem;
+      margin: 1rem 0;
+      font-size: 0.8rem;
+    }
+
+    .chat-mock-compact .chat-message {
+      margin-bottom: 0.5rem;
+    }
+
+    .chat-mock-compact .chat-bubble {
+      padding: 0.4rem 0.6rem;
+    }
+
+    .chat-mock-compact .chat-avatar {
+      width: 20px;
+      height: 20px;
+      font-size: 0.55rem;
+    }
+
+    /* Callout */
+    .callout {
+      background: linear-gradient(135deg, var(--orange) 0%, var(--orange-light) 100%);
+      color: var(--white);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .callout p {
+      color: var(--white);
+      margin: 0;
+      font-weight: 500;
+    }
+
+    /* Tips List */
+    .tips-list {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0;
+    }
+
+    .tips-list li {
+      padding: 0.5rem 0 0.5rem 1.5rem;
+      position: relative;
+      color: var(--gray-700);
+    }
+
+    .tips-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.85rem;
+      width: 8px;
+      height: 8px;
+      background: var(--orange);
+      border-radius: 50%;
+    }
+
+    /* Divider */
+    .divider {
+      height: 2px;
+      background: var(--gray-200);
+      margin: 2rem 0;
+    }
+
+    /* Compact variants for tighter pages */
+    .prompt-box-compact {
+      padding: 1rem 1.25rem;
+      margin: 1rem 0;
+    }
+
+    .callout-compact {
+      padding: 1rem 1.25rem;
+      margin: 1rem 0;
+    }
+
+    .tips-list-compact li {
+      padding: 0.25rem 0 0.25rem 1.5rem;
+    }
+
+    .tips-list-compact li::before {
+      top: 0.6rem;
+    }
+
+    /* Final CTA Page */
+    .cta-section {
+      text-align: center;
+      padding: 2rem 0;
+    }
+
+    .cta-section h2 {
+      display: block;
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 1rem;
+    }
+
+    .cta-section .highlight {
+      font-size: 1.15rem;
+      color: var(--navy);
+      margin-bottom: 2rem;
+    }
+
+    .cta-box {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+      color: var(--white);
+      border-radius: 16px;
+      padding: 2rem;
+      margin: 2rem 0;
+    }
+
+    .cta-box h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      color: var(--orange);
+      margin-top: 0;
+      font-size: 1.5rem;
+    }
+
+    .cta-box p {
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: var(--orange);
+      color: var(--white);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      padding: 0.875rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .cta-button:hover {
+      background: var(--orange-light);
+    }
+
+    /* Footer */
+    .footer {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+      padding: 1.25rem 1.5rem;
+      background: var(--navy);
+      border-radius: 8px;
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .footer a {
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      color: var(--orange);
+    }
+
+    .footer strong {
+      color: var(--orange);
+      font-weight: 500;
+    }
+
+    /* Page Numbers */
+    .page-number {
+      position: absolute;
+      bottom: 0.5in;
+      right: 0.75in;
+      font-size: 0.75rem;
+      color: var(--gray-500);
+    }
+
+    .cover .page-number {
+      display: none;
+    }
+
+    /* Print Styles */
+    @media print {
+      body {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .page {
+        margin: 0;
+        padding: 0.6in;
+        box-shadow: none;
+      }
+    }
+
+    /* Screen Preview Styles */
+    @media screen {
+      body {
+        background: #e5e5e5;
+        padding: 20px;
+      }
+
+      .page {
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        margin-bottom: 20px;
+        border-radius: 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PAGE 1: Cover -->
+  <div class="page cover">
+    <div class="logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+        <circle cx="100" cy="100" r="90" fill="#e07830" opacity="0.2"/>
+        <circle cx="70" cy="80" r="25" fill="#e07830"/>
+        <circle cx="130" cy="80" r="25" fill="#f5a066"/>
+        <circle cx="100" cy="130" r="25" fill="#e07830"/>
+        <path d="M70 80 L130 80" stroke="#ffffff" stroke-width="6"/>
+        <path d="M70 80 L100 130" stroke="#ffffff" stroke-width="6"/>
+        <path d="M130 80 L100 130" stroke="#ffffff" stroke-width="6"/>
+        <circle cx="70" cy="80" r="12" fill="#ffffff"/>
+        <circle cx="130" cy="80" r="12" fill="#ffffff"/>
+        <circle cx="100" cy="130" r="12" fill="#ffffff"/>
+      </svg>
+    </div>
+    <h1>Build Your First AI Project</h1>
+    <p class="subtitle">(No Code Required)</p>
+    <p class="tagline">From idea to working prototype in one conversation</p>
+    <div class="brand">
+      <span class="brand-name">MVP Club</span> &nbsp;|&nbsp; <a href="https://mvpclub.ai">mvpclub.ai</a>
+    </div>
+  </div>
+
+  <!-- PAGE 2: Intro -->
+  <div class="page content">
+    <h2>Before We Start</h2>
+
+    <p>You've probably tried AI. Maybe the results were meh. Maybe it felt slower than just doing it yourself.</p>
+
+    <p>That's normal. Using AI well is a practiced skill&mdash;and most people never get past the awkward early phase.</p>
+
+    <p class="intro-emphasis">This guide is going to change that. In one working session, you're going to build something real. Not learn <em>about</em> AI. Actually <em>use</em> it to create something that didn't exist before.</p>
+
+    <p>No code. No technical background. Just you, an AI tool, and an idea.</p>
+
+    <div class="requirements-box">
+      <h4>What You'll Need:</h4>
+      <ul>
+        <li>Access to Claude at claude.ai (free tier works fine)</li>
+        <li>About 45 minutes of uninterrupted time</li>
+        <li>An idea (we'll help you pick one if you don't have one)</li>
+      </ul>
+    </div>
+
+    <span class="page-number">2</span>
+  </div>
+
+  <!-- PAGE 3: Pick Your Project -->
+  <div class="page content">
+    <h2>Step 1: Pick Your Project</h2>
+
+    <p>Choose one of these three options&mdash;or bring your own idea.</p>
+
+    <div class="project-option">
+      <div class="option-title">Option A: A Weekly Review Assistant</div>
+      <p class="option-description">Something that asks you the right questions to reflect on your week and plan the next one. You'll end up with a simple interactive tool you can reuse every Friday.</p>
+      <p class="option-fit">Good for: anyone who wants more intentionality in how they work</p>
+    </div>
+
+    <div class="project-option">
+      <div class="option-title">Option B: A First Draft of Something You've Been Putting Off</div>
+      <p class="option-description">A proposal, process doc, email sequence, job description&mdash;something you've been meaning to write but haven't. You'll end up with a working first draft you can actually use.</p>
+      <p class="option-fit">Good for: anyone with a "I should really write that" item on their list</p>
+    </div>
+
+    <div class="project-option">
+      <div class="option-title">Option C: A Quiz or Assessment</div>
+      <p class="option-description">Something that tests knowledge on a topic you know well&mdash;for onboarding teammates, testing yourself, or just for fun. You'll end up with an interactive quiz you can share.</p>
+      <p class="option-fit">Good for: anyone who wants to see AI create something interactive</p>
+    </div>
+
+    <div class="bring-your-own">
+      <p><strong>Or bring your own idea.</strong> Pick something small enough to finish in one sitting, but real enough that you'd actually use the result.</p>
+    </div>
+
+    <span class="page-number">3</span>
+  </div>
+
+  <!-- PAGE 4: Think It Through Together -->
+  <div class="page content">
+    <h2>Step 2: Think It Through Together</h2>
+
+    <p>Here's the mistake most people make: they tell AI "make me a thing" and hope for the best.</p>
+
+    <p><strong>Don't do that.</strong> You're not placing an order&mdash;you're thinking out loud with a partner who can help you figure out what you actually want.</p>
+
+    <p>This is where the real magic happens. AI will ask you questions. But more importantly, its questions will spark questions <em>you</em> didn't know you had. You'll discover things about your own project that weren't clear until you started talking through it.</p>
+
+    <p>Start with something like this:</p>
+
+    <div class="prompt-box">
+      <span class="label">Opening prompt</span>
+      <div class="prompt-content">"I want to build <span class="placeholder">[describe your project in a sentence or two]</span>.</div>
+      <div class="prompt-content">Here's what I know so far:</div>
+      <div class="prompt-item"><strong>Why I want this:</strong> <span class="placeholder">[what problem does it solve? why now?]</span></div>
+      <div class="prompt-item"><strong>Who it's for:</strong> <span class="placeholder">[just you? your team? someone else?]</span></div>
+      <div class="prompt-item"><strong>What done looks like:</strong> <span class="placeholder">[how will you know it's working?]</span></div>
+      <div class="prompt-item"><strong>Key features:</strong> <span class="placeholder">[what does it need to do?]</span></div>
+      <div class="prompt-item"><strong>Constraints:</strong> <span class="placeholder">[time, tools, keep it simple, etc.]</span></div>
+      <div class="prompt-content">I'm still figuring some of this out. Can you ask me questions to help clarify what I'm actually trying to build?"</div>
+    </div>
+
+    <h3>Then: have a real conversation</h3>
+
+    <p>When AI asks you something, don't just answer&mdash;notice what comes up for you. If its question makes you realize you're not sure about something, say that. If it sparks a new idea, explore it. Ask AI questions back.</p>
+
+    <p>This back-and-forth is how you go from "vague idea" to "clear spec." You're essentially building a brief together&mdash;one that captures what you actually want, not just what you thought you wanted when you started.</p>
+
+    <span class="page-number">4</span>
+  </div>
+
+  <!-- PAGE 5: Example Conversation -->
+  <div class="page content">
+    <h2>Here's What That Looks Like</h2>
+
+    <p>Let's say you picked the weekly review tool. Here's how a real conversation might unfold:</p>
+
+    <div class="chat-mock chat-mock-compact">
+      <div class="chat-mock-header">Example conversation in Claude</div>
+
+      <div class="chat-message">
+        <div class="chat-avatar user">You</div>
+        <div class="chat-bubble user">I want to build a weekly review tool. I keep saying I'll do reviews but never know what questions to ask. Can you help me figure out what this should look like?</div>
+      </div>
+
+      <div class="chat-message">
+        <div class="chat-avatar claude">C</div>
+        <div class="chat-bubble">I'd love to help. A few questions: Do you want this to be quick (5-10 min) or thorough (20-30 min)? And are you more interested in reflecting on what happened, or planning what's next?</div>
+      </div>
+
+      <div class="chat-message">
+        <div class="chat-avatar user">You</div>
+        <div class="chat-bubble user">Quick is better&mdash;if it takes too long I won't do it. And honestly maybe both? I want to capture what I learned but also feel clear on what matters next week.</div>
+      </div>
+
+      <div class="chat-message">
+        <div class="chat-avatar claude">C</div>
+        <div class="chat-bubble">That tension is useful! What if we did a quick "look back" (3-4 questions) and a "look ahead" (2-3 questions)? One more thing: do you want to <em>write</em> answers, or just think through prompts mentally?</div>
+      </div>
+
+      <div class="chat-message">
+        <div class="chat-avatar user">You</div>
+        <div class="chat-bubble user">Oh, I hadn't thought about that. Writing would help me process it. But short answers, not essays.</div>
+      </div>
+
+      <div class="chat-continues">(conversation continues...)</div>
+    </div>
+
+    <p>Notice what's happening: the questions aren't just gathering requirements&mdash;they're helping you discover what you actually want. Keep going until you're clear on:</p>
+
+    <ul class="checklist">
+      <li>What problem this solves (and why it matters to you)</li>
+      <li>Who it's for</li>
+      <li>What "done" looks like</li>
+      <li>Key features it needs to have</li>
+      <li>Any constraints (time, complexity, tools)</li>
+    </ul>
+
+    <div class="callout callout-compact">
+      <p>This is the real skill: using AI as a thinking partner, not just a task executor.</p>
+    </div>
+
+    <span class="page-number">5</span>
+  </div>
+
+  <!-- PAGE 6: Build It + Make It Better -->
+  <div class="page content">
+    <h2>Step 3: Build It</h2>
+
+    <p>Once you've had the conversation and you're both clear on what you're making, it's time to make it real. Say something like:</p>
+
+    <div class="prompt-box prompt-box-compact">
+      <span class="label">When you're ready</span>
+      "Okay, I think we're aligned. Let's build this."
+    </div>
+
+    <p>Claude will create an "artifact"&mdash;a working version of your project that appears in a panel on the right side of the screen. You can interact with it right there. Click around. Try it out.</p>
+
+    <div class="callout callout-compact">
+      <p>Something that didn't exist 20 minutes ago is now real. You made that.</p>
+    </div>
+
+    <h2>Step 4: Make It Better</h2>
+
+    <p>Your first version probably isn't perfect. That's fine&mdash;this is where the magic happens. Try it out. Notice what works and what doesn't. Then tell AI what to change:</p>
+
+    <ul class="tips-list tips-list-compact">
+      <li>"Can you make the questions shorter?"</li>
+      <li>"The tone feels too formal&mdash;can you make it more casual?"</li>
+      <li>"This part is confusing&mdash;can we simplify it?"</li>
+      <li>"What if it gave me a summary at the end?"</li>
+    </ul>
+
+    <p>You're not starting over. You're iterating. <strong>Do 2-3 rounds of this. Watch how fast it improves.</strong></p>
+
+    <span class="page-number">6</span>
+  </div>
+
+  <!-- PAGE 7: You Made a Thing + CTA -->
+  <div class="page content">
+    <h2>You Made a Thing</h2>
+
+    <p class="highlight">Look at what you just did.</p>
+
+    <p>You started with an idea. You talked it through. You built something real. You made it better. No code. No technical background. Just a conversation and a willingness to try.</p>
+
+    <div class="callout">
+      <p>This is what's possible now. And it gets easier every time you do it.</p>
+    </div>
+
+    <div class="cta-box">
+      <h3>Want to Keep Going?</h3>
+
+      <p>You just did this alone. Imagine doing it with a room full of people figuring it out together&mdash;plus coaches who've helped hundreds of people through this exact journey.</p>
+
+      <p><strong>That's MVP Club.</strong></p>
+
+      <p>We run live sessions 3x a week where people build things, get feedback, and learn from each other. It's a community of non-technical professionals learning to work with AI&mdash;together.</p>
+
+      <a href="https://mvp-club.mn.co" class="cta-button">Start your free trial &rarr;</a>
+    </div>
+
+    <div class="footer">
+      <span><strong>(w)</strong> <a href="https://www.mvpclub.ai">www.mvpclub.ai</a></span>
+      <span><strong>(e)</strong> <a href="mailto:info@mvpclub.ai">info@mvpclub.ai</a></span>
+      <span><strong>(community)</strong> <a href="https://mvp-club.mn.co">mvp-club.mn.co</a></span>
+    </div>
+
+    <span class="page-number">7</span>
+  </div>
+
+</body>
+</html>
