@@ -5,7 +5,7 @@ const STORAGE_KEY = 'mvpclub_leadmagnet_shown';
 const POPUP_DELAY_MS = 10000; // 10 seconds
 
 // Google Apps Script in mvpclub.ai workspace - sends to Sheet and triggers welcome email from info@mvpclub.ai
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx6Y6HWGpOddcXmPRfYjpN3RFLHlHNx5hKiZmcgsOtZYV4OGljlwqRyljaLWempXi4ocg/exec';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyNGVQSbxcSDZUf5K-2sWrnqdy08GE9BkPw8C0K1qRzMXnZVLVMBS6ggH4QnLZCOtBo/exec';
 
 const LeadMagnetPopup = ({ onDismiss }) => {
   const [firstName, setFirstName] = useState('');

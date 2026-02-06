@@ -33,7 +33,7 @@ const STORAGE_KEY = 'mvpclub_overlay_dismissed';
  *
  * 6. The form will now save emails to your Google Sheet!
  */
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx6Y6HWGpOddcXmPRfYjpN3RFLHlHNx5hKiZmcgsOtZYV4OGljlwqRyljaLWempXi4ocg/exec';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyNGVQSbxcSDZUf5K-2sWrnqdy08GE9BkPw8C0K1qRzMXnZVLVMBS6ggH4QnLZCOtBo/exec';
 
 const SignupOverlay = ({ onDismiss }) => {
   const [firstName, setFirstName] = useState('');

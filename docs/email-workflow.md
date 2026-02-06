@@ -50,7 +50,7 @@ Script runs in the context of the Google account that owns it
 
 **Current Endpoint URL:**
 ```
-https://script.google.com/macros/s/AKfycbx6Y6HWGpOddcXmPRfYjpN3RFLHlHNx5hKiZmcgsOtZYV4OGljlwqRyljaLWempXi4ocg/exec
+https://script.google.com/macros/s/AKfycbyNGVQSbxcSDZUf5K-2sWrnqdy08GE9BkPw8C0K1qRzMXnZVLVMBS6ggH4QnLZCOtBo/exec
 ```
 
 This URL is configured in three files:
