@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Is a Thinking Tool: How to Build Scaffolds That Expand What You Can Do | MVP Club Blog</title>
+  <meta name="description" content="AI isn&#039;t just a productivity tool — it&#039;s a thinking tool. Learn how to build scaffolds that expand your ability to reason through complex problems.">
+  <meta name="author" content="Matt Hastings">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="AI Is a Thinking Tool: How to Build Scaffolds That Expand What You Can Do">
+  <meta property="og:description" content="AI isn&#039;t just a productivity tool — it&#039;s a thinking tool. Learn how to build scaffolds that expand your ability to reason through complex problems.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://mvpclub.co/blog/ai-thinking-tool-build-scaffolds-expand-capability">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AI Is a Thinking Tool: How to Build Scaffolds That Expand What You Can Do">
+  <meta name="twitter:description" content="AI isn&#039;t just a productivity tool — it&#039;s a thinking tool. Learn how to build scaffolds that expand your ability to reason through complex problems.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Zilla+Slab&display=swap" rel="stylesheet">
+
+  <!-- Schema.org Article markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "AI Is a Thinking Tool: How to Build Scaffolds That Expand What You Can Do",
+    "author": {
+      "@type": "Person",
+      "name": "Matt Hastings"
+    },
+    "datePublished": "2026-02-06",
+    "description": "AI isn&#039;t just a productivity tool — it&#039;s a thinking tool. Learn how to build scaffolds that expand your ability to reason through complex problems.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "MVP Club",
+      "url": "https://mvpclub.co"
+    }
+  }
+  </script>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background-color: #faf5f0;
+      color: #1a365d;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: #ffffff;
+      border-bottom: 1px solid rgba(26, 54, 93, 0.1);
+      padding: 1rem 2rem;
+      z-index: 100;
+    }
+
+    .nav-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-family: 'Zilla Slab', serif;
+      font-size: 1.5rem;
+      color: #1a365d;
+      text-decoration: none;
+    }
+
+    .nav-links a {
+      color: #1a365d;
+      text-decoration: none;
+      margin-left: 2rem;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      color: #d97706;
+    }
+
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 8rem 1.5rem 4rem;
+    }
+
+    .post-meta {
+      margin-bottom: 2rem;
+    }
+
+    .post-pillar {
+      display: inline-block;
+      background: #d97706;
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.25rem 0.75rem;
+      border-radius: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-family: 'Zilla Slab', serif;
+      font-size: 2.5rem;
+      font-weight: 400;
+      line-height: 1.2;
+      color: #1a365d;
+      margin-bottom: 1rem;
+    }
+
+    .post-info {
+      color: #115e59;
+      font-size: 0.95rem;
+    }
+
+    .post-info span {
+      margin-right: 1rem;
+    }
+
+    .post-content {
+      font-size: 1.1rem;
+    }
+
+    .post-content p {
+      margin-bottom: 1.5rem;
+    }
+
+    .post-content h2 {
+      font-family: 'Zilla Slab', serif;
+      font-size: 1.75rem;
+      font-weight: 400;
+      color: #1a365d;
+      margin: 2.5rem 0 1rem;
+    }
+
+    .post-content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #1a365d;
+      margin: 2rem 0 0.75rem;
+    }
+
+    .post-content ul, .post-content ol {
+      margin: 0 0 1.5rem 1.5rem;
+    }
+
+    .post-content li {
+      margin-bottom: 0.5rem;
+    }
+
+    .post-content a {
+      color: #d97706;
+      text-decoration: underline;
+    }
+
+    .post-content blockquote {
+      border-left: 4px solid #d97706;
+      padding-left: 1.5rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: #115e59;
+    }
+
+    .post-content strong {
+      font-weight: 600;
+    }
+
+    .post-content figure.blog-image {
+      margin: 2rem -120px;
+      text-align: center;
+    }
+
+    .post-content figure.blog-image img {
+      max-width: 100%;
+      width: 960px;
+      height: auto;
+      border-radius: 0.5rem;
+      display: block;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 1000px) {
+      .post-content figure.blog-image {
+        margin: 2rem -40px;
+      }
+      .post-content figure.blog-image img {
+        width: calc(100% + 80px);
+        max-width: calc(100vw - 2rem);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .post-content figure.blog-image {
+        margin: 2rem -1rem;
+      }
+      .post-content figure.blog-image img {
+        width: calc(100% + 2rem);
+        border-radius: 0;
+      }
+    }
+
+    .post-content figure.blog-image figcaption {
+      margin-top: 0.75rem;
+      font-size: 0.9rem;
+      color: #115e59;
+      font-style: italic;
+    }
+
+    .post-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-size: 0.95rem;
+    }
+
+    .post-content thead {
+      background: #1a365d;
+      color: white;
+    }
+
+    .post-content th {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      font-weight: 600;
+    }
+
+    .post-content td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid rgba(26, 54, 93, 0.1);
+    }
+
+    .post-content tbody tr:nth-child(even) {
+      background: rgba(26, 54, 93, 0.03);
+    }
+
+    .post-content tbody tr:hover {
+      background: rgba(26, 54, 93, 0.06);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #115e59;
+      text-decoration: none;
+      font-weight: 500;
+      margin-bottom: 2rem;
+    }
+
+    .back-link:hover {
+      color: #d97706;
+    }
+
+    .cta-section {
+      background: #ffffff;
+      border: 1px solid rgba(26, 54, 93, 0.1);
+      border-radius: 1rem;
+      padding: 2rem;
+      margin-top: 3rem;
+      text-align: center;
+    }
+
+    .cta-section h3 {
+      font-family: 'Zilla Slab', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      margin-bottom: 0.75rem;
+    }
+
+    .cta-section p {
+      color: #115e59;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: #d97706;
+      color: white;
+      font-weight: 600;
+      padding: 0.875rem 2rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3);
+    }
+
+    footer {
+      text-align: center;
+      padding: 3rem 1.5rem;
+      color: #115e59;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 640px) {
+      h1 { font-size: 1.875rem; }
+      main { padding-top: 6rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-content">
+      <a href="/" class="nav-logo">MVP Club</a>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        <a href="/#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <a href="/blog/" class="back-link">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+      Back to Blog
+    </a>
+
+    <article>
+      <header class="post-meta">
+        <span class="post-pillar">Human + AI Teams</span>
+        <h1>AI Is a Thinking Tool: How to Build Scaffolds That Expand What You Can Do</h1>
+        <div class="post-info">
+          <span>By Matt Hastings</span>
+          <span>February 5, 2026</span>
+        </div>
+      </header>
+
+      <div class="post-content">
+        <p><strong>AI doesn't just help you work faster — it expands what you're able to think through. By building the right interfaces and workflows around AI, you create scaffolds for your own thinking: shared surfaces where you and AI reason through problems together. The people getting the most from AI aren't just using it to execute tasks — they're using it to think bigger.</strong></p>
+<p>"You can't do much carpentry with your bare hands, and you can't do much thinking with your bare brain."</p>
+<p>That's a line from philosopher Bo Dahlbom, and it's been stuck in my head for weeks. Because it captures something about this moment with AI that I think most of us are still catching up to.</p>
+<p>The conversation around AI is mostly about productivity. Do things faster. Automate the boring stuff. Save time. And sure — that's real. But I think there's something much bigger happening that we're not talking about enough: AI is a thinking tool. And like every great tool before it, it doesn't just help you do what you were already doing — it expands what's possible for you to do at all.</p>
+<h2>What Does It Mean That AI Is a Thinking Tool?</h2>
+<p><strong>A thinking tool is anything that extends your ability to reason, plan, or work through complexity. Writing is a thinking tool — you can think things on paper you can't hold in your head. Spreadsheets are thinking tools. Whiteboards are thinking tools. AI is the most flexible and powerful thinking tool most of us have ever had access to.</strong></p>
+<p>Think about what happens when you talk through a problem with a smart colleague. You don't just get their answer — the conversation itself changes how you see the problem. You consider angles you hadn't thought of. You articulate things you'd only been feeling. The interaction produces thinking you couldn't have done alone.</p>
+<p>AI can do something similar. Not because it's conscious or creative in the way a person is, but because it gives you something to think <em>with</em>. You throw an idea at it. It responds. That response shifts your thinking. You refine. It pushes back. The loop between you and the AI becomes a space where new ideas emerge — ideas neither of you would have produced alone.</p>
+<p>This is Human + AI. Not AI replacing your thinking. AI expanding the surface area of what you can think through.</p>
+<h2>What Is a Thinking Scaffold?</h2>
+<p><strong>A thinking scaffold is a structure you build around AI that shapes how you interact with it for a specific kind of problem. Instead of a blank chat window, you design an interface or workflow that makes AI more useful for the way you actually need to think — visual canvases, structured boards, guided conversations, or anything that gives your thinking a surface to land on.</strong></p>
+<p>Here's the thing I've realized from building with AI over the past year: a blank chat window is powerful, but it's also kind of formless. It's like having a conversation in an empty room. You can go anywhere, but there's nothing to anchor to.</p>
+<p>A scaffold gives you that anchor. It shapes the interaction so that both you and the AI are working on the same surface, looking at the same information, pushing toward the same goal.</p>
+<p>Think about the difference between:</p>
+<ul>
+<li>Asking AI "help me improve my marketing strategy" in a chat window</li>
+<li>Laying out your entire marketing funnel as visual cards on a board, and then having AI look at that board and say "I notice a gap between steps 3 and 4 — here's what might be missing"</li>
+</ul>
+<p>Same AI. Same person. Completely different quality of thinking, because the scaffold changed the shape of the interaction.</p>
+<h2>What Does This Look Like in Practice?</h2>
+<p><strong>I built a tool for myself that maps insights from YouTube videos onto a visual canvas, then lets AI chat with me about what it sees on the board. The AI and I both look at the same picture — goals, steps, pain points, connections — and think through how to improve my approach together. It's rough, but it's genuinely changing how I work through complex problems.</strong></p>
+<p>This started as a simple learning tool. I watch a lot of YouTube content about business, marketing, product development — and I wanted a way to actually <em>do something</em> with what I was learning instead of just passively absorbing it. So I built a tool that extracts actionable insights from videos and maps them as cards on a visual canvas.</p>
+<p>Then I added something that changed everything: an AI chat that can see my canvas.</p>
+<p>Now the workflow looks like this: I have my board laid out — cards for my customer journey, my marketing funnel, my business model, my goals. And I can chat with the AI about it. Not in the abstract, but specifically: "Look at my customer journey. Where do you see gaps? What's missing between these steps?" The AI can see everything I see and respond to it directly.</p>
+<p>We're both looking at the same picture. And that changes the conversation completely.</p>
+<p>Instead of me trying to describe my whole situation in a prompt, the AI can see it. Instead of the AI giving me generic advice, it's responding to my specific board. It asks questions I hadn't considered. It suggests connections between cards I hadn't drawn. It's not doing my thinking — it's giving me a bigger surface to think on.</p>
+<h2>Why Does the Shape of AI Interaction Matter?</h2>
+<p><strong>The interface you build between yourself and AI determines what kind of thinking you can do together. A chat window is good for brainstorming. A visual canvas is good for systems thinking. A structured workflow is good for process improvement. Building the right scaffold for the right kind of problem is a skill — and it's one of the most valuable things you can develop right now.</strong></p>
+<p>Most people interact with AI through a single interface: a chat window. And that works for a lot of things. But it's one shape of interaction, and it's not always the best one.</p>
+<table>
+<thead>
+<tr><th>Thinking Need</th><th>Chat Alone</th><th>With a Scaffold</th></tr>
+</thead>
+<tbody>
+<tr><td>Brainstorming ideas</td><td>Works well</td><td>Canvas helps you see connections</td></tr>
+<tr><td>Process improvement</td><td>Hard to hold full picture</td><td>Visual flow maps make gaps visible</td></tr>
+<tr><td>Strategic planning</td><td>Gets generic fast</td><td>Board with goals/constraints grounds the conversation</td></tr>
+<tr><td>Learning from content</td><td>Easy to forget</td><td>Cards capture and organize insights for reuse</td></tr>
+</tbody>
+</table>
+<p>The scaffold isn't fancy technology. It's a design choice about how you want to think with AI. And making that choice deliberately — instead of defaulting to whatever interface came with the tool — is where things get interesting.</p>
+<h2>How Can You Start Building Thinking Scaffolds?</h2>
+<p><strong>Start with a problem you're already working through, and ask: what would help me see this better? Then use AI to build that surface. It could be a simple canvas, a structured document, a set of cards — anything that makes your thinking visible and gives AI something concrete to respond to.</strong></p>
+<p>You don't need to be a programmer to do this. I built my tool using AI — I describe what I want, evaluate the output, and iterate. That's the vibe coding approach. But even without building a custom tool, you can scaffold your thinking with AI:</p>
+<h3>Step 1: Pick a Real Problem You're Working On</h3>
+<p>Not a hypothetical. Something you're actually trying to figure out right now — a business decision, a process that isn't working, a project you're stuck on.</p>
+<h3>Step 2: Make Your Thinking Visible</h3>
+<p>Before you chat with AI, lay out what you know. This could be a bulleted list, a simple diagram, a set of notes. The goal is to get your current thinking out of your head and into a form the AI can see and respond to.</p>
+<h3>Step 3: Invite the AI Into Your Thinking</h3>
+<p>Share your visible thinking with the AI and ask it to engage with what it sees — not to give you a generic answer, but to respond to your specific situation. "Here's my customer journey. What do you notice? Where do you see friction?"</p>
+<h3>Step 4: Iterate on the Scaffold, Not Just the Answers</h3>
+<p>As you work, pay attention to what's missing from your surface. Do you need more structure? More visual organization? A different way of representing the problem? The scaffold itself is something you improve over time.</p>
+<h2>Frequently Asked Questions</h2>
+<h3>Do I need to be technical to build a thinking scaffold?</h3>
+<p><strong>No. A thinking scaffold can be as simple as a structured document or a set of organized notes that you share with AI. If you want to build something more visual or interactive, vibe coding lets you describe what you want and have AI build it — no programming background needed.</strong></p>
+<h3>Isn't this just prompting?</h3>
+<p><strong>It's related, but different. Prompting is about what you say to AI. Scaffolding is about what you build around the interaction — the structure, the visual surface, the organized information that both you and the AI can see and work with. Good scaffolding makes every prompt more effective because AI has better context.</strong></p>
+<h3>What kinds of problems benefit most from thinking scaffolds?</h3>
+<p><strong>Any problem with multiple moving parts, competing priorities, or steps that interact with each other. Process improvement, strategic planning, customer journey mapping, product development — anywhere you need to see the whole picture to make good decisions.</strong></p>
+<h3>Can I use tools I already have to do this?</h3>
+<p><strong>Absolutely. You can scaffold with a shared Google Doc, a Notion board, or even a well-organized chat thread. The key is making your thinking visible and structured so AI can engage with specifics rather than generalities. Custom tools add power, but they're not required to start.</strong></p>
+<hr />
+<h2>Try It Yourself</h2>
+<p>The people who are getting the most from AI right now aren't the ones who understand the technology best. They're the ones building with it every day — shaping it into tools that expand what they can do.</p>
+<p>If you're curious about building thinking scaffolds, or any kind of tool with AI, MVP Club is a community of people doing exactly that. We practice together, share what we're learning, and help each other figure out what AI means for our work and our careers.</p>
+<p><a href="https://mvp-club.mn.co/">Join MVP Club →</a></p>
+<hr />
+<p><em>Written by Matt Hastings, PhD in Education, co-founder of MVP Club. Matt has coached 100+ non-technical professionals through AI adoption and builds tools with AI despite no formal programming training. Last updated February 6, 2026.</em></p>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "AI Is a Thinking Tool: How to Build Scaffolds That Expand What You Can Do",
+  "author": {
+    "@type": "Person",
+    "name": "Matt Hastings",
+    "description": "PhD in Education, AI coach who has helped 100+ non-technical professionals through AI adoption"
+  },
+  "datePublished": "2026-02-06",
+  "dateModified": "2026-02-06",
+  "publisher": {
+    "@type": "Organization",
+    "name": "MVP Club"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do I need to be technical to build an AI thinking scaffold?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. A thinking scaffold can be as simple as a structured document or a set of organized notes that you share with AI. If you want to build something more visual or interactive, vibe coding lets you describe what you want and have AI build it — no programming background needed."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is an AI thinking scaffold just prompting?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It's related, but different. Prompting is about what you say to AI. Scaffolding is about what you build around the interaction — the structure, the visual surface, the organized information that both you and the AI can see and work with. Good scaffolding makes every prompt more effective because AI has better context."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What kinds of problems benefit most from AI thinking scaffolds?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Any problem with multiple moving parts, competing priorities, or steps that interact with each other. Process improvement, strategic planning, customer journey mapping, product development — anywhere you need to see the whole picture to make good decisions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use tools I already have to build AI thinking scaffolds?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutely. You can scaffold with a shared Google Doc, a Notion board, or even a well-organized chat thread. The key is making your thinking visible and structured so AI can engage with specifics rather than generalities. Custom tools add power, but they're not required to start."
+      }
+    }
+  ]
+}
+</script>
+      </div>
+
+      <div class="cta-section">
+        <h3>Ready to transform your AI practice?</h3>
+        <p>Join MVP Club and learn alongside peers who are navigating the same journey.</p>
+        <a href="/#contact" class="cta-button">Get Started</a>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 MVP Club. All rights reserved.</p>
+  </footer>
+</body>
+</html>
