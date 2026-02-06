@@ -44,8 +44,9 @@ Script runs in the context of the Google account that owns it
 
 | Setting | Value |
 |---------|-------|
-| **Google Workspace** | mvpclub.ai |
+| **Google Account** | Company Google account (info@mvpclub.ai) |
 | **Sending Email** | info@mvpclub.ai |
+| **Google Sheet** | In company Google Drive |
 | **Script URL** | See below |
 
 **Current Endpoint URL:**
@@ -93,9 +94,9 @@ The `source` field lets you filter/segment signups by where they came from.
 
 ## Google Apps Script Code
 
-This script lives in Google Apps Script, attached to the email collection Google Sheet in the info@mvpclub.ai account.
+This script lives in Google Apps Script, attached to the email collection Google Sheet in the company Google Drive (info@mvpclub.ai account).
 
-**To access:** Open the Google Sheet → Extensions → Apps Script
+**To access:** Open the Google Sheet in the company Drive → Extensions → Apps Script
 
 ```javascript
 function doPost(e) {
@@ -166,10 +167,10 @@ function testFullFlow() {
 The Apps Script URL determines everything. Check that the URL in the React components matches the script deployed from your intended Google account.
 
 ### Changes not taking effect on live site
-Frontend changes require redeployment. After editing the React components:
+The site is deployed via **Vercel** from the `main` branch. Frontend changes require a commit and push to `main` — Vercel will auto-deploy. Note: `npm run deploy` pushes to the `gh-pages` branch which is **not** used for production hosting.
 ```bash
-npm run build
-# Then deploy via Netlify, Vercel, or your hosting provider
+git add <files> && git commit -m "message" && git push
+# Vercel auto-deploys from main
 ```
 
 ### Can't access Apps Script from Google Sheet
@@ -184,7 +185,7 @@ Avoid curly/smart quotes and other special Unicode characters in the Apps Script
 ## Deployment Instructions
 
 ### To update the welcome email content:
-1. Open Google Sheet in info@mvpclub.ai account
+1. Open Google Sheet in company Drive (info@mvpclub.ai account)
 2. Go to Extensions → Apps Script (use incognito if redirect loop)
 3. Edit the `sendWelcomeEmail` function
 4. Save (Ctrl+S)
@@ -209,7 +210,13 @@ Avoid curly/smart quotes and other special Unicode characters in the Apps Script
    - `src/SignupOverlay.jsx`
    - `src/LeadMagnetPopup.jsx`
    - `src/WaitlistOverlay.jsx`
-7. Redeploy the website
+7. Commit and push to `main` (Vercel auto-deploys)
+
+## Change Log
+
+| Date | Change |
+|------|--------|
+| 2026-02-06 | Migrated Apps Script endpoint from personal Google account to company account (info@mvpclub.ai Drive). Updated all three frontend components and confirmed working. |
 
 ## Local Storage Keys
 
