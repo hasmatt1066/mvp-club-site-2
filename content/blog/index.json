@@ -1,10 +1,17 @@
 [
   {
+    "slug": "ai-is-for-all-of-us-collective-knowledge",
+    "title": "AI Is for All of Us: Why These Tools Were Built from Our Collective Knowledge",
+    "date": "2026-02-08",
+    "author": "Matt Hastings",
+    "description": ""
+  },
+  {
     "slug": "ai-thinking-tool-build-scaffolds-expand-capability",
     "title": "AI Is a Thinking Tool: How to Build Scaffolds That Expand What You Can Do",
     "date": "2026-02-06",
     "author": "Matt Hastings",
-    "description": "AI isn't just a productivity tool — it's a thinking tool. Learn how to build scaffolds that expand your ability to reason through complex problems."
+    "description": "AI isn't just a productivity tool \u2014 it's a thinking tool. Learn how to build scaffolds that expand your ability to reason through complex problems."
   },
   {
     "slug": "why-ai-gives-different-answers-probabilistic-creativity",
