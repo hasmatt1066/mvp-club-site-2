@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MVP Club - Community</title>
+  <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-primary: #1a365d;
+      --color-primary-lifted: #2d5a8f;
+      --color-secondary: #115e59;
+      --color-accent: #d97706;
+      --color-accent-lifted: #fbbf24;
+      --color-accent-dark: #b45309;
+      --color-background: #faf5f0;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--color-background);
+      color: #374151;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .font-display { font-family: 'Zilla Slab', serif; }
+
+    /* ==========================================
+       NAVIGATION
+       ========================================== */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      background: var(--color-primary);
+      padding: 1rem 0;
+    }
+    nav .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Zilla Slab', serif;
+      font-size: 1.5rem;
+      color: var(--color-accent-lifted);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+    .nav-logo img {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--color-accent-lifted); }
+    .nav-links a.active {
+      color: var(--color-accent-lifted);
+    }
+    .nav-cta {
+      background: var(--color-accent) !important;
+      color: white !important;
+      padding: 0.625rem 1.25rem;
+      border-radius: 0.5rem;
+      font-weight: 600 !important;
+    }
+    .nav-cta:hover { opacity: 0.9; }
+
+    /* Mobile menu button */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+    .mobile-menu-btn span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: white;
+      margin: 5px 0;
+      transition: all 0.3s;
+    }
+
+    /* ==========================================
+       PRACTITIONERS SECTION
+       ========================================== */
+    .practitioners-section {
+      padding: 6rem 0;
+      padding-top: 8rem;
+      background: var(--color-background);
+    }
+    .practitioners-section .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .eyebrow-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    .eyebrow-icon {
+      color: var(--color-secondary);
+      display: flex;
+      align-items: center;
+    }
+    .eyebrow-text {
+      font-size: 1.125rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-secondary);
+    }
+
+    .practitioners-section h2 {
+      font-family: 'Zilla Slab', serif;
+      font-size: clamp(1.875rem, 3vw, 2.25rem);
+      color: var(--color-primary);
+      margin-bottom: 1.5rem;
+      max-width: 42rem;
+      line-height: 1.2;
+    }
+    .practitioners-section > .container > p {
+      font-size: 1.125rem;
+      color: #6b7280;
+      margin-bottom: 3rem;
+      max-width: 42rem;
+      line-height: 1.6;
+    }
+
+    /* Offering Cards Grid */
+    .offerings-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      margin-bottom: 4rem;
+      max-width: 56rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .offering-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+      transition: all 0.3s ease;
+      height: 100%;
+    }
+    .offering-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+    }
+
+    .offering-icon {
+      width: 3.5rem;
+      height: 3.5rem;
+      border-radius: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-secondary);
+      margin-bottom: 1.5rem;
+    }
+    .offering-icon svg {
+      color: white;
+    }
+
+    .offering-card h3 {
+      font-family: 'Zilla Slab', serif;
+      font-size: 1.25rem;
+      color: var(--color-primary);
+      margin-bottom: 0.75rem;
+    }
+    .offering-card > p {
+      color: #6b7280;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .feature-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+    .feature-check {
+      flex-shrink: 0;
+      margin-top: 0.125rem;
+      color: var(--color-secondary);
+    }
+    .feature-item span {
+      font-size: 0.875rem;
+      color: #374151;
+    }
+
+    /* Community CTA Box */
+    .community-cta-box {
+      background: var(--color-secondary);
+      padding: 2rem 3rem;
+      border-radius: 1rem;
+      text-align: center;
+    }
+    .community-cta-box h3 {
+      font-family: 'Zilla Slab', serif;
+      font-size: 1.5rem;
+      color: white;
+      margin-bottom: 1rem;
+    }
+    .community-cta-box p {
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 2rem;
+      max-width: 36rem;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+    .community-cta-box .btn-join {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background: var(--color-accent-lifted);
+      color: var(--color-primary);
+      border-radius: 0.5rem;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .community-cta-box .btn-join:hover {
+      transform: scale(1.05);
+    }
+
+    /* ==========================================
+       CTA SECTION
+       ========================================== */
+    .cta-section {
+      padding: 6rem 0;
+      background: var(--color-background);
+    }
+    .cta-section .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    .cta-header {
+      text-align: center;
+      max-width: 48rem;
+      margin: 0 auto 3rem;
+    }
+    .cta-header h2 {
+      font-family: 'Zilla Slab', serif;
+      font-size: clamp(1.875rem, 3vw, 2.25rem);
+      color: var(--color-primary);
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+    .cta-header p {
+      font-size: 1.125rem;
+      color: #6b7280;
+      line-height: 1.6;
+    }
+
+    .cta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      max-width: 56rem;
+      margin: 0 auto;
+    }
+    .cta-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .cta-card-icon {
+      width: 3.5rem;
+      height: 3.5rem;
+      border-radius: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+    .cta-card-icon.gold {
+      background: var(--color-accent-lifted);
+    }
+    .cta-card-icon.teal {
+      background: var(--color-secondary);
+    }
+
+    .cta-card h3 {
+      font-family: 'Zilla Slab', serif;
+      font-size: 1.25rem;
+      color: var(--color-primary);
+      margin-bottom: 0.75rem;
+    }
+    .cta-card > p {
+      color: #6b7280;
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+      line-height: 1.6;
+    }
+
+    .cta-card .bullet-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+    .cta-card .bullet-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .cta-card .bullet-check {
+      flex-shrink: 0;
+      color: var(--color-secondary);
+    }
+    .cta-card .bullet-item span {
+      font-size: 0.875rem;
+      color: #374151;
+    }
+
+    .cta-card .btn-card {
+      display: block;
+      width: 100%;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      font-size: 1rem;
+      text-align: center;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .cta-card .btn-card:hover {
+      transform: scale(1.05);
+    }
+    .btn-card.primary {
+      background: var(--color-primary);
+      color: white;
+    }
+    .btn-card.accent {
+      background: var(--color-accent);
+      color: white;
+    }
+
+    /* ==========================================
+       FOOTER
+       ========================================== */
+    footer {
+      background: var(--color-primary);
+      padding: 2.5rem 0;
+    }
+    footer .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    footer .brand {
+      font-family: 'Zilla Slab', serif;
+      font-size: 1.15rem;
+      color: var(--color-accent-lifted);
+    }
+    footer .links {
+      display: flex;
+      gap: 1.5rem;
+    }
+    footer .links a {
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      font-size: 0.8rem;
+      transition: color 0.2s;
+    }
+    footer .links a:hover { color: white; }
+    footer .copy {
+      color: rgba(255,255,255,0.35);
+      font-size: 0.75rem;
+    }
+
+    /* ==========================================
+       RESPONSIVE
+       ========================================== */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .mobile-menu-btn { display: block; }
+
+      .practitioners-section {
+        padding-top: 6rem;
+      }
+
+      .offerings-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .community-cta-box {
+        padding: 2rem 1.5rem;
+      }
+
+      .cta-grid {
+        grid-template-columns: 1fr;
+      }
+
+      footer .container {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+      footer .links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="container">
+    <a href="homepage-redesign.html" class="nav-logo">
+      <div style="width:40px;height:40px;border-radius:8px;background:var(--color-accent-lifted);display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--color-primary);font-weight:700;">M</div>
+      <span>MVP Club</span>
+    </a>
+    <div class="nav-links">
+      <a href="homepage-redesign.html">Home</a>
+      <a href="how-we-work.html">How We Work</a>
+      <a href="for-organizations.html">For Organizations</a>
+      <a href="community.html" class="active">Community</a>
+      <a href="#">Blog</a>
+      <a href="https://calendly.com/d/cybv-947-s8m/discovery-call" target="_blank" rel="noopener noreferrer" class="nav-cta">Book a Call</a>
+    </div>
+    <button class="mobile-menu-btn" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+
+<!-- ============================================
+     PRACTITIONERS SECTION
+     Exact content from mvp-club-site.jsx lines 788-874
+     ============================================ -->
+<section class="practitioners-section">
+  <div class="container">
+    <!-- Eyebrow + Heading -->
+    <div class="eyebrow-row">
+      <div class="eyebrow-icon">
+        <!-- GraduationCap icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+          <path d="M6 12v5c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2v-5"/>
+        </svg>
+      </div>
+      <p class="eyebrow-text">For Practitioners</p>
+    </div>
+
+    <h2 class="font-display">Join the AI-First Practitioner Community</h2>
+
+    <p>Not ready for enterprise transformation? Join a community of practitioners building real AI skills through guided practice, shared learning, and expert support.</p>
+
+    <!-- Two Offering Cards -->
+    <div class="offerings-grid">
+      <!-- Card 1: Active Community -->
+      <div class="offering-card">
+        <div class="offering-icon">
+          <!-- Users icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+        </div>
+        <h3>Active Community</h3>
+        <p>Learn alongside others on the same journey. Share wins, troubleshoot challenges, build together.</p>
+        <div class="feature-list">
+          <div class="feature-item">
+            <svg class="feature-check" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+              <polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+            <span>Weekly community discussions</span>
+          </div>
+          <div class="feature-item">
+            <svg class="feature-check" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+              <polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+            <span>Peer feedback on your work</span>
+          </div>
+          <div class="feature-item">
+            <svg class="feature-check" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+              <polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+            <span>Collaborative problem-solving</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Live Events -->
+      <div class="offering-card">
+        <div class="offering-icon">
+          <!-- Calendar icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+            <line x1="16" y1="2" x2="16" y2="6"/>
+            <line x1="8" y1="2" x2="8" y2="6"/>
+            <line x1="3" y1="10" x2="21" y2="10"/>
+          </svg>
+        </div>
+        <h3>Live Events</h3>
+        <p>Regular workshops, Q&amp;As, and guest sessions to deepen your practice and expand your network.</p>
+        <div class="feature-list">
+          <div class="feature-item">
+            <svg class="feature-check" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+              <polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+            <span>Monthly live workshops</span>
+          </div>
+          <div class="feature-item">
+            <svg class="feature-check" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+              <polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+            <span>Office hours with coaches</span>
+          </div>
+          <div class="feature-item">
+            <svg class="feature-check" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+              <polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+            <span>Special guest practitioners</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Community CTA Box -->
+    <div class="community-cta-box">
+      <h3 class="font-display">Start Building Real AI Skills Today</h3>
+      <p>Join a community of practitioners who are actively developing their Human + AI collaboration skills through practice, not just theory.</p>
+      <a href="https://mvp-club.mn.co/" target="_blank" rel="noopener noreferrer" class="btn-join">Join the Community</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================
+     CTA SECTION
+     Exact content from mvp-club-site.jsx lines 1062-1173
+     ============================================ -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-header">
+      <h2 class="font-display">Ready to Transform How You Work with AI?</h2>
+      <p>Whether you're transforming an organization or developing your own skills, we have a path for you. Choose what fits your situation.</p>
+    </div>
+
+    <div class="cta-grid">
+      <!-- For Organizations -->
+      <div class="cta-card">
+        <div class="cta-card-icon gold">
+          <!-- Building2 icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1a365d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/>
+            <path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/>
+            <path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/>
+            <path d="M10 6h4"/>
+            <path d="M10 10h4"/>
+            <path d="M10 14h4"/>
+            <path d="M10 18h4"/>
+          </svg>
+        </div>
+        <h3>For Organizations</h3>
+        <p>Start small. Prove value fast. Scale what works.<br><br>4-week pilot sprint for one team, one workflow, one problem. No big rollout. No company-wide program. Just real work getting done faster with AI.<br><br><strong>If it works, we scale. If it doesn't, we stop.</strong></p>
+        <div class="bullet-list">
+          <div class="bullet-item">
+            <svg class="bullet-check" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+              <polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+            <span>15-minute workflow diagnostic</span>
+          </div>
+          <div class="bullet-item">
+            <svg class="bullet-check" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+              <polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+            <span>Pilot one team&mdash;expand if it works</span>
+          </div>
+          <div class="bullet-item">
+            <svg class="bullet-check" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+              <polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+            <span>Immediate productivity gains</span>
+          </div>
+        </div>
+        <a href="https://calendly.com/d/cybv-947-s8m/discovery-call" target="_blank" rel="noopener noreferrer" class="btn-card primary">Book a Discovery Call</a>
+      </div>
+
+      <!-- For Practitioners -->
+      <div class="cta-card">
+        <div class="cta-card-icon teal">
+          <!-- MessageCircle icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+          </svg>
+        </div>
+        <h3>For Practitioners</h3>
+        <p>Join our community of AI-first practitioners. Access live events, embedded coaching, and a supportive community to build your skills through practice.</p>
+        <div class="bullet-list">
+          <div class="bullet-item">
+            <svg class="bullet-check" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+              <polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+            <span>Immediate community access</span>
+          </div>
+          <div class="bullet-item">
+            <svg class="bullet-check" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+              <polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+            <span>Embedded coaching support</span>
+          </div>
+          <div class="bullet-item">
+            <svg class="bullet-check" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+              <polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+            <span>Live workshops &amp; events</span>
+          </div>
+        </div>
+        <a href="https://mvp-club.mn.co/" target="_blank" rel="noopener noreferrer" class="btn-card accent">Join the Community</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="brand">MVP Club</div>
+    <div class="links">
+      <a href="homepage-redesign.html">Home</a>
+      <a href="how-we-work.html">How We Work</a>
+      <a href="for-organizations.html">For Organizations</a>
+      <a href="community.html">Community</a>
+      <a href="#">Blog</a>
+      <a href="#">Contact</a>
+    </div>
+    <div class="copy">&copy; 2025 MVP Club</div>
+  </div>
+</footer>
+
+</body>
+</html>

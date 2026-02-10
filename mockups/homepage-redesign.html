@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MVP Club - Homepage Redesign Mockup</title>
+  <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ========================================
+       DESIGN NOTES (for discussion)
+       ========================================
+       This mockup represents the NEW homepage:
+       1. Hero: Value Prop + CTA (above the fold)
+       2. Social Proof: Client quotes / results
+       3. How We Help: 3 cards (brief) linking to services page
+       4. Brief credibility/team mention
+       5. Final CTA
+
+       Everything else (Problem section, methodology,
+       philosophy, full sprint details, use case generator)
+       moves to a /services or /how-we-work page.
+       ======================================== */
+
+    :root {
+      --color-primary: #1a365d;
+      --color-primary-lifted: #2d5a8f;
+      --color-secondary: #115e59;
+      --color-accent: #d97706;
+      --color-accent-lifted: #fbbf24;
+      --color-accent-dark: #b45309;
+      --color-background: #faf5f0;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--color-background);
+      color: #374151;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .font-display { font-family: 'Zilla Slab', serif; }
+
+    /* ==========================================
+       NAVIGATION
+       ========================================== */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      background: var(--color-primary);
+      padding: 1rem 0;
+    }
+    nav .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Zilla Slab', serif;
+      font-size: 1.5rem;
+      color: var(--color-accent-lifted);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .nav-logo img {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--color-accent-lifted); }
+    .nav-cta {
+      background: var(--color-accent) !important;
+      color: white !important;
+      padding: 0.625rem 1.25rem;
+      border-radius: 0.5rem;
+      font-weight: 600 !important;
+    }
+    .nav-cta:hover { opacity: 0.9; }
+
+    /* ==========================================
+       SECTION 1: HERO — Value Prop + CTA
+       Above the fold. This is the whole pitch.
+       ========================================== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: var(--color-primary);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before,
+    .hero::after {
+      display: none;
+    }
+    .hero-mosaic {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      pointer-events: none;
+      opacity: 0.07;
+    }
+    .hero .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 8rem 1.5rem 4rem;
+      position: relative;
+      z-index: 1;
+      width: 100%;
+    }
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .hero-eyebrow {
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--color-accent-lifted);
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-family: 'Zilla Slab', serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      color: white;
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 .highlight {
+      background: linear-gradient(135deg, var(--color-accent-lifted), var(--color-accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-sub {
+      font-size: 1.25rem;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.6;
+      margin-bottom: 2.5rem;
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background: var(--color-accent);
+      color: white;
+      border-radius: 0.75rem;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(217, 119, 6, 0.4); }
+    .btn-secondary {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background: transparent;
+      color: white;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-radius: 0.75rem;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-secondary:hover { border-color: rgba(255,255,255,0.6); }
+
+    /* Scroll indicator */
+    .scroll-hint {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255,255,255,0.4);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .scroll-hint .arrow {
+      width: 20px;
+      height: 20px;
+      border-right: 2px solid rgba(255,255,255,0.4);
+      border-bottom: 2px solid rgba(255,255,255,0.4);
+      transform: rotate(45deg);
+      animation: bounce 2s infinite;
+    }
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: rotate(45deg) translateY(0); }
+      40% { transform: rotate(45deg) translateY(6px); }
+      60% { transform: rotate(45deg) translateY(3px); }
+    }
+
+    /* ==========================================
+       SECTION 2: SOCIAL PROOF
+       Client quotes, results, credibility signals.
+       This is the "why trust us" section.
+       ========================================== */
+    .social-proof {
+      padding: 5rem 0;
+      background: white;
+    }
+    .social-proof .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    .social-proof-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .social-proof-header .eyebrow {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--color-secondary);
+      margin-bottom: 0.75rem;
+    }
+    .social-proof-header h2 {
+      font-family: 'Zilla Slab', serif;
+      font-size: 2rem;
+      color: var(--color-primary);
+    }
+
+    /* Results bar */
+    .results-bar {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .result-item {
+      text-align: center;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      background: var(--color-background);
+    }
+    .result-number {
+      font-family: 'Zilla Slab', serif;
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: var(--color-accent);
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+    .result-label {
+      font-size: 0.875rem;
+      color: #6b7280;
+    }
+
+    /* Quote cards */
+    .quotes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .quote-card {
+      background: var(--color-background);
+      padding: 2rem;
+      border-radius: 1rem;
+      border-left: 4px solid var(--color-accent);
+      position: relative;
+    }
+    .quote-mark {
+      font-family: 'Zilla Slab', serif;
+      font-size: 4rem;
+      color: var(--color-accent);
+      opacity: 0.2;
+      line-height: 1;
+      position: absolute;
+      top: 0.5rem;
+      left: 1.25rem;
+    }
+    .quote-text {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: #374151;
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 1;
+      font-style: italic;
+    }
+    .quote-attribution {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .quote-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--color-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .quote-name {
+      font-weight: 600;
+      color: var(--color-primary);
+      font-size: 0.875rem;
+    }
+    .quote-role {
+      font-size: 0.75rem;
+      color: #9ca3af;
+    }
+
+    /* Placeholder note for mockup */
+    .mockup-note {
+      background: #fef3c7;
+      border: 2px dashed var(--color-accent);
+      border-radius: 0.75rem;
+      padding: 1rem 1.5rem;
+      font-size: 0.8rem;
+      color: var(--color-accent-dark);
+      margin-top: 2rem;
+      text-align: center;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .mockup-note strong { color: var(--color-primary); }
+
+    /* ==========================================
+       SECTION 3: HOW WE HELP
+       Three cards — brief, linking to services page.
+       Not the full methodology, just enough to orient.
+       ========================================== */
+    .how-we-help {
+      padding: 5rem 0;
+      background: var(--color-background);
+    }
+    .how-we-help .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    .how-we-help-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .how-we-help-header .eyebrow {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--color-secondary);
+      margin-bottom: 0.75rem;
+    }
+    .how-we-help-header h2 {
+      font-family: 'Zilla Slab', serif;
+      font-size: 2rem;
+      color: var(--color-primary);
+      margin-bottom: 0.75rem;
+    }
+    .how-we-help-header p {
+      font-size: 1.1rem;
+      color: #6b7280;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .service-card {
+      background: white;
+      border-radius: 1rem;
+      padding: 2rem;
+      transition: all 0.3s;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(26, 54, 93, 0.1);
+    }
+    .service-card .badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 1rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+      width: fit-content;
+    }
+    .badge-org {
+      background: rgba(26, 54, 93, 0.1);
+      color: var(--color-primary);
+    }
+    .badge-individual {
+      background: rgba(17, 94, 89, 0.1);
+      color: var(--color-secondary);
+    }
+    .service-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+      font-size: 1.5rem;
+    }
+    .service-card h3 {
+      font-family: 'Zilla Slab', serif;
+      font-size: 1.35rem;
+      color: var(--color-primary);
+      margin-bottom: 0.75rem;
+    }
+    .service-card p {
+      font-size: 0.95rem;
+      color: #6b7280;
+      line-height: 1.6;
+      margin-bottom: 1.25rem;
+      flex-grow: 1;
+    }
+    .service-card .features {
+      list-style: none;
+      margin-bottom: 1.5rem;
+    }
+    .service-card .features li {
+      font-size: 0.85rem;
+      color: #374151;
+      padding: 0.35rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .service-card .features li::before {
+      content: '✓';
+      color: var(--color-secondary);
+      font-weight: 700;
+      font-size: 0.75rem;
+    }
+    .service-link {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--color-accent);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+      transition: gap 0.2s;
+    }
+    .service-link:hover { gap: 0.625rem; }
+    .service-link::after { content: '→'; }
+
+    /* ==========================================
+       SECTION 4: TEAM
+       Full founder profiles with photos.
+       ========================================== */
+    .team-section {
+      padding: 5rem 0;
+      background: var(--color-primary);
+    }
+    .team-section .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    .team-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .team-header .eyebrow {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--color-accent-lifted);
+      margin-bottom: 0.75rem;
+    }
+    .team-header h2 {
+      font-family: 'Zilla Slab', serif;
+      font-size: 2rem;
+      color: white;
+      margin-bottom: 0.75rem;
+    }
+    .team-header p {
+      color: rgba(255,255,255,0.7);
+      font-size: 1.05rem;
+      line-height: 1.6;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .team-card {
+      background: rgba(255,255,255,0.06);
+      border-radius: 1rem;
+      padding: 2rem;
+      text-align: center;
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: all 0.3s;
+    }
+    .team-card:hover {
+      background: rgba(255,255,255,0.1);
+      transform: translateY(-2px);
+    }
+    .team-card-photo {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 1.25rem;
+      border: 3px solid rgba(255,255,255,0.15);
+      display: block;
+    }
+    .team-card-name {
+      font-family: 'Zilla Slab', serif;
+      font-size: 1.25rem;
+      color: white;
+      margin-bottom: 0.25rem;
+    }
+    .team-card-role {
+      font-size: 0.8rem;
+      color: var(--color-accent-lifted);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    .team-card-bio {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    .team-card-quote {
+      font-size: 0.8rem;
+      font-style: italic;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.5;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 0.75rem;
+    }
+    @media (max-width: 768px) {
+      .team-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ==========================================
+       SECTION 5: FINAL CTA
+       One clear action. Book the call.
+       ========================================== */
+    .final-cta {
+      padding: 5rem 0;
+      background: var(--color-background);
+    }
+    .final-cta .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    .final-cta-card {
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+      background: white;
+      padding: 3rem;
+      border-radius: 1.5rem;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    }
+    .final-cta-card h2 {
+      font-family: 'Zilla Slab', serif;
+      font-size: 2rem;
+      color: var(--color-primary);
+      margin-bottom: 0.75rem;
+    }
+    .final-cta-card p {
+      color: #6b7280;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .final-cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-dark {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background: var(--color-primary);
+      color: white;
+      border-radius: 0.75rem;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-dark:hover { background: var(--color-primary-lifted); }
+    .btn-outline {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background: transparent;
+      color: var(--color-primary);
+      border: 2px solid var(--color-primary);
+      border-radius: 0.75rem;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-outline:hover { background: var(--color-primary); color: white; }
+    .final-cta-note {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 1rem;
+    }
+
+    /* ==========================================
+       FOOTER
+       ========================================== */
+    footer {
+      background: var(--color-primary);
+      padding: 2.5rem 0;
+    }
+    footer .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    footer .brand {
+      font-family: 'Zilla Slab', serif;
+      font-size: 1.15rem;
+      color: var(--color-accent-lifted);
+    }
+    footer .links {
+      display: flex;
+      gap: 1.5rem;
+    }
+    footer .links a {
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      font-size: 0.8rem;
+      transition: color 0.2s;
+    }
+    footer .links a:hover { color: white; }
+    footer .copy {
+      color: rgba(255,255,255,0.35);
+      font-size: 0.75rem;
+    }
+
+    /* ==========================================
+       ANNOTATIONS — design discussion overlay
+       ========================================== */
+    .annotation-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #1e293b;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 100;
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+    }
+    .annotation-bar .label {
+      background: var(--color-accent);
+      padding: 0.2rem 0.5rem;
+      border-radius: 0.25rem;
+      font-weight: 700;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-right: 0.75rem;
+    }
+    .annotation-toggle {
+      background: rgba(255,255,255,0.15);
+      border: none;
+      color: white;
+      padding: 0.375rem 0.75rem;
+      border-radius: 0.375rem;
+      cursor: pointer;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+    .annotation-toggle:hover { background: rgba(255,255,255,0.25); }
+
+    .section-note {
+      background: rgba(254, 243, 199, 0.95);
+      border: 2px dashed var(--color-accent);
+      border-radius: 0.75rem;
+      padding: 1rem 1.5rem;
+      margin: 1rem auto;
+      max-width: 700px;
+      font-size: 0.8rem;
+      color: #92400e;
+      line-height: 1.5;
+    }
+    .section-note strong { color: var(--color-primary); }
+    .section-note.hidden { display: none; }
+
+    /* ==========================================
+       RESPONSIVE
+       ========================================== */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .services-grid { grid-template-columns: 1fr; }
+      .results-bar { grid-template-columns: 1fr; }
+      .quotes-grid { grid-template-columns: 1fr; }
+      .credibility-inner { flex-direction: column; text-align: center; }
+      .team-avatars { justify-content: center; }
+      .credibility-stats { justify-content: center; }
+      footer .container { flex-direction: column; gap: 1rem; text-align: center; }
+      footer .links { flex-wrap: wrap; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============================================
+     NAVIGATION
+     New nav: Home | How We Help | About | Blog | [CTA]
+     Note: "How We Help" links to the deeper services page
+     ============================================ -->
+<nav>
+  <div class="container">
+    <div class="nav-logo">
+      <div style="width:40px;height:40px;border-radius:8px;background:var(--color-accent-lifted);display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--color-primary);font-weight:700;">M</div>
+      <span>MVP Club</span>
+    </div>
+    <div class="nav-links">
+      <a href="how-we-work.html">How We Work</a>
+      <a href="for-organizations.html">For Organizations</a>
+      <a href="community.html">Community</a>
+      <a href="#">Blog</a>
+      <a href="#final-cta" class="nav-cta">Book a Call</a>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ============================================
+     SECTION 1: HERO
+     Value Prop + CTA. That's it.
+     The whole pitch in 10 seconds.
+     ============================================ -->
+<section class="hero" id="hero">
+  <!-- Mosaic grid background — sparse left, dense right -->
+  <svg class="hero-mosaic" viewBox="0 0 120 40" preserveAspectRatio="xMaxYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <!-- Row 0 -->
+    <rect x="62" y="0" width="3.5" height="3.5" rx="0.6" fill="#a8c4d8"/>
+    <rect x="78" y="0" width="3.5" height="3.5" rx="0.6" fill="#1a365d"/>
+    <rect x="82" y="0" width="3.5" height="3.5" rx="0.6" fill="#a8c4d8"/>
+    <rect x="90" y="0" width="3.5" height="3.5" rx="0.6" fill="#115e59"/>
+    <rect x="94" y="0" width="3.5" height="3.5" rx="0.6" fill="#1a365d"/>
+    <rect x="98" y="0" width="3.5" height="3.5" rx="0.6" fill="#d97706"/>
+    <rect x="102" y="0" width="3.5" height="3.5" rx="0.6" fill="#a8c4d8"/>
+    <rect x="106" y="0" width="3.5" height="3.5" rx="0.6" fill="#1a365d"/>
+    <rect x="110" y="0" width="3.5" height="3.5" rx="0.6" fill="#d97706"/>
+    <rect x="114" y="0" width="3.5" height="3.5" rx="0.6" fill="#115e59"/>
+    <!-- Row 1 -->
+    <rect x="50" y="4.5" width="3.5" height="3.5" rx="0.6" fill="#a8c4d8"/>
+    <rect x="70" y="4.5" width="3.5" height="3.5" rx="0.6" fill="#1a365d"/>
+    <rect x="78" y="4.5" width="3.5" height="3.5" rx="0.6" fill="#a8c4d8"/>
+    <rect x="86" y="4.5" width="3.5" height="3.5" rx="0.6" fill="#115e59"/>
+    <rect x="90" y="4.5" width="3.5" height="3.5" rx="0.6" fill="#a8c4d8"/>
+    <rect x="94" y="4.5" width="3.5" height="3.5" rx="0.6" fill="#1a365d"/>
+    <rect x="98" y="4.5" width="3.5" height="3.5" rx="0.6" fill="#d97706"/>
+    <rect x="102" y="4.5" width="3.5" height="3.5" rx="0.6" fill="#115e59"/>
+    <rect x="106" y="4.5" width="3.5" height="3.5" rx="0.6" fill="#d97706"/>
+    <rect x="110" y="4.5" width="3.5" height="3.5" rx="0.6" fill="#1a365d"/>
+    <rect x="114" y="4.5" width="3.5" height="3.5" rx="0.6" fill="#a8c4d8"/>
+    <!-- Row 2 -->
+    <rect x="42" y="9" width="3.5" height="3.5" rx="0.6" fill="#a8c4d8"/>
+    <rect x="58" y="9" width="3.5" height="3.5" rx="0.6" fill="#1a365d"/>
+    <rect x="66" y="9" width="3.5" height="3.5" rx="0.6" fill="#a8c4d8"/>
+    <rect x="74" y="9" width="3.5" height="3.5" rx="0.6" fill="#115e59"/>
+    <rect x="78" y="9" width="3.5" height="3.5" rx="0.6" fill="#1a365d"/>
+    <rect x="82" y="9" width="3.5" height="3.5" rx="0.6" fill="#a8c4d8"/>
+    <rect x="86" y="9" width="3.5" height="3.5" rx="0.6" fill="#d97706"/>
+    <rect x="90" y="9" width="3.5" height="3.5" rx="0.6" fill="#1a365d"/>
+    <rect x="94" y="9" width="3.5" height="3.5" rx="0.6" fill="#115e59"/>
+    <rect x="98" y="9" width="3.5" height="3.5" rx="0.6" fill="#a8c4d8"/>
+    <rect x="102" y="9" width="3.5" height="3.5" rx="0.6" fill="#d97706"/>
+    <rect x="106" y="9" width="3.5" height="3.5" rx="0.6" fill="#1a365d"/>
+    <rect x="110" y="9" width="3.5" height="3.5" rx="0.6" fill="#115e59"/>
+    <rect x="114" y="9" width="3.5" height="3.5" rx="0.6" fill="#d97706"/>
+    <!-- Row 3 -->
+    <rect x="54" y="13.5" width="3.5" height="3.5" rx="0.6" fill="#a8c4d8"/>
+    <rect x="66" y="13.5" width="3.5" height="3.5" rx="0.6" fill="#1a365d"/>
+    <rect x="74" y="13.5" width="3.5" height="3.5" rx="0.6" fill="#a8c4d8"/>
+    <rect x="82" y="13.5" width="3.5" height="3.5" rx="0.6" fill="#115e59"/>
+    <rect x="86" y="13.5" width="3.5" height="3.5" rx="0.6" fill="#1a365d"/>
+    <rect x="90" y="13.5" width="3.5" height="3.5" rx="0.6" fill="#d97706"/>
+    <rect x="94" y="13.5" width="3.5" height="3.5" rx="0.6" fill="#a8c4d8"/>
+    <rect x="98" y="13.5" width="3.5" height="3.5" rx="0.6" fill="#1a365d"/>
+    <rect x="102" y="13.5" width="3.5" height="3.5" rx="0.6" fill="#115e59"/>
+    <rect x="106" y="13.5" width="3.5" height="3.5" rx="0.6" fill="#d97706"/>
+    <rect x="110" y="13.5" width="3.5" height="3.5" rx="0.6" fill="#a8c4d8"/>
+    <rect x="114" y="13.5" width="3.5" height="3.5" rx="0.6" fill="#1a365d"/>
+    <!-- Row 4 -->
+    <rect x="38" y="18" width="3.5" height="3.5" rx="0.6" fill="#a8c4d8"/>
+    <rect x="62" y="18" width="3.5" height="3.5" rx="0.6" fill="#1a365d"/>
+    <rect x="70" y="18" width="3.5" height="3.5" rx="0.6" fill="#115e59"/>
+    <rect x="78" y="18" width="3.5" height="3.5" rx="0.6" fill="#a8c4d8"/>
+    <rect x="82" y="18" width="3.5" height="3.5" rx="0.6" fill="#1a365d"/>
+    <rect x="86" y="18" width="3.5" height="3.5" rx="0.6" fill="#a8c4d8"/>
+    <rect x="90" y="18" width="3.5" height="3.5" rx="0.6" fill="#115e59"/>
+    <rect x="94" y="18" width="3.5" height="3.5" rx="0.6" fill="#d97706"/>
+    <rect x="98" y="18" width="3.5" height="3.5" rx="0.6" fill="#1a365d"/>
+    <rect x="102" y="18" width="3.5" height="3.5" rx="0.6" fill="#a8c4d8"/>
+    <rect x="106" y="18" width="3.5" height="3.5" rx="0.6" fill="#115e59"/>
+    <rect x="110" y="18" width="3.5" height="3.5" rx="0.6" fill="#d97706"/>
+    <rect x="114" y="18" width="3.5" height="3.5" rx="0.6" fill="#1a365d"/>
+    <!-- Row 5 -->
+    <rect x="46" y="22.5" width="3.5" height="3.5" rx="0.6" fill="#a8c4d8"/>
+    <rect x="58" y="22.5" width="3.5" height="3.5" rx="0.6" fill="#1a365d"/>
+    <rect x="74" y="22.5" width="3.5" height="3.5" rx="0.6" fill="#a8c4d8"/>
+    <rect x="78" y="22.5" width="3.5" height="3.5" rx="0.6" fill="#115e59"/>
+    <rect x="86" y="22.5" width="3.5" height="3.5" rx="0.6" fill="#1a365d"/>
+    <rect x="90" y="22.5" width="3.5" height="3.5" rx="0.6" fill="#d97706"/>
+    <rect x="94" y="22.5" width="3.5" height="3.5" rx="0.6" fill="#a8c4d8"/>
+    <rect x="98" y="22.5" width="3.5" height="3.5" rx="0.6" fill="#115e59"/>
+    <rect x="102" y="22.5" width="3.5" height="3.5" rx="0.6" fill="#1a365d"/>
+    <rect x="106" y="22.5" width="3.5" height="3.5" rx="0.6" fill="#d97706"/>
+    <rect x="110" y="22.5" width="3.5" height="3.5" rx="0.6" fill="#a8c4d8"/>
+    <rect x="114" y="22.5" width="3.5" height="3.5" rx="0.6" fill="#115e59"/>
+    <!-- Row 6 -->
+    <rect x="50" y="27" width="3.5" height="3.5" rx="0.6" fill="#1a365d"/>
+    <rect x="66" y="27" width="3.5" height="3.5" rx="0.6" fill="#a8c4d8"/>
+    <rect x="74" y="27" width="3.5" height="3.5" rx="0.6" fill="#1a365d"/>
+    <rect x="82" y="27" width="3.5" height="3.5" rx="0.6" fill="#115e59"/>
+    <rect x="86" y="27" width="3.5" height="3.5" rx="0.6" fill="#a8c4d8"/>
+    <rect x="90" y="27" width="3.5" height="3.5" rx="0.6" fill="#1a365d"/>
+    <rect x="94" y="27" width="3.5" height="3.5" rx="0.6" fill="#d97706"/>
+    <rect x="98" y="27" width="3.5" height="3.5" rx="0.6" fill="#a8c4d8"/>
+    <rect x="102" y="27" width="3.5" height="3.5" rx="0.6" fill="#115e59"/>
+    <rect x="106" y="27" width="3.5" height="3.5" rx="0.6" fill="#1a365d"/>
+    <rect x="110" y="27" width="3.5" height="3.5" rx="0.6" fill="#d97706"/>
+    <rect x="114" y="27" width="3.5" height="3.5" rx="0.6" fill="#115e59"/>
+    <!-- Row 7 -->
+    <rect x="42" y="31.5" width="3.5" height="3.5" rx="0.6" fill="#a8c4d8"/>
+    <rect x="62" y="31.5" width="3.5" height="3.5" rx="0.6" fill="#1a365d"/>
+    <rect x="70" y="31.5" width="3.5" height="3.5" rx="0.6" fill="#a8c4d8"/>
+    <rect x="78" y="31.5" width="3.5" height="3.5" rx="0.6" fill="#115e59"/>
+    <rect x="86" y="31.5" width="3.5" height="3.5" rx="0.6" fill="#1a365d"/>
+    <rect x="90" y="31.5" width="3.5" height="3.5" rx="0.6" fill="#a8c4d8"/>
+    <rect x="94" y="31.5" width="3.5" height="3.5" rx="0.6" fill="#115e59"/>
+    <rect x="98" y="31.5" width="3.5" height="3.5" rx="0.6" fill="#d97706"/>
+    <rect x="102" y="31.5" width="3.5" height="3.5" rx="0.6" fill="#1a365d"/>
+    <rect x="106" y="31.5" width="3.5" height="3.5" rx="0.6" fill="#a8c4d8"/>
+    <rect x="110" y="31.5" width="3.5" height="3.5" rx="0.6" fill="#115e59"/>
+    <rect x="114" y="31.5" width="3.5" height="3.5" rx="0.6" fill="#d97706"/>
+    <!-- Row 8 -->
+    <rect x="54" y="36" width="3.5" height="3.5" rx="0.6" fill="#a8c4d8"/>
+    <rect x="70" y="36" width="3.5" height="3.5" rx="0.6" fill="#1a365d"/>
+    <rect x="78" y="36" width="3.5" height="3.5" rx="0.6" fill="#115e59"/>
+    <rect x="82" y="36" width="3.5" height="3.5" rx="0.6" fill="#a8c4d8"/>
+    <rect x="90" y="36" width="3.5" height="3.5" rx="0.6" fill="#1a365d"/>
+    <rect x="94" y="36" width="3.5" height="3.5" rx="0.6" fill="#d97706"/>
+    <rect x="98" y="36" width="3.5" height="3.5" rx="0.6" fill="#115e59"/>
+    <rect x="102" y="36" width="3.5" height="3.5" rx="0.6" fill="#a8c4d8"/>
+    <rect x="106" y="36" width="3.5" height="3.5" rx="0.6" fill="#1a365d"/>
+    <rect x="110" y="36" width="3.5" height="3.5" rx="0.6" fill="#d97706"/>
+    <rect x="114" y="36" width="3.5" height="3.5" rx="0.6" fill="#115e59"/>
+  </svg>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-eyebrow">Stop learning AI. Start building with it.</div>
+
+      <h1>
+        AI Adoption Isn't a Training Problem.<br>
+        It's a <span class="highlight">Coaching Problem.</span>
+      </h1>
+
+      <p class="hero-sub">
+        Most people aren't stuck because they lack knowledge. They're stuck because AI feels
+        intimidating, they don't have time to figure it out, and nobody's in their corner while they learn.
+        We coach alongside people through the hard part &mdash; practicing on real work until it clicks.
+      </p>
+
+      <div class="hero-ctas">
+        <a href="#" class="btn-primary">Book a Discovery Call</a>
+        <a href="how-we-work.html" class="btn-secondary">See How We Work</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="arrow"></div>
+  </div>
+</section>
+
+<div class="section-note" id="note-hero">
+  <strong>Design note — Hero:</strong> Eyebrow is now your big idea: "Stop learning AI. Start building with it." The subtext names the three real barriers from your thesis: intimidation, no time, no support. "We coach alongside" — not above, not from a stage. "Until it clicks" — implies practice and persistence. Does the tone feel like MVP Club talking, or still too polished?
+</div>
+
+
+<!-- ============================================
+     SECTION 2: SOCIAL PROOF
+     Results + Client Quotes
+     This is where DE quotes / client testimonials go.
+     ============================================ -->
+<section class="social-proof" id="social-proof">
+  <div class="container">
+    <div class="social-proof-header">
+      <div class="eyebrow">Real work, real results</div>
+      <h2 class="font-display">What We've Been Building</h2>
+    </div>
+
+    <!-- Case study cards -->
+    <div class="quotes-grid">
+      <div class="quote-card" style="border-left-color: var(--color-primary);">
+        <p style="font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--color-primary);margin-bottom:0.75rem;">Enterprise Engagement</p>
+        <p class="quote-text" style="font-style:normal;">
+          Six-week coaching engagement with <strong>Dual Enroll</strong>, working with several
+          internal teams across our Adoption and Coaching sprint. Improved their use of custom
+          GPTs as internal resources around source-of-truth documentation on their software &mdash;
+          saving team members time and empowering them with better access to how their systems work.
+        </p>
+        <div class="quote-attribution">
+          <div class="quote-avatar" style="background:var(--color-primary);">DE</div>
+          <div>
+            <div class="quote-name">Dual Enroll</div>
+            <div class="quote-role">Multi-team adoption &amp; coaching sprint</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="quote-card" style="border-left-color: var(--color-secondary);">
+        <p style="font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--color-secondary);margin-bottom:0.75rem;">AI-Powered Solution</p>
+        <p class="quote-text" style="font-style:normal;">
+          Built a warm lead database researcher solution powered by Claude Code for a client
+          at <strong>NMDP</strong> &mdash; turning an AI tool into a practical,
+          deployed system that supports real business development work.
+        </p>
+        <div class="quote-attribution">
+          <div class="quote-avatar" style="background:var(--color-secondary);">NM</div>
+          <div>
+            <div class="quote-name">NMDP</div>
+            <div class="quote-role">Custom AI solution build</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="quote-card" style="border-left-color: var(--color-accent);">
+        <p style="font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--color-accent);margin-bottom:0.75rem;">Community Results</p>
+        <p class="quote-text" style="font-style:normal;">
+          Dozens of community members have gone from <strong>AI-curious to deploying real apps
+          and websites</strong> through our weekly live sessions, coaching support, and peer
+          practice. Non-technical backgrounds are the norm, not the exception.
+        </p>
+        <div class="quote-attribution">
+          <div class="quote-avatar" style="background:var(--color-accent);">MC</div>
+          <div>
+            <div class="quote-name">MVP Club Community</div>
+            <div class="quote-role">iOS apps, business tools, websites, games &amp; more</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mockup-note">
+      <strong>Note:</strong> These are real engagements and results. When you collect actual
+      client quotes from Dual Enroll, NMDP, or community members, you can add those beneath
+      each card or swap to a testimonial format. For now, the work speaks for itself.
+    </div>
+  </div>
+</section>
+
+<div class="section-note" id="note-social-proof">
+  <strong>Design note — Social Proof:</strong> Replaced fake testimonials with three real case studies: Dual Enroll (enterprise coaching sprint), NMDP (AI-powered solution build), and the community results (curious &rarr; deploying). These are all factual. The section is now "What We've Been Building" instead of "What Our Clients Are Saying" — because you have the work but not the quotes yet. When you do get quotes from these clients, they can layer on top of or replace these cards. Dropped the metrics bar since the case studies themselves are more compelling proof.
+</div>
+
+
+<!-- ============================================
+     SECTION 3: HOW WE HELP
+     Three cards — brief, not the full methodology.
+     Links to a dedicated services/how-we-work page.
+     ============================================ -->
+<section class="how-we-help" id="how-we-help">
+  <div class="container">
+    <div class="how-we-help-header">
+      <div class="eyebrow">How We Work</div>
+      <h2 class="font-display">We Coach Alongside You, Not Above You</h2>
+      <p>We're not consultants who hand you a deck and leave. We embed with your team
+        and stay until AI becomes part of how they actually work.</p>
+    </div>
+
+    <div class="services-grid">
+      <!-- Card 1: Embedded Team Coaching -->
+      <div class="service-card">
+        <div class="badge badge-org">For Organizations</div>
+        <div class="service-icon" style="background: var(--color-primary);">
+          <!-- Sprint: forward momentum arrow with spark -->
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 14h16m0 0l-6-6m6 6l-6 6" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="23" cy="7" r="2" fill="#fbbf24" opacity="0.9"/>
+            <circle cx="25" cy="11" r="1.2" fill="#fbbf24" opacity="0.6"/>
+          </svg>
+        </div>
+        <h3>Embedded Team Coaching</h3>
+        <p>
+          We embed within your organization to coach your people through AI adoption.
+          We start by finding a real workflow where AI could help, then we support
+          individuals through practicing &mdash; through the intimidation, the setbacks,
+          and into genuine confidence.
+        </p>
+        <ul class="features">
+          <li>Grounded in your team's real work</li>
+          <li>Small team planning calls</li>
+          <li>Office hours & 1:1 coaching</li>
+          <li>We stay until it sticks</li>
+        </ul>
+        <a href="for-organizations.html" class="service-link">Learn more</a>
+      </div>
+
+      <!-- Card 2: What Coaching Looks Like -->
+      <div class="service-card">
+        <div class="badge badge-org">The Approach</div>
+        <div class="service-icon" style="background: var(--color-secondary);">
+          <!-- Coaching: two figures, one guiding the other -->
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="10" cy="8" r="3" stroke="white" stroke-width="2" fill="none"/>
+            <path d="M4 22c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="20" cy="10" r="2.5" stroke="#fbbf24" stroke-width="1.8" fill="none" opacity="0.85"/>
+            <path d="M15.5 24c0-2.5 2-4.5 4.5-4.5s4.5 2 4.5 4.5" stroke="#fbbf24" stroke-width="1.8" stroke-linecap="round" opacity="0.85"/>
+          </svg>
+        </div>
+        <h3>Practice, Not Presentations</h3>
+        <p>
+          AI is a skill you get good at by doing, not by watching a slide deck. Our coaches
+          &mdash; including an ICF-certified professional coach and a PhD educator &mdash;
+          help people work through the emotional and practical barriers that keep them stuck.
+          You'll be bad at it at first. That's the point. We're there for that part.
+        </p>
+        <ul class="features">
+          <li>An educator, a coach, and a builder</li>
+          <li>Non-technical backgrounds welcome</li>
+          <li>We've been through it ourselves</li>
+        </ul>
+        <a href="how-we-work.html" class="service-link">See our approach</a>
+      </div>
+
+      <!-- Card 3: Community -->
+      <div class="service-card">
+        <div class="badge badge-individual">For Individuals</div>
+        <div class="service-icon" style="background: var(--color-accent);">
+          <!-- Community: connected nodes / people network -->
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="14" cy="6" r="2.5" stroke="white" stroke-width="1.8" fill="none"/>
+            <circle cx="6" cy="20" r="2.5" stroke="white" stroke-width="1.8" fill="none"/>
+            <circle cx="22" cy="20" r="2.5" stroke="white" stroke-width="1.8" fill="none"/>
+            <line x1="12.5" y1="8.2" x2="7.5" y2="17.8" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+            <line x1="15.5" y1="8.2" x2="20.5" y2="17.8" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+            <line x1="8.5" y1="20" x2="19.5" y2="20" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+          </svg>
+        </div>
+        <h3>AI-First Practitioner Community</h3>
+        <p>
+          Going through this moment alone is harder than it needs to be. Our community
+          is where people build with AI together &mdash; with live sessions, coaching,
+          and peers who get it. Members have shipped real apps, tools, and workflows.
+          Non-technical backgrounds are the norm, not the exception.
+        </p>
+        <ul class="features">
+          <li>New AI Tools Monday</li>
+          <li>Getting Unstuck Tuesday</li>
+          <li>Demo &amp; Share Wednesday</li>
+          <li>Monthly Getting Started sessions</li>
+        </ul>
+        <a href="community.html" class="service-link">Join the Community</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-note" id="note-how">
+  <strong>Design note — How We Work:</strong> Three cards, but restructured. Card 1 = the org offering (embedded coaching). Card 2 = the approach/philosophy (practice not presentations, names the team's credentials without a full bio section). Card 3 = the community with your actual weekly schedule (Mon/Tue/Wed sessions, monthly Getting Started). The community card now has real specifics instead of generic "workshops & peer learning." The middle card says "You'll be bad at it at first. That's the point." — that's the most MVP Club sentence on the page. Does the middle card work as "approach" or should it be a separate offering?
+</div>
+
+
+<!-- ============================================
+     SECTION 4: CREDIBILITY STRIPE
+     Quick team intro + experience stats.
+     Full bios live on an About page.
+     ============================================ -->
+<section class="team-section" id="credibility">
+  <div class="container">
+    <div class="team-header">
+      <div class="eyebrow">Who We Are</div>
+      <h2 class="font-display">Meet the Team</h2>
+      <p>
+        Two of our three founders came from non-technical backgrounds. We went through the same
+        learning curve your team is facing. That's what makes us good at this.
+      </p>
+    </div>
+
+    <div class="team-grid">
+      <!-- Matt -->
+      <div class="team-card">
+        <img src="../public/matt-hastings.png" alt="Matt Hastings" class="team-card-photo">
+        <div class="team-card-name">Matt Hastings</div>
+        <p class="team-card-bio">
+          Has run over 100 AI adoption coaching sessions. Manages AI implementation
+          team at General Assembly and designs AI coaching products for Fortune 500 clients.
+          PhD in Education.
+        </p>
+        <p class="team-card-quote">
+          "The only way to learn is by doing &mdash; understanding comes through practice,
+          not preparation."
+        </p>
+      </div>
+
+      <!-- Jill -->
+      <div class="team-card">
+        <img src="../public/jill-ozovek.jpg" alt="Jill Ozovek" class="team-card-photo">
+        <div class="team-card-name">Jill Ozovek</div>
+        <p class="team-card-bio">
+          ICF-certified professional coach who led learning design including AI programming
+          and agentic workflows at General Assembly. Sets up AI workflows for startups
+          and runs coaching sessions for MVP Club. 15 years of coaching experience.
+        </p>
+        <p class="team-card-quote">
+          "Most people's biggest AI barrier isn't technical &mdash; it's psychological."
+        </p>
+      </div>
+
+      <!-- Ryan -->
+      <div class="team-card">
+        <img src="../public/ryan-brodsky.jpg" alt="Ryan Brodsky" class="team-card-photo">
+        <div class="team-card-name">Ryan Brodsky</div>
+        <p class="team-card-bio">
+          Software developer who uses AI to create customer support articles, prototype
+          applications, and has shipped 50+ feature requests using AI-assisted development.
+          Former programming instructor.
+        </p>
+        <p class="team-card-quote">
+          "You learn more when you watch somebody do something wrong and they explain
+          what happened."
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-note" id="note-cred">
+  <strong>Design note — Team:</strong> Expanded from a slim "trust stripe" to full founder cards with real photos, real bios, and real quotes from the profiles doc. Each card has an archetype subtitle (Educator / Coach / Builder) that tells the story instantly. The bios are short but hit the key points: Matt's PhD + non-technical + 100+ sessions, Jill's ICF cert + 15 years + meets skeptics where they are, Ryan's teaching background + builds in public. Every quote is a real one from the founder doc.
+</div>
+
+
+<!-- ============================================
+     SECTION 5: FINAL CTA
+     One clear action. Reinforce the value prop.
+     ============================================ -->
+<section class="final-cta" id="final-cta">
+  <div class="container">
+    <div class="final-cta-card">
+      <h2 class="font-display">It's Better to Go Through This Moment Together Than Alone.</h2>
+      <p>
+        Whether you're leading a team through AI adoption or figuring it out yourself &mdash;
+        let's talk. No pitch deck. No pressure. Just a conversation about where you're at
+        and whether we can help.
+      </p>
+      <div class="final-cta-buttons">
+        <a href="#" class="btn-dark">Book a Discovery Call</a>
+        <a href="#" class="btn-outline">Join the Community</a>
+      </div>
+      <div class="final-cta-note">15-minute conversation &mdash; for organizations or individuals</div>
+    </div>
+  </div>
+</section>
+
+<div class="section-note" id="note-cta">
+  <strong>Design note — Final CTA:</strong> The headline is a direct Matt quote: "It is better to go through this moment together than alone." This is the emotional close — not a feature pitch, not a ROI argument. It speaks to both the org buyer and the individual. Both paths are represented: "Book a Discovery Call" for orgs, "Join the Community" for individuals. This is the one place on the homepage where the community gets equal billing with the org offering.
+</div>
+
+
+<!-- ============================================
+     FOOTER
+     ============================================ -->
+<footer>
+  <div class="container">
+    <div class="brand">MVP Club</div>
+    <div class="links">
+      <a href="how-we-work.html">How We Work</a>
+      <a href="for-organizations.html">For Organizations</a>
+      <a href="community.html">Community</a>
+      <a href="#">Blog</a>
+      <a href="#">Contact</a>
+    </div>
+    <div class="copy">&copy; 2025 MVP Club</div>
+  </div>
+</footer>
+
+
+<!-- ============================================
+     ANNOTATION BAR
+     Toggle for design discussion notes
+     ============================================ -->
+<div class="annotation-bar">
+  <div style="display:flex;align-items:center;">
+    <span class="label">Mockup</span>
+    <span>Homepage Redesign — for discussion, not production. Design notes are visible throughout.</span>
+  </div>
+  <button class="annotation-toggle" onclick="toggleNotes()">Toggle Design Notes</button>
+</div>
+
+<script>
+  let notesVisible = true;
+  function toggleNotes() {
+    notesVisible = !notesVisible;
+    document.querySelectorAll('.section-note, .mockup-note').forEach(el => {
+      el.style.display = notesVisible ? 'block' : 'none';
+    });
+  }
+</script>
+
+<!-- Add bottom padding so annotation bar doesn't cover content -->
+<div style="height: 50px;"></div>
+
+</body>
+</html>

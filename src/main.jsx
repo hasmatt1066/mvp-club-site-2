@@ -1,5 +1,5 @@
-import { ViteReactSSG } from 'vite-react-ssg/single-page'
-import MVPClubWebsite from './mvp-club-site.jsx'
+import { ViteReactSSG } from 'vite-react-ssg'
+import routes from './routes'
 import './index.css'
 
-export const createRoot = ViteReactSSG(<MVPClubWebsite />)
+export const createRoot = ViteReactSSG({ routes })

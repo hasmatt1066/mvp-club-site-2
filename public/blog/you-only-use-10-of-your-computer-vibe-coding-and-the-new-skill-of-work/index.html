@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>You Only Use 10% of Your Computer: Vibe Coding and the New Skill of Work | MVP Club Blog</title>
+  <meta name="description" content="Most of us dramatically underutilize the computers in front of us—not because we&#039;re not smart enough, but because we didn&#039;t have access to the translation layer. Vibe coding changes that.">
+  <meta name="author" content="Matt Hastings">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="You Only Use 10% of Your Computer: Vibe Coding and the New Skill of Work">
+  <meta property="og:description" content="Most of us dramatically underutilize the computers in front of us—not because we&#039;re not smart enough, but because we didn&#039;t have access to the translation layer. Vibe coding changes that.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://mvpclub.co/blog/you-only-use-10-of-your-computer-vibe-coding-and-the-new-skill-of-work">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="You Only Use 10% of Your Computer: Vibe Coding and the New Skill of Work">
+  <meta name="twitter:description" content="Most of us dramatically underutilize the computers in front of us—not because we&#039;re not smart enough, but because we didn&#039;t have access to the translation layer. Vibe coding changes that.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Zilla+Slab&display=swap" rel="stylesheet">
+
+  <!-- Schema.org Article markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "You Only Use 10% of Your Computer: Vibe Coding and the New Skill of Work",
+    "author": {
+      "@type": "Person",
+      "name": "Matt Hastings"
+    },
+    "datePublished": "2026-01-29",
+    "description": "Most of us dramatically underutilize the computers in front of us—not because we&#039;re not smart enough, but because we didn&#039;t have access to the translation layer. Vibe coding changes that.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "MVP Club",
+      "url": "https://mvpclub.co"
+    }
+  }
+  </script>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background-color: #faf5f0;
+      color: #1a365d;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: #ffffff;
+      border-bottom: 1px solid rgba(26, 54, 93, 0.1);
+      padding: 1rem 2rem;
+      z-index: 100;
+    }
+
+    .nav-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-family: 'Zilla Slab', serif;
+      font-size: 1.5rem;
+      color: #1a365d;
+      text-decoration: none;
+    }
+
+    .nav-links a {
+      color: #1a365d;
+      text-decoration: none;
+      margin-left: 2rem;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      color: #d97706;
+    }
+
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 8rem 1.5rem 4rem;
+    }
+
+    .post-meta {
+      margin-bottom: 2rem;
+    }
+
+    .post-pillar {
+      display: inline-block;
+      background: #d97706;
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.25rem 0.75rem;
+      border-radius: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-family: 'Zilla Slab', serif;
+      font-size: 2.5rem;
+      font-weight: 400;
+      line-height: 1.2;
+      color: #1a365d;
+      margin-bottom: 1rem;
+    }
+
+    .post-info {
+      color: #115e59;
+      font-size: 0.95rem;
+    }
+
+    .post-info span {
+      margin-right: 1rem;
+    }
+
+    .post-content {
+      font-size: 1.1rem;
+    }
+
+    .post-content p {
+      margin-bottom: 1.5rem;
+    }
+
+    .post-content h2 {
+      font-family: 'Zilla Slab', serif;
+      font-size: 1.75rem;
+      font-weight: 400;
+      color: #1a365d;
+      margin: 2.5rem 0 1rem;
+    }
+
+    .post-content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #1a365d;
+      margin: 2rem 0 0.75rem;
+    }
+
+    .post-content ul, .post-content ol {
+      margin: 0 0 1.5rem 1.5rem;
+    }
+
+    .post-content li {
+      margin-bottom: 0.5rem;
+    }
+
+    .post-content a {
+      color: #d97706;
+      text-decoration: underline;
+    }
+
+    .post-content blockquote {
+      border-left: 4px solid #d97706;
+      padding-left: 1.5rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: #115e59;
+    }
+
+    .post-content strong {
+      font-weight: 600;
+    }
+
+    .post-content figure.blog-image {
+      margin: 2rem -120px;
+      text-align: center;
+    }
+
+    .post-content figure.blog-image img {
+      max-width: 100%;
+      width: 960px;
+      height: auto;
+      border-radius: 0.5rem;
+      display: block;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 1000px) {
+      .post-content figure.blog-image {
+        margin: 2rem -40px;
+      }
+      .post-content figure.blog-image img {
+        width: calc(100% + 80px);
+        max-width: calc(100vw - 2rem);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .post-content figure.blog-image {
+        margin: 2rem -1rem;
+      }
+      .post-content figure.blog-image img {
+        width: calc(100% + 2rem);
+        border-radius: 0;
+      }
+    }
+
+    .post-content figure.blog-image figcaption {
+      margin-top: 0.75rem;
+      font-size: 0.9rem;
+      color: #115e59;
+      font-style: italic;
+    }
+
+    .post-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-size: 0.95rem;
+    }
+
+    .post-content thead {
+      background: #1a365d;
+      color: white;
+    }
+
+    .post-content th {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      font-weight: 600;
+    }
+
+    .post-content td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid rgba(26, 54, 93, 0.1);
+    }
+
+    .post-content tbody tr:nth-child(even) {
+      background: rgba(26, 54, 93, 0.03);
+    }
+
+    .post-content tbody tr:hover {
+      background: rgba(26, 54, 93, 0.06);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #115e59;
+      text-decoration: none;
+      font-weight: 500;
+      margin-bottom: 2rem;
+    }
+
+    .back-link:hover {
+      color: #d97706;
+    }
+
+    .cta-section {
+      background: #ffffff;
+      border: 1px solid rgba(26, 54, 93, 0.1);
+      border-radius: 1rem;
+      padding: 2rem;
+      margin-top: 3rem;
+      text-align: center;
+    }
+
+    .cta-section h3 {
+      font-family: 'Zilla Slab', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      margin-bottom: 0.75rem;
+    }
+
+    .cta-section p {
+      color: #115e59;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: #d97706;
+      color: white;
+      font-weight: 600;
+      padding: 0.875rem 2rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3);
+    }
+
+    footer {
+      text-align: center;
+      padding: 3rem 1.5rem;
+      color: #115e59;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 640px) {
+      h1 { font-size: 1.875rem; }
+      main { padding-top: 6rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-content">
+      <a href="/" class="nav-logo">MVP Club</a>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/how-we-work">How We Work</a>
+        <a href="/for-organizations">For Organizations</a>
+        <a href="/community">Community</a>
+        <a href="/blog/">Blog</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <a href="/blog/" class="back-link">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+      Back to Blog
+    </a>
+
+    <article>
+      <header class="post-meta">
+        <span class="post-pillar">Practice &gt; Training / Human + AI Teams</span>
+        <h1>You Only Use 10% of Your Computer: Vibe Coding and the New Skill of Work</h1>
+        <div class="post-info">
+          <span>By Matt Hastings</span>
+          <span>January 28, 2026</span>
+        </div>
+      </header>
+
+      <div class="post-content">
+        <p><img style="max-width: 100%; height: auto;" alt="You Only Use 10% of Your Computer" src="/images/blog/2026-01-29_vibe-coding-10-percent.png" /></p>
+<p><strong>You know how people used to say "we only use 10% of our brains"? It's not true, but stay with me. I think most of us only use 10% of our computers. Not because we're not smart enough—because we didn't have access to the translation layer.</strong></p>
+<p>I've been thinking about this for a while now. The computer sitting in front of you—and mine—has enormous potential. CPU cycles available. Memory waiting to be used. The ability to process, transform, create, automate. And most of us interact with it by clicking around inside software that someone else built, doing things that someone else decided we should be able to do.</p>
+<p>That's not a criticism. That's just how it was. If you wanted to get your computer to do something custom—something specific to your needs—you had to write code. And writing code required years of training, a specific kind of brain, a career path most of us didn't take.</p>
+<p>The translation layer was locked.</p>
+<h2>What Is the Translation Layer?</h2>
+<p><strong>Code was always just translation: human intention → machine action. You have an idea of what you want to happen. The computer can make it happen. But someone needs to translate between the two.</strong></p>
+<p>That's what programmers did. They were the translators. They took what people wanted and converted it into a language the machine could execute.</p>
+<p>This is why software companies became so powerful. They employed the translators. If you wanted to get something done with a computer, you either used software they built or you hired your own translator. Most of us just used what was available.</p>
+<p>But now AI handles that translation. You can describe what you want in English—plain English—and the machine can figure out how to do it.</p>
+<p>That's vibe coding. Talking to your computer to get it to do things for you.</p>
+<h2>Why Does This Matter Beyond "Tech People"?</h2>
+<p><strong>This isn't a niche skill for developers. This is the new skill of work, period. There are no "non-technical jobs" anymore—not in the sense that everyone needs to learn to code, but in the sense that everyone needs to learn how to direct their computers to do things for them.</strong></p>
+<p>I want to be careful here because I've seen this point get misunderstood.</p>
+<p>I'm not saying everyone needs to become a programmer. I'm not saying you need to learn Python or understand algorithms or care about data structures.</p>
+<p>I'm saying the distinction between "technical" and "non-technical" roles is dissolving. Because directing a computer used to require technical skills. Now it requires clear thinking and the ability to communicate what you want.</p>
+<p>Those are different skills. And they're skills most white-collar professionals already have—they just haven't applied them to their machines yet.</p>
+<p>The barrier wasn't capability. It was access.</p>
+<h2>What Does It Look Like in Practice?</h2>
+<p><strong>I've started running multiple projects at the same time. One keeps moving in the background while I'm in meetings, doing day-to-day work. I check in, give feedback, keep it going. A year ago that would've required a team or years of technical training I don't have.</strong></p>
+<p>Here's what changed for me: I stopped thinking of my computer as a tool I use and started thinking of it as compute I direct.</p>
+<p>That sounds abstract, so let me make it concrete.</p>
+<p>Before: I would open applications. I would use the features those applications provided. I would work within the constraints that designers and developers had set for me. If I wanted something the software didn't do, I was stuck.</p>
+<p>Now: I describe what I want to accomplish. The AI figures out how to make the computer do it. I evaluate the result, give feedback, iterate. The constraints are different. They're about my ability to articulate what I want—not about what software someone else built for me.</p>
+<p>I built a browser-based game. I've deployed multiple websites. I've created automation systems that handle workflows I used to do manually. I don't have a CS degree. I still couldn't explain what a for-loop does if you asked me. But I can get my computer to do things I couldn't have done a year ago.</p>
+<h2>What Questions Should You Be Asking?</h2>
+<p><strong>I don't have a perfect framework for maximizing compute yet. But I find myself asking new questions: What projects am I not starting because I assumed I couldn't? What's my computer doing right now while I'm in this meeting? What am I leaving on the table?</strong></p>
+<p>These questions feel uncomfortable because they reveal something: most of us have been dramatically underutilizing the resources available to us.</p>
+<p>Not because we're lazy. Not because we're not smart. Because we didn't have access to the translation layer that would let us direct those resources.</p>
+<p>Now we do.</p>
+<p>So the questions become:</p>
+<p><strong>What would you build if you could easily tell your computer what to do?</strong></p>
+<p>Not "what would you build if you learned to code for three years"—that's a different question with a different answer. What would you build if you could just describe it and iterate toward it?</p>
+<p><strong>What's your computer doing right now?</strong></p>
+<p>Probably not much. Sitting there. Waiting. CPU mostly idle. Memory mostly free. Meanwhile you're doing work manually that the machine could be doing for you—if you knew how to ask.</p>
+<p><strong>What are you leaving on the table?</strong></p>
+<p>This is the uncomfortable one. Because the answer is probably "a lot." Projects not started. Automations not built. Tools not created. Not because they were impossible, but because the barrier felt too high.</p>
+<p>The barrier is lower now. What does that change?</p>
+<h2>How Should You See Your Computer Differently?</h2>
+<p><strong>Look at the computer in front of you. It's not a fixed thing with a set of applications. It's raw power—compute—that you and AI can shape into whatever you need.</strong></p>
+<p>This is the perceptual shift I'm trying to point at.</p>
+<p>Your computer isn't a collection of software. It's not defined by the applications installed on it. It's not limited to what designers at Microsoft or Apple or Google decided you should be able to do.</p>
+<p>It's raw capability. Processing power. Memory. Storage. Network connections. The ability to do things—lots of things, fast, repeatedly, at scale.</p>
+<p>What it does with that capability is now, increasingly, up to you.</p>
+<p>That's new. For most of human-computer interaction, the answer to "what can my computer do?" was "whatever software you have installed." Now the answer is closer to "whatever you can clearly describe."</p>
+<h2>What's the Skill to Develop?</h2>
+<p><strong>The skill isn't coding. The skill is learning to direct compute—to articulate what you want clearly enough that AI can translate it into action, and to iterate when the first attempt isn't quite right.</strong></p>
+<p>This is learnable. It's not mystical. It's not reserved for people with certain backgrounds.</p>
+<p>It does require practice. You won't be good at it immediately. The first time you try to get your computer to do something through vibe coding, it probably won't work perfectly. You'll need to clarify, iterate, adjust your ask.</p>
+<p>That's normal. That's the learning curve.</p>
+<p>But the curve is manageable. I've coached over a hundred people through this—non-technical professionals learning to direct their computers to build things. The pattern is consistent: early frustration, gradual clarity, then a moment where it clicks and they realize they can do things they never thought possible.</p>
+<p>The barrier was never their intelligence. It was access to the translation layer.</p>
+<p>Now they have it. Now you have it.</p>
+<h2>What Do You Want to Build?</h2>
+<p><strong>There's no project you couldn't undertake. The formal barriers are gone. The question now is just: what do you want to build?</strong></p>
+<p>This is where I want to leave you—not with a framework or a methodology, but with a question.</p>
+<p>Look at the computer in front of you. See it differently. Not as a fixed thing, but as raw power waiting to be directed.</p>
+<p>What would you do with that power?</p>
+<p>What's the project you've been putting off because you assumed you couldn't? What's the tool you wish existed? What's the workflow you've been doing manually that a machine could handle?</p>
+<p>The formal barriers are gone. The translation layer is accessible.</p>
+<p>The question isn't whether you're technical enough. The question is what you want to create.</p>
+      </div>
+
+      <div class="cta-section">
+        <h3>Ready to transform your AI practice?</h3>
+        <p>Join MVP Club and learn alongside peers who are navigating the same journey.</p>
+        <a href="https://calendly.com/d/cybv-947-s8m/discovery-call" class="cta-button" target="_blank" rel="noopener noreferrer">Book a Discovery Call</a>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 MVP Club. All rights reserved.</p>
+  </footer>
+</body>
+</html>

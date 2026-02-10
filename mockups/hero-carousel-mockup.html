@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hero with Carousel - MVP Club</title>
+  <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Dusk Palette - MVP Club Brand */
+      --color-primary: #0f1729;
+      --color-primary-tint: #1a2332;
+      --color-primary-muted: rgba(15, 23, 41, 0.6);
+      --color-accent: #ff6b35;
+      --color-accent-lifted: #ff9052;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--color-primary);
+      color: white;
+    }
+
+    .font-display {
+      font-family: 'Zilla Slab', serif;
+    }
+
+    .hero-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 80px 60px;
+      gap: 60px;
+    }
+
+    .hero-left {
+      flex: 0 0 40%;
+      padding-right: 40px;
+    }
+
+    .hero-right {
+      flex: 0 0 60%;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .eyebrow {
+      color: var(--color-accent-lifted);
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 1.5px;
+      margin-bottom: 20px;
+    }
+
+    .hero-title {
+      font-size: 56px;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+
+    .hero-title .highlight {
+      background: linear-gradient(135deg, var(--color-accent-lifted) 0%, var(--color-accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-description {
+      font-size: 20px;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 32px;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+    }
+
+    .btn {
+      padding: 16px 32px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 16px;
+      cursor: pointer;
+      transition: transform 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: var(--color-accent);
+      color: white;
+      border: none;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: white;
+      border: 2px solid rgba(255,255,255,0.2);
+    }
+
+    /* Carousel Section */
+    .carousel-wrapper {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .carousel-label {
+      color: rgba(255,255,255,0.6);
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .carousel-container {
+      position: relative;
+      height: 200px;
+      overflow: hidden;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .carousel-slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      padding: 24px;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .carousel-slide.active {
+      opacity: 1;
+    }
+
+    .carousel-slide .title {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--color-accent-lifted);
+    }
+
+    .carousel-slide .description {
+      font-size: 14px;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+
+    .carousel-slide .outcome {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .carousel-slide .metric {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--color-accent);
+    }
+
+    .carousel-slide .metric-label {
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .dot.active {
+      background: var(--color-accent);
+      width: 24px;
+      border-radius: 4px;
+    }
+
+    /* Generator Card */
+    .generator-card {
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+
+    .card-header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .card-title {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .card-subtitle {
+      color: rgba(255,255,255,0.6);
+      font-size: 14px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      color: rgba(255,255,255,0.8);
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
+    textarea, select {
+      width: 100%;
+      padding: 16px;
+      border-radius: 12px;
+      border: 2px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.95);
+      color: var(--color-primary);
+      font-size: 15px;
+      font-family: inherit;
+      transition: border-color 0.2s;
+    }
+
+    textarea:focus, select:focus {
+      outline: none;
+      border-color: var(--color-accent);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .hint-text {
+      color: rgba(255,255,255,0.5);
+      font-size: 12px;
+      margin-top: 6px;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 18px;
+      background: var(--color-accent);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 16px;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .submit-btn:hover {
+      background: var(--color-accent-lifted);
+      transform: translateY(-2px);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .hero-section {
+        flex-direction: column;
+        padding: 60px 40px;
+      }
+
+      .hero-left, .hero-right {
+        flex: 1;
+      }
+
+      .hero-left {
+        padding-right: 0;
+        text-align: center;
+      }
+
+      .hero-title {
+        font-size: 42px;
+      }
+
+      .cta-buttons {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="hero-section">
+    <!-- Left Side: Value Prop -->
+    <div class="hero-left">
+      <div class="eyebrow">Strategic AI Transformation</div>
+      <h1 class="hero-title font-display">
+        Turn AI Access Into <span class="highlight">Genuine Capability</span>
+      </h1>
+      <p class="hero-description">
+        We coach your team to bring an AI-first mindset to real work and implement AI workflows.
+        Get measurable productivity gains in 4 weeks by doing actual work, not sitting through programs.
+      </p>
+      <div class="cta-buttons">
+        <a href="#" class="btn btn-primary">Start a 4-Week Pilot</a>
+        <a href="#" class="btn btn-secondary">Join the Community</a>
+      </div>
+    </div>
+
+    <!-- Right Side: Carousel + Generator -->
+    <div class="hero-right">
+      <!-- Carousel -->
+      <div class="carousel-wrapper">
+        <div class="carousel-label">Real transformation examples ↓</div>
+        <div class="carousel-container">
+          <div class="carousel-slide active" data-index="0">
+            <div class="title">Marketing Content Machine</div>
+            <div class="description">
+              Write content separately for each channel → Create omnichannel content from single brief
+            </div>
+            <div class="outcome">
+              <span class="metric">90%</span>
+              <span class="metric-label">time reduction per content piece</span>
+            </div>
+          </div>
+
+          <div class="carousel-slide" data-index="1">
+            <div class="title">Weekly Report Creation</div>
+            <div class="description">
+              Hours gathering data across tools → AI aggregates metrics and drafts reports automatically
+            </div>
+            <div class="outcome">
+              <span class="metric">75%</span>
+              <span class="metric-label">time saved weekly</span>
+            </div>
+          </div>
+
+          <div class="carousel-slide" data-index="2">
+            <div class="title">Client Research Summaries</div>
+            <div class="description">
+              Manual web scraping and note-taking → AI compiles comprehensive briefs from multiple sources
+            </div>
+            <div class="outcome">
+              <span class="metric">85%</span>
+              <span class="metric-label">faster research process</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-dots">
+          <div class="dot active" data-index="0"></div>
+          <div class="dot" data-index="1"></div>
+          <div class="dot" data-index="2"></div>
+        </div>
+      </div>
+
+      <!-- Generator -->
+      <div class="generator-card">
+        <div class="card-header">
+          <h2 class="card-title font-display">✨ See Your Workflow Transform</h2>
+          <p class="card-subtitle">Describe a repetitive task and get a custom transformation</p>
+        </div>
+
+        <form>
+          <div class="form-group">
+            <label for="workflow">Your workflow</label>
+            <textarea
+              id="workflow"
+              placeholder="e.g., I spend 2 hours every Monday writing our team newsletter in Google Docs..."
+            ></textarea>
+            <div class="hint-text">Be specific: What tools? How often? What's frustrating?</div>
+          </div>
+
+          <div class="form-group">
+            <label for="category">Category (optional)</label>
+            <select id="category">
+              <option value="">Select a category (optional)</option>
+              <option value="content">Content Creation</option>
+              <option value="data">Data Analysis</option>
+              <option value="communication">Communication</option>
+              <option value="design">Design</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <button type="submit" class="submit-btn">
+            <span>✨</span>
+            <span>Transform this workflow</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Carousel functionality
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.dot');
+    const totalSlides = slides.length;
+
+    function showSlide(index) {
+      slides.forEach(slide => slide.classList.remove('active'));
+      dots.forEach(dot => dot.classList.remove('active'));
+
+      slides[index].classList.add('active');
+      dots[index].classList.add('active');
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      showSlide(currentSlide);
+    }
+
+    // Auto-advance every 4 seconds
+    setInterval(nextSlide, 4000);
+
+    // Manual dot navigation
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        currentSlide = parseInt(dot.getAttribute('data-index'));
+        showSlide(currentSlide);
+      });
+    });
+  </script>
+</body>
+</html>

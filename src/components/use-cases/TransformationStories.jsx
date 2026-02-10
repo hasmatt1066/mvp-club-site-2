@@ -85,61 +85,49 @@ const TransformationStories = () => {
 // Mobile carousel component
 const MobileCarousel = ({ useCases }) => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const containerRef = useRef(null);
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
 
-  // Handle scroll to update active index
-  const handleScroll = () => {
-    if (!containerRef.current) return;
-    const scrollLeft = containerRef.current.scrollLeft;
-    const cardWidth = containerRef.current.offsetWidth;
-    const newIndex = Math.round(scrollLeft / cardWidth);
-    setActiveIndex(newIndex);
+  // Minimum swipe distance (in px)
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
   };
 
-  // Scroll to specific card
-  const scrollToCard = (index) => {
-    if (!containerRef.current) return;
-    const cardWidth = containerRef.current.offsetWidth;
-    containerRef.current.scrollTo({
-      left: index * cardWidth,
-      behavior: 'smooth',
-    });
+  const onTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe && activeIndex < useCases.length - 1) {
+      setActiveIndex(activeIndex + 1);
+    }
+    if (isRightSwipe && activeIndex > 0) {
+      setActiveIndex(activeIndex - 1);
+    }
+  };
+
+  const goToCard = (index) => {
+    setActiveIndex(index);
   };
 
   return (
-    <div>
-      {/* Carousel Container */}
-      <div
-        ref={containerRef}
-        onScroll={handleScroll}
-        className="scrollbar-hide"
-        style={{
-          scrollbarWidth: 'none',
-          msOverflowStyle: 'none',
-          WebkitOverflowScrolling: 'touch',
-          overflowX: 'auto',
-          display: 'flex',
-          gap: '1rem',
-          paddingBottom: '1rem',
-          marginLeft: '-1.5rem',
-          marginRight: '-1.5rem',
-          paddingLeft: '1.5rem',
-          paddingRight: '1.5rem',
-          minHeight: '700px',
-        }}
-      >
-        {useCases.map((useCase) => (
-          <div
-            key={useCase.id}
-            className="flex-shrink-0"
-            style={{
-              width: 'calc(100vw - 3rem)',
-              scrollSnapAlign: 'center',
-            }}
-          >
-            <TransformationCard useCase={useCase} />
-          </div>
-        ))}
+    <div
+      onTouchStart={onTouchStart}
+      onTouchMove={onTouchMove}
+      onTouchEnd={onTouchEnd}
+    >
+      {/* Only render the active card - no overflow clipping needed */}
+      <div style={{ paddingBottom: '1rem' }}>
+        <TransformationCard useCase={useCases[activeIndex]} />
       </div>
 
       {/* Dot Indicators */}
@@ -147,7 +135,7 @@ const MobileCarousel = ({ useCases }) => {
         {useCases.map((_, index) => (
           <button
             key={index}
-            onClick={() => scrollToCard(index)}
+            onClick={() => goToCard(index)}
             className={`w-2 h-2 rounded-full transition-all duration-200 ${
               index === activeIndex ? 'w-6' : ''
             }`}

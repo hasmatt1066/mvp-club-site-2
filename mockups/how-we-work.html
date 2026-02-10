@@ -1,0 +1,2040 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How We Work - MVP Club</title>
+  <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-primary: #1a365d;
+      --color-primary-lifted: #2d5a8f;
+      --color-secondary: #115e59;
+      --color-secondary-lifted: #2a8580;
+      --color-accent: #d97706;
+      --color-accent-lifted: #fbbf24;
+      --color-accent-soft: #f87171;
+      --color-accent-dark: #b45309;
+      --color-background: #faf5f0;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--color-background);
+      color: #374151;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .font-display { font-family: 'Zilla Slab', serif; }
+
+    /* ==========================================
+       NAVIGATION
+       ========================================== */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      background: var(--color-primary);
+      padding: 1rem 0;
+    }
+    nav .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Zilla Slab', serif;
+      font-size: 1.5rem;
+      color: var(--color-accent-lifted);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+    .nav-logo img {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--color-accent-lifted); }
+    .nav-links a.active { color: var(--color-accent-lifted); }
+    .nav-cta {
+      background: var(--color-accent) !important;
+      color: white !important;
+      padding: 0.625rem 1.25rem;
+      border-radius: 0.5rem;
+      font-weight: 600 !important;
+    }
+    .nav-cta:hover { opacity: 0.9; }
+
+    /* Hamburger menu for mobile */
+    .nav-hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: white;
+      margin: 5px 0;
+      transition: all 0.3s;
+    }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--color-primary);
+      z-index: 60;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      color: rgba(255,255,255,0.9);
+      text-decoration: none;
+      font-size: 1.25rem;
+      font-weight: 500;
+    }
+    .mobile-menu a.active { color: var(--color-accent-lifted); }
+    .mobile-menu-close {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.5rem;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+    }
+
+    /* ==========================================
+       PAGE HEADER
+       ========================================== */
+    .page-header {
+      padding: 8rem 0 4rem;
+      background: var(--color-primary);
+      position: relative;
+      overflow: hidden;
+    }
+    .page-header::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: var(--color-secondary);
+      opacity: 0.08;
+    }
+    .page-header .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+    .page-header-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .page-header .eyebrow {
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--color-accent-lifted);
+      margin-bottom: 1rem;
+    }
+    .page-header h1 {
+      font-family: 'Zilla Slab', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: white;
+      line-height: 1.2;
+      margin-bottom: 1.25rem;
+    }
+    .page-header .intro {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.7;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    /* ==========================================
+       CONTENT SECTIONS
+       ========================================== */
+    .content-section {
+      padding: 5rem 0;
+    }
+    .content-section .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    .section-header {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 3rem;
+    }
+    .section-header .eyebrow {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 0.75rem;
+    }
+    .section-header h2 {
+      font-family: 'Zilla Slab', serif;
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      color: var(--color-primary);
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+    .section-header p {
+      font-size: 1.05rem;
+      color: #6b7280;
+      line-height: 1.7;
+    }
+
+    /* ==========================================
+       THE PROBLEM SECTION
+       ========================================== */
+    .problem-section {
+      background: var(--color-background);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      max-width: 1000px;
+      margin: 0 auto 4rem;
+    }
+    .stat-card {
+      background: white;
+      border-radius: 1rem;
+      padding: 2rem;
+      text-align: center;
+      text-decoration: none;
+      transition: all 0.3s;
+      display: block;
+    }
+    .stat-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(26, 54, 93, 0.1);
+    }
+    .stat-number {
+      font-family: 'Zilla Slab', serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    .stat-label {
+      font-weight: 600;
+      color: var(--color-primary);
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+    }
+    .stat-subtext {
+      font-size: 0.85rem;
+      color: #9ca3af;
+      margin-bottom: 0.75rem;
+      line-height: 1.5;
+    }
+    .stat-source {
+      font-size: 0.75rem;
+      color: #b0b8c4;
+      font-style: italic;
+    }
+
+    .pain-points-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .pain-points-header h3 {
+      font-family: 'Zilla Slab', serif;
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      color: var(--color-primary);
+    }
+    .pain-points-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      max-width: 900px;
+      margin: 0 auto 4rem;
+    }
+    .pain-point {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+    .pain-point-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--color-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+    .pain-point-title {
+      font-weight: 600;
+      color: var(--color-primary);
+      margin-bottom: 0.25rem;
+      font-size: 0.95rem;
+    }
+    .pain-point-text {
+      font-size: 0.875rem;
+      color: #6b7280;
+      line-height: 1.5;
+    }
+
+    .comparison-card {
+      background: white;
+      border-radius: 1.5rem;
+      overflow: hidden;
+      max-width: 1000px;
+      margin: 0 auto;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    }
+    .comparison-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    .comparison-left {
+      padding: 2.5rem;
+    }
+    .comparison-left h3 {
+      font-family: 'Zilla Slab', serif;
+      font-size: 1.5rem;
+      color: var(--color-primary);
+      margin-bottom: 1rem;
+    }
+    .comparison-left p {
+      font-size: 0.95rem;
+      color: #6b7280;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+    .comparison-bullets {
+      list-style: none;
+    }
+    .comparison-bullets li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.4rem 0;
+      font-size: 0.9rem;
+      color: #374151;
+    }
+    .comparison-bullets li .x-icon {
+      color: #ef4444;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .comparison-right {
+      padding: 2.5rem;
+      background: #f9fafb;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .comparison-badge {
+      display: inline-block;
+      padding: 0.3rem 0.75rem;
+      border-radius: 1rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      background: var(--color-accent);
+      color: white;
+      margin-bottom: 1.5rem;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .comparison-table {
+      width: 100%;
+    }
+    .comparison-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .comparison-row:last-child { border-bottom: none; }
+    .comparison-from {
+      flex: 1;
+      text-align: right;
+      color: #9ca3af;
+      font-size: 0.875rem;
+    }
+    .comparison-arrow {
+      color: var(--color-accent);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .comparison-to {
+      flex: 1;
+      font-weight: 600;
+      color: var(--color-primary);
+      font-size: 0.875rem;
+    }
+
+    /* ==========================================
+       ANIMATED VALLEY SECTION
+       ========================================== */
+    .valley-section {
+      background: var(--color-primary);
+      padding: 4rem 0;
+    }
+    .valley-section .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    .valley-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .valley-header .eyebrow {
+      font-size: 1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--color-accent-lifted);
+      margin-bottom: 1rem;
+    }
+    .valley-header h2 {
+      font-family: 'Zilla Slab', serif;
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      color: white;
+      line-height: 1.2;
+    }
+
+    /* Chicken-egg paradox card */
+    .paradox-loop {
+      background: white;
+      border-radius: 1.5rem;
+      padding: 2.5rem;
+      max-width: 900px;
+      margin: 0 auto 2.5rem;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    }
+    .paradox-steps-desktop {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+    .paradox-steps-mobile {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+    .paradox-step {
+      background: #f9fafb;
+      padding: 1.25rem 1.5rem;
+      border-radius: 0.75rem;
+      text-align: center;
+      flex: 1;
+      min-width: 180px;
+    }
+    .paradox-step-mobile {
+      background: #f9fafb;
+      padding: 1.25rem 1.5rem;
+      border-radius: 0.75rem;
+      text-align: center;
+      width: 100%;
+      max-width: 20rem;
+    }
+    .paradox-step p, .paradox-step-mobile p {
+      font-size: 1rem;
+      color: #374151;
+      line-height: 1.5;
+    }
+    .paradox-step strong, .paradox-step-mobile strong {
+      color: var(--color-secondary);
+    }
+    .paradox-arrow {
+      font-size: 2rem;
+      color: var(--color-secondary);
+      flex-shrink: 0;
+    }
+    .paradox-arrow-mobile {
+      font-size: 1.75rem;
+      color: var(--color-secondary);
+    }
+    .paradox-divider {
+      width: 8rem;
+      height: 3px;
+      border-radius: 2px;
+      background: var(--color-accent);
+      margin: 0 auto 1.5rem;
+    }
+    .paradox-punchline {
+      text-align: center;
+      padding: 0 1rem;
+    }
+    .paradox-punchline .main {
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--color-primary);
+    }
+    .paradox-punchline .sub {
+      color: #9ca3af;
+      font-size: 1.1rem;
+      margin-left: 0.5rem;
+    }
+
+    /* SVG visualization card */
+    .valley-viz-card {
+      background: white;
+      border-radius: 1.5rem;
+      padding: 1.5rem 2.5rem 1.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+      position: relative;
+    }
+    .valley-phase-indicator {
+      position: absolute;
+      top: 0.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      display: none;
+    }
+    .valley-phase-indicator.visible { display: block; }
+    .valley-phase-pill {
+      padding: 0.375rem 1.25rem;
+      border-radius: 50px;
+      background: white;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--color-primary);
+      white-space: nowrap;
+    }
+    .valley-svg-container {
+      width: 100%;
+    }
+    .valley-svg-container svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .valley-caption {
+      margin-top: 1.5rem;
+      padding: 1.25rem 1.5rem;
+      border-radius: 0.75rem;
+      text-align: center;
+      background: #f9fafb;
+      min-height: 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .valley-caption-title {
+      font-size: 1.125rem;
+      margin-bottom: 0.35rem;
+      font-weight: 500;
+    }
+    .valley-caption-sub {
+      font-size: 0.875rem;
+      color: #6b7280;
+    }
+
+    /* Post-animation insight cards */
+    .valley-insights {
+      display: none;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      max-width: 900px;
+      margin: 2rem auto 0;
+    }
+    .valley-insights.visible {
+      display: grid;
+    }
+    .valley-insight-card {
+      padding: 2.5rem;
+      border-radius: 1.5rem;
+    }
+    .valley-insight-card .label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 1.25rem;
+    }
+    .valley-insight-card p {
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+    .insight-training {
+      background: var(--color-secondary);
+    }
+    .insight-training .label { color: var(--color-accent-lifted); }
+    .insight-training p { color: white; }
+    .insight-training strong { color: white; }
+    .insight-coaching {
+      background: white;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    }
+    .insight-coaching .label { color: var(--color-accent); }
+    .insight-coaching p { color: var(--color-primary); }
+
+    /* Valley animations */
+    @keyframes valleyDrawPath {
+      from { stroke-dashoffset: 500; }
+      to { stroke-dashoffset: 0; }
+    }
+    @keyframes valleyFadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes valleyFadeOut {
+      from { opacity: 1; }
+      to { opacity: 0; }
+    }
+    @keyframes valleyFlyIn {
+      0% { transform: translate(-30px, -30px) scale(0); opacity: 0; }
+      70% { transform: translate(3px, 3px) scale(1.1); opacity: 1; }
+      100% { transform: translate(0, 0) scale(1); opacity: 1; }
+    }
+    @keyframes valleyDash {
+      to { stroke-dashoffset: -20; }
+    }
+    @keyframes valleyPopIn {
+      0% { transform: scale(0); opacity: 0; }
+      70% { transform: scale(1.15); opacity: 1; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .valley-path-draw {
+      stroke-dasharray: 500;
+      stroke-dashoffset: 500;
+      animation: valleyDrawPath 1.2s ease-out forwards;
+    }
+    .valley-quit-path {
+      stroke-dasharray: 8 6;
+      animation: valleyDash 1s linear infinite;
+    }
+    .valley-coach-fly-in {
+      animation: valleyFlyIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+    .valley-pop-in {
+      animation: valleyPopIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+    .valley-fade-in {
+      animation: valleyFadeIn 0.5s ease forwards;
+    }
+    .valley-fade-out {
+      animation: valleyFadeOut 0.5s ease forwards;
+    }
+
+    /* ==========================================
+       PHILOSOPHY SECTION
+       ========================================== */
+    .philosophy-section {
+      background: var(--color-background);
+    }
+
+    .strengths-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      max-width: 1000px;
+      margin: 0 auto 3rem;
+    }
+    .strength-card {
+      background: white;
+      border-radius: 1.5rem;
+      padding: 2rem;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    }
+    .strength-card-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .strength-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+    .strength-card-header h3 {
+      font-family: 'Zilla Slab', serif;
+      font-size: 1.25rem;
+      color: var(--color-primary);
+    }
+    .strength-card-header .subtitle {
+      font-size: 0.8rem;
+      color: #9ca3af;
+    }
+    .strength-list {
+      list-style: none;
+    }
+    .strength-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.4rem 0;
+      font-size: 0.925rem;
+      color: #374151;
+    }
+    .strength-list li .check {
+      flex-shrink: 0;
+      font-weight: 700;
+      margin-top: 1px;
+    }
+
+    .principles-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .principle-card {
+      background: white;
+      border-radius: 1.5rem;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+      transition: all 0.3s;
+    }
+    .principle-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(26, 54, 93, 0.1);
+    }
+    .principle-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 0.75rem;
+      background: var(--color-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.25rem;
+    }
+    .principle-card h4 {
+      font-family: 'Zilla Slab', serif;
+      font-size: 1.25rem;
+      color: var(--color-primary);
+      margin-bottom: 0.75rem;
+    }
+    .principle-card p {
+      font-size: 0.925rem;
+      color: #6b7280;
+      line-height: 1.6;
+    }
+
+    /* ==========================================
+       WORK LOOP SECTION
+       ========================================== */
+    .workloop-section {
+      background: white;
+      padding: 5rem 0;
+    }
+    .workloop-section .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    .wl-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 3rem;
+    }
+    .wl-header .eyebrow {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #3a7ca5;
+      margin-bottom: 0.75rem;
+    }
+    .wl-header-title {
+      font-family: 'Zilla Slab', serif;
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      font-weight: 700;
+      color: #1a2332;
+      margin-bottom: 0.75rem;
+      line-height: 1.2;
+    }
+    .wl-header-subtitle {
+      font-size: 1rem;
+      color: #5a6a7a;
+      max-width: 600px;
+      line-height: 1.6;
+      margin: 0 auto;
+    }
+
+    .wl-visual {
+      position: relative;
+      width: 580px;
+      height: 580px;
+      margin: 0 auto 2rem;
+    }
+
+    .wl-svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    @keyframes wlFlowDash {
+      0% { stroke-dashoffset: 0; }
+      100% { stroke-dashoffset: -30; }
+    }
+    @keyframes wlFadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes wlPopupFadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .wl-ring-base {
+      fill: none;
+      stroke: #e0d8cf;
+      stroke-width: 3;
+    }
+    .wl-ring-animated {
+      fill: none;
+      stroke: url(#wlGradient);
+      stroke-width: 3;
+      stroke-dasharray: 10 20;
+      animation: wlFlowDash 2s linear infinite;
+    }
+
+    .wl-node {
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      transform: translate(-50%, -50%);
+      border: 3px solid transparent;
+    }
+    .wl-node:hover {
+      transform: translate(-50%, -50%) scale(1.1);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+      border-color: var(--node-color);
+    }
+    .wl-node.active {
+      transform: translate(-50%, -50%) scale(1.15);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+      border-color: var(--node-color);
+    }
+    .wl-node-num {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      opacity: 0.5;
+      margin-bottom: 2px;
+    }
+    .wl-node-name {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #1a2332;
+      text-align: center;
+    }
+    .wl-node-indicator {
+      width: 24px;
+      height: 3px;
+      border-radius: 2px;
+      margin-top: 6px;
+    }
+
+    .wl-center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      width: 200px;
+      pointer-events: none;
+    }
+    .wl-center-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #1a2332;
+      margin-bottom: 0.25rem;
+    }
+    .wl-center-sub {
+      font-size: 0.75rem;
+      color: #5a6a7a;
+    }
+    .wl-detail-card {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      border-radius: 12px;
+      padding: 1.25rem;
+      width: 180px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+      text-align: center;
+      animation: wlPopupFadeIn 0.15s ease-out;
+      pointer-events: none;
+    }
+    .wl-detail-num {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.25rem;
+    }
+    .wl-detail-name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #1a2332;
+      margin-bottom: 0.5rem;
+    }
+    .wl-detail-desc {
+      font-size: 0.8rem;
+      color: #5a6a7a;
+      line-height: 1.5;
+    }
+
+    .wl-footer-pill {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: linear-gradient(135deg, #e8a85c, #e89c4a);
+      color: #1a2332;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      box-shadow: 0 4px 15px rgba(232, 168, 92, 0.3);
+      width: fit-content;
+      margin: 0 auto;
+    }
+
+    /* ==========================================
+       CTA SECTION
+       ========================================== */
+    .final-cta {
+      padding: 5rem 0;
+      background: var(--color-background);
+    }
+    .final-cta .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    .final-cta-card {
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+      background: white;
+      padding: 3rem;
+      border-radius: 1.5rem;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    }
+    .final-cta-card h2 {
+      font-family: 'Zilla Slab', serif;
+      font-size: 2rem;
+      color: var(--color-primary);
+      margin-bottom: 0.75rem;
+    }
+    .final-cta-card p {
+      color: #6b7280;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .final-cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background: var(--color-accent);
+      color: white;
+      border-radius: 0.75rem;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(217, 119, 6, 0.4); }
+    .btn-outline {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background: transparent;
+      color: var(--color-primary);
+      border: 2px solid var(--color-primary);
+      border-radius: 0.75rem;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-outline:hover { background: var(--color-primary); color: white; }
+
+    /* ==========================================
+       FOOTER
+       ========================================== */
+    footer {
+      background: var(--color-primary);
+      padding: 2.5rem 0;
+    }
+    footer .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    footer .brand {
+      font-family: 'Zilla Slab', serif;
+      font-size: 1.15rem;
+      color: var(--color-accent-lifted);
+    }
+    footer .links {
+      display: flex;
+      gap: 1.5rem;
+    }
+    footer .links a {
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      font-size: 0.8rem;
+      transition: color 0.2s;
+    }
+    footer .links a:hover { color: white; }
+    footer .copy {
+      color: rgba(255,255,255,0.35);
+      font-size: 0.75rem;
+    }
+
+    /* ==========================================
+       RESPONSIVE
+       ========================================== */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: block; }
+      .stats-grid { grid-template-columns: 1fr; }
+      .pain-points-grid { grid-template-columns: 1fr; }
+      .comparison-inner { grid-template-columns: 1fr; }
+      .strengths-grid { grid-template-columns: 1fr; }
+      .principles-grid { grid-template-columns: 1fr; }
+      .paradox-steps-desktop { display: none; }
+      .paradox-steps-mobile { display: flex; }
+      .valley-insights { grid-template-columns: 1fr; }
+      .wl-visual {
+        width: 340px;
+        height: 340px;
+      }
+      .wl-node {
+        width: 70px;
+        height: 70px;
+      }
+      .wl-node-name { font-size: 0.7rem; }
+      .wl-node-num { font-size: 0.55rem; }
+      .wl-node-indicator { width: 16px; height: 2px; }
+      .wl-detail-card { width: 140px; padding: 1rem; }
+      .wl-detail-name { font-size: 0.9rem; }
+      .wl-detail-desc { font-size: 0.7rem; }
+      footer .container { flex-direction: column; gap: 1rem; text-align: center; }
+      footer .links { flex-wrap: wrap; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============================================
+     NAVIGATION
+     ============================================ -->
+<nav>
+  <div class="container">
+    <a href="homepage-redesign.html" class="nav-logo">
+      <div style="width:40px;height:40px;border-radius:8px;background:var(--color-accent-lifted);display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--color-primary);font-weight:700;">M</div>
+      <span>MVP Club</span>
+    </a>
+    <div class="nav-links">
+      <a href="homepage-redesign.html">Home</a>
+      <a href="how-we-work.html" class="active">How We Work</a>
+      <a href="for-organizations.html">For Organizations</a>
+      <a href="community.html">Community</a>
+      <a href="#">Blog</a>
+      <a href="https://calendly.com/d/cybv-947-s8m/discovery-call" class="nav-cta">Book a Call</a>
+    </div>
+    <button class="nav-hamburger" onclick="document.getElementById('mobileMenu').classList.add('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile menu overlay -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" onclick="document.getElementById('mobileMenu').classList.remove('open')">&times;</button>
+  <a href="homepage-redesign.html">Home</a>
+  <a href="how-we-work.html" class="active">How We Work</a>
+  <a href="for-organizations.html">For Organizations</a>
+  <a href="community.html">Community</a>
+  <a href="#">Blog</a>
+  <a href="https://calendly.com/d/cybv-947-s8m/discovery-call" style="background:var(--color-accent);padding:0.75rem 1.5rem;border-radius:0.5rem;color:white;font-weight:600;">Book a Call</a>
+</div>
+
+
+<!-- ============================================
+     PAGE HEADER
+     ============================================ -->
+<section class="page-header">
+  <div class="container">
+    <div class="page-header-content">
+      <div class="eyebrow">Our Approach</div>
+      <h1 class="font-display">How We Work</h1>
+      <p class="intro">
+        AI adoption isn't a technology problem. It's a human one. Here's how we think about
+        the gap between "we bought AI tools" and "our people actually use them" &mdash; and what
+        we do differently to close it.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================
+     SECTION 1: THE PROBLEM
+     ============================================ -->
+<section class="content-section problem-section" id="problem">
+  <div class="container">
+
+    <div class="section-header">
+      <div class="eyebrow" style="color: var(--color-secondary);">The AI Adoption Gap</div>
+      <h2>You Have the Tools. Where's the Transformation?</h2>
+      <p>
+        Organizations are investing heavily in AI &mdash; and getting surprisingly little in return.
+        Not because the technology isn't ready. Because the approach is wrong.
+      </p>
+    </div>
+
+    <div class="stats-grid">
+      <a href="https://mlq.ai/media/quarterly_decks/v0.1_State_of_AI_in_Business_2025_Report.pdf" target="_blank" rel="noopener noreferrer" class="stat-card">
+        <div class="stat-number" style="color: var(--color-accent-soft);">95%</div>
+        <div class="stat-label">of AI projects fail to deliver ROI</div>
+        <div class="stat-subtext">Most see zero measurable bottom-line impact</div>
+        <div class="stat-source">Source: MIT Project NANDA, 2025</div>
+      </a>
+      <a href="https://www.spglobal.com/market-intelligence/en/news-insights/research/ai-experiences-rapid-adoption-but-with-mixed-outcomes-highlights-from-vote-ai-machine-learning" target="_blank" rel="noopener noreferrer" class="stat-card">
+        <div class="stat-number" style="color: var(--color-accent);">42%</div>
+        <div class="stat-label">of companies abandoned AI initiatives</div>
+        <div class="stat-subtext">Up from just 17% in 2024 &mdash; a 147% increase</div>
+        <div class="stat-source">Source: S&amp;P Global Market Intelligence, 2025</div>
+      </a>
+      <a href="https://www.resume-now.com/job-resources/careers/ai-disruption-report" target="_blank" rel="noopener noreferrer" class="stat-card">
+        <div class="stat-number" style="color: var(--color-secondary);">89%</div>
+        <div class="stat-label">of workers worry about AI impact on job security</div>
+        <div class="stat-subtext">Employee anxiety driving hesitation to adopt</div>
+        <div class="stat-source">Source: Resume Now AI Disruption Report, 2025</div>
+      </a>
+    </div>
+
+    <div class="pain-points-header">
+      <h3>The Real Pressure: Doing More With Less</h3>
+    </div>
+    <div class="pain-points-grid">
+      <div class="pain-point">
+        <div class="pain-point-icon">!</div>
+        <div>
+          <div class="pain-point-title">Teams Need to See Success: Fast</div>
+          <p class="pain-point-text">The question isn't "Should we do AI?" It's "How do we get value THIS MONTH?"</p>
+        </div>
+      </div>
+      <div class="pain-point">
+        <div class="pain-point-icon">!</div>
+        <div>
+          <div class="pain-point-title">Pilot first, scale what works</div>
+          <p class="pain-point-text">Start with one team, prove value, then expand &mdash; no big rollouts.</p>
+        </div>
+      </div>
+      <div class="pain-point">
+        <div class="pain-point-icon">!</div>
+        <div>
+          <div class="pain-point-title">Teams are too busy for "big transformation programs"</div>
+          <p class="pain-point-text">They need workflows that work, not workshops that don't.</p>
+        </div>
+      </div>
+      <div class="pain-point">
+        <div class="pain-point-icon">!</div>
+        <div>
+          <div class="pain-point-title">AI adoption isn't about knowledge, it's about practice</div>
+          <p class="pain-point-text">Success comes from coaching through setbacks.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="comparison-card">
+      <div class="comparison-inner">
+        <div class="comparison-left">
+          <h3>Why Traditional Approaches Fail</h3>
+          <p>
+            Organizations treat AI like traditional software: deploy it, run a training session,
+            expect adoption. But AI isn't traditional software. It requires a fundamentally
+            different relationship &mdash; one built on practice, experimentation, and continuous learning.
+          </p>
+          <ul class="comparison-bullets">
+            <li><span class="x-icon">&times;</span> One-time training doesn't build lasting skills</li>
+            <li><span class="x-icon">&times;</span> Generic workshops don't address specific workflows</li>
+            <li><span class="x-icon">&times;</span> Big rollouts fail when teams are already overwhelmed</li>
+            <li><span class="x-icon">&times;</span> You don't need more education &mdash; you need workflows that work</li>
+          </ul>
+        </div>
+        <div class="comparison-right">
+          <div class="comparison-badge">The Transformation Required</div>
+          <div class="comparison-table">
+            <div class="comparison-row" style="border-bottom:none; padding-bottom:0.25rem;">
+              <div class="comparison-from" style="font-weight:600; color:#6b7280;">Traditional Software</div>
+              <div class="comparison-arrow">&nbsp;</div>
+              <div class="comparison-to" style="color:var(--color-primary);">AI Systems</div>
+            </div>
+            <div class="comparison-row">
+              <div class="comparison-from">User operates tool</div>
+              <div class="comparison-arrow">&rarr;</div>
+              <div class="comparison-to">Manager collaborates</div>
+            </div>
+            <div class="comparison-row">
+              <div class="comparison-from">One-time training</div>
+              <div class="comparison-arrow">&rarr;</div>
+              <div class="comparison-to">Continuous practice</div>
+            </div>
+            <div class="comparison-row">
+              <div class="comparison-from">Predictable outputs</div>
+              <div class="comparison-arrow">&rarr;</div>
+              <div class="comparison-to">Creative potential</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================
+     SECTION 2: THE ADOPTION PARADOX
+     Fully interactive AnimatedValley
+     ============================================ -->
+<section class="valley-section" id="journey">
+  <div class="container">
+
+    <div class="valley-header">
+      <div class="eyebrow">The Adoption Paradox</div>
+      <h2>Why Most People Quit &mdash; And How Coaching Changes That</h2>
+    </div>
+
+    <!-- Chicken-Egg Problem -->
+    <div class="paradox-loop">
+      <!-- Desktop: horizontal -->
+      <div class="paradox-steps-desktop">
+        <div class="paradox-step">
+          <p>To <strong>see the value</strong><br>you need to be good at it</p>
+        </div>
+        <div class="paradox-arrow">&rarr;</div>
+        <div class="paradox-step">
+          <p>To <strong>get good</strong><br>you need to practice</p>
+        </div>
+        <div class="paradox-arrow">&rarr;</div>
+        <div class="paradox-step">
+          <p>To <strong>keep practicing</strong><br>you need to see the value</p>
+        </div>
+      </div>
+      <!-- Mobile: vertical -->
+      <div class="paradox-steps-mobile">
+        <div class="paradox-step-mobile">
+          <p>To <strong>see the value</strong><br>you need to be good at it</p>
+        </div>
+        <div class="paradox-arrow-mobile">&darr;</div>
+        <div class="paradox-step-mobile">
+          <p>To <strong>get good</strong><br>you need to practice</p>
+        </div>
+        <div class="paradox-arrow-mobile">&darr;</div>
+        <div class="paradox-step-mobile">
+          <p>To <strong>keep practicing</strong><br>you need to see the value</p>
+        </div>
+        <div class="paradox-arrow-mobile">&#8634;</div>
+      </div>
+      <div class="paradox-divider"></div>
+      <div class="paradox-punchline">
+        <span class="main">You can't see the value until you're already good.</span>
+        <span class="sub">So people rationally quit.</span>
+      </div>
+    </div>
+
+    <!-- Animated SVG Journey -->
+    <div class="valley-viz-card">
+      <div class="valley-phase-indicator" id="valleyPhaseIndicator">
+        <div class="valley-phase-pill" id="valleyPhaseName"></div>
+      </div>
+
+      <div class="valley-svg-container">
+        <svg id="valleySvg" viewBox="0 0 800 420">
+          <defs>
+            <linearGradient id="startGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#fbbf24" />
+              <stop offset="100%" stop-color="#d97706" />
+            </linearGradient>
+            <linearGradient id="successGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#115e59" />
+              <stop offset="50%" stop-color="#2a8580" />
+              <stop offset="100%" stop-color="#22c55e" />
+            </linearGradient>
+            <linearGradient id="quitGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#ef4444" />
+              <stop offset="100%" stop-color="#7f1d1d" />
+            </linearGradient>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="3" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+            <filter id="glowStrong">
+              <feGaussianBlur stdDeviation="6" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
+
+          <!-- Background grid lines -->
+          <line x1="40" y1="50" x2="780" y2="50" stroke="#e5e7eb" stroke-width="1"/>
+          <line x1="40" y1="92" x2="780" y2="92" stroke="#e5e7eb" stroke-width="1"/>
+          <line x1="40" y1="134" x2="780" y2="134" stroke="#e5e7eb" stroke-width="1"/>
+          <line x1="40" y1="176" x2="780" y2="176" stroke="#e5e7eb" stroke-width="1"/>
+          <line x1="40" y1="218" x2="780" y2="218" stroke="#e5e7eb" stroke-width="1"/>
+          <line x1="40" y1="260" x2="780" y2="260" stroke="#e5e7eb" stroke-width="1"/>
+          <line x1="40" y1="302" x2="780" y2="302" stroke="#e5e7eb" stroke-width="1"/>
+          <line x1="40" y1="344" x2="780" y2="344" stroke="#e5e7eb" stroke-width="1"/>
+          <line x1="40" y1="386" x2="780" y2="386" stroke="#e5e7eb" stroke-width="1"/>
+
+          <!-- MOTIVATION axis label -->
+          <text x="10" y="210" fill="#9ca3af" font-size="11" font-family="system-ui" font-weight="600" text-anchor="middle" transform="rotate(-90, 10, 210)">MOTIVATION</text>
+
+          <!-- Dynamic elements inserted by JS -->
+          <g id="valleyDynamic"></g>
+
+          <!-- Play/Replay button group -->
+          <g id="valleyButton" class="valley-button-group" style="cursor:pointer;">
+            <rect id="valleyBtnBg" x="280" y="170" width="240" height="60" rx="12" fill="#d97706" style="filter:drop-shadow(0 4px 12px rgba(0,0,0,0.15));"/>
+            <path id="valleyBtnIcon" d="M 305 190 L 305 210 L 321 200 Z" fill="white"/>
+            <text id="valleyBtnText" x="330" y="206" fill="white" font-size="16" font-weight="600" font-family="system-ui" text-anchor="start">Watch the Journey</text>
+          </g>
+        </svg>
+      </div>
+
+      <!-- Caption area -->
+      <div class="valley-caption" id="valleyCaption">
+        <div class="valley-caption-title" id="valleyCaptionTitle" style="color: var(--color-primary);"></div>
+        <div class="valley-caption-sub" id="valleyCaptionSub"></div>
+      </div>
+    </div>
+
+    <!-- Post-animation insight cards -->
+    <div class="valley-insights" id="valleyInsights">
+      <div class="valley-insight-card insight-training">
+        <div class="label">Why Training Doesn't Work</div>
+        <p>
+          Training is knowledge transfer &mdash; one-time, front-loaded. But the problem isn't knowledge.
+          It's <strong>sustained practice through a period where it doesn't feel worth it yet.</strong>
+        </p>
+      </div>
+      <div class="valley-insight-card insight-coaching">
+        <div class="label">Why Coaching Works</div>
+        <p>
+          Coaching keeps you in practice long enough to become someone who sees the value.
+          <strong>It's the bridge that sustains practice until the value becomes self-evident.</strong>
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================
+     SECTION 3: PHILOSOPHY
+     ============================================ -->
+<section class="content-section philosophy-section" id="philosophy">
+  <div class="container">
+
+    <div class="section-header">
+      <div class="eyebrow" style="color: var(--color-accent-lifted);">Our Philosophy</div>
+      <h2>The New Unit of Labor: Human + AI Teams</h2>
+      <p>
+        We believe the fundamental unit of work is shifting. Not from human to AI.
+        But from individual employee to the Employee + AI Team. An inseparable
+        collaboration where each brings irreplaceable strengths.
+      </p>
+    </div>
+
+    <div class="strengths-grid">
+      <!-- Human Strengths -->
+      <div class="strength-card">
+        <div class="strength-card-header">
+          <div class="strength-icon" style="background: var(--color-accent-lifted);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <div>
+            <h3>Human Strengths</h3>
+            <div class="subtitle">What you bring to the team</div>
+          </div>
+        </div>
+        <ul class="strength-list">
+          <li><span class="check" style="color: var(--color-accent);">&#10003;</span> Strategic initiative and direction-setting</li>
+          <li><span class="check" style="color: var(--color-accent);">&#10003;</span> Contextual nuance and judgment</li>
+          <li><span class="check" style="color: var(--color-accent);">&#10003;</span> Institutional knowledge</li>
+          <li><span class="check" style="color: var(--color-accent);">&#10003;</span> Connecting outputs to business value</li>
+          <li><span class="check" style="color: var(--color-accent);">&#10003;</span> Final evaluation and refinement</li>
+        </ul>
+      </div>
+
+      <!-- AI Strengths -->
+      <div class="strength-card">
+        <div class="strength-card-header">
+          <div class="strength-icon" style="background: var(--color-secondary);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+            </svg>
+          </div>
+          <div>
+            <h3>AI Strengths</h3>
+            <div class="subtitle">What AI brings to the team</div>
+          </div>
+        </div>
+        <ul class="strength-list">
+          <li><span class="check" style="color: var(--color-secondary);">&#9889;</span> Rapid content generation at scale</li>
+          <li><span class="check" style="color: var(--color-secondary);">&#9889;</span> Pattern recognition and insight surfacing</li>
+          <li><span class="check" style="color: var(--color-secondary);">&#9889;</span> Unlimited ideation capacity</li>
+          <li><span class="check" style="color: var(--color-secondary);">&#9889;</span> Quick data analysis</li>
+          <li><span class="check" style="color: var(--color-secondary);">&#9889;</span> Tireless iteration and variation</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Key Principles -->
+    <div class="principles-grid">
+      <div class="principle-card">
+        <div class="principle-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <circle cx="12" cy="12" r="6"/>
+            <circle cx="12" cy="12" r="2"/>
+          </svg>
+        </div>
+        <h4>Practice Over Training</h4>
+        <p>AI mastery requires continuous practice, not one-time instruction</p>
+      </div>
+      <div class="principle-card">
+        <div class="principle-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M23 4v6h-6"/>
+            <path d="M1 20v-6h6"/>
+            <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+          </svg>
+        </div>
+        <h4>Experimentation is Essential</h4>
+        <p>Learning happens through trial, error, and iteration</p>
+      </div>
+      <div class="principle-card">
+        <div class="principle-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
+          </svg>
+        </div>
+        <h4>Context Matters</h4>
+        <p>Integration must be tailored to specific roles and workflows</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================
+     SECTION 4: THE WORK LOOP
+     Fully interactive circular diagram
+     ============================================ -->
+<section class="workloop-section" id="workloop">
+  <div class="container">
+
+    <div class="wl-header">
+      <div class="eyebrow">Our Methodology</div>
+      <div class="wl-header-title">The Work Loop: Your Operating System<br>for Human + AI Collaboration</div>
+      <div class="wl-header-subtitle">
+        This isn't a prompt template. It's a way of thinking &mdash; a repeatable framework that transforms how you approach any task with AI.
+      </div>
+    </div>
+
+    <div class="wl-visual" id="wlVisual">
+      <svg class="wl-svg" viewBox="0 0 580 580">
+        <defs>
+          <linearGradient id="wlGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#2d8a6e" />
+            <stop offset="25%" stop-color="#3a7ca5" />
+            <stop offset="50%" stop-color="#d4a039" />
+            <stop offset="75%" stop-color="#3a7ca5" />
+            <stop offset="100%" stop-color="#e87957" />
+          </linearGradient>
+        </defs>
+
+        <!-- Main loop circle -->
+        <circle cx="290" cy="290" r="210" class="wl-ring-base" />
+        <circle cx="290" cy="290" r="210" class="wl-ring-animated" />
+
+        <!-- Direction arrows on the path -->
+        <path d="M 290 80 L 295 90 L 285 90 Z" fill="#c0b8af" />
+        <path d="M 500 290 L 490 295 L 490 285 Z" fill="#c0b8af" />
+        <path d="M 290 500 L 285 490 L 295 490 Z" fill="#c0b8af" />
+        <path d="M 80 290 L 90 285 L 90 295 Z" fill="#c0b8af" />
+      </svg>
+
+      <!-- Step nodes positioned by JS -->
+      <div class="wl-node" id="wlNode0" data-step="0" style="left:50%;top:13.8%;--node-color:#2d8a6e;">
+        <span class="wl-node-num" style="color:#2d8a6e;">01</span>
+        <span class="wl-node-name">Articulate</span>
+        <div class="wl-node-indicator" style="background:#2d8a6e;"></div>
+      </div>
+      <div class="wl-node" id="wlNode1" data-step="1" style="left:81.3%;top:31.9%;--node-color:#3a7ca5;">
+        <span class="wl-node-num" style="color:#3a7ca5;">02</span>
+        <span class="wl-node-name">Build</span>
+        <div class="wl-node-indicator" style="background:#3a7ca5;"></div>
+      </div>
+      <div class="wl-node" id="wlNode2" data-step="2" style="left:81.3%;top:68.1%;--node-color:#d4a039;">
+        <span class="wl-node-num" style="color:#d4a039;">03</span>
+        <span class="wl-node-name">Prompt</span>
+        <div class="wl-node-indicator" style="background:#d4a039;"></div>
+      </div>
+      <div class="wl-node" id="wlNode3" data-step="3" style="left:50%;top:86.2%;--node-color:#2d8a6e;">
+        <span class="wl-node-num" style="color:#2d8a6e;">04</span>
+        <span class="wl-node-name">Execute</span>
+        <div class="wl-node-indicator" style="background:#2d8a6e;"></div>
+      </div>
+      <div class="wl-node" id="wlNode4" data-step="4" style="left:18.7%;top:68.1%;--node-color:#3a7ca5;">
+        <span class="wl-node-num" style="color:#3a7ca5;">05</span>
+        <span class="wl-node-name">Evaluate</span>
+        <div class="wl-node-indicator" style="background:#3a7ca5;"></div>
+      </div>
+      <div class="wl-node" id="wlNode5" data-step="5" style="left:18.7%;top:31.9%;--node-color:#e87957;">
+        <span class="wl-node-num" style="color:#e87957;">06</span>
+        <span class="wl-node-name">Iterate</span>
+        <div class="wl-node-indicator" style="background:#e87957;"></div>
+      </div>
+
+      <!-- Center content -->
+      <div class="wl-center" id="wlCenter">
+        <div class="wl-center-title">Continuous Loop</div>
+        <div class="wl-center-sub">Hover on a step to learn more</div>
+      </div>
+    </div>
+
+    <div class="wl-footer-pill">
+      <span style="font-size:1rem;">&#8635;</span>
+      Continuous improvement through iteration
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================
+     SECTION 5: CTA
+     ============================================ -->
+<section class="final-cta" id="final-cta">
+  <div class="container">
+    <div class="final-cta-card">
+      <h2 class="font-display">Ready to See This in Action?</h2>
+      <p>
+        Whether you're leading a team through AI adoption or figuring it out yourself &mdash;
+        let's talk. No pitch deck. No pressure. Just a conversation about where you're at
+        and whether we can help.
+      </p>
+      <div class="final-cta-buttons">
+        <a href="https://calendly.com/d/cybv-947-s8m/discovery-call" class="btn-primary">Book a Discovery Call</a>
+        <a href="homepage-redesign.html" class="btn-outline">Back to Home</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================
+     FOOTER
+     ============================================ -->
+<footer>
+  <div class="container">
+    <div class="brand">MVP Club</div>
+    <div class="links">
+      <a href="homepage-redesign.html">Home</a>
+      <a href="how-we-work.html">How We Work</a>
+      <a href="for-organizations.html">For Organizations</a>
+      <a href="community.html">Community</a>
+      <a href="#">Blog</a>
+      <a href="#">Contact</a>
+    </div>
+    <div class="copy">&copy; 2025 MVP Club</div>
+  </div>
+</footer>
+
+
+<!-- ============================================
+     JAVASCRIPT: AnimatedValley + WorkLoop
+     ============================================ -->
+<script>
+(function() {
+  // =============================================
+  // ANIMATED VALLEY
+  // =============================================
+  var phase = -1;
+  var isPlaying = false;
+  var hasPlayed = false;
+  var timer = null;
+
+  var phases = [
+    { name: "The Journey Begins", duration: 2000 },
+    { name: "The Valley", duration: 2000 },
+    { name: "Without Coaching...", duration: 2500 },
+    { name: "But With Coaching...", duration: 2000 },
+    { name: "First Win", duration: 1800 },
+    { name: "Second Setback", duration: 1800 },
+    { name: "Coaching Again", duration: 1800 },
+    { name: "Building Momentum", duration: 1800 },
+    { name: "Another Wobble", duration: 1800 },
+    { name: "Coaching Support", duration: 1800 },
+    { name: "Self-Sustaining", duration: 0 }
+  ];
+
+  var points = {
+    start: { x: 80, y: 120 },
+    valley1: { x: 240, y: 300 },
+    win1: { x: 360, y: 180 },
+    dip2: { x: 440, y: 250 },
+    win2: { x: 520, y: 160 },
+    dip3: { x: 580, y: 200 },
+    fluency: { x: 650, y: 130 },
+    mastery: { x: 720, y: 80 }
+  };
+
+  var pathToValley = "M " + points.start.x + " " + points.start.y + " C 140 120, 180 200, " + points.valley1.x + " " + points.valley1.y;
+  var quitPath = "M " + points.valley1.x + " " + points.valley1.y + " C 280 340, 340 370, 440 385";
+  var pathValleyToWin1 = "M " + points.valley1.x + " " + points.valley1.y + " C 280 280, 320 200, " + points.win1.x + " " + points.win1.y;
+  var pathWin1ToDip2 = "M " + points.win1.x + " " + points.win1.y + " C 390 200, 420 240, " + points.dip2.x + " " + points.dip2.y;
+  var pathDip2ToWin2 = "M " + points.dip2.x + " " + points.dip2.y + " C 470 240, 500 170, " + points.win2.x + " " + points.win2.y;
+  var pathWin2ToDip3 = "M " + points.win2.x + " " + points.win2.y + " C 540 170, 560 190, " + points.dip3.x + " " + points.dip3.y;
+  var pathDip3ToFluency = "M " + points.dip3.x + " " + points.dip3.y + " C 600 190, 630 145, " + points.fluency.x + " " + points.fluency.y;
+  var pathFluencyToMastery = "M " + points.fluency.x + " " + points.fluency.y + " C 680 120, 700 95, " + points.mastery.x + " " + points.mastery.y;
+
+  var captions = [
+    { title: "Everyone starts excited. The potential feels real.", sub: '"AI will change everything!"', color: "var(--color-primary)" },
+    { title: "Then you hit The Valley. Outputs aren't working. It feels slow.", sub: '"I could have done this myself faster."', color: "#dc2626" },
+    { title: "Without support, people rationally quit.", sub: 'Back to old ways. "I\'ll try again later." They never do.', color: "#dc2626" },
+    { title: "But with coaching at the friction point...", sub: "Accountability. Encouragement. Someone who helps you push through.", color: "var(--color-secondary)" },
+    { title: "You get your first real win.", sub: '"Wait... that actually worked."', color: "#16a34a" },
+    { title: "But then another setback. Progress plateaus.", sub: '"I\'m in a rut. Same prompts, same results."', color: "var(--color-accent)" },
+    { title: "Coaching again\u2014expanding your approach.", sub: "New use cases. New workflows. Breaking through the plateau.", color: "var(--color-secondary)" },
+    { title: "Another breakthrough. Momentum is building.", sub: "You're starting to see opportunities everywhere.", color: "#16a34a" },
+    { title: "A smaller wobble. But you're more resilient now.", sub: "The setbacks get smaller. The recoveries get faster.", color: "var(--color-accent)" },
+    { title: "Light-touch coaching. You're almost there.", sub: "Less intervention needed. The skill is becoming yours.", color: "var(--color-secondary)" },
+    { title: "Self-sustaining. Wins drive practice. Practice drives wins.", sub: "The value is self-evident. This is just how you work now.", color: "#16a34a" }
+  ];
+
+  var dynContainer = document.getElementById("valleyDynamic");
+  var btnGroup = document.getElementById("valleyButton");
+  var btnBg = document.getElementById("valleyBtnBg");
+  var btnIcon = document.getElementById("valleyBtnIcon");
+  var btnText = document.getElementById("valleyBtnText");
+  var phaseIndicator = document.getElementById("valleyPhaseIndicator");
+  var phaseName = document.getElementById("valleyPhaseName");
+  var captionTitle = document.getElementById("valleyCaptionTitle");
+  var captionSub = document.getElementById("valleyCaptionSub");
+  var insightsEl = document.getElementById("valleyInsights");
+
+  function svgEl(tag, attrs) {
+    var el = document.createElementNS("http://www.w3.org/2000/svg", tag);
+    for (var k in attrs) {
+      if (k === "textContent") { el.textContent = attrs[k]; }
+      else if (k === "className") { el.setAttribute("class", attrs[k]); }
+      else if (k === "style") { el.setAttribute("style", attrs[k]); }
+      else { el.setAttribute(k, attrs[k]); }
+    }
+    return el;
+  }
+
+  function startAnimation() {
+    phase = 0;
+    isPlaying = true;
+    hasPlayed = true;
+    render();
+    scheduleNext();
+  }
+
+  function scheduleNext() {
+    if (!isPlaying) return;
+    if (phase >= phases.length - 1) {
+      isPlaying = false;
+      render();
+      return;
+    }
+    timer = setTimeout(function() {
+      phase++;
+      render();
+      scheduleNext();
+    }, phases[phase].duration);
+  }
+
+  btnGroup.addEventListener("click", function() {
+    if (!isPlaying) {
+      startAnimation();
+    }
+  });
+
+  function render() {
+    // Clear dynamic content
+    while (dynContainer.firstChild) dynContainer.removeChild(dynContainer.firstChild);
+
+    // Phase indicator
+    if (isPlaying && phase >= 0) {
+      phaseIndicator.classList.add("visible");
+      phaseName.textContent = phases[phase].name;
+    } else {
+      phaseIndicator.classList.remove("visible");
+    }
+
+    // Caption
+    if (phase >= 0) {
+      captionTitle.textContent = captions[phase].title;
+      captionTitle.style.color = captions[phase].color;
+      captionSub.textContent = captions[phase].sub;
+    } else {
+      captionTitle.textContent = "";
+      captionSub.textContent = "";
+    }
+
+    // Valley zone highlight (phases 1-3, fades at 3)
+    if (phase >= 1 && phase <= 3) {
+      var valleyGroup = svgEl("g", { className: phase === 3 ? "valley-fade-out" : "valley-fade-in" });
+      valleyGroup.appendChild(svgEl("rect", { x: "190", y: "260", width: "100", height: "90", rx: "8", fill: "#ef4444", "fill-opacity": "0.1", stroke: "#ef4444", "stroke-opacity": "0.3", "stroke-width": "1" }));
+      valleyGroup.appendChild(svgEl("text", { x: "240", y: "340", fill: "#f87171", "font-size": "10", "font-family": "system-ui", "text-anchor": "middle", textContent: "THE VALLEY" }));
+      dynContainer.appendChild(valleyGroup);
+    }
+
+    // Phase 0+: Initial descent path
+    if (phase >= 0) {
+      dynContainer.appendChild(svgEl("path", { d: pathToValley, fill: "none", stroke: "url(#startGradient)", "stroke-width": "4", "stroke-linecap": "round", filter: "url(#glow)", className: "valley-path-draw" }));
+    }
+
+    // Start point
+    if (phase >= 0) {
+      var startG = svgEl("g", { className: "valley-fade-in" });
+      startG.appendChild(svgEl("circle", { cx: points.start.x, cy: points.start.y, r: "12", fill: "#fbbf24", filter: "url(#glow)" }));
+      startG.appendChild(svgEl("circle", { cx: points.start.x, cy: points.start.y, r: "5", fill: "#1a365d" }));
+      startG.appendChild(svgEl("text", { x: points.start.x, y: points.start.y - 20, fill: "#1a365d", "font-size": "10", "font-weight": "600", "text-anchor": "middle", textContent: "Initial Excitement" }));
+      dynContainer.appendChild(startG);
+    }
+
+    // Valley point
+    if (phase >= 1) {
+      var vG = svgEl("g", { className: "valley-fade-in" });
+      var vOpacity = phase >= 4 ? "0.4" : "1";
+      vG.appendChild(svgEl("circle", { cx: points.valley1.x, cy: points.valley1.y, r: "12", fill: "#ef4444", style: "opacity:" + vOpacity + ";transition:opacity 0.5s ease" }));
+      vG.appendChild(svgEl("circle", { cx: points.valley1.x, cy: points.valley1.y, r: "5", fill: "#ffffff", style: "opacity:" + vOpacity + ";transition:opacity 0.5s ease" }));
+      dynContainer.appendChild(vG);
+    }
+
+    // Quit path (phases 2-3)
+    if (phase >= 2 && phase <= 3) {
+      var qG = svgEl("g", { className: phase === 3 ? "valley-fade-out" : "valley-fade-in" });
+      qG.appendChild(svgEl("path", { d: quitPath, fill: "none", stroke: "url(#quitGradient)", "stroke-width": "3", "stroke-linecap": "round", className: "valley-quit-path" }));
+      qG.appendChild(svgEl("text", { x: "450", y: "398", fill: "#ef4444", "font-size": "11", "font-weight": "500", textContent: "Without coaching: quit" }));
+      qG.appendChild(svgEl("text", { x: "450", y: "414", fill: "#94a3b8", "font-size": "10", textContent: '"It\'s faster to just do it myself"' }));
+      dynContainer.appendChild(qG);
+    }
+
+    // Coaching marker 1 at valley (phase 3+)
+    if (phase >= 3) {
+      var c1G = svgEl("g", { className: phase === 3 ? "valley-coach-fly-in" : "" });
+      c1G.appendChild(svgEl("circle", { cx: points.valley1.x, cy: points.valley1.y - 45, r: "22", fill: "#115e59", filter: "url(#glow)" }));
+      c1G.appendChild(svgEl("text", { x: points.valley1.x, y: points.valley1.y - 39, fill: "#fbbf24", "font-size": "16", "font-weight": "700", "text-anchor": "middle", textContent: "C" }));
+      dynContainer.appendChild(c1G);
+    }
+
+    // Path: Valley to First Win (phase 4+)
+    if (phase >= 4) {
+      dynContainer.appendChild(svgEl("path", { d: pathValleyToWin1, fill: "none", stroke: "url(#successGradient)", "stroke-width": "4", "stroke-linecap": "round", filter: "url(#glow)", className: "valley-path-draw" }));
+    }
+
+    // First Win point (phase 4+)
+    if (phase >= 4) {
+      var w1G = svgEl("g", { className: "valley-pop-in" });
+      w1G.appendChild(svgEl("circle", { cx: points.win1.x, cy: points.win1.y, r: "12", fill: "#22c55e", filter: "url(#glow)" }));
+      w1G.appendChild(svgEl("circle", { cx: points.win1.x, cy: points.win1.y, r: "5", fill: "#ffffff" }));
+      w1G.appendChild(svgEl("text", { x: points.win1.x, y: points.win1.y - 20, fill: "#16a34a", "font-size": "10", "font-weight": "600", "text-anchor": "middle", textContent: "First Win" }));
+      dynContainer.appendChild(w1G);
+    }
+
+    // Path: First Win to Dip 2 (phase 5+)
+    if (phase >= 5) {
+      dynContainer.appendChild(svgEl("path", { d: pathWin1ToDip2, fill: "none", stroke: "url(#successGradient)", "stroke-width": "4", "stroke-linecap": "round", filter: "url(#glow)", className: "valley-path-draw" }));
+    }
+
+    // Dip 2 point (phase 5+)
+    if (phase >= 5) {
+      var d2G = svgEl("g", { className: "valley-pop-in" });
+      d2G.appendChild(svgEl("circle", { cx: points.dip2.x, cy: points.dip2.y, r: "10", fill: "#d97706" }));
+      d2G.appendChild(svgEl("circle", { cx: points.dip2.x, cy: points.dip2.y, r: "4", fill: "#ffffff" }));
+      dynContainer.appendChild(d2G);
+    }
+
+    // Coaching marker 2 at dip 2 (phase 6+)
+    if (phase >= 6) {
+      var c2G = svgEl("g", { className: phase === 6 ? "valley-coach-fly-in" : "" });
+      c2G.appendChild(svgEl("circle", { cx: points.dip2.x, cy: points.dip2.y - 35, r: "18", fill: "#115e59", filter: "url(#glow)" }));
+      c2G.appendChild(svgEl("text", { x: points.dip2.x, y: points.dip2.y - 30, fill: "#fbbf24", "font-size": "14", "font-weight": "700", "text-anchor": "middle", textContent: "C" }));
+      dynContainer.appendChild(c2G);
+    }
+
+    // Path: Dip 2 to Win 2 (phase 7+)
+    if (phase >= 7) {
+      dynContainer.appendChild(svgEl("path", { d: pathDip2ToWin2, fill: "none", stroke: "url(#successGradient)", "stroke-width": "4", "stroke-linecap": "round", filter: "url(#glow)", className: "valley-path-draw" }));
+    }
+
+    // Win 2 point (phase 7+)
+    if (phase >= 7) {
+      var w2G = svgEl("g", { className: "valley-pop-in" });
+      w2G.appendChild(svgEl("circle", { cx: points.win2.x, cy: points.win2.y, r: "12", fill: "#22c55e", filter: "url(#glow)" }));
+      w2G.appendChild(svgEl("circle", { cx: points.win2.x, cy: points.win2.y, r: "5", fill: "#ffffff" }));
+      dynContainer.appendChild(w2G);
+    }
+
+    // Path: Win 2 to Dip 3 (phase 8+)
+    if (phase >= 8) {
+      dynContainer.appendChild(svgEl("path", { d: pathWin2ToDip3, fill: "none", stroke: "url(#successGradient)", "stroke-width": "4", "stroke-linecap": "round", filter: "url(#glow)", className: "valley-path-draw" }));
+    }
+
+    // Dip 3 point (phase 8+)
+    if (phase >= 8) {
+      var d3G = svgEl("g", { className: "valley-pop-in" });
+      d3G.appendChild(svgEl("circle", { cx: points.dip3.x, cy: points.dip3.y, r: "9", fill: "#d97706" }));
+      d3G.appendChild(svgEl("circle", { cx: points.dip3.x, cy: points.dip3.y, r: "4", fill: "#ffffff" }));
+      dynContainer.appendChild(d3G);
+    }
+
+    // Coaching marker 3 at dip 3 (phase 9+)
+    if (phase >= 9) {
+      var c3G = svgEl("g", { className: phase === 9 ? "valley-coach-fly-in" : "" });
+      c3G.appendChild(svgEl("circle", { cx: points.dip3.x, cy: points.dip3.y - 30, r: "14", fill: "#115e59", filter: "url(#glow)", opacity: "0.85" }));
+      c3G.appendChild(svgEl("text", { x: points.dip3.x, y: points.dip3.y - 25, fill: "#fbbf24", "font-size": "12", "font-weight": "700", "text-anchor": "middle", textContent: "C" }));
+      dynContainer.appendChild(c3G);
+    }
+
+    // Path: Dip 3 to Fluency (phase 10)
+    if (phase >= 10) {
+      dynContainer.appendChild(svgEl("path", { d: pathDip3ToFluency, fill: "none", stroke: "url(#successGradient)", "stroke-width": "4", "stroke-linecap": "round", filter: "url(#glow)", className: "valley-path-draw" }));
+    }
+
+    // Fluency point (phase 10)
+    if (phase >= 10) {
+      var fG = svgEl("g", { className: "valley-pop-in" });
+      fG.appendChild(svgEl("circle", { cx: points.fluency.x, cy: points.fluency.y, r: "12", fill: "#2a8580", filter: "url(#glow)" }));
+      fG.appendChild(svgEl("circle", { cx: points.fluency.x, cy: points.fluency.y, r: "5", fill: "#ffffff" }));
+      fG.appendChild(svgEl("text", { x: points.fluency.x, y: points.fluency.y - 20, fill: "#115e59", "font-size": "10", "font-weight": "600", "text-anchor": "middle", textContent: "Fluency" }));
+      dynContainer.appendChild(fG);
+    }
+
+    // Path: Fluency to Mastery (phase 10)
+    if (phase >= 10) {
+      var masteryPath = svgEl("path", { d: pathFluencyToMastery, fill: "none", stroke: "url(#successGradient)", "stroke-width": "4", "stroke-linecap": "round", filter: "url(#glow)", className: "valley-path-draw", style: "animation-delay: 0.8s" });
+      dynContainer.appendChild(masteryPath);
+    }
+
+    // Mastery point (phase 10)
+    if (phase >= 10) {
+      var mG = svgEl("g", { className: "valley-pop-in", style: "animation-delay: 1s" });
+      mG.appendChild(svgEl("circle", { cx: points.mastery.x, cy: points.mastery.y, r: "16", fill: "#22c55e", filter: "url(#glowStrong)" }));
+      mG.appendChild(svgEl("circle", { cx: points.mastery.x, cy: points.mastery.y, r: "6", fill: "#ffffff" }));
+      mG.appendChild(svgEl("text", { x: points.mastery.x, y: points.mastery.y - 25, fill: "#1a365d", "font-size": "11", "font-weight": "700", "text-anchor": "middle", textContent: "AI-First Mindset" }));
+      mG.appendChild(svgEl("text", { x: points.mastery.x, y: points.mastery.y + 35, fill: "#16a34a", "font-size": "10", "text-anchor": "middle", textContent: "Self-sustaining" }));
+      dynContainer.appendChild(mG);
+    }
+
+    // Button visibility
+    if (isPlaying) {
+      btnGroup.style.display = "none";
+    } else {
+      btnGroup.style.display = "block";
+      if (hasPlayed) {
+        btnBg.setAttribute("y", "360");
+        btnIcon.setAttribute("d", "M 305 370 L 305 390 L 321 380 Z");
+        btnText.setAttribute("y", "386");
+        btnText.textContent = "Replay Journey";
+      } else {
+        btnBg.setAttribute("y", "170");
+        btnIcon.setAttribute("d", "M 305 180 L 305 200 L 321 190 Z");
+        btnText.setAttribute("y", "196");
+        btnText.textContent = "Watch the Journey";
+      }
+    }
+
+    // Insight cards
+    if (phase >= 10 && !isPlaying) {
+      insightsEl.classList.add("visible");
+    } else {
+      insightsEl.classList.remove("visible");
+    }
+  }
+
+  // Initial render
+  render();
+
+
+  // =============================================
+  // WORK LOOP - Interactive hover
+  // =============================================
+  var wlSteps = [
+    { num: "01", name: "Articulate", desc: "Define what you actually need\u2014the real outcome, not just the surface request", color: "#2d8a6e" },
+    { num: "02", name: "Build", desc: "Gather context, examples, and constraints that will shape the output", color: "#3a7ca5" },
+    { num: "03", name: "Prompt", desc: "Craft your request with clarity, specificity, and the right level of structure", color: "#d4a039" },
+    { num: "04", name: "Execute", desc: "Run the prompt and generate initial outputs", color: "#2d8a6e" },
+    { num: "05", name: "Evaluate", desc: "Apply your judgment\u2014what works? What doesn't? What's missing?", color: "#3a7ca5" },
+    { num: "06", name: "Iterate", desc: "Refine based on evaluation. Loop back as needed until you hit the target.", color: "#e87957" }
+  ];
+
+  var wlCenter = document.getElementById("wlCenter");
+  var activeStep = null;
+
+  function updateWlCenter(stepIndex) {
+    if (stepIndex === null) {
+      wlCenter.innerHTML = '<div class="wl-center-title">Continuous Loop</div><div class="wl-center-sub">Hover on a step to learn more</div>';
+    } else {
+      var step = wlSteps[stepIndex];
+      wlCenter.innerHTML = '<div class="wl-detail-card" style="position:static;transform:none;pointer-events:none;">' +
+        '<div class="wl-detail-num" style="color:' + step.color + ';">' + step.num + '</div>' +
+        '<div class="wl-detail-name">' + step.name + '</div>' +
+        '<div class="wl-detail-desc">' + step.desc + '</div>' +
+        '</div>';
+    }
+  }
+
+  for (var i = 0; i < 6; i++) {
+    (function(idx) {
+      var node = document.getElementById("wlNode" + idx);
+      node.addEventListener("mouseenter", function() {
+        activeStep = idx;
+        // Remove active from all
+        for (var j = 0; j < 6; j++) {
+          document.getElementById("wlNode" + j).classList.remove("active");
+        }
+        node.classList.add("active");
+        updateWlCenter(idx);
+      });
+      node.addEventListener("mouseleave", function() {
+        activeStep = null;
+        node.classList.remove("active");
+        updateWlCenter(null);
+      });
+      // Touch support
+      node.addEventListener("touchstart", function(e) {
+        e.preventDefault();
+        if (activeStep === idx) {
+          activeStep = null;
+          node.classList.remove("active");
+          updateWlCenter(null);
+        } else {
+          for (var j = 0; j < 6; j++) {
+            document.getElementById("wlNode" + j).classList.remove("active");
+          }
+          activeStep = idx;
+          node.classList.add("active");
+          updateWlCenter(idx);
+        }
+      });
+    })(i);
+  }
+
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Organizations - MVP Club</title>
+  <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-primary: #1a365d;
+      --color-primary-lifted: #2d5a8f;
+      --color-secondary: #115e59;
+      --color-accent: #d97706;
+      --color-accent-lifted: #fbbf24;
+      --color-accent-dark: #b45309;
+      --color-background: #faf5f0;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--color-background);
+      color: #374151;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .font-display { font-family: 'Zilla Slab', serif; }
+
+    /* ==========================================
+       NAVIGATION
+       ========================================== */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      background: var(--color-primary);
+      padding: 1rem 0;
+    }
+    nav .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Zilla Slab', serif;
+      font-size: 1.5rem;
+      color: var(--color-accent-lifted);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--color-accent-lifted); }
+    .nav-links a.active { color: var(--color-accent-lifted); }
+    .nav-cta {
+      background: var(--color-accent) !important;
+      color: white !important;
+      padding: 0.625rem 1.25rem;
+      border-radius: 0.5rem;
+      font-weight: 600 !important;
+    }
+    .nav-cta:hover { opacity: 0.9; }
+
+    /* ==========================================
+       ORGANIZATIONS SECTION
+       Dark navy background, matches React source
+       ========================================== */
+    .organizations {
+      padding: 6rem 0;
+      background: var(--color-primary);
+      padding-top: 8rem; /* account for fixed nav */
+    }
+    .organizations .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Hero / Header */
+    .org-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    .org-eyebrow p {
+      font-size: 1.125rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-accent-lifted);
+    }
+    .org-eyebrow svg {
+      color: var(--color-accent-lifted);
+    }
+    .organizations h2 {
+      font-family: 'Zilla Slab', serif;
+      font-size: clamp(1.875rem, 3vw, 2.25rem);
+      color: white;
+      margin-bottom: 1.5rem;
+      max-width: 42rem;
+    }
+    .org-subtitle {
+      font-size: 1.25rem;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 1.5rem;
+      max-width: 42rem;
+      font-weight: 600;
+    }
+    .org-description {
+      font-size: 1.125rem;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 3rem;
+      max-width: 42rem;
+      line-height: 1.7;
+    }
+
+    /* Timeline Cards */
+    .timeline-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 4rem;
+    }
+    .timeline-card {
+      background: rgba(255,255,255,0.1);
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      height: 100%;
+    }
+    .timeline-card .week-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-accent-lifted);
+      margin-bottom: 0.5rem;
+    }
+    .timeline-card h4 {
+      font-family: 'Zilla Slab', serif;
+      font-size: 1.125rem;
+      color: white;
+      margin-bottom: 1rem;
+    }
+    .timeline-card .activities {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .timeline-card .activity-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+    .timeline-card .activity-item svg {
+      flex-shrink: 0;
+      margin-top: 2px;
+      color: var(--color-accent-lifted);
+    }
+    .timeline-card .activity-item span {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.875rem;
+    }
+
+    /* What You Get Summary Box */
+    .what-you-get-card {
+      background: white;
+      border-radius: 0.75rem;
+      padding: 2rem;
+      border: 2px solid var(--color-secondary);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+      margin-bottom: 4rem;
+      max-width: 48rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .what-you-get-card h3 {
+      font-family: 'Zilla Slab', serif;
+      font-size: 1.5rem;
+      color: var(--color-primary);
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    .what-you-get-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    .what-you-get-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+    .what-you-get-item svg {
+      flex-shrink: 0;
+      margin-top: 2px;
+      color: var(--color-secondary);
+    }
+    .what-you-get-item span {
+      color: #374151;
+      font-size: 0.95rem;
+    }
+
+    /* Deliverables 2-column */
+    .deliverables-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+    .deliverables-left h3 {
+      font-family: 'Zilla Slab', serif;
+      font-size: 1.25rem;
+      color: white;
+      margin-bottom: 1.5rem;
+    }
+    .deliverables-left .deliverable-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .deliverable-card {
+      padding: 1rem;
+      border-radius: 0.5rem;
+      background: rgba(255,255,255,0.08);
+      border-left: 3px solid var(--color-accent-lifted);
+    }
+    .deliverable-card .title {
+      font-weight: 600;
+      color: var(--color-accent-lifted);
+      margin-bottom: 0.25rem;
+    }
+    .deliverable-card .desc {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.875rem;
+    }
+
+    /* Target Outcomes (right column) */
+    .target-outcomes-card {
+      background: white;
+      border-radius: 0.75rem;
+      padding: 2rem;
+      border: 2px solid var(--color-accent);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    }
+    .target-outcomes-card h3 {
+      font-family: 'Zilla Slab', serif;
+      font-size: 1.25rem;
+      color: var(--color-primary);
+      margin-bottom: 1.5rem;
+    }
+    .outcomes-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .outcome-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .outcome-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 0.5rem;
+      background: var(--color-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .outcome-icon svg {
+      color: white;
+    }
+    .outcome-item span {
+      color: #374151;
+    }
+    .btn-discovery {
+      display: block;
+      width: 100%;
+      padding: 1rem;
+      margin-top: 2rem;
+      background: var(--color-accent);
+      color: white;
+      border: none;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      font-size: 1rem;
+      text-align: center;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-discovery:hover {
+      transform: scale(1.05);
+    }
+
+    /* ==========================================
+       CTA SECTION
+       Two cards side by side
+       ========================================== */
+    .cta-section {
+      padding: 6rem 0;
+      background: var(--color-background);
+    }
+    .cta-section .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    .cta-header {
+      text-align: center;
+      max-width: 48rem;
+      margin: 0 auto 3rem;
+    }
+    .cta-header h2 {
+      font-family: 'Zilla Slab', serif;
+      font-size: clamp(1.875rem, 3vw, 2.25rem);
+      color: var(--color-primary);
+      margin-bottom: 1.5rem;
+    }
+    .cta-header p {
+      font-size: 1.125rem;
+      color: #6b7280;
+      line-height: 1.7;
+    }
+    .cta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      max-width: 64rem;
+      margin: 0 auto;
+    }
+    .cta-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 1rem;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    .cta-card-icon {
+      width: 3.5rem;
+      height: 3.5rem;
+      border-radius: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+    .cta-card-icon.org { background: var(--color-accent-lifted); }
+    .cta-card-icon.practitioner { background: var(--color-secondary); }
+    .cta-card h3 {
+      font-family: 'Zilla Slab', serif;
+      font-size: 1.25rem;
+      color: var(--color-primary);
+      margin-bottom: 0.75rem;
+    }
+    .cta-card .cta-desc {
+      color: #6b7280;
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+      line-height: 1.7;
+    }
+    .cta-card .cta-bullets {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+    .cta-bullet {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .cta-bullet svg {
+      color: var(--color-secondary);
+      flex-shrink: 0;
+    }
+    .cta-bullet span {
+      font-size: 0.875rem;
+      color: #374151;
+    }
+    .cta-btn {
+      display: block;
+      width: 100%;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      font-size: 1rem;
+      text-align: center;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .cta-btn:hover { transform: scale(1.05); }
+    .cta-btn.org-btn {
+      background: var(--color-primary);
+      color: white;
+    }
+    .cta-btn.practitioner-btn {
+      background: var(--color-accent);
+      color: white;
+    }
+
+    /* ==========================================
+       FOOTER
+       ========================================== */
+    footer {
+      background: var(--color-primary);
+      padding: 2.5rem 0;
+    }
+    footer .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    footer .brand {
+      font-family: 'Zilla Slab', serif;
+      font-size: 1.15rem;
+      color: var(--color-accent-lifted);
+    }
+    footer .links {
+      display: flex;
+      gap: 1.5rem;
+    }
+    footer .links a {
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      font-size: 0.8rem;
+      transition: color 0.2s;
+    }
+    footer .links a:hover { color: white; }
+    footer .copy {
+      color: rgba(255,255,255,0.35);
+      font-size: 0.75rem;
+    }
+
+    /* ==========================================
+       RESPONSIVE
+       ========================================== */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .timeline-grid { grid-template-columns: 1fr; }
+      .what-you-get-grid { grid-template-columns: 1fr; }
+      .deliverables-grid { grid-template-columns: 1fr; }
+      .cta-grid { grid-template-columns: 1fr; }
+      footer .container { flex-direction: column; gap: 1rem; text-align: center; }
+      footer .links { flex-wrap: wrap; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="container">
+    <a href="homepage-redesign.html" class="nav-logo">
+      <div style="width:40px;height:40px;border-radius:8px;background:var(--color-accent-lifted);display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--color-primary);font-weight:700;">M</div>
+      <span>MVP Club</span>
+    </a>
+    <div class="nav-links">
+      <a href="homepage-redesign.html">Home</a>
+      <a href="how-we-work.html">How We Work</a>
+      <a href="for-organizations.html" class="active">For Organizations</a>
+      <a href="community.html">Community</a>
+      <a href="#">Blog</a>
+      <a href="https://calendly.com/d/cybv-947-s8m/discovery-call" target="_blank" rel="noopener noreferrer" class="nav-cta">Book a Call</a>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ============================================
+     ORGANIZATIONS SECTION
+     Faithfully recreated from React source lines 604-785
+     ============================================ -->
+<section class="organizations" id="organizations">
+  <div class="container">
+
+    <!-- Hero / Header -->
+    <div class="org-eyebrow">
+      <!-- Building2 icon from Lucide -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/></svg>
+      <p>For Organizations</p>
+    </div>
+
+    <h2 class="font-display">4-Week Productivity Sprint</h2>
+
+    <p class="org-subtitle">Start Small. Prove Value. Scale Fast.</p>
+
+    <p class="org-description">A rapid productivity sprint that installs AI workflows into your team's real processes&mdash;without training programs, strategy cycles, or major time commitments. Get measurable productivity gains in 4 weeks by doing actual work, not sitting through programs.</p>
+
+    <!-- Timeline: 3 Cards -->
+    <div class="timeline-grid">
+
+      <!-- Week 1 -->
+      <div class="timeline-card">
+        <div class="week-label">Week 1</div>
+        <h4 class="font-display">Workflow Discovery</h4>
+        <div class="activities">
+          <div class="activity-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>Identify 2-3 high-value use cases</span>
+          </div>
+          <div class="activity-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>Map current processes</span>
+          </div>
+          <div class="activity-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>Define success metrics</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Week 2-3 -->
+      <div class="timeline-card">
+        <div class="week-label">Week 2-3</div>
+        <h4 class="font-display">Build + Install</h4>
+        <div class="activities">
+          <div class="activity-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>Create tailored AI workflows</span>
+          </div>
+          <div class="activity-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>Install into real team processes</span>
+          </div>
+          <div class="activity-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>Train by doing actual work</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Week 4 -->
+      <div class="timeline-card">
+        <div class="week-label">Week 4</div>
+        <h4 class="font-display">Measure + Expand</h4>
+        <div class="activities">
+          <div class="activity-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>Track impact on cycle time, output, workload</span>
+          </div>
+          <div class="activity-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>Identify next workflows to automate</span>
+          </div>
+          <div class="activity-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>Design scale plan (optional)</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- What You Get Summary Box -->
+    <div class="what-you-get-card">
+      <h3 class="font-display">What You Get</h3>
+      <div class="what-you-get-grid">
+        <div class="what-you-get-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <span>2-3 production-ready AI workflows</span>
+        </div>
+        <div class="what-you-get-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <span>Role-specific prompt libraries</span>
+        </div>
+        <div class="what-you-get-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <span>Loom walkthroughs for each workflow</span>
+        </div>
+        <div class="what-you-get-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <span>Measurable productivity gains</span>
+        </div>
+        <div class="what-you-get-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <span>Clear roadmap for broader rollout</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Deliverables: 2-column layout -->
+    <div class="deliverables-grid">
+
+      <!-- Left column: What You Walk Away With -->
+      <div class="deliverables-left">
+        <h3 class="font-display">What You Walk Away With</h3>
+        <div class="deliverable-cards">
+          <div class="deliverable-card">
+            <div class="title">Working AI Workflows (Not Just Ideas)</div>
+            <div class="desc">2-3 fully functional, team-tested workflows with copy/paste prompts ready for production use</div>
+          </div>
+          <div class="deliverable-card">
+            <div class="title">Role-Based Playbooks</div>
+            <div class="desc">Tailored for your specific roles (PM, Designer, Analyst, etc.) with 3-5 tactical workflows per role</div>
+          </div>
+          <div class="deliverable-card">
+            <div class="title">Video Walkthroughs</div>
+            <div class="desc">Loom recordings showing exactly how to use each workflow&mdash;no guesswork, no ambiguity</div>
+          </div>
+          <div class="deliverable-card">
+            <div class="title">Impact Metrics</div>
+            <div class="desc">Measure cycle time reduction, track output increases, prove ROI for broader rollout</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right column: Target Outcomes -->
+      <div class="target-outcomes-card">
+        <h3 class="font-display">Target Outcomes</h3>
+        <div class="outcomes-list">
+          <div class="outcome-item">
+            <div class="outcome-icon">
+              <!-- TrendingUp -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            </div>
+            <span>Faster project delivery (measured in days saved)</span>
+          </div>
+          <div class="outcome-item">
+            <div class="outcome-icon">
+              <!-- Target -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+            </div>
+            <span>Reduced employee workload (same output, less time)</span>
+          </div>
+          <div class="outcome-item">
+            <div class="outcome-icon">
+              <!-- Layers -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+            </div>
+            <span>Sustainable AI capability (practice builds lasting skills)</span>
+          </div>
+          <div class="outcome-item">
+            <div class="outcome-icon">
+              <!-- Brain -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C9.5 2 7.5 4 7.5 6.5c0 1 .3 1.8.8 2.5C6.9 9.7 6 11.2 6 13c0 2 1.3 3.7 3 4.3V22h6v-4.7c1.7-.6 3-2.3 3-4.3 0-1.8-.9-3.3-2.3-4 .5-.7.8-1.5.8-2.5C16.5 4 14.5 2 12 2z"/><line x1="10" y1="13" x2="14" y2="13"/><line x1="10" y1="16" x2="14" y2="16"/></svg>
+            </div>
+            <span>Clear path to scale (pilot proves the model)</span>
+          </div>
+        </div>
+        <a href="https://calendly.com/d/cybv-947-s8m/discovery-call" target="_blank" rel="noopener noreferrer" class="btn-discovery">Schedule a Discovery Call</a>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================
+     CTA SECTION
+     Two cards side by side, from React source lines 1062-1173
+     ============================================ -->
+<section class="cta-section" id="contact">
+  <div class="container">
+
+    <div class="cta-header">
+      <h2 class="font-display">Ready to Transform How You Work with AI?</h2>
+      <p>Whether you're transforming an organization or developing your own skills, we have a path for you. Choose what fits your situation.</p>
+    </div>
+
+    <div class="cta-grid">
+
+      <!-- For Organizations -->
+      <div class="cta-card">
+        <div class="cta-card-icon org">
+          <!-- Building2 -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/></svg>
+        </div>
+        <h3 class="font-display">For Organizations</h3>
+        <p class="cta-desc">
+          Start small. Prove value fast. Scale what works.
+          <br><br>
+          4-week pilot sprint for one team, one workflow, one problem.
+          No big rollout. No company-wide program.
+          Just real work getting done faster with AI.
+          <br><br>
+          <strong>If it works, we scale. If it doesn't, we stop.</strong>
+        </p>
+        <div class="cta-bullets">
+          <div class="cta-bullet">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>15-minute workflow diagnostic</span>
+          </div>
+          <div class="cta-bullet">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>Pilot one team&mdash;expand if it works</span>
+          </div>
+          <div class="cta-bullet">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>Immediate productivity gains</span>
+          </div>
+        </div>
+        <a href="https://calendly.com/d/cybv-947-s8m/discovery-call" target="_blank" rel="noopener noreferrer" class="cta-btn org-btn">Book a Discovery Call</a>
+      </div>
+
+      <!-- For Practitioners -->
+      <div class="cta-card">
+        <div class="cta-card-icon practitioner">
+          <!-- MessageCircle -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        </div>
+        <h3 class="font-display">For Practitioners</h3>
+        <p class="cta-desc">
+          Join our community of AI-first practitioners. Access live events,
+          embedded coaching, and a supportive community to build your skills
+          through practice.
+        </p>
+        <div class="cta-bullets">
+          <div class="cta-bullet">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>Immediate community access</span>
+          </div>
+          <div class="cta-bullet">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>Embedded coaching support</span>
+          </div>
+          <div class="cta-bullet">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>Live workshops &amp; events</span>
+          </div>
+        </div>
+        <a href="https://mvp-club.mn.co/" target="_blank" rel="noopener noreferrer" class="cta-btn practitioner-btn">Join the Community</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="brand">MVP Club</div>
+    <div class="links">
+      <a href="homepage-redesign.html">Home</a>
+      <a href="how-we-work.html">How We Work</a>
+      <a href="for-organizations.html">For Organizations</a>
+      <a href="community.html">Community</a>
+      <a href="#">Blog</a>
+      <a href="#">Contact</a>
+    </div>
+    <div class="copy">&copy; 2025 MVP Club</div>
+  </div>
+</footer>
+
+</body>
+</html>

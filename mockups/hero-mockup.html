@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Hero Mockup</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #0f1729;
+      color: white;
+    }
+
+    .hero-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 80px 60px;
+      gap: 60px;
+    }
+
+    .hero-left {
+      flex: 0 0 40%;
+      padding-right: 40px;
+    }
+
+    .hero-right {
+      flex: 0 0 60%;
+    }
+
+    .eyebrow {
+      color: #ff9052;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 1.5px;
+      margin-bottom: 20px;
+    }
+
+    .hero-title {
+      font-size: 56px;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+
+    .hero-title .highlight {
+      background: linear-gradient(135deg, #ff9052 0%, #ff6b35 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-description {
+      font-size: 20px;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 32px;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+    }
+
+    .btn {
+      padding: 16px 32px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 16px;
+      cursor: pointer;
+      transition: transform 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: #ff9052;
+      color: white;
+      border: none;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: white;
+      border: 2px solid rgba(255,255,255,0.2);
+    }
+
+    /* Interactive Generator Card */
+    .generator-card {
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+
+    .card-header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .card-title {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .card-subtitle {
+      color: rgba(255,255,255,0.6);
+      font-size: 14px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      color: rgba(255,255,255,0.8);
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
+    textarea, select {
+      width: 100%;
+      padding: 16px;
+      border-radius: 12px;
+      border: 2px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.95);
+      color: #0f1729;
+      font-size: 15px;
+      font-family: inherit;
+      transition: border-color 0.2s;
+    }
+
+    textarea:focus, select:focus {
+      outline: none;
+      border-color: #ff9052;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .hint-text {
+      color: rgba(255,255,255,0.5);
+      font-size: 12px;
+      margin-top: 6px;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 18px;
+      background: #ff9052;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 16px;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .submit-btn:hover {
+      background: #ff6b35;
+      transform: translateY(-2px);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .hero-section {
+        flex-direction: column;
+        padding: 60px 40px;
+      }
+
+      .hero-left, .hero-right {
+        flex: 1;
+      }
+
+      .hero-left {
+        padding-right: 0;
+        text-align: center;
+      }
+
+      .hero-title {
+        font-size: 42px;
+      }
+
+      .cta-buttons {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="hero-section">
+    <!-- Left Side: Value Prop -->
+    <div class="hero-left">
+      <div class="eyebrow">Strategic AI Transformation</div>
+      <h1 class="hero-title">
+        Turn AI Access Into <span class="highlight">Genuine Capability</span>
+      </h1>
+      <p class="hero-description">
+        We coach your team to bring an AI-first mindset to real work and implement AI workflows.
+        Get measurable productivity gains in 4 weeks by doing actual work, not sitting through programs.
+      </p>
+      <div class="cta-buttons">
+        <a href="#" class="btn btn-primary">Start a 4-Week Pilot</a>
+        <a href="#" class="btn btn-secondary">Join the Community</a>
+      </div>
+    </div>
+
+    <!-- Right Side: Interactive Generator -->
+    <div class="hero-right">
+      <div class="generator-card">
+        <div class="card-header">
+          <h2 class="card-title">✨ See Your Workflow Transform</h2>
+          <p class="card-subtitle">Describe a repetitive task and see what's possible with AI coaching</p>
+        </div>
+
+        <form>
+          <div class="form-group">
+            <label for="workflow">Your workflow</label>
+            <textarea
+              id="workflow"
+              placeholder="e.g., I spend 2 hours every Monday writing our team newsletter in Google Docs. I gather updates from Slack channels, format everything manually, and try to keep the tone consistent..."
+            ></textarea>
+            <div class="hint-text">Be specific: What tools do you use? How often? What's frustrating?</div>
+          </div>
+
+          <div class="form-group">
+            <label for="category">Category (optional)</label>
+            <select id="category">
+              <option value="">Select a category (optional)</option>
+              <option value="content">Content Creation</option>
+              <option value="data">Data Analysis</option>
+              <option value="communication">Communication</option>
+              <option value="design">Design</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <button type="submit" class="submit-btn">
+            <span>✨</span>
+            <span>Transform this workflow</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

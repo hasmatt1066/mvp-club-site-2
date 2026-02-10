@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hero with Transformation Carousel - MVP Club</title>
+  <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Dusk Palette - MVP Club Brand */
+      --color-primary: #081f3f;
+      --color-primary-lifted: #0f2d5c;
+      --color-primary-tint: rgba(8, 31, 63, 0.15);
+      --color-primary-muted: rgba(8, 31, 63, 0.7);
+
+      --color-secondary: #15465b;
+      --color-secondary-lifted: #1e5f7a;
+      --color-secondary-tint: rgba(21, 70, 91, 0.15);
+
+      --color-accent: #d97706;
+      --color-accent-lifted: #f59e0b;
+      --color-accent-tint: rgba(217, 119, 6, 0.15);
+
+      --color-accent-soft: #eba714;
+
+      --color-background: #faf5f0;
+      --color-background-dark: #f0ebe3;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--color-primary);
+      color: white;
+    }
+
+    .font-display {
+      font-family: 'Zilla Slab', serif;
+    }
+
+    .hero-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 80px 60px;
+      gap: 60px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .hero-left {
+      flex: 0 0 40%;
+      padding-right: 40px;
+    }
+
+    .hero-right {
+      flex: 0 0 60%;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .eyebrow {
+      color: var(--color-accent-soft);
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 1.5px;
+      margin-bottom: 20px;
+    }
+
+    .hero-title {
+      font-size: 56px;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+
+    .hero-title .highlight {
+      background: linear-gradient(135deg, var(--color-accent-lifted) 0%, var(--color-accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-description {
+      font-size: 20px;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 32px;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+    }
+
+    .btn {
+      padding: 16px 32px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      transform: translateY(-4px);
+    }
+
+    .btn-primary {
+      background: var(--color-accent);
+      color: white;
+      border: none;
+      box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3);
+    }
+
+    .btn-primary:hover {
+      background: var(--color-accent-lifted);
+      box-shadow: 0 8px 24px rgba(217, 119, 6, 0.4);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: white;
+      border: 2px solid rgba(255,255,255,0.2);
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(255,255,255,0.4);
+      background: rgba(255,255,255,0.05);
+    }
+
+    /* Carousel Section */
+    .carousel-wrapper {
+      margin-bottom: 16px;
+    }
+
+    .carousel-label {
+      color: rgba(255,255,255,0.6);
+      font-size: 12px;
+      font-weight: 500;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      text-align: center;
+    }
+
+    .carousel-container {
+      position: relative;
+      height: 240px;
+      overflow: hidden;
+      border-radius: 16px;
+      background: white;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    }
+
+    .carousel-slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      padding: 28px 24px;
+      opacity: 0;
+      transition: opacity 0.6s ease-in-out;
+      display: flex;
+      align-items: center;
+    }
+
+    .carousel-slide.active {
+      opacity: 1;
+    }
+
+    /* Mini 3-Column Transformation Card */
+    .mini-transformation {
+      display: grid;
+      grid-template-columns: 2.5fr 32px 2fr 32px 2.5fr;
+      gap: 8px;
+      width: 100%;
+      align-items: stretch;
+    }
+
+    .mini-card {
+      padding: 14px;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    .mini-card-header {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-bottom: 8px;
+    }
+
+    .mini-card-icon {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+    }
+
+    .mini-card-label {
+      font-size: 9px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+
+    .mini-card-text {
+      font-size: 12px;
+      line-height: 1.6;
+      flex-grow: 1;
+      overflow-y: auto;
+    }
+
+    /* Old Way styling */
+    .old-way {
+      background: var(--color-background-dark);
+    }
+
+    .old-way .mini-card-label {
+      color: #6b7280;
+    }
+
+    .old-way .mini-card-icon {
+      color: #9ca3af;
+    }
+
+    .old-way .mini-card-text {
+      color: #4b5563;
+    }
+
+    /* MVP Club Coaching styling */
+    .coaching {
+      background: var(--color-secondary);
+      text-align: center;
+      justify-content: center;
+      padding: 12px 10px;
+    }
+
+    .coaching .mini-card-header {
+      justify-content: center;
+      margin-bottom: 6px;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .coaching .mini-card-icon {
+      color: white;
+      width: 18px;
+      height: 18px;
+    }
+
+    .coaching .mini-card-label {
+      color: rgba(255,255,255,0.9);
+      font-size: 8px;
+    }
+
+    .coaching .mini-card-text {
+      color: rgba(255,255,255,0.85);
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    /* New Way styling */
+    .new-way {
+      background: var(--color-accent-tint);
+      border: 2px solid var(--color-accent);
+    }
+
+    .new-way .mini-card-label {
+      color: var(--color-accent);
+    }
+
+    .new-way .mini-card-icon {
+      color: var(--color-accent);
+    }
+
+    .new-way .mini-card-text {
+      color: var(--color-primary);
+    }
+
+    /* Arrows */
+    .arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .arrow svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+
+    .arrow-1 {
+      color: var(--color-secondary);
+    }
+
+    .arrow-2 {
+      color: var(--color-accent);
+    }
+
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .dot.active {
+      background: var(--color-accent);
+      width: 24px;
+      border-radius: 4px;
+    }
+
+    /* Generator Card */
+    .generator-card {
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+
+    .card-header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .card-title {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .card-subtitle {
+      color: rgba(255,255,255,0.6);
+      font-size: 14px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      color: rgba(255,255,255,0.8);
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
+    textarea, select {
+      width: 100%;
+      padding: 16px;
+      border-radius: 12px;
+      border: 2px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.95);
+      color: var(--color-primary);
+      font-size: 15px;
+      font-family: inherit;
+      transition: border-color 0.2s;
+    }
+
+    textarea:focus, select:focus {
+      outline: none;
+      border-color: var(--color-accent);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .hint-text {
+      color: rgba(255,255,255,0.5);
+      font-size: 12px;
+      margin-top: 6px;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 18px;
+      background: var(--color-accent);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3);
+    }
+
+    .submit-btn:hover {
+      background: var(--color-accent-lifted);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(217, 119, 6, 0.4);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .hero-section {
+        flex-direction: column;
+        padding: 60px 40px;
+      }
+
+      .hero-left, .hero-right {
+        flex: 1;
+        width: 100%;
+      }
+
+      .hero-left {
+        padding-right: 0;
+        text-align: center;
+      }
+
+      .hero-title {
+        font-size: 42px;
+      }
+
+      .cta-buttons {
+        justify-content: center;
+      }
+
+      .mini-transformation {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto auto auto;
+        gap: 8px;
+      }
+
+      .arrow {
+        display: none;
+      }
+
+      .carousel-container {
+        height: auto;
+        min-height: 320px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="hero-section">
+    <!-- Left Side: Value Prop -->
+    <div class="hero-left">
+      <div class="eyebrow">Strategic AI Transformation</div>
+      <h1 class="hero-title font-display">
+        Turn AI Access Into <span class="highlight">Genuine Capability</span>
+      </h1>
+      <p class="hero-description">
+        We coach your team to bring an AI-first mindset to real work and implement AI workflows.
+        Get measurable productivity gains in 4 weeks by doing actual work, not sitting through programs.
+      </p>
+      <div class="cta-buttons">
+        <a href="#" class="btn btn-primary">Start a 4-Week Pilot</a>
+        <a href="#" class="btn btn-secondary">Join the Community</a>
+      </div>
+    </div>
+
+    <!-- Right Side: Carousel + Generator -->
+    <div class="hero-right">
+      <!-- Carousel -->
+      <div class="carousel-wrapper">
+        <div class="carousel-label">Real transformation examples ↓</div>
+        <div class="carousel-container">
+
+          <!-- Slide 1: Marketing Content Machine -->
+          <div class="carousel-slide active" data-index="0">
+            <div class="mini-transformation">
+              <!-- Old Way -->
+              <div class="mini-card old-way">
+                <div class="mini-card-header">
+                  <svg class="mini-card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                  </svg>
+                  <span class="mini-card-label">The Old Way</span>
+                </div>
+                <div class="mini-card-text">
+                  Write content separately for each channel. Manual formatting. Inconsistent brand voice across platforms.
+                </div>
+              </div>
+
+              <!-- Arrow 1 -->
+              <div class="arrow arrow-1">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </div>
+
+              <!-- MVP Club Coaching -->
+              <div class="mini-card coaching">
+                <div class="mini-card-header">
+                  <svg class="mini-card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                  </svg>
+                  <span class="mini-card-label">MVP Club Coaching</span>
+                </div>
+                <div class="mini-card-text">
+                  Omnichannel content system with brand voice templates
+                </div>
+              </div>
+
+              <!-- Arrow 2 -->
+              <div class="arrow arrow-2">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </div>
+
+              <!-- New Way -->
+              <div class="mini-card new-way">
+                <div class="mini-card-header">
+                  <svg class="mini-card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                  </svg>
+                  <span class="mini-card-label">The New Way</span>
+                </div>
+                <div class="mini-card-text">
+                  Single brief → all channels. AI maintains your brand voice. Automated formatting.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2: Weekly Report Creation -->
+          <div class="carousel-slide" data-index="1">
+            <div class="mini-transformation">
+              <!-- Old Way -->
+              <div class="mini-card old-way">
+                <div class="mini-card-header">
+                  <svg class="mini-card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                  </svg>
+                  <span class="mini-card-label">The Old Way</span>
+                </div>
+                <div class="mini-card-text">
+                  Hours spent gathering data from multiple tools. Manual compilation. Formatting from scratch each week.
+                </div>
+              </div>
+
+              <!-- Arrow 1 -->
+              <div class="arrow arrow-1">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </div>
+
+              <!-- MVP Club Coaching -->
+              <div class="mini-card coaching">
+                <div class="mini-card-header">
+                  <svg class="mini-card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                  </svg>
+                  <span class="mini-card-label">MVP Club Coaching</span>
+                </div>
+                <div class="mini-card-text">
+                  Automated data aggregation workflow with template generation
+                </div>
+              </div>
+
+              <!-- Arrow 2 -->
+              <div class="arrow arrow-2">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </div>
+
+              <!-- New Way -->
+              <div class="mini-card new-way">
+                <div class="mini-card-header">
+                  <svg class="mini-card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                  </svg>
+                  <span class="mini-card-label">The New Way</span>
+                </div>
+                <div class="mini-card-text">
+                  AI aggregates all metrics automatically. Pre-formatted draft ready to review. Just add context and send.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3: Client Research -->
+          <div class="carousel-slide" data-index="2">
+            <div class="mini-transformation">
+              <!-- Old Way -->
+              <div class="mini-card old-way">
+                <div class="mini-card-header">
+                  <svg class="mini-card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                  </svg>
+                  <span class="mini-card-label">The Old Way</span>
+                </div>
+                <div class="mini-card-text">
+                  Manual web scraping. Taking scattered notes. Hours synthesizing information into briefing documents.
+                </div>
+              </div>
+
+              <!-- Arrow 1 -->
+              <div class="arrow arrow-1">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </div>
+
+              <!-- MVP Club Coaching -->
+              <div class="mini-card coaching">
+                <div class="mini-card-header">
+                  <svg class="mini-card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                  </svg>
+                  <span class="mini-card-label">MVP Club Coaching</span>
+                </div>
+                <div class="mini-card-text">
+                  AI research assistant with structured brief templates
+                </div>
+              </div>
+
+              <!-- Arrow 2 -->
+              <div class="arrow arrow-2">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </div>
+
+              <!-- New Way -->
+              <div class="mini-card new-way">
+                <div class="mini-card-header">
+                  <svg class="mini-card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                  </svg>
+                  <span class="mini-card-label">The New Way</span>
+                </div>
+                <div class="mini-card-text">
+                  AI compiles comprehensive briefs from multiple sources. Structured format. Ready to review in minutes.
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="carousel-dots">
+          <div class="dot active" data-index="0"></div>
+          <div class="dot" data-index="1"></div>
+          <div class="dot" data-index="2"></div>
+        </div>
+      </div>
+
+      <!-- Generator -->
+      <div class="generator-card">
+        <div class="card-header">
+          <h2 class="card-title font-display">✨ See Your Workflow Transform</h2>
+          <p class="card-subtitle">Describe a repetitive task and get a custom transformation</p>
+        </div>
+
+        <form>
+          <div class="form-group">
+            <label for="workflow">Your workflow</label>
+            <textarea
+              id="workflow"
+              placeholder="e.g., I spend 2 hours every Monday writing our team newsletter in Google Docs..."
+            ></textarea>
+            <div class="hint-text">Be specific: What tools? How often? What's frustrating?</div>
+          </div>
+
+          <div class="form-group">
+            <label for="category">Category (optional)</label>
+            <select id="category">
+              <option value="">Select a category (optional)</option>
+              <option value="content">Content Creation</option>
+              <option value="data">Data Analysis</option>
+              <option value="communication">Communication</option>
+              <option value="design">Design</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <button type="submit" class="submit-btn">
+            <span>✨</span>
+            <span>Transform this workflow</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Carousel functionality
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.dot');
+    const totalSlides = slides.length;
+
+    function showSlide(index) {
+      slides.forEach(slide => slide.classList.remove('active'));
+      dots.forEach(dot => dot.classList.remove('active'));
+
+      slides[index].classList.add('active');
+      dots[index].classList.add('active');
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      showSlide(currentSlide);
+    }
+
+    // Auto-advance every 5 seconds
+    setInterval(nextSlide, 5000);
+
+    // Manual dot navigation
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        currentSlide = parseInt(dot.getAttribute('data-index'));
+        showSlide(currentSlide);
+      });
+    });
+  </script>
+</body>
+</html>
