@@ -2,6 +2,16 @@ import React from 'react';
 import { Building2, MessageCircle, CheckCircle2 } from 'lucide-react';
 import AnimatedSection from './AnimatedSection';
 
+const trackJoinClick = (location) => {
+  if (typeof window.gtag === 'function') {
+    window.gtag('event', 'join_community_click', {
+      event_category: 'conversion',
+      event_label: location,
+      link_url: 'https://mvp-club.mn.co/',
+    });
+  }
+};
+
 const SharedCTA = () => {
   return (
     <section id="contact" className="py-24" style={{ backgroundColor: 'var(--color-background)' }}>
@@ -89,6 +99,7 @@ const SharedCTA = () => {
                 href="https://mvp-club.mn.co/"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackJoinClick('shared_cta')}
                 className="block w-full py-4 rounded-lg font-semibold text-center transition-all duration-200 hover:scale-105"
                 style={{ backgroundColor: 'var(--color-accent)', color: 'white', textDecoration: 'none' }}
               >

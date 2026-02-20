@@ -1,6 +1,16 @@
 import React from 'react';
 import AnimatedSection from '../shared/AnimatedSection';
 
+const trackJoinClick = (location) => {
+  if (typeof window.gtag === 'function') {
+    window.gtag('event', 'join_community_click', {
+      event_category: 'conversion',
+      event_label: location,
+      link_url: 'https://mvp-club.mn.co/',
+    });
+  }
+};
+
 const FinalCTA = () => {
   return (
     <section
@@ -46,6 +56,7 @@ const FinalCTA = () => {
                 href="https://mvp-club.mn.co/"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackJoinClick('homepage_final_cta')}
                 className="inline-block px-8 py-4 rounded-xl font-semibold text-base transition-all duration-200 no-underline"
                 style={{
                   backgroundColor: 'transparent',

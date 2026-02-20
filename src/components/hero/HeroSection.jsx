@@ -3,6 +3,16 @@ import HeroCarousel from './HeroCarousel';
 import HeroGeneratorForm from './HeroGeneratorForm';
 import TransformationCard from '../use-cases/TransformationCard';
 
+const trackJoinClick = (location) => {
+  if (typeof window.gtag === 'function') {
+    window.gtag('event', 'join_community_click', {
+      event_category: 'conversion',
+      event_label: location,
+      link_url: 'https://mvp-club.mn.co/',
+    });
+  }
+};
+
 const HeroSection = ({ scrollToSection, setShowWaitlist }) => {
   const [generatedOutput, setGeneratedOutput] = useState(null);
   const [error, setError] = useState('');
@@ -142,6 +152,7 @@ const HeroSection = ({ scrollToSection, setShowWaitlist }) => {
                   href="https://mvp-club.mn.co/"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackJoinClick('homepage_hero')}
                   className="inline-block px-8 py-4 rounded-xl font-semibold transition-all duration-200 hover:scale-105"
                   style={{
                     backgroundColor: 'transparent',

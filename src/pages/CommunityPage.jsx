@@ -2,6 +2,16 @@ import React from 'react';
 import { Wrench, Users, Rocket, Calendar, CheckCircle2 } from 'lucide-react';
 import AnimatedSection from '../components/shared/AnimatedSection';
 
+const trackJoinClick = (location) => {
+  if (typeof window.gtag === 'function') {
+    window.gtag('event', 'join_community_click', {
+      event_category: 'conversion',
+      event_label: location,
+      link_url: 'https://mvp-club.mn.co/',
+    });
+  }
+};
+
 const CommunityPage = () => {
   return (
     <div className="min-h-screen" style={{ backgroundColor: 'var(--color-background)', fontFamily: 'Inter, system-ui, sans-serif' }}>
@@ -22,6 +32,7 @@ const CommunityPage = () => {
               href="https://mvp-club.mn.co/"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackJoinClick('community_hero')}
               className="inline-block px-8 py-4 rounded-lg font-semibold transition-all duration-200 hover:scale-105"
               style={{ backgroundColor: 'var(--color-secondary)', color: 'white', textDecoration: 'none' }}
             >
@@ -135,6 +146,7 @@ const CommunityPage = () => {
                 href="https://mvp-club.mn.co/"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackJoinClick('community_bottom_cta')}
                 className="inline-block px-8 py-4 rounded-lg font-semibold transition-all duration-200 hover:scale-105"
                 style={{ backgroundColor: 'var(--color-accent-lifted)', color: 'var(--color-primary)', textDecoration: 'none' }}
               >
