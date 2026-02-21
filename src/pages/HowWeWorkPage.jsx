@@ -5,10 +5,16 @@ import { ClientOnly } from 'vite-react-ssg';
 import AnimatedSection from '../components/shared/AnimatedSection';
 import AnimatedValley from '../AnimatedValley';
 import WorkLoop from '../WorkLoop';
+import SEO from '../components/SEO';
 
 const HowWeWorkPage = () => {
   return (
     <div className="min-h-screen" style={{ backgroundColor: 'var(--color-background)', fontFamily: 'Inter, system-ui, sans-serif' }}>
+      <SEO
+        title="How We Work"
+        description="MVP Club bridges the AI adoption gap with practice-based coaching. Learn our methodology for turning AI tools into real productivity gains for individuals and teams."
+        path="/how-we-work"
+      />
 
       {/* Page Header */}
       <section className="py-24 pt-32" style={{ backgroundColor: 'var(--color-primary)' }}>

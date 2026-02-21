@@ -48,7 +48,7 @@ function postTemplate(post) {
   <meta property="og:title" content="${escapeHtml(post.title)}">
   <meta property="og:description" content="${escapeHtml(post.description || '')}">
   <meta property="og:type" content="article">
-  <meta property="og:url" content="https://mvpclub.co/blog/${post.slug}">
+  <meta property="og:url" content="https://mvpclub.ai/blog/${post.slug}">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
@@ -75,7 +75,7 @@ function postTemplate(post) {
     "publisher": {
       "@type": "Organization",
       "name": "MVP Club",
-      "url": "https://mvpclub.co"
+      "url": "https://mvpclub.ai"
     }
   }
   </script>
@@ -440,7 +440,7 @@ function listingTemplate(posts) {
   <meta property="og:title" content="MVP Club Blog">
   <meta property="og:description" content="Insights on AI adoption, practice-based learning, and human-AI collaboration.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://mvpclub.co/blog">
+  <meta property="og:url" content="https://mvpclub.ai/blog">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -710,9 +710,50 @@ function build() {
 
   // Generate listing page
   fs.writeFileSync(path.join(OUTPUT_DIR, 'index.html'), listingTemplate(posts));
-  console.log(`✅ Generated: /blog/\n`);
+  console.log(`✅ Generated: /blog/`);
 
-  console.log(`🎉 Blog build complete! ${posts.length} post(s) generated.`);
+  // Generate sitemap
+  generateSitemap(posts);
+
+  console.log(`\n🎉 Blog build complete! ${posts.length} post(s) generated.`);
+}
+
+/**
+ * Generate sitemap.xml with all pages and blog posts
+ */
+function generateSitemap(posts) {
+  const SITE_URL = 'https://mvpclub.ai';
+  const staticPages = [
+    { loc: '/', changefreq: 'weekly', priority: '1.0' },
+    { loc: '/how-we-work', changefreq: 'monthly', priority: '0.8' },
+    { loc: '/for-organizations', changefreq: 'monthly', priority: '0.8' },
+    { loc: '/community', changefreq: 'monthly', priority: '0.8' },
+    { loc: '/blog', changefreq: 'weekly', priority: '0.7' },
+  ];
+
+  const urls = staticPages.map(p => `  <url>
+    <loc>${SITE_URL}${p.loc}</loc>
+    <changefreq>${p.changefreq}</changefreq>
+    <priority>${p.priority}</priority>
+  </url>`);
+
+  for (const post of posts) {
+    urls.push(`  <url>
+    <loc>${SITE_URL}/blog/${post.slug}</loc>
+    <lastmod>${post.date}</lastmod>
+    <priority>0.6</priority>
+  </url>`);
+  }
+
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls.join('\n')}
+</urlset>
+`;
+
+  const sitemapPath = path.join(ROOT, 'public', 'sitemap.xml');
+  fs.writeFileSync(sitemapPath, xml);
+  console.log('✅ Generated: /sitemap.xml');
 }
 
 // Run build

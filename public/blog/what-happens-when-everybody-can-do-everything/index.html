@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What Happens When Everybody Can Do Everything? | MVP Club Blog</title>
+  <meta name="description" content="">
+  <meta name="author" content="Matt Hastings">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="What Happens When Everybody Can Do Everything?">
+  <meta property="og:description" content="">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://mvpclub.ai/blog/what-happens-when-everybody-can-do-everything">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="What Happens When Everybody Can Do Everything?">
+  <meta name="twitter:description" content="">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Zilla+Slab&display=swap" rel="stylesheet">
+
+  <!-- Schema.org Article markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "What Happens When Everybody Can Do Everything?",
+    "author": {
+      "@type": "Person",
+      "name": "Matt Hastings"
+    },
+    "datePublished": "2026-02-15",
+    "description": "",
+    "publisher": {
+      "@type": "Organization",
+      "name": "MVP Club",
+      "url": "https://mvpclub.ai"
+    }
+  }
+  </script>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background-color: #faf5f0;
+      color: #1a365d;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: #ffffff;
+      border-bottom: 1px solid rgba(26, 54, 93, 0.1);
+      padding: 1rem 2rem;
+      z-index: 100;
+    }
+
+    .nav-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-family: 'Zilla Slab', serif;
+      font-size: 1.5rem;
+      color: #1a365d;
+      text-decoration: none;
+    }
+
+    .nav-links a {
+      color: #1a365d;
+      text-decoration: none;
+      margin-left: 2rem;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      color: #d97706;
+    }
+
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 8rem 1.5rem 4rem;
+    }
+
+    .post-meta {
+      margin-bottom: 2rem;
+    }
+
+    .post-pillar {
+      display: inline-block;
+      background: #d97706;
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.25rem 0.75rem;
+      border-radius: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-family: 'Zilla Slab', serif;
+      font-size: 2.5rem;
+      font-weight: 400;
+      line-height: 1.2;
+      color: #1a365d;
+      margin-bottom: 1rem;
+    }
+
+    .post-info {
+      color: #115e59;
+      font-size: 0.95rem;
+    }
+
+    .post-info span {
+      margin-right: 1rem;
+    }
+
+    .post-content {
+      font-size: 1.1rem;
+    }
+
+    .post-content p {
+      margin-bottom: 1.5rem;
+    }
+
+    .post-content h2 {
+      font-family: 'Zilla Slab', serif;
+      font-size: 1.75rem;
+      font-weight: 400;
+      color: #1a365d;
+      margin: 2.5rem 0 1rem;
+    }
+
+    .post-content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #1a365d;
+      margin: 2rem 0 0.75rem;
+    }
+
+    .post-content ul, .post-content ol {
+      margin: 0 0 1.5rem 1.5rem;
+    }
+
+    .post-content li {
+      margin-bottom: 0.5rem;
+    }
+
+    .post-content a {
+      color: #d97706;
+      text-decoration: underline;
+    }
+
+    .post-content blockquote {
+      border-left: 4px solid #d97706;
+      padding-left: 1.5rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: #115e59;
+    }
+
+    .post-content strong {
+      font-weight: 600;
+    }
+
+    .post-content figure.blog-image {
+      margin: 2rem -120px;
+      text-align: center;
+    }
+
+    .post-content figure.blog-image img {
+      max-width: 100%;
+      width: 960px;
+      height: auto;
+      border-radius: 0.5rem;
+      display: block;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 1000px) {
+      .post-content figure.blog-image {
+        margin: 2rem -40px;
+      }
+      .post-content figure.blog-image img {
+        width: calc(100% + 80px);
+        max-width: calc(100vw - 2rem);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .post-content figure.blog-image {
+        margin: 2rem -1rem;
+      }
+      .post-content figure.blog-image img {
+        width: calc(100% + 2rem);
+        border-radius: 0;
+      }
+    }
+
+    .post-content figure.blog-image figcaption {
+      margin-top: 0.75rem;
+      font-size: 0.9rem;
+      color: #115e59;
+      font-style: italic;
+    }
+
+    .post-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-size: 0.95rem;
+    }
+
+    .post-content thead {
+      background: #1a365d;
+      color: white;
+    }
+
+    .post-content th {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      font-weight: 600;
+    }
+
+    .post-content td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid rgba(26, 54, 93, 0.1);
+    }
+
+    .post-content tbody tr:nth-child(even) {
+      background: rgba(26, 54, 93, 0.03);
+    }
+
+    .post-content tbody tr:hover {
+      background: rgba(26, 54, 93, 0.06);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #115e59;
+      text-decoration: none;
+      font-weight: 500;
+      margin-bottom: 2rem;
+    }
+
+    .back-link:hover {
+      color: #d97706;
+    }
+
+    .cta-section {
+      background: #ffffff;
+      border: 1px solid rgba(26, 54, 93, 0.1);
+      border-radius: 1rem;
+      padding: 2rem;
+      margin-top: 3rem;
+      text-align: center;
+    }
+
+    .cta-section h3 {
+      font-family: 'Zilla Slab', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      margin-bottom: 0.75rem;
+    }
+
+    .cta-section p {
+      color: #115e59;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: #d97706;
+      color: white;
+      font-weight: 600;
+      padding: 0.875rem 2rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3);
+    }
+
+    footer {
+      text-align: center;
+      padding: 3rem 1.5rem;
+      color: #115e59;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 640px) {
+      h1 { font-size: 1.875rem; }
+      main { padding-top: 6rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-content">
+      <a href="/" class="nav-logo">MVP Club</a>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/how-we-work">How We Work</a>
+        <a href="/for-organizations">For Organizations</a>
+        <a href="/community">Community</a>
+        <a href="/blog/">Blog</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <a href="/blog/" class="back-link">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+      Back to Blog
+    </a>
+
+    <article>
+      <header class="post-meta">
+        <span class="post-pillar">The AI Adoption Crisis / Human + AI Teams</span>
+        <h1>What Happens When Everybody Can Do Everything?</h1>
+        <div class="post-info">
+          <span>By Matt Hastings</span>
+          <span>February 14, 2026</span>
+        </div>
+      </header>
+
+      <div class="post-content">
+        <h1>What Happens When Everybody Can Do Everything?</h1>
+<p><strong>AI is rapidly making specialized professional skills available to anyone willing to pick up the tools. The real question isn't whether AI can do your job. It's what happens to how we organize work, distribute resources, and build careers when skill scarcity disappears.</strong></p>
+<p>An essay went viral last week. Matt Shumer's <a href="https://shumer.dev/something-big-is-happening">"Something Big Is Happening."</a> He makes the case that AI has crossed an inflection point where it can perform professional work as well as or better than humans across domains. His data is compelling. The capability benchmarks are doubling every few months. The models are starting to help build themselves.</p>
+<p>I think he's right. But I think the bigger question is one he doesn't ask.</p>
+<div style="max-width: 100%; margin: 32px 0;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" style="max-width: 100%; height: auto;">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#081f3f"/>
+      <stop offset="100%" style="stop-color:#15465b"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <text x="280" y="40" font-family="Georgia, serif" font-size="26" fill="#d97706" text-anchor="middle" font-weight="400">Before</text>
+  <rect x="240" y="60" width="80" height="54" rx="7" fill="#d97706" opacity="0.9"/>
+  <text x="280" y="93" font-family="Arial, sans-serif" font-size="16" fill="#081f3f" text-anchor="middle" font-weight="600">CEO</text>
+  <rect x="165" y="132" width="100" height="54" rx="7" fill="rgba(217,119,6,0.6)"/>
+  <text x="215" y="165" font-family="Arial, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">VP Sales</text>
+  <rect x="285" y="132" width="100" height="54" rx="7" fill="rgba(217,119,6,0.6)"/>
+  <text x="335" y="165" font-family="Arial, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">VP Eng</text>
+  <rect x="62" y="204" width="98" height="54" rx="7" fill="rgba(217,119,6,0.35)"/>
+  <text x="111" y="237" font-family="Arial, sans-serif" font-size="13" fill="#ffffff" text-anchor="middle">Marketing</text>
+  <rect x="172" y="204" width="98" height="54" rx="7" fill="rgba(217,119,6,0.35)"/>
+  <text x="221" y="237" font-family="Arial, sans-serif" font-size="13" fill="#ffffff" text-anchor="middle">Biz Dev</text>
+  <rect x="282" y="204" width="98" height="54" rx="7" fill="rgba(217,119,6,0.35)"/>
+  <text x="331" y="237" font-family="Arial, sans-serif" font-size="13" fill="#ffffff" text-anchor="middle">Frontend</text>
+  <rect x="392" y="204" width="98" height="54" rx="7" fill="rgba(217,119,6,0.35)"/>
+  <text x="441" y="237" font-family="Arial, sans-serif" font-size="13" fill="#ffffff" text-anchor="middle">Backend</text>
+  <rect x="18" y="276" width="82" height="54" rx="7" fill="rgba(217,119,6,0.18)"/>
+  <text x="59" y="309" font-family="Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.7)" text-anchor="middle">Design</text>
+  <rect x="110" y="276" width="82" height="54" rx="7" fill="rgba(217,119,6,0.18)"/>
+  <text x="151" y="309" font-family="Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.7)" text-anchor="middle">Analytics</text>
+  <rect x="202" y="276" width="82" height="54" rx="7" fill="rgba(217,119,6,0.18)"/>
+  <text x="243" y="309" font-family="Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.7)" text-anchor="middle">PM</text>
+  <rect x="294" y="276" width="82" height="54" rx="7" fill="rgba(217,119,6,0.18)"/>
+  <text x="335" y="309" font-family="Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.7)" text-anchor="middle">QA</text>
+  <rect x="386" y="276" width="82" height="54" rx="7" fill="rgba(217,119,6,0.18)"/>
+  <text x="427" y="309" font-family="Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.7)" text-anchor="middle">DevOps</text>
+  <rect x="478" y="276" width="82" height="54" rx="7" fill="rgba(217,119,6,0.18)"/>
+  <text x="519" y="309" font-family="Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.7)" text-anchor="middle">Support</text>
+  <line x1="280" y1="114" x2="215" y2="132" stroke="rgba(217,119,6,0.3)" stroke-width="1.5"/>
+  <line x1="280" y1="114" x2="335" y2="132" stroke="rgba(217,119,6,0.3)" stroke-width="1.5"/>
+  <line x1="215" y1="186" x2="111" y2="204" stroke="rgba(217,119,6,0.3)" stroke-width="1.5"/>
+  <line x1="215" y1="186" x2="221" y2="204" stroke="rgba(217,119,6,0.3)" stroke-width="1.5"/>
+  <line x1="335" y1="186" x2="331" y2="204" stroke="rgba(217,119,6,0.3)" stroke-width="1.5"/>
+  <line x1="335" y1="186" x2="441" y2="204" stroke="rgba(217,119,6,0.3)" stroke-width="1.5"/>
+  <text x="280" y="365" font-family="Arial, sans-serif" font-size="16" fill="rgba(255,255,255,0.5)" text-anchor="middle">Organized by scarcity of skill</text>
+  <text x="600" y="195" font-family="Georgia, serif" font-size="56" fill="#d97706" text-anchor="middle">&#x2192;</text>
+  <text x="600" y="235" font-family="Arial, sans-serif" font-size="16" fill="rgba(255,255,255,0.5)" text-anchor="middle">AI makes capability</text>
+  <text x="600" y="258" font-family="Arial, sans-serif" font-size="16" fill="rgba(255,255,255,0.5)" text-anchor="middle">ubiquitous</text>
+  <text x="920" y="40" font-family="Georgia, serif" font-size="26" fill="#d97706" text-anchor="middle" font-weight="400">After</text>
+  <circle cx="810" cy="105" r="42" fill="rgba(217,119,6,0.7)" stroke="#d97706" stroke-width="2"/>
+  <text x="810" y="112" font-family="Arial, sans-serif" font-size="14" fill="#081f3f" text-anchor="middle" font-weight="600">Person</text>
+  <circle cx="960" cy="82" r="42" fill="rgba(217,119,6,0.7)" stroke="#d97706" stroke-width="2"/>
+  <text x="960" y="89" font-family="Arial, sans-serif" font-size="14" fill="#081f3f" text-anchor="middle" font-weight="600">Person</text>
+  <circle cx="1070" cy="185" r="42" fill="rgba(217,119,6,0.7)" stroke="#d97706" stroke-width="2"/>
+  <text x="1070" y="192" font-family="Arial, sans-serif" font-size="14" fill="#081f3f" text-anchor="middle" font-weight="600">Person</text>
+  <circle cx="1020" cy="320" r="42" fill="rgba(217,119,6,0.7)" stroke="#d97706" stroke-width="2"/>
+  <text x="1020" y="327" font-family="Arial, sans-serif" font-size="14" fill="#081f3f" text-anchor="middle" font-weight="600">Person</text>
+  <circle cx="860" cy="330" r="42" fill="rgba(217,119,6,0.7)" stroke="#d97706" stroke-width="2"/>
+  <text x="860" y="337" font-family="Arial, sans-serif" font-size="14" fill="#081f3f" text-anchor="middle" font-weight="600">Person</text>
+  <circle cx="735" cy="225" r="42" fill="rgba(217,119,6,0.7)" stroke="#d97706" stroke-width="2"/>
+  <text x="735" y="232" font-family="Arial, sans-serif" font-size="14" fill="#081f3f" text-anchor="middle" font-weight="600">Person</text>
+  <line x1="810" y1="105" x2="960" y2="82" stroke="rgba(217,119,6,0.25)" stroke-width="1.5"/>
+  <line x1="810" y1="105" x2="1070" y2="185" stroke="rgba(217,119,6,0.25)" stroke-width="1.5"/>
+  <line x1="810" y1="105" x2="735" y2="225" stroke="rgba(217,119,6,0.25)" stroke-width="1.5"/>
+  <line x1="810" y1="105" x2="860" y2="330" stroke="rgba(217,119,6,0.25)" stroke-width="1.5"/>
+  <line x1="960" y1="82" x2="1070" y2="185" stroke="rgba(217,119,6,0.25)" stroke-width="1.5"/>
+  <line x1="960" y1="82" x2="1020" y2="320" stroke="rgba(217,119,6,0.25)" stroke-width="1.5"/>
+  <line x1="960" y1="82" x2="735" y2="225" stroke="rgba(217,119,6,0.25)" stroke-width="1.5"/>
+  <line x1="1070" y1="185" x2="1020" y2="320" stroke="rgba(217,119,6,0.25)" stroke-width="1.5"/>
+  <line x1="1070" y1="185" x2="860" y2="330" stroke="rgba(217,119,6,0.25)" stroke-width="1.5"/>
+  <line x1="1020" y1="320" x2="860" y2="330" stroke="rgba(217,119,6,0.25)" stroke-width="1.5"/>
+  <line x1="860" y1="330" x2="735" y2="225" stroke="rgba(217,119,6,0.25)" stroke-width="1.5"/>
+  <line x1="735" y1="225" x2="1020" y2="320" stroke="rgba(217,119,6,0.25)" stroke-width="1.5"/>
+  <line x1="810" y1="105" x2="1020" y2="320" stroke="rgba(217,119,6,0.25)" stroke-width="1.5"/>
+  <line x1="960" y1="82" x2="860" y2="330" stroke="rgba(217,119,6,0.25)" stroke-width="1.5"/>
+  <line x1="1070" y1="185" x2="735" y2="225" stroke="rgba(217,119,6,0.25)" stroke-width="1.5"/>
+  <text x="750" y="78" font-family="Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.45)">eng</text>
+  <text x="850" y="72" font-family="Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.45)">mktg</text>
+  <text x="1005" y="56" font-family="Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.45)">design</text>
+  <text x="895" y="118" font-family="Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.45)">PM</text>
+  <text x="1115" y="162" font-family="Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.45)">sales</text>
+  <text x="1110" y="225" font-family="Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.45)">ops</text>
+  <text x="682" y="258" font-family="Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.45)">UX</text>
+  <text x="775" y="275" font-family="Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.45)">eng</text>
+  <text x="878" y="375" font-family="Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.45)">mktg</text>
+  <text x="1055" y="370" font-family="Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.45)">finance</text>
+  <text x="800" y="168" font-family="Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.45)">biz dev</text>
+  <text x="975" y="285" font-family="Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.45)">design</text>
+  <text x="920" y="400" font-family="Arial, sans-serif" font-size="16" fill="rgba(255,255,255,0.5)" text-anchor="middle">Everybody can do everything</text>
+  <line x1="50" y1="430" x2="1150" y2="430" stroke="rgba(217,119,6,0.3)" stroke-width="1"/>
+  <text x="600" y="490" font-family="Georgia, serif" font-size="44" fill="#ffffff" text-anchor="middle" font-weight="400">What Happens When Everybody</text>
+  <text x="600" y="545" font-family="Georgia, serif" font-size="44" fill="#ffffff" text-anchor="middle" font-weight="400">Can Do Everything?</text>
+  <text x="600" y="585" font-family="Arial, sans-serif" font-size="22" fill="#d97706" text-anchor="middle">Who does what, and why?</text>
+  <text x="600" y="615" font-family="Arial, sans-serif" font-size="22" fill="#d97706" text-anchor="middle">Who gets what, and why?</text>
+  <text x="1150" y="622" font-family="Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.3)" text-anchor="end">MVP Club</text>
+</svg>
+</div>
+
+<h2>How is work organized right now?</h2>
+<p><strong>Work is organized around people who have specialized skills that others can't do, or can't do as efficiently. Our entire professional infrastructure (hierarchies, pay bands, career paths) is built on the scarcity of skill.</strong></p>
+<p>I studied marketing, so I'm a marketer. You studied software engineering, so you're a software engineer. Somebody else studied learning experience design, project management, UX, business development, sales. People specialize to differentiate themselves, to become useful within an organization.</p>
+<p>Organizations are built around this differentiation. Hierarchies of command and control are built this way: who gets to make decisions, whose skills are more rare and therefore command more money, who has more "experience" and therefore gets to lead.</p>
+<p>This has been the organizing logic of professional work for a long time. And it's getting tested.</p>
+<h2>What happens when skill scarcity disappears?</h2>
+<p><strong>When any ambitious person with Claude can do marketing, software engineering, business development, UX, project management, and do it well, the scarcity that justified our current structures starts to dissolve.</strong></p>
+<p>I'm thinking about this more and more. Right now, I can sit down with Claude and do work that would have required hiring three different specialists a year ago. Not because I suddenly learned those skills in the traditional sense, but because the tools have made the capability accessible. Me plus Claude can build an app, run a marketing campaign, do financial modeling, write legal copy. Not perfectly, not without judgment and iteration, but competently and improving fast.</p>
+<p>And I'm not special. Anyone who puts in the practice can do this.</p>
+<p>So what happens to the hierarchy within an organization when the skill that justified your position is no longer scarce? How do we justify different pay bands when the rarity of a skill set is disappearing? These aren't hypothetical questions. They're arriving right now for a lot of people.</p>
+<h2>Who gets what and why?</h2>
+<p><strong>Every political economy answers the same fundamental question: who gets what and why, and who does what and why. The current answer, based on market scarcity of talent and skills, is being fundamentally challenged by AI.</strong></p>
+<p>If you think about it, we're always answering these questions. Every society, every organization, every community has to figure out how to allocate resources and assign roles:</p>
+<ul>
+<li>In a market economy, scarcity and supply and demand for talent answer those questions. You get paid based on how rare and valuable your skill is. Capital flows toward expected returns.</li>
+<li>In a monarchy, the king decides.</li>
+<li>In a small community, maybe there's a council.</li>
+</ul>
+<p>But we always have to answer: who gets what and why? Who does what and why?</p>
+<p>The current answers, the ones most of us live inside of, are built on the assumption that capability is unevenly distributed. Some people can do things other people can't, and that scarcity creates value, creates hierarchy, creates the logic of organizations.</p>
+<p>What happens when that assumption breaks?</p>
+<h2>Why this is actually exciting</h2>
+<p><strong>The ubiquity of AI capability could be one of the most democratizing developments in the history of work, redistributing access to skills that used to require years of specialized training or expensive credentials.</strong></p>
+<p>I know this can sound scary. But I think there's a lot that isn't great about how we currently answer the question of who gets what and why. Access to capability has been gated by formal education, by credentials, by who can afford specialized training, by who got lucky with their first job. A lot of talented people have been locked out of doing work they're capable of because they didn't have the right degree or the right resume line.</p>
+<p>AI is blowing those gates open. When anybody plus Claude can be a CEO, do business development, run marketing, design a UX, organize a local charity board, we're looking at a massive redistribution of capability. Not theoretical capability. Practical, applied, get-things-done capability.</p>
+<p>That's a progressive moment. Not in the left-right political sense. I mean making progress. Moving forward. Expanding who gets to participate in solving problems, building things, creating value.</p>
+<h2>So what do we actually do?</h2>
+<p><strong>The only way to figure out what these tools mean for this moment is to pick them up and use them. You have to see for yourself what becomes possible when the barriers to doing any particular kind of work start to fall.</strong></p>
+<p>I think the people who engage with these tools now are going to be the ones who shape what comes next. Not because they'll have a career advantage (though they will, for a while), but because they'll have the perspective to participate in answering these big questions.</p>
+<p>Once you start building with AI, the old constraints start to dissolve. There's no longer a formal barrier to doing any particular thing. Which means the questions you need to get good at answering change:</p>
+<ul>
+<li><strong>What should I be doing?</strong> Not what am I credentialed for, but what actually matters?</li>
+<li><strong>Who should I be doing it with?</strong> Not who's in my department, but who do I want to build with?</li>
+<li><strong>Why am I doing it?</strong> Not because it's my job title, but because it's worth doing.</li>
+<li><strong>What do I expect from doing it?</strong> Not just a paycheck, but what am I trying to create?</li>
+</ul>
+<p>Those are better questions than "what's my specialization?" And we're getting to ask them because these tools are making the old constraints irrelevant.</p>
+<h2>This is the moment to get involved</h2>
+<p><strong>We're living through a transformation of work that's as significant as the Industrial Revolution, and how it plays out depends on who picks up the tools and helps shape what comes next.</strong></p>
+<p>I love thinking about this stuff. It's energizing. Sixty percent of the population used to be farmers. Now it's two percent. I wonder what corporate white-collar work might look like in ten years with these tools.</p>
+<p>But we don't just have to wonder. We get to participate. And for us to own this moment as a people, democratically, we have to pick up these tools and use them. We have to get good at them. We have to see what becomes possible and then advocate for the future we want.</p>
+<p>That's what we're doing at MVP Club. We're picking up the tools, figuring out what they mean for us, and doing it together. Because this moment is too important and too exciting to navigate alone.</p>
+<p>Come do it with us.</p>
+<hr />
+<h2>Frequently Asked Questions</h2>
+<h3>Will AI actually replace specialized professional roles?</h3>
+<p><strong>AI isn't replacing people wholesale. It's making specialized skills accessible to anyone willing to practice. The roles themselves may transform significantly, but the human judgment, context, and vision behind the work remain essential. The question is less "will my job disappear" and more "what does my job look like when everyone has access to the same capabilities?"</strong></p>
+<h3>Do I need technical skills to use AI tools effectively?</h3>
+<p><strong>No. Tools like Claude let you work in plain English. You describe what you want, evaluate the output, and iterate. The skill is more like managing a capable team member than writing code. It's a practiced skill. You get better by doing it, not by studying it first.</strong></p>
+<h3>How do I get started if I've never used AI for real work?</h3>
+<p><strong>Start with a real project that matters to you, something you're motivated to finish. Use an AI tool to help you build it. You'll learn more in a week of building than in a month of reading about AI. If you get stuck, find a community of people doing the same thing. That support makes all the difference.</strong></p>
+<hr />
+<p><em>Written by Matt Hastings, PhD in Education and co-founder of MVP Club. Matt has coached 100+ non-technical professionals through building their first AI-powered projects. Last updated February 15, 2026.</em></p>
+      </div>
+
+      <div class="cta-section">
+        <h3>Ready to transform your AI practice?</h3>
+        <p>Join MVP Club and learn alongside peers who are navigating the same journey.</p>
+        <a href="https://calendly.com/d/cybv-947-s8m/discovery-call" class="cta-button" target="_blank" rel="noopener noreferrer">Book a Discovery Call</a>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 MVP Club. All rights reserved.</p>
+  </footer>
+</body>
+</html>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Wrench, Users, Rocket, Calendar, CheckCircle2 } from 'lucide-react';
 import AnimatedSection from '../components/shared/AnimatedSection';
+import SEO from '../components/SEO';
 
 const trackJoinClick = (location) => {
   if (typeof window.gtag === 'function') {
@@ -15,6 +16,11 @@ const trackJoinClick = (location) => {
 const CommunityPage = () => {
   return (
     <div className="min-h-screen" style={{ backgroundColor: 'var(--color-background)', fontFamily: 'Inter, system-ui, sans-serif' }}>
+      <SEO
+        title="Community"
+        description="Join the MVP Club community of AI practitioners. Weekly workshops, tool exploration sessions, and a peer network to help you build real AI skills through practice."
+        path="/community"
+      />
 
       {/* Hero Section */}
       <section className="pt-32 py-24" style={{ backgroundColor: 'var(--color-background)' }}>

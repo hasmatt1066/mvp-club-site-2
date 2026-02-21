@@ -2,10 +2,16 @@ import React from 'react';
 import { Building2, CheckCircle2, TrendingUp, Target, Layers, Brain } from 'lucide-react';
 import AnimatedSection from '../components/shared/AnimatedSection';
 import SharedCTA from '../components/shared/SharedCTA';
+import SEO from '../components/SEO';
 
 const ForOrganizationsPage = () => {
   return (
     <div className="min-h-screen" style={{ backgroundColor: 'var(--color-background)', fontFamily: 'Inter, system-ui, sans-serif' }}>
+      <SEO
+        title="For Organizations"
+        description="Get measurable AI productivity gains in 4 weeks. MVP Club's Productivity Sprint installs AI workflows into your team's real processes — no training programs required."
+        path="/for-organizations"
+      />
 
       {/* For Organizations Section */}
       <section id="organizations" className="pt-32 py-24" style={{ backgroundColor: 'var(--color-primary)' }}>
