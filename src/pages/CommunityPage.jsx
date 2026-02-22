@@ -45,6 +45,16 @@ const CommunityPage = () => {
               Join the Community
             </a>
           </AnimatedSection>
+          <AnimatedSection delay={200}>
+            <div className="mt-12 rounded-2xl overflow-hidden shadow-lg">
+              <img
+                src="/community-session-vibe-coding.png"
+                alt="MVP Club members in a live Intro to Vibe Coding session"
+                className="w-full h-auto"
+                loading="eager"
+              />
+            </div>
+          </AnimatedSection>
         </div>
       </section>
 
@@ -103,6 +113,16 @@ const CommunityPage = () => {
               </AnimatedSection>
             ))}
           </div>
+
+          <AnimatedSection delay={300}>
+            <div className="mt-12 rounded-2xl overflow-hidden shadow-lg">
+              <img
+                src="/community-session-demo.png"
+                alt="MVP Club Demo Day — members presenting their AI projects live"
+                className="w-full h-auto"
+              />
+            </div>
+          </AnimatedSection>
         </div>
       </section>
 
