@@ -25,61 +25,74 @@ const CommunityPage = () => {
       {/* Hero Section */}
       <section className="pt-32 py-24" style={{ backgroundColor: 'var(--color-background)' }}>
         <div className="max-w-7xl mx-auto px-6">
-          <AnimatedSection>
-            <h1 className="font-display text-4xl md:text-5xl mb-6 max-w-3xl" style={{ color: 'var(--color-primary)' }}>
-              Build Real AI Skills With a Community That Gets It
-            </h1>
-            <p className="text-xl text-gray-600 mb-8 max-w-2xl leading-relaxed">
-              AI is changing how we work — but figuring it out alone is slow and frustrating.
-              The MVP Club is a community of practitioners who learn by doing: exploring new tools together,
-              helping each other through real projects, and sharing what they're building with AI.
-            </p>
-            <a
-              href="https://mvp-club.mn.co/"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => trackJoinClick('community_hero')}
-              className="inline-block px-8 py-4 rounded-lg font-semibold transition-all duration-200 hover:scale-105"
-              style={{ backgroundColor: 'var(--color-secondary)', color: 'white', textDecoration: 'none' }}
-            >
-              Join the Community
-            </a>
-          </AnimatedSection>
-          <AnimatedSection delay={200}>
-            <div className="mt-12 rounded-2xl overflow-hidden shadow-lg">
-              <img
-                src="/community-session-vibe-coding.png"
-                alt="MVP Club members in a live Intro to Vibe Coding session"
-                className="w-full h-auto"
-                loading="eager"
-              />
-            </div>
-          </AnimatedSection>
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <AnimatedSection>
+              <h1 className="font-display text-4xl md:text-5xl mb-6" style={{ color: 'var(--color-primary)' }}>
+                Build Real AI Skills With a Community That Gets It
+              </h1>
+              <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+                AI is changing how we work — but figuring it out alone is slow and frustrating.
+                The MVP Club is a community of practitioners who learn by doing: exploring new tools together,
+                helping each other through real projects, and sharing what they're building with AI.
+              </p>
+              <a
+                href="https://mvp-club.mn.co/"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackJoinClick('community_hero')}
+                className="inline-block px-8 py-4 rounded-lg font-semibold transition-all duration-200 hover:scale-105"
+                style={{ backgroundColor: 'var(--color-secondary)', color: 'white', textDecoration: 'none' }}
+              >
+                Join the Community
+              </a>
+            </AnimatedSection>
+            <AnimatedSection delay={200}>
+              <div className="rounded-2xl overflow-hidden shadow-lg">
+                <img
+                  src="/community-session-vibe-coding.png"
+                  alt="MVP Club members in a live Intro to Vibe Coding session"
+                  className="w-full h-auto"
+                  loading="eager"
+                />
+              </div>
+            </AnimatedSection>
+          </div>
         </div>
       </section>
 
       {/* Weekly Events Section */}
       <section className="py-24" style={{ backgroundColor: 'white' }}>
         <div className="max-w-7xl mx-auto px-6">
-          <AnimatedSection>
-            <div className="flex items-center gap-3 mb-4">
-              <Calendar size={24} style={{ color: 'var(--color-secondary)' }} />
-              <p
-                className="text-lg font-semibold uppercase tracking-wider"
-                style={{ color: 'var(--color-secondary)' }}
-              >
-                Weekly Events
+          <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
+            <AnimatedSection>
+              <div className="flex items-center gap-3 mb-4">
+                <Calendar size={24} style={{ color: 'var(--color-secondary)' }} />
+                <p
+                  className="text-lg font-semibold uppercase tracking-wider"
+                  style={{ color: 'var(--color-secondary)' }}
+                >
+                  Weekly Events
+                </p>
+              </div>
+              <h2 className="font-display text-3xl md:text-4xl mb-4" style={{ color: 'var(--color-primary)' }}>
+                Something Happening Every Week
+              </h2>
+              <p className="text-lg text-gray-600 leading-relaxed">
+                This isn't a course you watch alone. It's a community you show up to.
               </p>
-            </div>
-            <h2 className="font-display text-3xl md:text-4xl mb-4 max-w-2xl" style={{ color: 'var(--color-primary)' }}>
-              Something Happening Every Week
-            </h2>
-            <p className="text-lg text-gray-600 mb-12 max-w-2xl leading-relaxed">
-              This isn't a course you watch alone. It's a community you show up to.
-            </p>
-          </AnimatedSection>
+            </AnimatedSection>
+            <AnimatedSection delay={200}>
+              <div className="rounded-2xl overflow-hidden shadow-lg">
+                <img
+                  src="/community-session-demo.png"
+                  alt="MVP Club Demo Day — members presenting their AI projects live"
+                  className="w-full h-auto"
+                />
+              </div>
+            </AnimatedSection>
+          </div>
 
-          <div className="grid md:grid-cols-3 gap-8 mb-16">
+          <div className="grid md:grid-cols-3 gap-8">
             {[
               {
                 icon: Wrench,
@@ -113,16 +126,6 @@ const CommunityPage = () => {
               </AnimatedSection>
             ))}
           </div>
-
-          <AnimatedSection delay={300}>
-            <div className="mt-12 rounded-2xl overflow-hidden shadow-lg">
-              <img
-                src="/community-session-demo.png"
-                alt="MVP Club Demo Day — members presenting their AI projects live"
-                className="w-full h-auto"
-              />
-            </div>
-          </AnimatedSection>
         </div>
       </section>
 
