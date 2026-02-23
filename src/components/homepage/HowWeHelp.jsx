@@ -81,6 +81,7 @@ const services = [
       'Demo & Share Wednesday',
       'Monthly Getting Started sessions',
     ],
+    price: '$20/mo — 2-week free trial',
     linkTo: '/community',
     linkText: 'Join the Community',
   },
@@ -175,6 +176,16 @@ const HowWeHelp = () => {
                     </li>
                   ))}
                 </ul>
+
+                {/* Price */}
+                {service.price && (
+                  <p
+                    className="text-sm font-semibold mb-4"
+                    style={{ color: 'var(--color-secondary)' }}
+                  >
+                    {service.price}
+                  </p>
+                )}
 
                 {/* Link */}
                 <Link

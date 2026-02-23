@@ -64,7 +64,7 @@ const FinalCTA = () => {
                   color: 'var(--color-primary)',
                 }}
               >
-                Join the Community
+                Join the Community — Free for 2 Weeks
               </a>
             </div>
 

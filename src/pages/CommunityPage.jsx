@@ -43,8 +43,11 @@ const CommunityPage = () => {
                 className="inline-block px-8 py-4 rounded-lg font-semibold transition-all duration-200 hover:scale-105"
                 style={{ backgroundColor: 'var(--color-secondary)', color: 'white', textDecoration: 'none' }}
               >
-                Join the Community
+                Start Your Free Trial
               </a>
+              <p className="text-sm text-gray-500 mt-3">
+                2 weeks free, then $20/month. An investment in your career growth — not another free group you'll forget about.
+              </p>
             </AnimatedSection>
             <AnimatedSection delay={200}>
               <div className="rounded-2xl overflow-hidden shadow-lg">
@@ -156,6 +159,44 @@ const CommunityPage = () => {
         </div>
       </section>
 
+      {/* Why $20/month Section */}
+      <section className="py-24" style={{ backgroundColor: 'white' }}>
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="max-w-3xl mx-auto">
+            <AnimatedSection>
+              <h2 className="font-display text-3xl md:text-4xl mb-6" style={{ color: 'var(--color-primary)' }}>
+                $20/month — An Investment in Your Career Growth
+              </h2>
+              <p className="text-lg font-semibold mb-6" style={{ color: 'var(--color-secondary)' }}>
+                Try it free for 2 weeks. No commitment, cancel anytime.
+              </p>
+              <p className="text-lg text-gray-600 leading-relaxed mb-6">
+                We charge because it works. People pay attention to what they pay for. Our members show up, engage, and actually build things — because they're invested.
+              </p>
+              <p className="text-lg text-gray-600 leading-relaxed mb-8">
+                We've all been in free Slack groups and Discord servers that go quiet after a week. That's not this. $20/month keeps our community active, our events full, and our members getting real value — not just another notification you mute.
+              </p>
+            </AnimatedSection>
+            <AnimatedSection delay={100}>
+              <div className="grid sm:grid-cols-3 gap-6">
+                {[
+                  { stat: '3+', label: 'Live events every week' },
+                  { stat: '100%', label: 'Practitioner-led, not lecture-based' },
+                  { stat: '$0.66', label: 'Per day for career growth' },
+                ].map((item, i) => (
+                  <div key={i} className="text-center p-6 rounded-xl" style={{ backgroundColor: 'var(--color-background)' }}>
+                    <div className="font-display text-2xl mb-1" style={{ color: 'var(--color-secondary)' }}>
+                      {item.stat}
+                    </div>
+                    <div className="text-sm text-gray-600">{item.label}</div>
+                  </div>
+                ))}
+              </div>
+            </AnimatedSection>
+          </div>
+        </div>
+      </section>
+
       {/* Final CTA */}
       <section className="py-24" style={{ backgroundColor: 'var(--color-background)' }}>
         <div className="max-w-7xl mx-auto px-6">
@@ -179,8 +220,11 @@ const CommunityPage = () => {
                 className="inline-block px-8 py-4 rounded-lg font-semibold transition-all duration-200 hover:scale-105"
                 style={{ backgroundColor: 'var(--color-accent-lifted)', color: 'var(--color-primary)', textDecoration: 'none' }}
               >
-                Join the Community
+                Start Your Free Trial
               </a>
+              <p className="text-white/60 text-sm mt-3">
+                Start with a 2-week free trial. Cancel anytime.
+              </p>
             </div>
           </AnimatedSection>
         </div>
