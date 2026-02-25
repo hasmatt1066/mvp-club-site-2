@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What 80 Non-Technical People Proved About AI in Two Hours | MVP Club Blog</title>
+  <meta name="description" content="At a company hackathon, 80 non-technical employees built working AI agents in two hours. The skills that made them successful are ones you already have.">
+  <meta name="author" content="Jill Ozovek">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="What 80 Non-Technical People Proved About AI in Two Hours">
+  <meta property="og:description" content="At a company hackathon, 80 non-technical employees built working AI agents in two hours. The skills that made them successful are ones you already have.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://mvpclub.ai/blog/what-80-non-technical-people-proved-about-ai">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="What 80 Non-Technical People Proved About AI in Two Hours">
+  <meta name="twitter:description" content="At a company hackathon, 80 non-technical employees built working AI agents in two hours. The skills that made them successful are ones you already have.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Zilla+Slab&display=swap" rel="stylesheet">
+
+  <!-- Schema.org Article markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "What 80 Non-Technical People Proved About AI in Two Hours",
+    "author": {
+      "@type": "Person",
+      "name": "Jill Ozovek"
+    },
+    "datePublished": "2026-02-26",
+    "description": "At a company hackathon, 80 non-technical employees built working AI agents in two hours. The skills that made them successful are ones you already have.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "MVP Club",
+      "url": "https://mvpclub.ai"
+    }
+  }
+  </script>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background-color: #faf5f0;
+      color: #1a365d;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: #ffffff;
+      border-bottom: 1px solid rgba(26, 54, 93, 0.1);
+      padding: 1rem 2rem;
+      z-index: 100;
+    }
+
+    .nav-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-family: 'Zilla Slab', serif;
+      font-size: 1.5rem;
+      color: #1a365d;
+      text-decoration: none;
+    }
+
+    .nav-links a {
+      color: #1a365d;
+      text-decoration: none;
+      margin-left: 2rem;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      color: #d97706;
+    }
+
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 8rem 1.5rem 4rem;
+    }
+
+    .post-meta {
+      margin-bottom: 2rem;
+    }
+
+    .post-pillar {
+      display: inline-block;
+      background: #d97706;
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.25rem 0.75rem;
+      border-radius: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-family: 'Zilla Slab', serif;
+      font-size: 2.5rem;
+      font-weight: 400;
+      line-height: 1.2;
+      color: #1a365d;
+      margin-bottom: 1rem;
+    }
+
+    .post-info {
+      color: #115e59;
+      font-size: 0.95rem;
+    }
+
+    .post-info span {
+      margin-right: 1rem;
+    }
+
+    .post-content {
+      font-size: 1.1rem;
+    }
+
+    .post-content p {
+      margin-bottom: 1.5rem;
+    }
+
+    .post-content h2 {
+      font-family: 'Zilla Slab', serif;
+      font-size: 1.75rem;
+      font-weight: 400;
+      color: #1a365d;
+      margin: 2.5rem 0 1rem;
+    }
+
+    .post-content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #1a365d;
+      margin: 2rem 0 0.75rem;
+    }
+
+    .post-content ul, .post-content ol {
+      margin: 0 0 1.5rem 1.5rem;
+    }
+
+    .post-content li {
+      margin-bottom: 0.5rem;
+    }
+
+    .post-content a {
+      color: #d97706;
+      text-decoration: underline;
+    }
+
+    .post-content blockquote {
+      border-left: 4px solid #d97706;
+      padding-left: 1.5rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: #115e59;
+    }
+
+    .post-content strong {
+      font-weight: 600;
+    }
+
+    .post-content figure.blog-image {
+      margin: 2rem -120px;
+      text-align: center;
+    }
+
+    .post-content figure.blog-image img {
+      max-width: 100%;
+      width: 960px;
+      height: auto;
+      border-radius: 0.5rem;
+      display: block;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 1000px) {
+      .post-content figure.blog-image {
+        margin: 2rem -40px;
+      }
+      .post-content figure.blog-image img {
+        width: calc(100% + 80px);
+        max-width: calc(100vw - 2rem);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .post-content figure.blog-image {
+        margin: 2rem -1rem;
+      }
+      .post-content figure.blog-image img {
+        width: calc(100% + 2rem);
+        border-radius: 0;
+      }
+    }
+
+    .post-content figure.blog-image figcaption {
+      margin-top: 0.75rem;
+      font-size: 0.9rem;
+      color: #115e59;
+      font-style: italic;
+    }
+
+    .post-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-size: 0.95rem;
+    }
+
+    .post-content thead {
+      background: #1a365d;
+      color: white;
+    }
+
+    .post-content th {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      font-weight: 600;
+    }
+
+    .post-content td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid rgba(26, 54, 93, 0.1);
+    }
+
+    .post-content tbody tr:nth-child(even) {
+      background: rgba(26, 54, 93, 0.03);
+    }
+
+    .post-content tbody tr:hover {
+      background: rgba(26, 54, 93, 0.06);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #115e59;
+      text-decoration: none;
+      font-weight: 500;
+      margin-bottom: 2rem;
+    }
+
+    .back-link:hover {
+      color: #d97706;
+    }
+
+    .cta-section {
+      background: #ffffff;
+      border: 1px solid rgba(26, 54, 93, 0.1);
+      border-radius: 1rem;
+      padding: 2rem;
+      margin-top: 3rem;
+      text-align: center;
+    }
+
+    .cta-section h3 {
+      font-family: 'Zilla Slab', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      margin-bottom: 0.75rem;
+    }
+
+    .cta-section p {
+      color: #115e59;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: #d97706;
+      color: white;
+      font-weight: 600;
+      padding: 0.875rem 2rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3);
+    }
+
+    footer {
+      text-align: center;
+      padding: 3rem 1.5rem;
+      color: #115e59;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 640px) {
+      h1 { font-size: 1.875rem; }
+      main { padding-top: 6rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-content">
+      <a href="/" class="nav-logo">MVP Club</a>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/how-we-work">How We Work</a>
+        <a href="/for-organizations">For Organizations</a>
+        <a href="/community">Community</a>
+        <a href="/blog/">Blog</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <a href="/blog/" class="back-link">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+      Back to Blog
+    </a>
+
+    <article>
+      <header class="post-meta">
+        <span class="post-pillar">Practice &gt; Training</span>
+        <h1>What 80 Non-Technical People Proved About AI in Two Hours</h1>
+        <div class="post-info">
+          <span>By Jill Ozovek</span>
+          <span>February 25, 2026</span>
+        </div>
+      </header>
+
+      <div class="post-content">
+        <h1>What 80 Non-Technical People Proved About AI in Two Hours</h1>
+<p><em>By Jill Ozovek</em></p>
+<p>Last week, Ryan and I were in San Diego — bye bye, Philly snow — helping facilitate a hackathon for Redpanda, a data streaming company with about 180 people at a company offsite.</p>
+<p>Their engineers had just built an agent system that's becoming an actual product, and they wanted the rest of the company to learn how to use it. That's where I came in: helping the non-technical people scope their workflows, write good prompts, and figure out how to get started.</p>
+<p>About 80 non-technical employees dove in. And what they built in two hours was amazing — but honestly, not surprising. We've seen this before. When you give people the right environment and a little guidance, they rise to it.</p>
+<p>The room was buzzing with ideas, healthy banter, and that specific excitement you hear when a team gets an accurate output from their agent for the first time.</p>
+<h2>What They Actually Built</h2>
+<p>These weren't toy demos. These were real solutions to real problems, built by the people who actually have those problems.</p>
+<p><strong>The CFO and his finance team</strong> built a system to track payment anomalies and monitor cash flow. The people closest to the numbers, building the tool that watches the numbers.</p>
+<p><strong>A marketing team</strong> built a multi-agent setup that takes campaign inputs from various data sources, generates a creative brief, and drafts assets across channels. Work they estimated takes 40 hours, reduced to about 6. In two hours. By people who don't write code.</p>
+<p><strong>Customer success</strong> built an agent that synthesizes customer feedback, feature requests, and meeting transcripts into a prioritized daily action list. The kind of thing that normally lives in someone's head or gets lost across a dozen tools.</p>
+<p>These teams were thrilled. So was I — especially once I got out of the 90-degree breakout room.</p>
+<h2>Here's the Part That Matters</h2>
+<p>Not every company is doing this yet. Most aren't. And the specific tool these teams used is Redpanda's own proprietary system.</p>
+<p>But here's the thing: equivalent tools are available to anyone right now. And if you're reading this and feeling a little FOMO, I want you to notice something.</p>
+<p><strong>The skills that made these 80 people successful weren't technical.</strong></p>
+<p>Not one of them wrote code. Not one of them had a computer science background. What they did have — what actually made the difference — were skills you already have:</p>
+<ul>
+<li>
+<p><strong>The ability to clearly describe a problem and what they needed.</strong> Not in technical language. In plain English. "We need to catch payment anomalies before they become problems."</p>
+</li>
+<li>
+<p><strong>The ability to define requirements and a definition of success.</strong> They knew what a good output looked like before they started building, because they live inside these problems every day.</p>
+</li>
+<li>
+<p><strong>Collaborating and communicating with others.</strong> The teams that did best were the ones where people actually listened to each other and combined perspectives.</p>
+</li>
+<li>
+<p><strong>Showing EQ.</strong> Listening to teammates, incorporating feedback, making space for the person who had the quiet insight everyone else missed.</p>
+</li>
+<li>
+<p><strong>Being willing to ask for help when they got stuck.</strong> No one pretended to have it figured out. The teams that raised their hands and said "I don't know what to do next" were the ones that got unstuck fastest.</p>
+</li>
+</ul>
+<p>That's it. That's what separated "I've never built anything" from "I just demoed a working AI agent to my peers."</p>
+<h2>These Are Human Skills</h2>
+<p>The narrative around AI keeps centering on technical ability — who can code, who understands the architecture, who has the engineering background. And sure, technical skills matter for building the underlying systems.</p>
+<p>But for <em>using</em> AI to solve real problems? The barrier isn't technical. It's the willingness to describe what you need clearly, define what good looks like, work with others, and ask for help. Those are human skills. They're professional skills. And if you've been working in any knowledge-work role for more than a few years, you've been practicing them your entire career.</p>
+<p>You just haven't been applying them to AI yet.</p>
+<h2>What This Means for You</h2>
+<p>If 80 people with not much AI experience can build working agents in two hours at a hackathon, the question isn't whether you <em>can</em> do this. The question is whether and when you'll start.</p>
+<p>The tools are available. The skills are transferable. The only missing piece is practice — and a room full of people going through it alongside you.</p>
+<p>That's exactly what we do at MVP Club every week. Not because we have all the answers, but because the people who are practicing now are going to have options that the people who waited won't.</p>
+<p>If you're curious, <a href="https://mvp-club.mn.co?utm_source=blog&amp;utm_medium=referral&amp;utm_campaign=what-80-non-technical-people-proved-about-ai&amp;utm_content=jill">come build with us</a>.</p>
+      </div>
+
+      <div class="cta-section">
+        <h3>Ready to transform your AI practice?</h3>
+        <p>Join MVP Club and learn alongside peers who are navigating the same journey.</p>
+        <a href="https://calendly.com/d/cybv-947-s8m/discovery-call" class="cta-button" target="_blank" rel="noopener noreferrer">Book a Discovery Call</a>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 MVP Club. All rights reserved.</p>
+  </footer>
+</body>
+</html>
