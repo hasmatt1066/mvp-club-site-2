@@ -4,6 +4,12 @@ import { X, ArrowRight, Download, CheckCircle } from 'lucide-react';
 const STORAGE_KEY = 'mvpclub_leadmagnet_shown';
 const POPUP_DELAY_MS = 10000; // 10 seconds
 
+const trackEvent = (eventName, params = {}) => {
+  if (typeof window.gtag === 'function') {
+    window.gtag('event', eventName, params);
+  }
+};
+
 // Google Apps Script in mvpclub.ai workspace - sends to Sheet and triggers welcome email from info@mvpclub.ai
 const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyNGVQSbxcSDZUf5K-2sWrnqdy08GE9BkPw8C0K1qRzMXnZVLVMBS6ggH4QnLZCOtBo/exec';
 
@@ -17,11 +23,13 @@ const LeadMagnetPopup = ({ onDismiss }) => {
 
   // Fade in on mount
   useEffect(() => {
+    trackEvent('lead_magnet_shown', { page: window.location.pathname });
     const timer = setTimeout(() => setIsVisible(true), 50);
     return () => clearTimeout(timer);
   }, []);
 
   const handleDismiss = () => {
+    trackEvent('lead_magnet_dismissed', { page: window.location.pathname });
     setIsVisible(false);
     localStorage.setItem(STORAGE_KEY, Date.now().toString());
     setTimeout(onDismiss, 300);
@@ -66,6 +74,7 @@ const LeadMagnetPopup = ({ onDismiss }) => {
         });
       }
 
+      trackEvent('lead_magnet_submitted', { page: window.location.pathname });
       setIsSubmitted(true);
       localStorage.setItem(STORAGE_KEY, Date.now().toString());
       localStorage.setItem('mvpclub_leadmagnet_email', email);
