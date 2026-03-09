@@ -27,6 +27,11 @@ const routes = [
         Component: React.lazy(() => import('./pages/CommunityPage')),
         entry: 'src/pages/CommunityPage.jsx',
       },
+      {
+        path: 'case-studies/dual-enroll',
+        Component: React.lazy(() => import('./pages/DualEnrollCaseStudyPage')),
+        entry: 'src/pages/DualEnrollCaseStudyPage.jsx',
+      },
     ],
   },
 ];

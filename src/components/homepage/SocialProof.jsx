@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import AnimatedSection from '../shared/AnimatedSection';
 
 const caseStudies = [
@@ -7,11 +8,13 @@ const caseStudies = [
     badgeColor: 'var(--color-primary)',
     borderColor: 'var(--color-primary)',
     avatarBg: 'var(--color-primary)',
-    avatarText: 'DE',
+    avatarText: 'SH',
+    name: 'Scott Holmes',
     title: 'Dual Enroll',
     description:
-      'Ran a six-week embedded coaching engagement with a multi-team organization. Coached individuals through real AI adoption \u2014 from skepticism to building workflows they use every day.',
-    attribution: 'Multi-team AI adoption & coaching sprint',
+      '\u201cMVP Club\u2019s 4 week productivity sprint was transformational for my team. We had AI skeptics and folks who never used it setting up and testing workflows, which is a huge win for me. And each team member is saving 3-4 hours a week already, and I expect this number to continue to rise. MVP Club left us with motivation and a roadmap asset on how to keep going so we can confidently build on this incredible momentum.\u201d',
+    attribution: 'Scott Holmes, Dual Enroll',
+    link: '/case-studies/dual-enroll',
   },
   {
     badge: 'AI-Powered Solution',
@@ -109,13 +112,23 @@ const SocialProof = () => {
                       className="font-semibold text-sm"
                       style={{ color: 'var(--color-primary)' }}
                     >
-                      {study.title}
+                      {study.name || study.title}
                     </div>
                     <div className="text-xs text-gray-400">
                       {study.attribution}
                     </div>
                   </div>
                 </div>
+
+                {study.link && (
+                  <Link
+                    to={study.link}
+                    className="inline-block mt-4 text-sm font-semibold transition-colors duration-200"
+                    style={{ color: 'var(--color-secondary)' }}
+                  >
+                    Read the case study &rarr;
+                  </Link>
+                )}
               </div>
             </AnimatedSection>
           ))}
