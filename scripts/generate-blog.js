@@ -720,7 +720,7 @@ function escapeHtml(text) {
 /**
  * Main build function
  */
-function build() {
+async function build() {
   console.log('🔨 Building blog...\n');
 
   // Ensure output directory exists
@@ -730,13 +730,13 @@ function build() {
 
   // Read index.json
   const indexPath = path.join(CONTENT_DIR, 'index.json');
-  if (!fs.existsSync(indexPath)) {
-    console.log('⚠️  No content/blog/index.json found. Creating empty blog listing.');
-    fs.writeFileSync(path.join(OUTPUT_DIR, 'index.html'), listingTemplate([]));
-    return;
+  let index = [];
+  if (fs.existsSync(indexPath)) {
+    index = JSON.parse(fs.readFileSync(indexPath, 'utf-8'));
+  } else {
+    console.log('⚠️  No content/blog/index.json found. Proceeding with Substack posts only.');
   }
 
-  const index = JSON.parse(fs.readFileSync(indexPath, 'utf-8'));
   console.log(`📄 Found ${index.length} blog post(s)\n`);
 
   // Generate individual post pages
@@ -766,14 +766,20 @@ function build() {
   // Sort posts by date (newest first)
   posts.sort((a, b) => new Date(b.date) - new Date(a.date));
 
+  // Fetch Substack posts and merge
+  const substackPosts = await fetchSubstackPosts();
+  const allPosts = [...posts, ...substackPosts].sort(
+    (a, b) => new Date(b.date) - new Date(a.date)
+  );
+
   // Generate listing page
-  fs.writeFileSync(path.join(OUTPUT_DIR, 'index.html'), listingTemplate(posts));
+  fs.writeFileSync(path.join(OUTPUT_DIR, 'index.html'), listingTemplate(allPosts));
   console.log(`✅ Generated: /blog/`);
 
   // Generate sitemap
   generateSitemap(posts);
 
-  console.log(`\n🎉 Blog build complete! ${posts.length} post(s) generated.`);
+  console.log(`\n🎉 Blog build complete! ${posts.length} local + ${substackPosts.length} Substack post(s) generated.`);
 }
 
 /**
@@ -815,4 +821,7 @@ ${urls.join('\n')}
 }
 
 // Run build
-build();
+build().catch((err) => {
+  console.error('❌ Blog build failed:', err);
+  process.exit(1);
+});
