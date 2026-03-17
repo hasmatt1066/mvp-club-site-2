@@ -12,6 +12,16 @@ const trackJoinClick = (location) => {
   }
 };
 
+const trackWebinarClick = (location) => {
+  if (typeof window.gtag === 'function') {
+    window.gtag('event', 'webinar_cta_click', {
+      event_category: 'engagement',
+      event_label: location,
+      link_url: 'https://lu.ma/0qf2jyen',
+    });
+  }
+};
+
 const CommunityPage = () => {
   return (
     <div className="min-h-screen" style={{ backgroundColor: 'var(--color-background)', fontFamily: 'Inter, system-ui, sans-serif' }}>
@@ -34,16 +44,28 @@ const CommunityPage = () => {
                 The MVP Club is a community of practitioners who learn by doing: exploring new tools together,
                 helping each other through real projects, and sharing what they're building with AI.
               </p>
-              <a
-                href="https://mvp-club.mn.co/"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => trackJoinClick('community_hero')}
-                className="inline-block px-8 py-4 rounded-lg font-semibold transition-all duration-200 hover:scale-105"
-                style={{ backgroundColor: 'var(--color-secondary)', color: 'white', textDecoration: 'none' }}
-              >
-                Start Your Free Trial
-              </a>
+              <div className="flex flex-wrap gap-4 items-center">
+                <a
+                  href="https://mvp-club.mn.co/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackJoinClick('community_hero')}
+                  className="inline-block px-8 py-4 rounded-lg font-semibold transition-all duration-200 hover:scale-105"
+                  style={{ backgroundColor: 'var(--color-secondary)', color: 'white', textDecoration: 'none' }}
+                >
+                  Start Your Free Trial
+                </a>
+                <a
+                  href="https://lu.ma/0qf2jyen"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackWebinarClick('community_hero')}
+                  className="inline-block px-8 py-4 rounded-lg font-semibold transition-all duration-200 hover:scale-105"
+                  style={{ backgroundColor: 'transparent', color: 'var(--color-secondary)', textDecoration: 'none', border: '2px solid var(--color-secondary)' }}
+                >
+                  Attend Our Free Live Event
+                </a>
+              </div>
               <p className="text-sm text-gray-500 mt-3">
                 2 weeks free, then $20/month. An investment in your career growth — not another free group you'll forget about.
               </p>
@@ -200,16 +222,28 @@ const CommunityPage = () => {
               Join a community of practitioners who are building real skills together —
               through practice, not theory.
             </p>
-            <a
-              href="https://mvp-club.mn.co/"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => trackJoinClick('community_bottom_cta')}
-              className="inline-block px-8 py-4 rounded-lg font-semibold transition-all duration-200 hover:scale-105"
-              style={{ backgroundColor: 'var(--color-accent-lifted)', color: 'var(--color-primary)', textDecoration: 'none' }}
-            >
-              Start Your Free Trial
-            </a>
+            <div className="flex flex-wrap justify-center gap-4">
+              <a
+                href="https://mvp-club.mn.co/"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackJoinClick('community_bottom_cta')}
+                className="inline-block px-8 py-4 rounded-lg font-semibold transition-all duration-200 hover:scale-105"
+                style={{ backgroundColor: 'var(--color-accent-lifted)', color: 'var(--color-primary)', textDecoration: 'none' }}
+              >
+                Start Your Free Trial
+              </a>
+              <a
+                href="https://lu.ma/0qf2jyen"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackWebinarClick('community_bottom_cta')}
+                className="inline-block px-8 py-4 rounded-lg font-semibold transition-all duration-200 hover:scale-105"
+                style={{ backgroundColor: 'transparent', color: 'white', textDecoration: 'none', border: '2px solid rgba(255,255,255,0.6)' }}
+              >
+                Attend Our Free Live Event
+              </a>
+            </div>
             <p className="text-white/60 text-sm mt-3">
               Start with a 2-week free trial. Cancel anytime.
             </p>

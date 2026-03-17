@@ -3,7 +3,7 @@ import { Calendar, Clock, Video } from 'lucide-react';
 import AnimatedSection from '../components/shared/AnimatedSection';
 import SEO from '../components/SEO';
 
-const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSeVW3k4ouJw5ttXKqlN_qY5l9RtMrZdr5-JeYqFKOP1NKqgWA/viewform?usp=header';
+const FORM_URL = 'https://lu.ma/0qf2jyen';
 
 const trackRsvpClick = (label) => {
   if (typeof window.gtag === 'function') {
