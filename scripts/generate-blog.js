@@ -8,6 +8,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { XMLParser } from 'fast-xml-parser';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -15,6 +16,11 @@ const ROOT = path.resolve(__dirname, '..');
 
 const CONTENT_DIR = path.join(ROOT, 'content', 'blog');
 const OUTPUT_DIR = path.join(ROOT, 'public', 'blog');
+
+const SUBSTACK_FEEDS = [
+  { url: 'https://jozovek.substack.com/feed', author: 'Jill Ozovek' },
+  // Add more feeds here as authors migrate to Substack
+];
 
 // Brand colors (from theme-system.js default palette)
 const COLORS = {
@@ -24,6 +30,58 @@ const COLORS = {
   background: '#faf5f0',
   surface: '#ffffff',
 };
+
+/**
+ * Fetch and parse Substack RSS feeds into post objects.
+ * Returns an array of post objects with source: 'substack'.
+ * On failure, logs a warning and returns an empty array.
+ */
+async function fetchSubstackPosts() {
+  const parser = new XMLParser({
+    ignoreAttributes: false,
+    attributeNamePrefix: '@_',
+  });
+
+  const allPosts = [];
+
+  for (const feed of SUBSTACK_FEEDS) {
+    try {
+      const response = await fetch(feed.url, {
+        signal: AbortSignal.timeout(10_000),
+      });
+      if (!response.ok) {
+        console.warn(`⚠️  Substack feed returned ${response.status}: ${feed.url}`);
+        continue;
+      }
+      const xml = await response.text();
+      const result = parser.parse(xml);
+      const items = result?.rss?.channel?.item || [];
+      const itemList = Array.isArray(items) ? items : [items];
+
+      for (const item of itemList) {
+        const description = (item.description || '')
+          .replace(/<[^>]*>/g, '')
+          .trim();
+
+        allPosts.push({
+          title: item.title || '',
+          description,
+          link: item.link || '',
+          date: new Date(item.pubDate).toISOString().split('T')[0],
+          author: feed.author || item['dc:creator'] || 'Unknown',
+          image: item.enclosure?.['@_url'] || null,
+          source: 'substack',
+        });
+      }
+
+      console.log(`📡 Fetched ${itemList.length} post(s) from ${feed.url}`);
+    } catch (error) {
+      console.warn(`⚠️  Failed to fetch Substack feed ${feed.url}: ${error.message}`);
+    }
+  }
+
+  return allPosts;
+}
 
 /**
  * HTML template for individual blog posts
