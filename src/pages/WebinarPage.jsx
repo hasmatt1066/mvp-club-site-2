@@ -143,40 +143,58 @@ const WebinarPage = () => {
         </div>
       </section>
 
+      {/* Community photo */}
+      <section className="py-12" style={{ backgroundColor: 'var(--color-background)' }}>
+        <div className="max-w-4xl mx-auto px-6">
+          <AnimatedSection>
+            <div className="rounded-xl overflow-hidden">
+              <img
+                src="/communitypicture.png"
+                alt="MVP Club members in a live vibe coding webinar session"
+                className="w-full h-auto"
+              />
+            </div>
+            <p className="text-center text-sm text-gray-500 mt-3">
+              A getting-started MVP Club live session
+            </p>
+          </AnimatedSection>
+        </div>
+      </section>
+
       {/* Two Builds */}
       <section className="py-16" style={{ backgroundColor: 'var(--color-primary)' }}>
         <div className="max-w-5xl mx-auto px-6">
           <AnimatedSection>
-            <p
-              className="text-xs font-bold uppercase tracking-[0.2em] mb-8"
-              style={{ color: 'var(--color-accent)' }}
-            >
-              In one hour, we will build two real things
+            <h2 className="font-display text-3xl md:text-4xl text-white mb-3 leading-tight">
+              In one hour, you'll build <span style={{ color: 'var(--color-accent)' }}>two real workplace solutions</span>
+            </h2>
+            <p className="text-white/50 text-lg mb-10">
+              Not demos. Not slides. Tools you'll actually use.
             </p>
           </AnimatedSection>
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-8">
             <AnimatedSection delay={0}>
               <div
-                className="rounded-xl p-6 h-full"
+                className="rounded-xl p-8 h-full"
                 style={{
-                  backgroundColor: 'rgba(255,255,255,0.06)',
-                  border: '1px solid rgba(255,255,255,0.1)',
+                  backgroundColor: 'rgba(255,255,255,0.08)',
+                  borderLeft: '3px solid var(--color-accent)',
                 }}
               >
                 <p
-                  className="text-xs font-bold uppercase tracking-wider mb-2"
+                  className="text-xs font-bold uppercase tracking-wider mb-3"
                   style={{ color: 'var(--color-accent)' }}
                 >
                   Build 1
                 </p>
-                <h3 className="font-display text-xl text-white mb-2">
+                <h3 className="font-display text-2xl md:text-3xl text-white mb-3">
                   A spreadsheet that runs scripts
                 </h3>
-                <p className="text-white/60 text-sm leading-relaxed mb-4">
+                <p className="text-white/60 text-base leading-relaxed mb-5">
                   Automate part of a workflow you already do.
                 </p>
                 <p
-                  className="text-sm italic font-semibold"
+                  className="text-base italic font-semibold"
                   style={{ color: 'var(--color-accent)' }}
                 >
                   "Wait I just made that?"
@@ -185,26 +203,26 @@ const WebinarPage = () => {
             </AnimatedSection>
             <AnimatedSection delay={100}>
               <div
-                className="rounded-xl p-6 h-full"
+                className="rounded-xl p-8 h-full"
                 style={{
-                  backgroundColor: 'rgba(255,255,255,0.06)',
-                  border: '1px solid rgba(255,255,255,0.1)',
+                  backgroundColor: 'rgba(255,255,255,0.08)',
+                  borderLeft: '3px solid var(--color-accent)',
                 }}
               >
                 <p
-                  className="text-xs font-bold uppercase tracking-wider mb-2"
+                  className="text-xs font-bold uppercase tracking-wider mb-3"
                   style={{ color: 'var(--color-accent)' }}
                 >
                   Build 2
                 </p>
-                <h3 className="font-display text-xl text-white mb-2">
+                <h3 className="font-display text-2xl md:text-3xl text-white mb-3">
                   A reusable AI process
                 </h3>
-                <p className="text-white/60 text-sm leading-relaxed mb-4">
+                <p className="text-white/60 text-base leading-relaxed mb-5">
                   Turn a repeated workflow into something AI runs for you.
                 </p>
                 <p
-                  className="text-sm italic font-semibold"
+                  className="text-base italic font-semibold"
                   style={{ color: 'var(--color-accent)' }}
                 >
                   "I can see how this works."
