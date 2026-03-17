@@ -59,6 +59,9 @@ async function fetchSubstackPosts() {
       const itemList = Array.isArray(items) ? items : [items];
 
       for (const item of itemList) {
+        const postDate = new Date(item.pubDate);
+        if (postDate < new Date('2026-01-01')) continue;
+
         const description = (item.description || '')
           .replace(/<[^>]*>/g, '')
           .trim();
@@ -67,7 +70,7 @@ async function fetchSubstackPosts() {
           title: item.title || '',
           description,
           link: item.link || '',
-          date: new Date(item.pubDate).toISOString().split('T')[0],
+          date: postDate.toISOString().split('T')[0],
           author: feed.author || item['dc:creator'] || 'Unknown',
           image: item.enclosure?.['@_url'] || null,
           source: 'substack',
