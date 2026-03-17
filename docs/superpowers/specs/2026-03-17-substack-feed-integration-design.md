@@ -1,7 +1,7 @@
 # Substack Feed Integration — Design Spec
 
 **Date:** 2026-03-17
-**Status:** Draft
+**Status:** Implemented
 
 ## Overview
 
