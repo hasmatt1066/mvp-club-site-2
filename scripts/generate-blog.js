@@ -473,6 +473,22 @@ function listingTemplate(posts) {
       day: 'numeric'
     });
 
+    if (post.source === 'substack') {
+      return `
+      <a href="${escapeHtml(post.link)}" class="post-card substack-card" target="_blank" rel="noopener noreferrer">
+        <span class="substack-badge">On Substack</span>
+        ${post.image ? `<img class="substack-thumb" src="${escapeHtml(post.image)}" alt="" loading="lazy">` : ''}
+        <h2>${escapeHtml(post.title)}</h2>
+        <p class="post-excerpt">${escapeHtml(post.description || '')}</p>
+        <div class="post-card-meta">
+          <span>${escapeHtml(post.author)}</span>
+          <span>${publishDate}</span>
+          <svg class="external-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </div>
+      </a>
+      `;
+    }
+
     return `
       <a href="/blog/${post.slug}/" class="post-card">
         ${post.pillar ? `<span class="post-pillar">${escapeHtml(post.pillar)}</span>` : ''}
@@ -637,6 +653,39 @@ function listingTemplate(posts) {
       color: ${COLORS.secondary};
       display: flex;
       gap: 1rem;
+    }
+
+    .substack-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .substack-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: ${COLORS.secondary};
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.2rem 0.6rem;
+      border-radius: 2rem;
+    }
+
+    .substack-thumb {
+      width: calc(100% + 3rem);
+      margin: -1.5rem -1.5rem 1rem -1.5rem;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 1rem 1rem 0 0;
+    }
+
+    .external-icon {
+      margin-left: auto;
+      opacity: 0.5;
+      flex-shrink: 0;
     }
 
     .empty-state {
