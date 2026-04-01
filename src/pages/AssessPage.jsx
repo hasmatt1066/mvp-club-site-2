@@ -187,7 +187,7 @@ function IntroScreen({ onStart }) {
           and get specific recommendations for what to do next.
         </p>
 
-        <p className="text-gray-500 mb-10">
+        <p className="text-gray-600 mb-10">
           No account required. Your results appear instantly.
         </p>
 

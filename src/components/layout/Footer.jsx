@@ -45,7 +45,7 @@ const Footer = () => {
             >
               info@mvpclub.ai
             </a>
-            <span className="text-white/30">&copy; 2025 MVP Club</span>
+            <span className="text-white/50">&copy; 2025 MVP Club</span>
           </div>
         </div>
       </div>
