@@ -3,6 +3,15 @@ import { ArrowRight, ArrowLeft, BarChart3, CheckCircle2, FileText, Users, Brain,
 import SEO from '../components/SEO';
 import AnimatedSection from '../components/shared/AnimatedSection';
 
+const trackAssessEvent = (eventName, params = {}) => {
+  if (typeof window.gtag === 'function') {
+    window.gtag('event', eventName, {
+      event_category: 'assessment',
+      ...params,
+    });
+  }
+};
+
 const QUESTIONS = [
   {
     id: 'documentation',
@@ -170,11 +179,11 @@ function IntroScreen({ onStart }) {
         </div>
 
         <h1 className="font-display text-3xl md:text-5xl mb-6" style={{ color: 'var(--color-primary)' }}>
-          How Ready Is Your Team for AI?
+          AI Readiness Assessment for Teams
         </h1>
 
         <p className="text-lg text-gray-600 leading-relaxed mb-4">
-          7 questions. 2 minutes. Find out where your team stands on AI readiness
+          7 questions. 2 minutes. Find out how ready your team is to adopt AI
           and get specific recommendations for what to do next.
         </p>
 
@@ -498,6 +507,11 @@ function ResultsScreen({ answers }) {
                 href={config.primaryCta.href}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackAssessEvent('assessment_cta_click', {
+                  event_label: config.primaryCta.label,
+                  link_url: config.primaryCta.href,
+                  result_bucket: bucket,
+                })}
                 className="block w-full py-4 rounded-xl font-semibold text-center transition-all duration-200 hover:scale-105"
                 style={{ backgroundColor: 'var(--color-accent)', color: 'white', textDecoration: 'none' }}
               >
@@ -511,6 +525,11 @@ function ResultsScreen({ answers }) {
                 href={config.secondaryCta.href}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackAssessEvent('assessment_cta_click', {
+                  event_label: config.secondaryCta.label,
+                  link_url: config.secondaryCta.href,
+                  result_bucket: bucket,
+                })}
                 className="block w-full py-4 rounded-xl font-semibold text-center transition-all duration-200 hover:scale-105 border-2"
                 style={{ borderColor: 'var(--color-primary)', color: 'var(--color-primary)', textDecoration: 'none' }}
               >
@@ -542,6 +561,7 @@ const AssessPage = () => {
   const [answers, setAnswers] = useState(Array(QUESTIONS.length).fill(null));
 
   const handleStart = () => {
+    trackAssessEvent('assessment_started');
     setStage('questions');
     window.scrollTo({ top: 0, behavior: 'instant' });
   };
@@ -550,11 +570,26 @@ const AssessPage = () => {
     const newAnswers = [...answers];
     newAnswers[currentQuestion] = optionIndex;
     setAnswers(newAnswers);
+    trackAssessEvent('assessment_answer', {
+      event_label: QUESTIONS[currentQuestion].dimension,
+      question_id: QUESTIONS[currentQuestion].id,
+      question_number: currentQuestion + 1,
+      answer_value: optionIndex,
+    });
   };
 
   const handleNext = () => {
     if (answers[currentQuestion] === null) return;
     if (currentQuestion === QUESTIONS.length - 1) {
+      const finalAnswers = [...answers];
+      const totalScore = finalAnswers.reduce((sum, a) => sum + a, 0);
+      const bucket = getScoreBucket(totalScore);
+      trackAssessEvent('assessment_completed', {
+        event_label: bucket,
+        score: totalScore,
+        max_score: QUESTIONS.length * 3,
+        result_bucket: bucket,
+      });
       setStage('results');
       window.scrollTo({ top: 0, behavior: 'instant' });
     } else {
@@ -573,30 +608,63 @@ const AssessPage = () => {
     }
   };
 
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'WebApplication',
-    name: 'AI Readiness Assessment',
-    description: 'Find out if your team is ready for AI in 2 minutes. Score your documentation, processes, and alignment.',
-    url: 'https://mvpclub.ai/assess',
-    applicationCategory: 'BusinessApplication',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
+  const jsonLd = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebApplication',
+      name: 'AI Readiness Assessment',
+      description: 'Free AI readiness assessment tool for teams. Score your documentation, processes, and alignment across 7 dimensions in 2 minutes.',
+      url: 'https://mvpclub.ai/assess',
+      applicationCategory: 'BusinessApplication',
+      operatingSystem: 'Any',
+      offers: {
+        '@type': 'Offer',
+        price: '0',
+        priceCurrency: 'USD',
+      },
+      provider: {
+        '@type': 'Organization',
+        name: 'MVP Club',
+        url: 'https://mvpclub.ai',
+      },
     },
-    provider: {
-      '@type': 'Organization',
-      name: 'MVP Club',
-      url: 'https://mvpclub.ai',
+    {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'What does this AI readiness assessment measure?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'This assessment scores your team across 7 dimensions: process documentation, process clarity, decision criteria, AI experience, AI expectations, workflow fit, and team alignment. Each dimension reveals how prepared your team is to adopt AI effectively.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'How long does the AI readiness assessment take?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'The assessment takes about 2 minutes. It consists of 7 multiple-choice questions, and your results with personalized recommendations appear instantly.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Is this AI readiness assessment free?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Yes, completely free. No account or email required. Your full results, score breakdown, and personalized recommendations are shown immediately after completing the assessment.',
+          },
+        },
+      ],
     },
-  };
+  ];
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: 'var(--color-background)', fontFamily: 'Inter, system-ui, sans-serif' }}>
       <SEO
-        title="AI Readiness Assessment"
-        description="Find out if your team is ready for AI in 2 minutes. Score your documentation, processes, and team alignment. Free assessment with personalized recommendations."
+        title="AI Readiness Assessment | Free Tool for Teams"
+        description="Take this free AI readiness assessment to find out if your team is ready for AI. Score your documentation, processes, and team alignment in 2 minutes. Get personalized recommendations for your next step."
         path="/assess"
         jsonLd={jsonLd}
       />

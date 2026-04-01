@@ -29,11 +29,11 @@ const SEO = ({ title, description, path = '/', type = 'website', jsonLd }) => {
       <meta name="twitter:image" content={DEFAULT_IMAGE} />
 
       {/* JSON-LD Structured Data */}
-      {jsonLd && (
-        <script type="application/ld+json">
-          {JSON.stringify(jsonLd)}
+      {jsonLd && (Array.isArray(jsonLd) ? jsonLd : [jsonLd]).map((schema, i) => (
+        <script key={i} type="application/ld+json">
+          {JSON.stringify(schema)}
         </script>
-      )}
+      ))}
     </Head>
   );
 };
