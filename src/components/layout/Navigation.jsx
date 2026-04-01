@@ -89,6 +89,7 @@ const Navigation = () => {
           className="lg:hidden p-2"
           onClick={() => setMenuOpen(!menuOpen)}
           style={{ color: 'white' }}
+          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
         >
           {menuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
