@@ -207,7 +207,7 @@ function IntroScreen({ onStart }) {
             { title: 'Team Alignment', desc: "Does your team agree on where AI fits?" },
           ].map((item) => (
             <div key={item.title} className="p-5 rounded-xl bg-white">
-              <h3 className="font-semibold mb-1" style={{ color: 'var(--color-primary)' }}>{item.title}</h3>
+              <h2 className="font-semibold mb-1 text-base" style={{ color: 'var(--color-primary)' }}>{item.title}</h2>
               <p className="text-sm text-gray-500">{item.desc}</p>
             </div>
           ))}
