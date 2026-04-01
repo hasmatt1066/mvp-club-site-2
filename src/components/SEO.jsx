@@ -1,6 +1,6 @@
 import { Head } from 'vite-react-ssg';
 
-const SITE_URL = 'https://mvpclub.ai';
+const SITE_URL = 'https://www.mvpclub.ai';
 const SITE_NAME = 'MVP Club';
 const DEFAULT_IMAGE = `${SITE_URL}/mvp-club-logo.jpeg`;
 

@@ -614,7 +614,7 @@ const AssessPage = () => {
       '@type': 'WebApplication',
       name: 'AI Readiness Assessment',
       description: 'Free AI readiness assessment tool for teams. Score your documentation, processes, and alignment across 7 dimensions in 2 minutes.',
-      url: 'https://mvpclub.ai/assess',
+      url: 'https://www.mvpclub.ai/assess',
       applicationCategory: 'BusinessApplication',
       operatingSystem: 'Any',
       offers: {
@@ -625,7 +625,7 @@ const AssessPage = () => {
       provider: {
         '@type': 'Organization',
         name: 'MVP Club',
-        url: 'https://mvpclub.ai',
+        url: 'https://www.mvpclub.ai',
       },
     },
     {
