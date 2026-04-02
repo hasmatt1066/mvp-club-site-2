@@ -39,3 +39,6 @@ fix-quotes.py
 
 .vercel
 .env*.local
+
+# Source materials from Google Drive (raw content, not code)
+.agents/source-materials/
