@@ -1,5 +1,5 @@
 ---
-title: "You Only Use 10% of Your Computer: Vibe Coding and the New Skill of Work"
+title: "Vibe Coding: The New Skill of Work"
 description: "Most of us dramatically underutilize the computers in front of us—not because we're not smart enough, but because we didn't have access to the translation layer. Vibe coding changes that."
 author: "Matt Hastings"
 date: "2026-01-29"

@@ -9,7 +9,7 @@ const ForOrganizationsPage = () => {
     <div className="min-h-screen" style={{ backgroundColor: 'var(--color-background)', fontFamily: 'Inter, system-ui, sans-serif' }}>
       <SEO
         title="For Organizations"
-        description="Get measurable AI productivity gains in 4 weeks. MVP Club's Productivity Sprint installs AI workflows into your team's real processes — no training programs required."
+        description="Get measurable AI productivity gains in 4 weeks. MVP Club's Productivity Sprint installs AI workflows into your team's real processes."
         path="/for-organizations"
       />
 
@@ -26,9 +26,9 @@ const ForOrganizationsPage = () => {
                 For Organizations
               </p>
             </div>
-            <h2 className="font-display text-3xl md:text-4xl text-white mb-6 max-w-2xl">
+            <h1 className="font-display text-3xl md:text-4xl text-white mb-6 max-w-2xl">
               4-Week Productivity Sprint
-            </h2>
+            </h1>
             <p className="text-xl text-white/90 mb-6 max-w-2xl font-semibold">
               Start Small. Prove Value. Scale Fast.
             </p>

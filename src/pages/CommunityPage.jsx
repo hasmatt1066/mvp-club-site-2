@@ -75,7 +75,7 @@ const CommunityPage = () => {
             <div>
               <div className="rounded-2xl overflow-hidden shadow-lg">
                 <img
-                  src="/community-session-vibe-coding.png"
+                  src="/community-session-vibe-coding.jpg"
                   alt="MVP Club members in a live Intro to Vibe Coding session"
                   className="w-full h-auto"
                   loading="eager"
@@ -110,7 +110,7 @@ const CommunityPage = () => {
             <div>
               <div className="rounded-2xl overflow-hidden shadow-lg">
                 <img
-                  src="/community-session-demo.png"
+                  src="/community-session-demo.jpg"
                   alt="MVP Club Demo Day — members presenting their AI projects live"
                   className="w-full h-auto"
                 />

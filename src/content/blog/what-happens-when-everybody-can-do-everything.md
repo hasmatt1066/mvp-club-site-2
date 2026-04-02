@@ -1,12 +1,10 @@
 ---
 title: "What Happens When Everybody Can Do Everything?"
-description: ""
+description: "AI is making specialized skills available to everyone. What happens to careers, teams, and organizations when skill scarcity disappears?"
 author: "Matt Hastings"
 date: "2026-02-15"
 pillar: "The AI Adoption Crisis / Human + AI Teams"
 ---
-
-# What Happens When Everybody Can Do Everything?
 
 **AI is rapidly making specialized professional skills available to anyone willing to pick up the tools. The real question isn't whether AI can do your job. It's what happens to how we organize work, distribute resources, and build careers when skill scarcity disappears.**
 

@@ -1,12 +1,10 @@
 ---
 title: "AI Is for All of Us: Why These Tools Were Built from Our Collective Knowledge"
-description: ""
+description: "AI was trained on all of our collective knowledge. It belongs to everyone, not just engineers or early adopters."
 author: "Matt Hastings"
 date: "2026-02-08"
 pillar: "The AI Adoption Crisis"
 ---
-
-# AI Is for All of Us: Why These Tools Were Built from Our Collective Knowledge
 
 **AI was trained on decades of our collective data — our writing, our questions, our knowledge shared online. It doesn't belong to engineers or early adopters. It's a reflection of all of us, and the people getting the most from it are the ones who recognize that and claim it as their own.**
 

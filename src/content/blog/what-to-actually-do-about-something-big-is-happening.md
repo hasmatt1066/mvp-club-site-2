@@ -1,12 +1,10 @@
 ---
 title: "What To Actually Do About 'Something Big Is Happening"
-description: ""
+description: "Practical steps to act on the AI shift instead of just reading about it. Move past the alarm and into real practice."
 author: "Ryan Brodsky"
 date: "2026-02-16"
 pillar: "Practice > Training"
 ---
-
-# What To Actually Do About "Something Big Is Happening"
 
 _By Ryan Brodsky, Co-Founder, MVP Club_
 

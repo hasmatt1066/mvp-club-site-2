@@ -1,5 +1,5 @@
 ---
-title: "Can You Use AI to Replace Your Employer? A Different Way to Think About the Future of Work"
+title: "Can AI Replace Your Employer?"
 description: "Instead of waiting to be replaced by AI, what if you could use AI to replace your need for an employer? Exploring a reframe for the anxious labor market."
 author: "Matt Hastings"
 date: "2026-01-12"

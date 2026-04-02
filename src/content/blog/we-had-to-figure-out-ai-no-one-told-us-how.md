@@ -1,6 +1,6 @@
 ---
 title: "We Had to Figure Out AI. No One Told Us How."
-description: ""
+description: "How two education professionals with zero technical background taught themselves AI and built a coaching company from scratch."
 author: "Jill Ozovek"
 date: "2026-02-07"
 pillar: "Practice > Training"

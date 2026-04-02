@@ -1,5 +1,5 @@
 ---
-title: "I Took Three Months Off from AI. Here's What I Learned When I Came Back."
+title: "Three Months Off from AI: What I Learned"
 description: "The biggest barrier to AI adoption isn't technical skill—it's the belief that you've missed too much to start. Here's why that's wrong."
 author: "Jill Ozovek"
 date: "2026-01-14"

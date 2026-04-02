@@ -6,8 +6,6 @@ date: "2026-02-26"
 pillar: "Practice > Training"
 ---
 
-# What 80 Non-Technical People Proved About AI in Two Hours
-
 _By Jill Ozovek_
 
 Last week, Ryan and I were in San Diego — bye bye, Philly snow — helping facilitate a hackathon for Redpanda, a data streaming company with about 180 people at a company offsite.

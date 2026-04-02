@@ -42,3 +42,4 @@ fix-quotes.py
 
 # Source materials from Google Drive (raw content, not code)
 .agents/source-materials/
+.claude/worktrees/
