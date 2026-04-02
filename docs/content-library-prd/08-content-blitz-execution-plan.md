@@ -196,10 +196,11 @@ Each article agent follows this exact cycle:
 ```
 1. Read docs/brand-guide.md (full, including founder voice for assigned author)
 2. Read docs/content-library-prd/02-content-strategy.md (find this topic's template)
-3. Grep .agents/source-materials/transcript-summaries/ for relevant quotes and examples
-4. Grep .agents/source-materials/ broadly for related content (workshops, speaker profiles)
-5. Read src/content/learn/ and src/content/blog/ to find articles to link to
-6. Read the first published article (how-to-use-ai-at-work.md) as a style reference
+3. Read docs/content-library-prd/keywords-for-ahrefs.txt and identify 3-5 target keywords for this article
+4. Grep .agents/source-materials/transcript-summaries/ for relevant quotes and examples
+5. Grep .agents/source-materials/ broadly for related content (workshops, speaker profiles)
+6. Read src/content/learn/ and src/content/blog/ to find articles to link to
+7. Read the first published article (how-to-use-ai-at-work.md) as a style reference
 ```
 
 ### Step 2: Write

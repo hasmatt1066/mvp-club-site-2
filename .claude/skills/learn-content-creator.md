@@ -27,7 +27,24 @@ Read `docs/content-library-prd/02-content-strategy.md` for:
 - Internal linking strategy
 - CTA approach by article type
 
-### 3. Search Source Materials
+### 3. Check SEO Keywords
+
+Read `docs/content-library-prd/keywords-for-ahrefs.txt` and identify 3-5 keywords from the list that are relevant to this article's topic. These should be woven naturally into the article:
+
+- **Primary keyword:** Include in the H1 title, meta description, first paragraph, and at least one H2 subheading
+- **Secondary keywords (2-4):** Include naturally in body text, subheadings, or section content where they fit without forcing
+
+**Rules for keyword inclusion:**
+- Keywords must read naturally. If a sentence sounds awkward with the keyword, rewrite the sentence or skip it.
+- Never repeat the same keyword more than 3 times in the article (beyond the title/meta)
+- Prefer long-tail variations over exact-match repetition (e.g., "how to use AI at work" can become "using AI in your daily work")
+- Place keywords near the top of the article. Google weights the first 200 words more heavily.
+- Use keywords in at least one H2 subheading where it fits naturally
+- The meta description should contain the primary keyword
+
+**Do NOT:** Stuff keywords unnaturally, repeat them mechanically, or sacrifice readability for SEO. Quality content that reads well always outperforms keyword-stuffed content.
+
+### 4. Search Source Materials (and Transcript Summaries)
 
 Search `.agents/source-materials/` for relevant raw content:
 - **Otter transcripts** (when available in `.agents/source-materials/otter-transcripts/`) — search for keywords related to the article topic. Extract real quotes, specific examples, community member insights.
