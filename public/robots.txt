@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mvpclub.ai/sitemap.xml
+Sitemap: https://www.mvpclub.ai/sitemap-index.xml
