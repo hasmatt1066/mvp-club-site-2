@@ -139,22 +139,27 @@ readingTime: 8
 7. AI and Your Career
 8. Human + AI Collaboration
 
-## Brand Voice Rules
+## Brand Voice & Editorial Guidelines
 
-When writing or editing content, follow these rules:
+**Full brand guide:** See [`docs/brand-guide.md`](docs/brand-guide.md) for the complete editorial reference including:
+- Brand voice, writing style rules, and prohibited language
+- The MVP Club Test (5-question pre-publish check)
+- Pre-publish brand voice checklist
+- **Founder voice profiles** for Matt, Jill, and Ryan (use when writing attributed content)
+- Topic ownership by founder
+- Competitive positioning
 
-- **No prohibited terms:** upskilling, reskilling, AI literacy, future-proof, training program, AI mastery, strategic transformation
-- **No em dashes** (use commas, periods, or parentheses instead)
-- **No "wise observer" setups** or humble-brags
-- **No cloying transitions** ("Here's what most people don't realize")
-- **No invented statistics** or unverified claims
-- **No fear-based motivation**
+**Quick rules for content creation:**
+- No prohibited terms (upskilling, reskilling, AI literacy, future-proof, training program, AI mastery, strategic transformation)
+- No em dashes (use commas, periods, colons, or parentheses)
+- No invented statistics or fabricated examples
+- No fear-based motivation
 - Lead with the human, not the technology
 - Invite rather than lecture
-- Use simple vocabulary (fun, wins, getting better)
 - Name specific tools (Claude, ChatGPT, Cline), never just "AI"
-- Include at least one real community member quote or specific example per article
-- CTA should be an invitation, not a sales pitch
+- Start mid-thought, no wind-up intros
+- Include real community member quotes or specific examples
+- CTA is an invitation, not a sales pitch
 
 ## SEO Notes
 
