@@ -13,6 +13,7 @@ const navLinks = [
 
 const isActive = (path: string) => currentPath === path;
 const isBlogActive = currentPath.startsWith('/blog');
+const isLearnActive = currentPath.startsWith('/learn');
 ---
 
 <nav
@@ -49,6 +50,14 @@ const isBlogActive = currentPath.startsWith('/blog');
           {link.label}
         </a>
       ))}
+      <a
+        href="/learn"
+        class="text-sm font-medium transition-colors duration-200 nav-link"
+        style={`color: ${isLearnActive ? 'var(--color-accent-lifted)' : 'rgba(255,255,255,0.8)'};`}
+        data-active={isLearnActive ? 'true' : 'false'}
+      >
+        Learn
+      </a>
       <a
         href="/blog"
         class="text-sm font-medium transition-colors duration-200 nav-link"
@@ -109,6 +118,13 @@ const isBlogActive = currentPath.startsWith('/blog');
         {link.label}
       </a>
     ))}
+    <a
+      href="/learn"
+      class="block w-full text-left py-3 text-white/80 hover:text-white transition-colors font-medium"
+      style={`${isLearnActive ? 'color: var(--color-accent-lifted);' : ''} text-decoration: none;`}
+    >
+      Learn
+    </a>
     <a
       href="/blog"
       class="block w-full text-left py-3 text-white/80 hover:text-white transition-colors font-medium"
