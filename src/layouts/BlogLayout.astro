@@ -1,0 +1,194 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Navigation from '../components/layout/NavigationAstro.astro';
+import Footer from '../components/layout/FooterAstro.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  author: string;
+  date: string;
+  pillar?: string;
+  image?: string;
+  slug: string;
+}
+
+const SITE_URL = 'https://www.mvpclub.ai';
+
+const { title, description, author, date, pillar, image, slug } = Astro.props;
+
+const articleJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description: description,
+  author: {
+    '@type': 'Person',
+    name: author,
+  },
+  datePublished: date,
+  publisher: {
+    '@type': 'Organization',
+    name: 'MVP Club',
+    logo: {
+      '@type': 'ImageObject',
+      url: `${SITE_URL}/mvp-club-logo.jpeg`,
+    },
+  },
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': `${SITE_URL}/blog/${slug}`,
+  },
+};
+
+// Estimate reading time from content
+const wordCount = (await Astro.slots.render('default')).split(/\s+/).length;
+const readingTime = Math.max(1, Math.ceil(wordCount / 200));
+
+const formattedDate = new Date(date).toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  path={`/blog/${slug}`}
+  type="article"
+  image={image}
+  jsonLd={articleJsonLd}
+>
+  <div class="min-h-screen" style="background-color: var(--color-background); font-family: Inter, system-ui, sans-serif;">
+    <Navigation currentPath={Astro.url.pathname} />
+
+    <!-- Article Header -->
+    <header class="pt-32 pb-12" style="background-color: var(--color-primary);">
+      <div class="max-w-3xl mx-auto px-6">
+        <a
+          href="/blog"
+          class="inline-flex items-center gap-2 text-sm font-medium mb-8 transition-colors duration-200"
+          style="color: var(--color-accent-lifted); text-decoration: none;"
+        >
+          &larr; Back to Blog
+        </a>
+        {pillar && (
+          <p
+            class="text-xs font-semibold uppercase tracking-[0.15em] mb-4"
+            style="color: var(--color-accent-lifted);"
+          >
+            {pillar}
+          </p>
+        )}
+        <h1 class="font-display text-3xl md:text-4xl text-white mb-4">
+          {title}
+        </h1>
+        <div class="flex items-center gap-4 text-sm" style="color: rgba(255,255,255,0.7);">
+          <span>{author}</span>
+          <span>&middot;</span>
+          <time datetime={date}>{formattedDate}</time>
+          <span>&middot;</span>
+          <span>{readingTime} min read</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Article Content -->
+    <article class="py-12">
+      <div class="max-w-3xl mx-auto px-6 blog-content">
+        <slot />
+      </div>
+    </article>
+
+    <!-- CTA Section -->
+    <section class="py-16" style="background-color: var(--color-primary);">
+      <div class="max-w-3xl mx-auto px-6 text-center">
+        <h2 class="font-display text-2xl md:text-3xl text-white mb-4">
+          Ready to Build Real AI Skills?
+        </h2>
+        <p class="text-lg mb-8" style="color: rgba(255,255,255,0.8);">
+          Join the MVP Club community of AI practitioners learning by doing.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a
+            href="https://mvp-club.mn.co/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-8 py-4 rounded-lg font-semibold transition-all duration-200 hover:scale-105"
+            style="background-color: var(--color-accent); color: white; text-decoration: none;"
+          >
+            Join the Community
+          </a>
+          <a
+            href="https://calendly.com/d/cybv-947-s8m/discovery-call"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-8 py-4 rounded-lg font-semibold transition-all duration-200 hover:scale-105"
+            style="border: 2px solid rgba(255,255,255,0.3); color: white; text-decoration: none;"
+          >
+            Book a Discovery Call
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <Footer />
+  </div>
+</BaseLayout>
+
+<style is:global>
+  .blog-content h2 {
+    font-family: 'Zilla Slab', serif;
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  .blog-content h3 {
+    font-family: 'Zilla Slab', serif;
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+  .blog-content p {
+    color: #374151;
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+  }
+  .blog-content ul, .blog-content ol {
+    color: #374151;
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+    padding-left: 1.5rem;
+  }
+  .blog-content li {
+    margin-bottom: 0.5rem;
+  }
+  .blog-content strong {
+    color: var(--color-primary);
+  }
+  .blog-content em {
+    color: #6b7280;
+  }
+  .blog-content a {
+    color: var(--color-accent);
+    text-decoration: underline;
+  }
+  .blog-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    margin: 1.5rem 0;
+  }
+  .blog-content blockquote {
+    border-left: 4px solid var(--color-accent);
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+    color: #6b7280;
+    font-style: italic;
+  }
+</style>

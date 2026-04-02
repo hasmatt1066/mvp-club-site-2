@@ -1,7 +1,5 @@
 import React from 'react';
 import { X, ArrowRight, Users, Zap, Target, RefreshCw, Compass, Sparkles, CheckCircle2 } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import { ClientOnly } from 'vite-react-ssg';
 import AnimatedSection from '../components/shared/AnimatedSection';
 import AnimatedValley from '../AnimatedValley';
 import WorkLoop from '../WorkLoop';
@@ -263,7 +261,7 @@ const HowWeWorkPage = () => {
       </section>
 
       {/* Journey Section - Animated Valley */}
-      <ClientOnly>{() => <AnimatedValley />}</ClientOnly>
+      <AnimatedValley />
 
       {/* Philosophy Section */}
       <section id="philosophy" className="py-24" style={{ backgroundColor: 'var(--color-background)' }}>
@@ -421,13 +419,13 @@ const HowWeWorkPage = () => {
                 >
                   Book a Discovery Call
                 </a>
-                <Link
-                  to="/"
+                <a
+                  href="/"
                   className="px-8 py-4 rounded-lg font-semibold transition-all duration-200 hover:scale-105"
                   style={{ backgroundColor: 'var(--color-primary)', color: 'white', textDecoration: 'none' }}
                 >
                   Back to Home
-                </Link>
+                </a>
               </div>
             </div>
           </AnimatedSection>

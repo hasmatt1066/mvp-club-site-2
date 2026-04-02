@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import MosaicBackground from '../shared/MosaicBackground';
 import AnimatedSection from '../shared/AnimatedSection';
 
@@ -48,8 +47,8 @@ const NewHero = () => {
               >
                 Book a Discovery Call
               </a>
-              <Link
-                to="/how-we-work"
+              <a
+                href="/how-we-work"
                 className="inline-block px-8 py-4 rounded-xl font-semibold text-base text-white transition-all duration-200 hover:border-white/60"
                 style={{
                   backgroundColor: 'transparent',
@@ -58,7 +57,7 @@ const NewHero = () => {
                 }}
               >
                 See How We Work
-              </Link>
+              </a>
             </div>
 
             <p className="text-white/50 text-sm mt-6">

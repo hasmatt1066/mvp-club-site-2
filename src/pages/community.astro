@@ -1,0 +1,12 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import CommunityPage from './CommunityPage.jsx';
+---
+
+<PageLayout
+  title="Community"
+  description="Join the MVP Club community of AI practitioners. Weekly workshops, tool exploration sessions, and a peer network to help you build real AI skills through practice."
+  path="/community"
+>
+  <CommunityPage client:load />
+</PageLayout>

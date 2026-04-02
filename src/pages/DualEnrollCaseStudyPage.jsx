@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { ArrowLeft, Quote, TrendingUp, Users, Clock, Brain, CheckCircle2, ArrowRight, Search, ListChecks, Wrench } from 'lucide-react';
 import AnimatedSection from '../components/shared/AnimatedSection';
 import SharedCTA from '../components/shared/SharedCTA';
@@ -25,14 +24,14 @@ const DualEnrollCaseStudyPage = () => {
       <section className="pt-32 pb-16" style={{ backgroundColor: 'var(--color-primary)' }}>
         <div className="max-w-4xl mx-auto px-6">
           <AnimatedSection>
-            <Link
-              to="/for-organizations"
+            <a
+              href="/for-organizations"
               className="inline-flex items-center gap-2 text-sm font-medium mb-8 transition-colors duration-200"
-              style={{ color: 'var(--color-accent-lifted)' }}
+              style={{ color: 'var(--color-accent-lifted)', textDecoration: 'none' }}
             >
               <ArrowLeft size={16} />
               For Organizations
-            </Link>
+            </a>
             <p
               className="text-xs font-semibold uppercase tracking-[0.15em] mb-4"
               style={{ color: 'var(--color-accent-lifted)' }}
@@ -477,14 +476,14 @@ const DualEnrollCaseStudyPage = () => {
                 >
                   Book a Discovery Call
                 </a>
-                <Link
-                  to="/for-organizations"
+                <a
+                  href="/for-organizations"
                   className="inline-flex items-center gap-2 px-8 py-4 rounded-lg font-semibold transition-all duration-200"
-                  style={{ color: 'var(--color-primary)', border: '2px solid var(--color-primary)' }}
+                  style={{ color: 'var(--color-primary)', border: '2px solid var(--color-primary)', textDecoration: 'none' }}
                 >
                   Learn About Our Sprint
                   <ArrowRight size={16} />
-                </Link>
+                </a>
               </div>
             </div>
           </AnimatedSection>

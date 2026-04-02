@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import AnimatedSection from '../shared/AnimatedSection';
 
 const SprintArrowIcon = () => (
@@ -188,14 +187,14 @@ const HowWeHelp = () => {
                 )}
 
                 {/* Link */}
-                <Link
-                  to={service.linkTo}
+                <a
+                  href={service.linkTo}
                   className="text-sm font-semibold flex items-center gap-1.5 transition-all duration-200 hover:gap-2.5 no-underline"
-                  style={{ color: 'var(--color-accent)' }}
+                  style={{ color: 'var(--color-accent)', textDecoration: 'none' }}
                 >
                   {service.linkText}
                   <span>&rarr;</span>
-                </Link>
+                </a>
               </div>
             </AnimatedSection>
           ))}

@@ -1,0 +1,12 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import AssessPage from './AssessPage.jsx';
+---
+
+<PageLayout
+  title="AI Readiness Assessment"
+  description="Take a quick assessment to understand where your team stands with AI adoption and what steps to take next."
+  path="/assess"
+>
+  <AssessPage client:load />
+</PageLayout>

@@ -1,0 +1,150 @@
+---
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = '/' } = Astro.props;
+
+const navLinks = [
+  { label: 'How We Work', to: '/how-we-work' },
+  { label: 'For Organizations', to: '/for-organizations' },
+  { label: 'Community', to: '/community' },
+];
+
+const isActive = (path: string) => currentPath === path;
+const isBlogActive = currentPath.startsWith('/blog');
+---
+
+<nav
+  class="fixed top-0 left-0 right-0 z-50 py-4"
+  style="background-color: var(--color-primary);"
+  id="main-nav"
+>
+  <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
+    <!-- Logo -->
+    <a
+      href="/"
+      class="flex items-center gap-3 font-display text-2xl font-medium cursor-pointer"
+      style="color: var(--color-accent-lifted); text-decoration: none;"
+    >
+      <img
+        src="/mvp-club-logo.jpeg"
+        alt="MVP Club Logo"
+        class="h-10 w-10 rounded-lg object-cover"
+        width="40"
+        height="40"
+      />
+      <span>MVP Club</span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <div class="hidden lg:flex items-center gap-8">
+      {navLinks.map((link) => (
+        <a
+          href={link.to}
+          class="text-sm font-medium transition-colors duration-200 nav-link"
+          style={`color: ${isActive(link.to) ? 'var(--color-accent-lifted)' : 'rgba(255,255,255,0.8)'};`}
+          data-active={isActive(link.to) ? 'true' : 'false'}
+        >
+          {link.label}
+        </a>
+      ))}
+      <a
+        href="/blog"
+        class="text-sm font-medium transition-colors duration-200 nav-link"
+        style={`color: ${isBlogActive ? 'var(--color-accent-lifted)' : 'rgba(255,255,255,0.8)'};`}
+        data-active={isBlogActive ? 'true' : 'false'}
+      >
+        Blog
+      </a>
+      <a
+        href="https://calendly.com/d/cybv-947-s8m/discovery-call"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="px-5 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200"
+        style="background-color: var(--color-accent); color: white; text-decoration: none;"
+      >
+        Book a Call
+      </a>
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <button
+      class="lg:hidden p-2"
+      style="color: white;"
+      aria-label="Open menu"
+      id="mobile-menu-button"
+    >
+      <svg id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="4" x2="20" y1="12" y2="12"></line>
+        <line x1="4" x2="20" y1="6" y2="6"></line>
+        <line x1="4" x2="20" y1="18" y2="18"></line>
+      </svg>
+      <svg id="menu-icon-close" class="hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 6 6 18"></path>
+        <path d="m6 6 12 12"></path>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div
+    id="mobile-menu"
+    class="lg:hidden absolute top-full left-0 right-0 py-6 px-6 hidden"
+    style="background-color: var(--color-primary);"
+  >
+    <a
+      href="/"
+      class="block w-full text-left py-3 text-white/80 hover:text-white transition-colors font-medium"
+      style={`${isActive('/') ? 'color: var(--color-accent-lifted);' : ''} text-decoration: none;`}
+    >
+      Home
+    </a>
+    {navLinks.map((link) => (
+      <a
+        href={link.to}
+        class="block w-full text-left py-3 text-white/80 hover:text-white transition-colors font-medium"
+        style={`${isActive(link.to) ? 'color: var(--color-accent-lifted);' : ''} text-decoration: none;`}
+      >
+        {link.label}
+      </a>
+    ))}
+    <a
+      href="/blog"
+      class="block w-full text-left py-3 text-white/80 hover:text-white transition-colors font-medium"
+      style="text-decoration: none;"
+    >
+      Blog
+    </a>
+  </div>
+</nav>
+
+<script>
+  const button = document.getElementById('mobile-menu-button');
+  const menu = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('menu-icon-open');
+  const iconClose = document.getElementById('menu-icon-close');
+
+  if (button && menu && iconOpen && iconClose) {
+    button.addEventListener('click', () => {
+      const isOpen = !menu.classList.contains('hidden');
+      menu.classList.toggle('hidden');
+      iconOpen.classList.toggle('hidden');
+      iconClose.classList.toggle('hidden');
+      button.setAttribute('aria-label', isOpen ? 'Open menu' : 'Close menu');
+    });
+  }
+
+  // Nav link hover effects
+  document.querySelectorAll('.nav-link').forEach((link) => {
+    const isActive = link.getAttribute('data-active') === 'true';
+    link.addEventListener('mouseenter', () => {
+      (link as HTMLElement).style.color = 'var(--color-accent-lifted)';
+    });
+    link.addEventListener('mouseleave', () => {
+      if (!isActive) {
+        (link as HTMLElement).style.color = 'rgba(255,255,255,0.8)';
+      }
+    });
+  });
+</script>

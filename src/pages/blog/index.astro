@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navigation from '../../components/layout/NavigationAstro.astro';
+import Footer from '../../components/layout/FooterAstro.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog'))
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+---
+
+<BaseLayout
+  title="Blog"
+  description="Insights on AI adoption, practice-based learning, and building real AI skills. From the MVP Club team."
+  path="/blog"
+>
+  <div class="min-h-screen" style="background-color: var(--color-background); font-family: Inter, system-ui, sans-serif;">
+    <Navigation currentPath="/blog" />
+
+    <!-- Header -->
+    <section class="pt-32 pb-12" style="background-color: var(--color-primary);">
+      <div class="max-w-7xl mx-auto px-6">
+        <p
+          class="text-lg font-semibold uppercase tracking-wider mb-4"
+          style="color: var(--color-accent-lifted);"
+        >
+          Blog
+        </p>
+        <h1 class="font-display text-4xl md:text-5xl text-white mb-4">
+          Insights & Ideas
+        </h1>
+        <p class="text-lg max-w-2xl" style="color: rgba(255,255,255,0.8);">
+          Thoughts on AI adoption, the future of work, and building real skills through practice.
+        </p>
+      </div>
+    </section>
+
+    <!-- Blog Grid -->
+    <section class="py-16">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {posts.map((post) => {
+            const formattedDate = new Date(post.data.date).toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            });
+            return (
+              <a
+                href={`/blog/${post.slug}`}
+                class="block bg-white rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1 group"
+                style="box-shadow: 0 4px 24px rgba(0,0,0,0.06); text-decoration: none;"
+              >
+                <div class="p-6">
+                  {post.data.pillar && (
+                    <p
+                      class="text-xs font-semibold uppercase tracking-wider mb-3"
+                      style="color: var(--color-secondary);"
+                    >
+                      {post.data.pillar}
+                    </p>
+                  )}
+                  <h2
+                    class="font-display text-xl mb-3 group-hover:opacity-80 transition-opacity"
+                    style="color: var(--color-primary);"
+                  >
+                    {post.data.title}
+                  </h2>
+                  {post.data.description && (
+                    <p class="text-sm text-gray-500 mb-4 leading-relaxed line-clamp-3">
+                      {post.data.description}
+                    </p>
+                  )}
+                  <div class="flex items-center gap-3 text-xs text-gray-400">
+                    <span>{post.data.author}</span>
+                    <span>&middot;</span>
+                    <time datetime={post.data.date}>{formattedDate}</time>
+                  </div>
+                </div>
+              </a>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+
+    <Footer />
+  </div>
+</BaseLayout>
+
+<style>
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

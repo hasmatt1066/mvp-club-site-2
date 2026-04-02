@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import AnimatedSection from '../shared/AnimatedSection';
 
 const caseStudies = [
@@ -121,13 +120,13 @@ const SocialProof = () => {
                 </div>
 
                 {study.link && (
-                  <Link
-                    to={study.link}
+                  <a
+                    href={study.link}
                     className="inline-block mt-4 text-sm font-semibold transition-colors duration-200"
-                    style={{ color: 'var(--color-secondary)' }}
+                    style={{ color: 'var(--color-secondary)', textDecoration: 'none' }}
                   >
                     Read the case study &rarr;
-                  </Link>
+                  </a>
                 )}
               </div>
             </AnimatedSection>

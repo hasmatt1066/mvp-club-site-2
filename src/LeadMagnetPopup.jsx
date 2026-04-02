@@ -298,4 +298,11 @@ export const useLeadMagnetPopup = () => {
   return { shouldShow, dismiss };
 };
 
-export default LeadMagnetPopup;
+// Standalone wrapper for use in Astro (renders itself with the hook)
+const LeadMagnetPopupWrapper = () => {
+  const { shouldShow, dismiss } = useLeadMagnetPopup();
+  if (!shouldShow) return null;
+  return <LeadMagnetPopup onDismiss={dismiss} />;
+};
+
+export default LeadMagnetPopupWrapper;
