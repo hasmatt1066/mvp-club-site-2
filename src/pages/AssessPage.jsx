@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { ArrowRight, ArrowLeft, BarChart3, CheckCircle2, FileText, Users, Brain, Target, Compass, Handshake } from 'lucide-react';
-import SEO from '../components/SEO';
 import AnimatedSection from '../components/shared/AnimatedSection';
 
 const trackAssessEvent = (eventName, params = {}) => {
@@ -207,7 +206,7 @@ function IntroScreen({ onStart }) {
             { title: 'Team Alignment', desc: "Does your team agree on where AI fits?" },
           ].map((item) => (
             <div key={item.title} className="p-5 rounded-xl bg-white">
-              <h2 className="font-semibold mb-1 text-base" style={{ color: 'var(--color-primary)' }}>{item.title}</h2>
+              <h3 className="font-semibold mb-1 text-base" style={{ color: 'var(--color-primary)' }}>{item.title}</h3>
               <p className="text-sm text-gray-500">{item.desc}</p>
             </div>
           ))}
@@ -608,67 +607,8 @@ const AssessPage = () => {
     }
   };
 
-  const jsonLd = [
-    {
-      '@context': 'https://schema.org',
-      '@type': 'WebApplication',
-      name: 'AI Readiness Assessment',
-      description: 'Free AI readiness assessment tool for teams. Score your documentation, processes, and alignment across 7 dimensions in 2 minutes.',
-      url: 'https://www.mvpclub.ai/assess',
-      applicationCategory: 'BusinessApplication',
-      operatingSystem: 'Any',
-      offers: {
-        '@type': 'Offer',
-        price: '0',
-        priceCurrency: 'USD',
-      },
-      provider: {
-        '@type': 'Organization',
-        name: 'MVP Club',
-        url: 'https://www.mvpclub.ai',
-      },
-    },
-    {
-      '@context': 'https://schema.org',
-      '@type': 'FAQPage',
-      mainEntity: [
-        {
-          '@type': 'Question',
-          name: 'What does this AI readiness assessment measure?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'This assessment scores your team across 7 dimensions: process documentation, process clarity, decision criteria, AI experience, AI expectations, workflow fit, and team alignment. Each dimension reveals how prepared your team is to adopt AI effectively.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'How long does the AI readiness assessment take?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'The assessment takes about 2 minutes. It consists of 7 multiple-choice questions, and your results with personalized recommendations appear instantly.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'Is this AI readiness assessment free?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Yes, completely free. No account or email required. Your full results, score breakdown, and personalized recommendations are shown immediately after completing the assessment.',
-          },
-        },
-      ],
-    },
-  ];
-
   return (
     <div className="min-h-screen" style={{ backgroundColor: 'var(--color-background)', fontFamily: 'Inter, system-ui, sans-serif' }}>
-      <SEO
-        title="AI Readiness Assessment | Free Tool for Teams"
-        description="Take this free AI readiness assessment to find out if your team is ready for AI. Score your documentation, processes, and team alignment in 2 minutes. Get personalized recommendations for your next step."
-        path="/assess"
-        jsonLd={jsonLd}
-      />
-
       {/* Page Header */}
       {stage !== 'results' && (
         <section className="pt-32 pb-0" style={{ backgroundColor: 'var(--color-background)' }}>

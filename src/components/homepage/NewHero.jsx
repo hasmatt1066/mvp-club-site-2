@@ -61,12 +61,12 @@ const NewHero = () => {
             </div>
 
             <p className="text-white/50 text-sm mt-6">
-              Prefer email?{' '}
+              Not sure where to start?{' '}
               <a
-                href="mailto:info@mvpclub.ai"
+                href="/assess"
                 className="font-medium underline transition-colors text-white/70 hover:text-white"
               >
-                info@mvpclub.ai
+                Take the free AI Readiness Assessment
               </a>
             </p>
           </AnimatedSection>

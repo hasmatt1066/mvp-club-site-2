@@ -1,12 +1,168 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
 import AssessPage from './AssessPage.jsx';
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'How do I know if my team is ready for AI?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'AI readiness depends on how well your processes are documented, how aligned your team is on where AI fits, and whether you can point to specific workflows where AI would help. This free AI readiness assessment scores your team across 7 dimensions and tells you exactly where to start.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What makes a team AI-ready?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'AI-ready teams have three things: documented processes that someone unfamiliar could follow, clear decision criteria (not just "use your judgment"), and alignment on what AI should and should not do. The most common gap is undocumented knowledge that lives only in people\'s heads.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How long does it take to become AI-ready?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'It depends on your starting point. Teams with well-documented processes can start building with AI in days. Teams that need to document their workflows first typically need 2 to 4 weeks of focused effort. The assessment helps you understand where you are and what to prioritize.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: "What's the biggest barrier to AI adoption?",
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'The biggest barrier is not technical skill. It is undocumented processes. AI can only work with what is written down. If your team\'s knowledge lives in people\'s heads, in tribal knowledge, or in "you just know" moments, AI has nothing to build on. Documentation is the foundation.',
+      },
+    },
+  ],
+};
+
+const webAppSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'AI Readiness Assessment',
+  description: 'Free AI readiness assessment tool for teams. Score your documentation, processes, and alignment across 7 dimensions in 2 minutes.',
+  url: 'https://www.mvpclub.ai/assess',
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Any',
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'USD',
+  },
+  provider: {
+    '@type': 'Organization',
+    name: 'MVP Club',
+    url: 'https://www.mvpclub.ai',
+  },
+};
 ---
 
 <PageLayout
   title="AI Readiness Assessment"
-  description="Take a quick assessment to understand where your team stands with AI adoption and what steps to take next."
+  description="Free AI readiness assessment for teams. Answer 7 questions, get your score across documentation, process clarity, and team alignment, plus specific next steps."
   path="/assess"
+  jsonLd={[webAppSchema, faqSchema]}
 >
   <AssessPage client:load />
+
+  <!-- Static SEO content below the interactive assessment -->
+  <section class="py-16" style="background-color: var(--color-background);">
+    <div class="max-w-3xl mx-auto px-6">
+
+      <h2 class="font-display text-2xl md:text-3xl mb-6" style="color: var(--color-primary);">
+        What Is AI Readiness?
+      </h2>
+      <p class="text-gray-600 leading-relaxed mb-4">
+        AI readiness is not about technical skill. It is about whether your team's work is structured well enough for AI to actually help. Most teams that struggle with AI tools like ChatGPT, Claude, or Copilot are not missing knowledge. They are missing the documentation, clarity, and alignment that AI needs to be useful.
+      </p>
+      <p class="text-gray-600 leading-relaxed mb-4">
+        Think of it this way: if a smart new hire could not follow your processes from documentation alone, AI cannot either. AI readiness means your team has written down what matters, agreed on where AI fits, and identified specific workflows worth automating.
+      </p>
+      <p class="text-gray-600 leading-relaxed mb-10">
+        This assessment helps you find out where your team stands today and what to focus on next. No account required, no email capture. Just honest answers and practical recommendations.
+      </p>
+
+      <h2 class="font-display text-2xl md:text-3xl mb-6" style="color: var(--color-primary);">
+        What This AI Assessment Measures
+      </h2>
+      <p class="text-gray-600 leading-relaxed mb-4">
+        The assessment scores your team across 7 dimensions that predict whether AI adoption will succeed or stall:
+      </p>
+      <ol class="list-decimal list-inside text-gray-600 leading-relaxed mb-10 space-y-2">
+        <li><strong>Documentation</strong> — Is your team's core work written down in a way someone could follow?</li>
+        <li><strong>Process Clarity</strong> — Could a new hire execute your workflows from docs alone?</li>
+        <li><strong>Decision Criteria</strong> — Are the unwritten rules (what "good" looks like, when to escalate) actually documented?</li>
+        <li><strong>AI Experience</strong> — How is your team currently using tools like ChatGPT, Claude, or Copilot?</li>
+        <li><strong>AI Expectations</strong> — When AI gives a bad result, does your team know why?</li>
+        <li><strong>Workflow Fit</strong> — Can you name specific, repetitive tasks where AI would help?</li>
+        <li><strong>Team Alignment</strong> — Does your team agree on what AI should and should not do?</li>
+      </ol>
+
+      <h2 class="font-display text-2xl md:text-3xl mb-6" style="color: var(--color-primary);">
+        Who This Assessment Is For
+      </h2>
+      <p class="text-gray-600 leading-relaxed mb-4">
+        This AI readiness assessment is built for team leads, managers, and directors who are thinking about bringing AI into their team's work. It is especially useful if you are in a non-technical role and wondering whether your team is ready to adopt AI tools, or if you need to lay groundwork first.
+      </p>
+      <p class="text-gray-600 leading-relaxed mb-10">
+        You do not need a technical background to take this assessment or act on the results. The questions focus on how your team works, not what tools you use.
+      </p>
+
+      <h2 class="font-display text-2xl md:text-3xl mb-6" style="color: var(--color-primary);">
+        Frequently Asked Questions
+      </h2>
+      <div class="space-y-6 mb-10">
+        <div>
+          <h3 class="font-semibold text-lg mb-2" style="color: var(--color-primary);">
+            How do I know if my team is ready for AI?
+          </h3>
+          <p class="text-gray-600 leading-relaxed">
+            AI readiness depends on how well your processes are documented, how aligned your team is on where AI fits, and whether you can point to specific workflows where AI would help. This free assessment scores your team across 7 dimensions and tells you exactly where to start.
+          </p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-lg mb-2" style="color: var(--color-primary);">
+            What makes a team AI-ready?
+          </h3>
+          <p class="text-gray-600 leading-relaxed">
+            AI-ready teams have three things: documented processes that someone unfamiliar could follow, clear decision criteria (not just "use your judgment"), and alignment on what AI should and should not do. The most common gap is undocumented knowledge that lives only in people's heads.
+          </p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-lg mb-2" style="color: var(--color-primary);">
+            How long does it take to become AI-ready?
+          </h3>
+          <p class="text-gray-600 leading-relaxed">
+            It depends on your starting point. Teams with well-documented processes can start building with AI in days. Teams that need to document their workflows first typically need 2 to 4 weeks of focused effort. The assessment helps you understand where you are and what to prioritize.
+          </p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-lg mb-2" style="color: var(--color-primary);">
+            What's the biggest barrier to AI adoption?
+          </h3>
+          <p class="text-gray-600 leading-relaxed">
+            The biggest barrier is not technical skill. It is undocumented processes. AI can only work with what is written down. If your team's knowledge lives in people's heads, in tribal knowledge, or in "you just know" moments, AI has nothing to build on. Documentation is the foundation.
+          </p>
+        </div>
+      </div>
+
+      <h2 class="font-display text-2xl md:text-3xl mb-6" style="color: var(--color-primary);">
+        Next Steps After the Assessment
+      </h2>
+      <p class="text-gray-600 leading-relaxed mb-4">
+        Once you have your score, you will get specific recommendations based on your team's strengths and gaps. If you want to go deeper:
+      </p>
+      <ul class="list-disc list-inside text-gray-600 leading-relaxed mb-4 space-y-2">
+        <li>Read <a href="/blog/why-ai-projects-fail" class="font-medium underline" style="color: var(--color-secondary);">Why 95% of AI Projects Fail</a> to understand the most common mistakes teams make.</li>
+        <li>Browse the <a href="/blog" class="font-medium underline" style="color: var(--color-secondary);">MVP Club blog</a> for practical guides on AI adoption.</li>
+        <li>Join the <a href="/community" class="font-medium underline" style="color: var(--color-secondary);">MVP Club community</a> to learn alongside other practitioners who are building with AI every day.</li>
+      </ul>
+
+    </div>
+  </section>
 </PageLayout>
