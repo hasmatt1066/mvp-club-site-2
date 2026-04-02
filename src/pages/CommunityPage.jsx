@@ -55,6 +55,7 @@ const CommunityPage = () => {
                 >
                   Start Your Free Trial
                 </a>
+                {/* Webinar CTA - commented out until next event is scheduled
                 <a
                   href="https://lu.ma/0qf2jyen"
                   target="_blank"
@@ -65,6 +66,7 @@ const CommunityPage = () => {
                 >
                   Attend Our Free Live Event
                 </a>
+                */}
               </div>
               <p className="text-sm text-gray-500 mt-3">
                 2 weeks free, then $20/month. An investment in your career growth — not another free group you'll forget about.
@@ -233,6 +235,7 @@ const CommunityPage = () => {
               >
                 Start Your Free Trial
               </a>
+              {/* Webinar CTA - commented out until next event is scheduled
               <a
                 href="https://lu.ma/0qf2jyen"
                 target="_blank"
@@ -243,6 +246,7 @@ const CommunityPage = () => {
               >
                 Attend Our Free Live Event
               </a>
+              */}
             </div>
             <p className="text-white/60 text-sm mt-3">
               Start with a 2-week free trial. Cancel anytime.

@@ -11,7 +11,7 @@ const Navigation = () => {
     { label: 'How We Work', to: '/how-we-work' },
     { label: 'For Organizations', to: '/for-organizations' },
     { label: 'Community', to: '/community' },
-    { label: 'Live Webinar', to: '/webinar' },
+    // { label: 'Live Webinar', to: '/webinar' },
   ];
 
   const isActive = (path) => location.pathname === path;
