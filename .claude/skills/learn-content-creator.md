@@ -98,7 +98,18 @@ Follow the appropriate template from the content strategy doc. Every article mus
 4. **At least one "I tried this" moment** — Grounded in real experience. If attributed to a founder, use their real examples from the brand guide. If you don't have one, use `[NEEDS REAL EXAMPLE: what happened when someone tried X]` placeholder.
 5. **Specific tool names** — Claude, ChatGPT, Cline, etc. Never just "AI."
 6. **Internal links** — Link to at least 2 other articles on the site.
-7. **Invitation CTA** — End with a warm invitation to the community, not a sales pitch.
+7. **Community invitation close** — Every article ends with a closing section that invites the reader to join the MVP Club community. This is NOT a hard sell. It's a warm, themed invitation that connects the article's topic to the value of practicing alongside other professionals. Always link to `/community` or `https://mvp-club.mn.co/`.
+
+**The pattern:** Tie the article's topic back to the community. If the article was about AI for email, the close might be: "If you want to see how other professionals are applying these techniques and share what's working for you, that's exactly what happens in MVP Club's weekly sessions." If it was about career positioning: "The professionals who figure this out fastest aren't doing it alone. They're practicing alongside peers who are navigating the same questions."
+
+**Rules for the community close:**
+- Always the final section before any HTML comments
+- 2-3 sentences maximum
+- Must feel like a natural extension of the article, not an appended ad
+- Vary the framing per article (don't copy-paste the same CTA across all articles)
+- Link to /community page
+- Never use "Sign up now," "Don't miss out," or urgency language
+- The tone is: "Here's where people like you are figuring this out together"
 
 ### Paragraphs and Sentences
 

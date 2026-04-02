@@ -107,6 +107,8 @@ Flag these structures. They are explicitly banned by the brand guide:
 - **Overpromising speed:** "Master AI in 30 days," "Transform your career overnight." The brand acknowledges the journey takes time.
 - **Sage-on-the-stage energy:** The founders are peers, not professors. Any content that positions the author as dispensing wisdom from above fails.
 - **Automation framing:** Content that promises AI will replace tasks or people. The brand is about augmentation, not automation.
+- **Keyword stuffing:** If the same keyword phrase appears more than 3 times in the body text (beyond title/meta), or if keywords are shoehorned into sentences where they read unnaturally, flag it. Natural keyword inclusion is good. Mechanical repetition is a HARD FAIL. Read the sentence aloud: if it sounds like it was written for a search engine rather than a person, flag it.
+- **Forced sales pitch:** The community CTA at the end of each article must feel like a natural invitation, not a sales pitch. Flag any of these patterns: "Sign up now," "Don't miss out," "Limited spots," "Act now," urgency language, FOMO framing, price mentions, feature lists for the community. The correct tone is: "Here's where people like you are figuring this out together." If the CTA could appear in a SaaS pricing page, it doesn't belong in an article.
 
 #### 2d. Formatting Violations
 
