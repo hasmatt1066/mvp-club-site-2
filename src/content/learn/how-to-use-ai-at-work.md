@@ -1,7 +1,7 @@
 ---
 title: "How to Use AI at Work: A Practical Guide for Busy Professionals"
 description: "A step-by-step framework for integrating AI into your daily work. Start with 20 minutes a day and build from there."
-author: "Matt Hastings"
+author: "MVP Club"
 date: "2026-04-02"
 pillar: "AI at Work"
 tags: ["ai-at-work", "getting-started", "productivity", "how-to"]
