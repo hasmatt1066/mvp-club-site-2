@@ -44,10 +44,34 @@ Read `docs/content-library-prd/keywords-for-ahrefs.txt` and identify 3-5 keyword
 
 **Do NOT:** Stuff keywords unnaturally, repeat them mechanically, or sacrifice readability for SEO. Quality content that reads well always outperforms keyword-stuffed content.
 
-### 4. Search Source Materials (and Transcript Summaries)
+### 4. Web Research
+
+Search the web for 2-4 high-quality external sources relevant to the article topic. This makes articles feel well-researched and positions MVP Club content alongside authoritative resources.
+
+**What to search for:**
+- Industry reports or data points relevant to the topic (e.g., McKinsey AI adoption stats, HBR findings)
+- Best practices or frameworks from recognized sources (Harvard Business Review, MIT Sloan, Gartner, PMI, SHRM, etc.)
+- Specific AI tool capabilities or comparisons relevant to the article
+- Real-world case studies of AI adoption in relevant roles or industries
+
+**How to use what you find:**
+- Reference findings to support claims ("According to a 2026 McKinsey report, 72% of organizations...")
+- Link to 1-2 external resources as "further reading" or inline citations
+- Use industry data to ground the article in reality, not just opinion
+
+**Rules for external links and citations:**
+- Only link to **evergreen, publicly accessible content** from high-authority sources
+- Acceptable sources: HBR, MIT Sloan, McKinsey, Gartner, PMI, SHRM, Forrester, Deloitte, Google/Microsoft/Anthropic official blogs, established industry publications
+- Do NOT link to: press releases, news articles with a short shelf life, paywalled content, random blog posts, social media posts, AI-generated content farms
+- Every external link must add genuine value. If you wouldn't recommend the source to a colleague, don't link it.
+- Aim for 1-2 external links per article (not more). The article should stand on its own. External references are supporting evidence, not crutches.
+- Never fabricate URLs or citations. If you reference a study, you must have actually found it via web search. Use [NEEDS CITATION] placeholder if you reference a claim but cannot verify the source.
+
+### 5. Search Source Materials (and Transcript Summaries)
 
 Search `.agents/source-materials/` for relevant raw content:
-- **Otter transcripts** (when available in `.agents/source-materials/otter-transcripts/`) — search for keywords related to the article topic. Extract real quotes, specific examples, community member insights.
+- **Transcript summaries** (`.agents/source-materials/transcript-summaries/`) — search for relevant quotes and examples from community sessions. These are pre-groomed and tagged by pillar.
+- **Otter transcripts** (`.agents/source-materials/otter-transcripts/`) — raw transcripts if summaries don't have enough
 - **Speaking Engagements/** — podcast prep docs, speaker profiles, webinar talk tracks
 - **Course and Workshop Assets/** — slide decks, workshop materials
 - **Enterprise Engagements/** — real coaching examples, templates
@@ -57,7 +81,7 @@ Search `.agents/source-materials/` for relevant raw content:
 
 Use `grep -r "keyword" .agents/source-materials/` to find relevant content across all source files.
 
-### 4. Check Existing Content
+### 6. Check Existing Content
 
 Read `src/content/blog/` and `src/content/learn/` to understand what already exists. Every new article should:
 - Link to at least 2 existing articles
