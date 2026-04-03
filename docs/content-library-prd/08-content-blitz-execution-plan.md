@@ -240,6 +240,37 @@ Each article agent follows this exact cycle:
 
 ---
 
+## Phase 2b: Adversarial Critic Pass (per batch, after all articles written)
+
+After all articles in a batch are written, a SEPARATE critic agent reviews each one.
+This is critical for quality — self-review catches obvious issues, but a fresh agent
+with adversarial instructions catches subtle voice problems, AI writing tells,
+and structural weaknesses the author agent is blind to.
+
+### Critic Agent Cycle (parallel haiku agents, one per article)
+```
+1. Read .claude/skills/editorial-critic.md in full
+2. Read docs/brand-guide.md for voice/tone reference
+3. Read the article being reviewed
+4. Produce a structured review with:
+   - HARD FAILS (must fix before publish)
+   - WARNINGS (should fix)
+   - Specific text citations and replacement suggestions
+   - MVP Club Test result (5 questions)
+5. Write the review to .agents/critic-reviews/[slug]-review.md
+```
+
+### Revision Agent Cycle (parallel sonnet agents, one per article with HARD FAILS)
+```
+1. Read the original article
+2. Read the critic review at .agents/critic-reviews/[slug]-review.md
+3. Fix all HARD FAILS with specific replacements
+4. Address WARNINGS where the fix is clear
+5. Save the revised article (overwrite the original)
+```
+
+---
+
 ## Phase 3: Orchestration
 
 The orchestrator (the main Claude Code session) manages the pipeline:
@@ -247,13 +278,16 @@ The orchestrator (the main Claude Code session) manages the pipeline:
 ### Batch Execution
 ```
 For each batch (1 through 8):
-  1. Launch 5-8 parallel opus agents, each writing one article
+  1. Launch parallel sonnet agents, each writing one article
   2. Wait for all agents in the batch to complete
-  3. Review which articles were created successfully
-  4. Git add and commit the entire batch:
+  3. Launch parallel haiku critic agents, one per article (adversarial review)
+  4. Wait for all critics to complete
+  5. Launch parallel sonnet revision agents for any articles with HARD FAILS
+  6. Wait for revisions to complete
+  7. Git add and commit the entire batch:
      "feat: add [pillar name] articles to learn library (X articles)"
-  5. Push to main
-  6. Proceed to next batch
+  8. Push to main
+  9. Proceed to next batch
 ```
 
 ### Error Handling
