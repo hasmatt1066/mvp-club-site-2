@@ -199,7 +199,7 @@ W6: The "Training program" in FAQ Q1 ("a previous program") — technically desc
 ### CHECKS
 
 - [x] Title tag: "AI for L&D Professionals: Building Training Without a Training Budget" — 62 characters (slightly over 60). Consider shortening to "AI for L&D Professionals: No Budget, No Problem" (49 chars) or keep as is since it's a full H1, not a meta title tag.
-- [x] Meta description: "How learning and development professionals are using Claude and ChatGPT to design, write, and deliver content faster—without outsourcing quality." — 147 characters. Under 155. PASS.
+- [x] Meta description: "How learning and development professionals are using Claude and ChatGPT to design, write, and deliver content faster, without outsourcing quality." — 148 characters. Under 155. PASS.
 - [x] No em dashes in meta description — wait, the description contains an em dash ("faster—without"). HARD FAIL FOUND IN META.
 
 CORRECTED meta description: "How learning and development professionals are using Claude and ChatGPT to design, write, and deliver content faster, without outsourcing quality."
