@@ -33,7 +33,7 @@ The blank page is genuinely hard. Getting started is where most time gets lost, 
 
 Your role in writing work is to brief and edit. The briefing (giving Claude the context, audience, goal, and tone before you ask) shapes the quality of the first draft. The editing (pushing back on what doesn't work, asking for revisions on specific sections, reshaping the voice) is where your expertise lives.
 
-Carmella Thompson, a real estate agent in our community, built exactly this kind of briefing-and-editing loop into her daily routine. Every morning, she pastes property data into Claude and gets a market report draft. Her report prep went from 45 minutes to under 10. The value isn't in handing the task off. It's in the back-and-forth she's built into a reliable rhythm.
+Carmella Thompson, a real estate agent in our community, built exactly this kind of briefing-and-editing loop into her daily routine. Every morning, she pastes property data into Claude and gets a market report draft. Her report prep went from 45 minutes to under 10. The value comes from the back-and-forth she's built into a reliable rhythm.
 
 A practical note on briefing: the more specific you are about audience, purpose, tone, and constraints before you ask, the better the first draft will be. "Write an email to my VP about the project" produces something generic. "Write a three-paragraph update to my VP, who knows the project is delayed, focusing on what we resolved last week and what we need from her by Thursday, conversational tone" gives Claude enough to work with.
 
@@ -85,7 +85,7 @@ Across all four work types, the collaboration follows the same basic structure: 
 
 What varies is the human judgment load. In drafting, your judgment shows up in the editing. In synthesis, it shows up in knowing what questions to ask. In thinking work, it shows up in evaluating which of Claude's suggestions actually fit your context. In creative work, it shows up in taste and selection.
 
-None of that judgment can be automated. That's not a limitation of the tools. It's the point.
+None of that judgment can be automated. That's the point of the collaboration.
 
 [NEEDS COMMUNITY QUOTE: A member describing how their role felt different once they started thinking of themselves as the manager of AI output rather than just a user of the tool]
 

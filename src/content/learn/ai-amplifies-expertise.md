@@ -9,11 +9,11 @@ difficulty: "beginner"
 readingTime: 9
 ---
 
-Fifteen years of experience in a field is not a liability in the age of AI. It's the thing that makes you more useful with AI than someone just starting out.
+Fifteen years of experience is what makes you more useful with AI than someone just starting out.
 
 I hear a version of this anxiety constantly in coaching: "What's the point of my expertise if AI can do this?" The underlying fear is that years of hard-won knowledge are about to be made redundant. I understand it. I had it too. But after building AI workflows for clients and coaching hundreds of professionals through this, I'm convinced it has it backwards.
 
-Your expertise is not the part that's replaceable. It's the multiplier.
+Your expertise is the multiplier.
 
 ## What AI Actually Needs From You
 
@@ -37,7 +37,7 @@ What I've seen in coaching sessions is that people with more experience often ge
 
 ## The Psychological Barrier Worth Naming
 
-The tricky part isn't technical. It's the identity piece (and it's worth sitting with for a moment).
+The tricky part is the identity piece, not the technical side (and it's worth sitting with for a moment).
 
 If you've built your professional identity around being the person who knows things, the person others come to with hard questions, there's something unsettling about watching AI produce a credible first draft in seconds. It can feel like your expertise is being devalued even when it's actually being freed up for higher-order work.
 
@@ -61,7 +61,7 @@ A few specific places where more experience means better AI results:
 
 **Knowing what to ask for.** Vague prompts produce vague output. If you've been in your field long enough to know what a good deliverable actually looks like, you'll write more specific prompts. Specificity is everything.
 
-**Knowing what to reject.** AI confidently produces wrong answers. Domain expertise is what lets you catch them before they cause problems. Someone with two years in a field might not recognize when a synthesized summary has quietly flattened a nuance that matters enormously. You will.
+**Knowing what to reject.** AI confidently produces wrong answers. Domain expertise is what lets you catch them before they cause problems. Someone with two years in a field might not recognize when a synthesized summary has subtly flattened a nuance that matters enormously. You will.
 
 **Knowing what's missing.** AI produces output based on what it knows. It doesn't know what you know from being in the room, from the conversation that didn't get documented, from reading the dynamics of your organization. Your job is to add that.
 

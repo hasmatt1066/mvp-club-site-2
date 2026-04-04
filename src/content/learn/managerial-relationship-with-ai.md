@@ -63,7 +63,7 @@ Before AI, most professional work was individual contribution. You did the task.
 
 With AI in the picture, the doing gets faster. Claude can draft the email, build the spreadsheet, write the report. Where your value concentrates is in the direction: what to do, for whom, to what standard. You move from individual contributor to manager, even if nobody gave you that title.
 
-For most professionals, this is actually an upgrade in leverage. Managers typically operate at higher leverage than individual contributors. They shape outcomes rather than executing individual tasks. The professional who understands how to direct AI well is operating at that level even when they're a team of one.
+For most professionals, this is actually an upgrade in impact. Managers typically operate at higher impact than individual contributors. They shape outcomes rather than executing individual tasks. The professional who understands how to direct AI well is operating at that level even when they're a team of one.
 
 Matt's signature phrase captures it: "Using AI puts people in a managerial relationship rather than an individual contributor relationship." That's a complete rethinking of where your energy goes at work, not just a rebranding of what you already do.
 
@@ -87,7 +87,7 @@ Some people pick this up quickly. Others get frustrated and stuck. The differenc
 
 **Willingness to be specific.** Vague inputs produce vague outputs. The professionals who get consistently good results are the ones who've learned to be precise before they hit send, not after. This takes a little extra time upfront and saves a lot of time on the back end.
 
-**Comfort with evaluation.** Not everyone finds it natural to read their own output critically. But the evaluation step is where you earn the leverage. If you're not willing to read what comes back carefully and name specifically what's wrong, the iteration loop doesn't close.
+**Comfort with evaluation.** Not everyone finds it natural to read their own output critically. But the evaluation step is where you earn the advantage. If you're not willing to read what comes back carefully and name specifically what's wrong, the iteration loop doesn't close.
 
 **Patience with the loop.** The professionals who get frustrated quickly are usually expecting a vending machine: put the request in, get the perfect output out. When round three produces something worth sending, that's not a failure. That's the process working exactly as it should.
 
