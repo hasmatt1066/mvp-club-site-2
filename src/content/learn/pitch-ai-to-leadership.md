@@ -23,7 +23,7 @@ When you pitch an AI pilot to a leader, they're hearing it through a particular 
 
 Most pitches lose before they start because they answer a different question. They make the case for AI as a category (interesting, growing, important) rather than the case for a specific thing your specific team can try in the next 90 days to produce a specific outcome. Those are very different conversations.
 
-A large share of organizations are still stuck in the gap between individual experimentation and anything that counts as organizational alignment [NEEDS CITATION: verify directly from McKinsey 2025 State of AI report]. Your job in the pitch isn't to evangelize AI. It's to propose a small, scoped, low-risk experiment that answers a question your leadership already cares about.
+A large share of organizations are still stuck in the gap between individual experimentation and anything that counts as organizational alignment [NEEDS CITATION: verify directly from McKinsey 2025 State of AI report]. Your job in the pitch is to propose a small, scoped, low-risk experiment that answers a question your leadership already cares about.
 
 ## Start with the problem, not the solution
 
@@ -55,7 +55,7 @@ Name a number, a behavior, or a milestone. Time saved per person per week. Respo
 
 **3. What's the actual cost and risk?**
 
-For most AI pilots with Claude or ChatGPT, the cost is almost offensively small: a $20/month subscription per person, or a few hundred dollars for an API integration if you want something more robust. That number is important to say out loud because leadership often imagines AI experiments as expensive. The moment you name the real figure, the risk calculus changes.
+For most AI pilots with Claude or ChatGPT, the cost is almost offensively small: a $20/month subscription per person, or a few hundred dollars for an API integration if you want more capability. That number is important to say out loud because leadership often imagines AI experiments as expensive. The moment you name the real figure, the risk calculus changes.
 
 The other risk question is about data: will employees be sharing anything sensitive? This is worth having a clear answer to. For a Claude Pro account, individual conversations aren't used for training by default on paid plans. For anything involving confidential company data, route that question through IT or legal first, and know that this is exactly what [AI workplace policies](/learn/ai-workplace-policies) cover.
 
@@ -101,7 +101,7 @@ I came from a non-technical background and I was skeptical. Once I started using
 
 **Find your allies.** Who else in your organization is already using AI? In MVP Club sessions, we hear this constantly: once one person starts talking about what's working, two or three others come out of the woodwork who've been doing the same thing quietly. Those people are your coalition. A pilot proposal from three people in different functions carries more weight than one from a lone enthusiast.
 
-**Talk to IT early.** Not to get permission before the pitch, but to know the landscape. What tools are approved? What questions will legal or security ask? Having those answers in advance makes you look more prepared and makes the pilot design more realistic. It also surfaces any deal-breakers before you're in front of leadership.
+**Talk to IT early.** Not to get permission before the pitch, but to know what's already approved and in place. What tools are approved? What questions will legal or security ask? Having those answers in advance makes you look more prepared and makes the pilot design more realistic. It also surfaces any deal-breakers before you're in front of leadership.
 
 ## After the pitch
 

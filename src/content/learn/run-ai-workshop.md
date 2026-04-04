@@ -67,7 +67,7 @@ One thing to plan for: people who get stuck immediately. Have a simple fallback 
 
 Every workshop has at least one. The person who is visibly unimpressed, or who asks pointed questions about accuracy or job displacement. Don't deflect these. Engage them.
 
-The most effective response to skepticism is honest agreement. "You're right, it gets things wrong. Let me show you what that looks like." Then pull up a bad output, ask the room what's off about it, and walk through how you'd revise the prompt. That moment reframes the whole workshop: this isn't about trusting AI. It's about learning to steer it.
+The most effective response to skepticism is honest agreement. "You're right, it gets things wrong. Let me show you what that looks like." Then pull up a bad output, ask the room what's off about it, and walk through how you'd revise the prompt. That moment reframes the whole workshop: the workshop is about learning to steer AI, not blind trust.
 
 Jill Ozovek's framework for meeting skeptics applies here directly: the issue is rarely the tool. It's that people derive real meaning from expertise they spent years building, and AI feels like it's questioning the value of all that. Acknowledge that directly, and the resistance often softens.
 
@@ -75,13 +75,13 @@ Jill Ozovek's framework for meeting skeptics applies here directly: the issue is
 
 At the end of the session, don't hand out a reading list or a list of "things to try this week." Those get ignored. Instead, ask each person to name one task they're going to use Claude for before the next team meeting. Out loud, to the group. That social commitment is more powerful than any follow-up email.
 
-Give them 5 minutes at the end to do it. Right there, before the session ends. Have them open Claude, start the task, and then close their laptop. The point isn't to finish it. It's to make the first real try feel normal.
+Give them 5 minutes at the end to do it. Right there, before the session ends. Have them open Claude, start the task, and then close their laptop. The point is to make the first real try feel normal, not to finish the task.
 
 ## Common mistakes to avoid
 
 **Covering too many tools.** Pick one. Claude, or ChatGPT, or whatever your company uses. The moment you introduce multiple interfaces is the moment you've made this about tool comparison instead of practice.
 
-**Skipping the hands-on component.** [NEEDS VERIFIED STAT: percentage of employees who feel confused about how to use AI at work — remove or replace with verified source] Confusion isn't resolved by explanation. It's resolved by doing.
+**Skipping the hands-on component.** [NEEDS VERIFIED STAT: percentage of employees who feel confused about how to use AI at work — remove or replace with verified source] Explanation rarely resolves confusion. Doing does.
 
 **Running a one-and-done event.** A single workshop builds awareness. Capability comes from repetition. The most durable outcomes happen when the session is followed by regular, low-stakes practice: a 30-minute team check-in two weeks later, a Slack channel where people share what's working, a follow-up session for the people who got curious.
 
@@ -101,7 +101,7 @@ Over time, look for the two or three people who've gotten genuinely curious. Tho
 
 [NEEDS REAL EXAMPLE: Matt personal anecdote about running a session that got messy — a moment where something didn't work as expected and how staying curious about it changed the room's energy]
 
-There's a particular courage in volunteering to run an AI workshop when you're not an expert. You're going to get questions you can't answer. You're going to have outputs that don't work as expected. That's not a problem to hide. It's actually the most useful thing you can show.
+There's a particular courage in volunteering to run an AI workshop when you're not an expert. You're going to get questions you can't answer. You're going to have outputs that don't work as expected. That's actually the most useful thing you can show.
 
 When you say "I don't know, let me try this" and then iterate in front of the room, you model the exact skill the team needs to develop. The ability to stay curious when the output is wrong. To try again without embarrassment. To treat AI as a collaborator rather than an oracle.
 

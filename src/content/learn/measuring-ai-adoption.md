@@ -9,11 +9,11 @@ difficulty: "intermediate"
 readingTime: 11
 ---
 
-Most AI adoption efforts stall around month four. The tools are working. People are using them. And then a budget conversation happens, and the person leading the effort can't answer the question that matters: "What are we actually getting out of this?"
+Most of these efforts stall around month four. The tools are working. People are using them. And then a budget conversation happens, and the person leading the effort can't answer the question that matters: "What are we actually getting out of this?"
 
-If you're the person driving AI adoption at your organization, that question is coming. The answer you give will determine whether your pilot grows into something real or gets cut in the next planning cycle.
+If you're the person driving this effort at your organization, that question is coming. The answer you give will determine whether your pilot grows into something real or gets cut in the next planning cycle.
 
-Measuring AI adoption isn't as complicated as it sounds. The problem is that most people try to measure the wrong things first, get confused by the numbers, and then either oversell with metrics that don't hold up or undersell because they can't articulate the value clearly.
+Tracking results isn't as complicated as it sounds. The problem is that most people try to measure the wrong things first, get confused by the numbers, and then either oversell with metrics that don't hold up or undersell because they can't articulate the value clearly.
 
 ## Why most AI measurement frameworks don't work
 
@@ -71,7 +71,7 @@ This is where measurement gets harder and more interesting. You're trying to cap
 
 This is the layer that matters to leadership. Not because the other layers don't matter, but because Layer 3 is what connects AI adoption to the things the organization was already trying to achieve.
 
-You don't have to invent new metrics here. You connect AI adoption to metrics your organization was already tracking.
+You don't have to invent new metrics here. You connect the pilot to metrics your organization was already tracking.
 
 If your team was already measuring proposal win rate, ask whether win rate has changed since the team started using Claude for proposal drafts. If you were already tracking customer response time, look at whether response time has improved since people started using AI for email drafting. If you track error rates or rework cycles, connect AI usage to those numbers.
 
@@ -105,7 +105,7 @@ I remember running a measurement conversation in one of our early sessions and r
 
 They often are. Normal, not a failure.
 
-Some workflows get dramatically faster. Some don't change much. Some people adopt AI enthusiastically; others don't engage at all. Mixed results are the most honest picture of what a real AI adoption effort looks like in months one through six.
+Some workflows get dramatically faster. Some don't change much. Some people adopt AI enthusiastically; others don't engage at all. Mixed results are the most honest picture of what a real initiative looks like in months one through six.
 
 The mistake is presenting mixed results as either all-positive or as evidence that the pilot failed. Neither is accurate.
 

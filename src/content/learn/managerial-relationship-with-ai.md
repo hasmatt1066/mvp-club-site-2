@@ -27,7 +27,7 @@ The comparison to management is a practical operating model, not a loose analogy
 
 > "This is the really important step of vibe coding. You gave it the requirements, it built it, and now you're managing the output through evaluation." — Matt Hastings, during an MVP Club Getting Started session
 
-## Three responsibilities in the managerial relationship
+## Three responsibilities in the manager role
 
 When you take on the role of AI manager, three things become your job: setting the goal, providing the context, and evaluating the output. Each one matters. Skipping any of them is where most people lose time.
 
@@ -91,7 +91,7 @@ Some people pick this up quickly. Others get frustrated and stuck. The differenc
 
 **Patience with the loop.** The professionals who get frustrated quickly are usually expecting a vending machine: put the request in, get the perfect output out. When round three produces something worth sending, that's not a failure. That's the process working exactly as it should.
 
-**Using your domain expertise.** This is where the managerial relationship pays off most clearly. Claude doesn't know your field the way you do. It doesn't know your stakeholders, your organization's culture, your professional judgment about what's realistic. When you bring that expertise to the evaluation and direction steps, you produce output that AI couldn't generate on its own. The combination is what makes the collaboration valuable.
+**Using your domain expertise.** This is where working this way pays off most clearly. Claude doesn't know your field the way you do. It doesn't know your stakeholders, your organization's culture, your professional judgment about what's realistic. When you bring that expertise to the evaluation and direction steps, you produce output that AI couldn't generate on its own. The combination is what makes the collaboration valuable.
 
 ## A practical starting point for your next task
 
@@ -111,4 +111,4 @@ For a deeper look at how to evaluate and redirect AI output when it goes sideway
 
 People don't tend to get good at managing AI in isolation. The loop is easier to learn when you're watching someone else do it, seeing how they read output, hearing how they phrase their direction, and noticing what they catch that you would have missed.
 
-That kind of practice alongside peers is exactly what happens in MVP Club's weekly sessions. If you want to see the managerial relationship with AI in action and try it with support from people navigating the same shift, the [MVP Club community](/community) is where that happens.
+That kind of practice alongside peers is exactly what happens in MVP Club's weekly sessions. If you want to see this dynamic in action and try it with support from people navigating the same shift, the [MVP Club community](/community) is where that happens.

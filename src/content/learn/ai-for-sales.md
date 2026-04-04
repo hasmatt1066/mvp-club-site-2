@@ -102,7 +102,7 @@ The members of MVP Club in sales roles have found that the learning curve is sho
 
 **The RFP first-pass:** When a long RFP lands, paste relevant sections into Claude and ask it to flag: what they're actually asking for, what language from the RFP you should use in your response, and what they seem to value most based on how they've weighted sections. Use that analysis to prioritize where to spend your proposal-writing energy.
 
-> "Anything you do more than once, write down how to do it, and then tell Claude, here's how I want you to do it. Just go." — Matthew Hastings, MVP Club
+> "Anything you do more than once, write down how to do it, and then tell Claude, here's how I want you to do it. Just go." — Matt Hastings, MVP Club
 
 That principle applies directly to sales workflows. Your best outreach email ever, your most effective follow-up sequence, the way you structure a discovery debrief: document those patterns and give them to Claude as context. You turn a generic tool into one that knows how you work.
 

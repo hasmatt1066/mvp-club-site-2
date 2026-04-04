@@ -29,13 +29,13 @@ But comparison is not reality. Most of the people posting breathlessly about AI 
 
 I came to this work from a non-technical background. That actually helps me see something that purely technical practitioners often miss: the people who struggle most with AI adoption aren't struggling because of technical complexity. They're struggling because of what the technology represents to them.
 
-For a lot of mid-career professionals, AI feels like a direct challenge to expertise they spent years building. If you're good at your job because of your knowledge, your judgment, your relationships, your institutional memory — and now a tool can apparently do some of that in seconds — the question it raises isn't just "how do I use this?" The question underneath is: "Am I still valuable?"
+For a lot of mid-career professionals, AI feels like a direct challenge to expertise they spent years building. If you're good at your job because of your knowledge, your judgment, your relationships, your institutional memory, and now a tool can apparently do some of that in seconds, the question it raises isn't just "how do I use this?" The question underneath is: "Am I still valuable?"
 
 That's an identity question. And you can't answer it with a tutorial.
 
 What I've seen work instead is starting small enough that the stakes feel low. Not "learn AI." Not "build an AI strategy." One task. With one tool. Today.
 
-> "Most people's biggest AI barrier isn't technical — it's psychological."
+> "Most people's biggest AI barrier isn't technical: it's psychological."
 
 When you do a small thing and it works, your nervous system gets a different signal. Not "AI is overwhelming and I'm behind," but "I did a thing, it helped, I can do it again." That's the loop that breaks the anxiety. Not understanding. Doing.
 
@@ -45,7 +45,7 @@ There is no finish line you missed. No certification that proves competency. No 
 
 The people who feel most confident with AI right now are mostly people who started doing small things six months earlier than you. That's it. They weren't smarter or more technical. They just had a lower threshold for starting.
 
-And here's the thing about starting: the gap closes fast. A few weeks of regular use with Claude or ChatGPT is genuinely enough to shift from "I don't know where to begin" to "I have a few things I do every week that actually help me." That's not a hype claim. That's what I watch happen in coaching sessions, repeatedly.
+The gap closes fast. A few weeks of regular use with Claude or ChatGPT is genuinely enough to shift from "I don't know where to begin" to "I have a few things I do every week that actually help me." That's not a hype claim. That's what I watch happen in coaching sessions, repeatedly.
 
 I know this because I lived a version of it. I stepped away from all of this for about three months after a family loss. When I came back, I was convinced I'd missed too much, the tools had changed, and it was going to take forever to catch up. It didn't. The practice came back faster than I expected. The anxiety about being behind was much louder than the actual gap.
 
@@ -76,7 +76,7 @@ You learn nothing about what AI can do for your specific work until you show it 
 
 The posts you see on LinkedIn are finished things. Someone's polished win. You're seeing the output, not the fifteen attempts that preceded it, not the prompts that failed, not the things the AI got completely wrong, not the time they spent editing before sharing.
 
-Your messy, uncertain, first-attempt experience is not evidence that you're behind. It's just what learning looks like from the inside.
+Your messy, uncertain, first-attempt experience is just what learning looks like from the inside.
 
 [NEEDS COMMUNITY QUOTE: member describing the dissonance between feeling behind and the actual experience of starting — something that captures the "it was less scary than I thought" realization]
 
@@ -88,7 +88,7 @@ I've coached a lot of people through this. The ones who get unstuck share a cons
 
 After a few weeks of that, something shifts. The AI conversation at work stops feeling like a threat and starts feeling like a space you belong in. You start having opinions about what works. You start noticing what your colleagues are still doing manually that you could show them a faster way to do. You stop feeling like someone who hasn't figured this out yet.
 
-That's not a transformation. It's just what happens when you give yourself permission to start imperfectly.
+That's just what happens when you give yourself permission to start imperfectly.
 
 If you want to understand what's actually happening in your specific role as AI evolves, [this piece on how AI is changing your job](/learn/ai-learning-path) is a good next read. And if you're navigating this alongside a team where some people are excited and some are not, the coaching approach in [how to handle AI skeptics](/learn/handling-ai-skeptics) applies to your own internal skeptic, too.
 

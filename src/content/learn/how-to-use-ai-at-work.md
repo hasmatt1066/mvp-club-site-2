@@ -133,7 +133,7 @@ Every week, we run community sessions where professionals share what they're bui
 
 **The second week matters more than the first.** Week one is exciting and novel. Week two is where people either build a habit or drift back to their old patterns. The ones who stick with it are usually the ones who found one specific use case in week one that saved them real time, even if it was just 10 minutes.
 
-**People underestimate how much context AI needs.** The single most common issue we see is people providing too little context and then being disappointed with the output. When we sit with someone and help them build a proper prompt (with background, audience, purpose, constraints, and tone), they're often shocked at how different the result is. It's not about AI getting better. It's about you getting better at directing it.
+**People underestimate how much context AI needs.** The single most common issue we see is people providing too little context and then being disappointed with the output. When we sit with someone and help them build a proper prompt (with background, audience, purpose, constraints, and tone), they're often shocked at how different the result is. The difference comes from you getting better at directing it, not from the AI improving.
 
 [NEEDS COMMUNITY QUOTE: A specific member describing a use case that saved them meaningful time, with concrete details about the task]
 

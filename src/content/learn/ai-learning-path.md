@@ -107,7 +107,7 @@ Phase three: Still Claude and ChatGPT as your core, but you'll start developing 
 
 Don't try to evaluate every AI tool that launches. There will always be a new one, and most people who try to keep up with every announcement spend more time reading about AI than using it. Pick your core tools, get good at them, then expand.
 
-## The most important thing nobody tells you
+## The honest truth about the path
 
 There is no shortcut from "I've barely tried this" to "I use AI every day and it's changed how I work." The path goes through actually doing it.
 

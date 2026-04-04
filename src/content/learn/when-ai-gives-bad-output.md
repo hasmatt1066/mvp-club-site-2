@@ -13,7 +13,7 @@ You paste in a task, Claude spits something back, and it's... not what you wante
 
 That moment of frustration is where most people stop. And it's exactly where the skill begins.
 
-Getting bad output from Claude or ChatGPT isn't a failure signal. It's the first data point in an iterative process. The professionals who get real results from AI aren't the ones who write perfect prompts on the first try. They're the ones who learned to diagnose what went wrong and course-correct fast.
+Getting bad output from Claude or ChatGPT is the first data point in an iterative process, not a failure signal. The professionals who get real results from AI aren't the ones who write perfect prompts on the first try. They're the ones who learned to diagnose what went wrong and course-correct fast.
 
 ## Why AI output goes sideways (and what you can actually fix)
 
@@ -58,7 +58,7 @@ Vague feedback produces vague results. Compare:
 
 The second version gives Claude something to work with. This is what Matt Hastings, one of MVP Club's founders, calls "managing the output through evaluation." After the AI generates a draft, your job shifts from requester to reviewer. You're reading like an editor now, not a user.
 
-> "This is the really important step. You gave it the requirements, it built it, and now you're managing the output through evaluation." — Matthew Hastings, during an MVP Club Getting Started session
+> "This is the really important step. You gave it the requirements, it built it, and now you're managing the output through evaluation." — Matt Hastings, during an MVP Club Getting Started session
 
 ### Step 4: Confirm what worked before changing what didn't
 

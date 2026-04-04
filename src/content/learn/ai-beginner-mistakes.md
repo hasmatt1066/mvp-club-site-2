@@ -23,7 +23,7 @@ Most mid-career professionals are used to preparing before they act. You study, 
 
 [AI is a do-first, understand-later tool](/blog/what-to-actually-do-about-something-big-is-happening). The understanding literally cannot come through preparation. It comes through use. Every coaching conversation I've had confirms this: the people who waited until they understood AI well enough to start are still waiting. The people who just opened Claude or ChatGPT and tried something with real work came back the next week with actual questions.
 
-In one of our Getting Started sessions, Matthew summed it up: "What do I want these tools to do for me?" That reframe matters. Stop asking "Do I know enough about AI?" and start asking "What do I need done today that AI might help with?"
+In one of our Getting Started sessions, Matt summed it up: "What do I want these tools to do for me?" That reframe matters. Stop asking "Do I know enough about AI?" and start asking "What do I need done today that AI might help with?"
 
 Give yourself permission to be a beginner. You don't have to have it all figured out.
 

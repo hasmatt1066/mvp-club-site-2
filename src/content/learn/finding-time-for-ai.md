@@ -13,7 +13,7 @@ You probably already know you should be using AI more. You've opened Claude or C
 
 The problem isn't motivation. It's the schedule. And no productivity tip is going to conjure an extra hour in your day.
 
-So this isn't about finding more time. It's about using the time you already have differently.
+The point is using the time you already have differently.
 
 ## The myth of the learning block
 
@@ -23,7 +23,7 @@ AI is a practice skill. The understanding comes through doing, not through prepa
 
 The other thing about the "learning block" approach: it sets the bar too high. If you need a free hour to practice, you'll never practice. But if you can weave AI into three things you're already doing today, you build the habit without the overhead.
 
-This is the [AI time paradox](/blog/ai-time-paradox) in practice: the same busyness that makes AI valuable is the thing that makes it hardest to adopt. The way out isn't to fight that tension. It's to make the practice small enough to fit inside your actual life.
+This is the [AI time paradox](/blog/ai-time-paradox) in practice: the same busyness that makes AI valuable is the thing that makes it hardest to adopt. Making the practice small enough to fit your actual life is the way through.
 
 ## Start with one real task this week
 
@@ -47,7 +47,7 @@ Every day, you have dead time right before a meeting begins. People are tricklin
 
 Open Claude on your phone or laptop. Ask it one question about the meeting agenda: "What are the strongest objections to the proposal we're discussing today?" or "What should I be ready to answer if the client pushes back on the timeline?" You probably won't read a long response in two minutes, but a focused prompt often gets you something useful in 30 seconds.
 
-This isn't comprehensive meeting prep. It's one targeted question that sharpens your thinking before you walk in. It compounds.
+One targeted question before a meeting, not comprehensive prep, just something that sharpens your thinking. It compounds.
 
 ### During the processing dead zone (10-15 minutes)
 

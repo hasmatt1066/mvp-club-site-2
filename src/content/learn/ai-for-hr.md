@@ -119,7 +119,7 @@ This is using Claude as a thinking partner, not a document generator. It's one o
 
 ### Plain-Language Summaries
 
-The policy goes through legal. It comes back in legalese. Nobody reads it.
+The policy goes through legal. It comes back in legalese. Employees don't read it.
 
 > "Here is our [policy name]. Write a plain-language summary that employees will actually read and understand. Use short sentences. Use examples where helpful. The goal is comprehension, not legal precision. Keep it under 300 words."
 

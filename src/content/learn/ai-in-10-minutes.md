@@ -51,7 +51,7 @@ Pick one thing on your to-do list that involves writing: an email, a summary, a 
 
 Read the draft. It will probably not be exactly right. Edit it. The key insight is this: editing is much faster than writing from scratch. Most people find they can get to a finished draft in half the time by starting from something imperfect rather than starting from nothing.
 
-> "Anything you do more than once, write down how to do it, and then tell Claude, hey, here's how I want you to do it. Just go." — Matthew Hastings, from a recent MVP Club community session on building repeatable workflows with Claude
+> "Anything you do more than once, write down how to do it, and then tell Claude, hey, here's how I want you to do it. Just go." — Matt Hastings, from a recent MVP Club community session on building repeatable workflows with Claude
 
 ### 3. Ask it to help you think through something
 

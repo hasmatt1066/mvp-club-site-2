@@ -1,6 +1,6 @@
 ---
 title: "What AI Can and Can't Do Right Now (An Honest Rundown)"
-description: "An honest look at what AI tools like Claude and ChatGPT can and can't do for busy professionals—before you spend time figuring it out the hard way."
+description: "An honest look at what AI tools like Claude and ChatGPT can and can't do for busy professionals, before you spend time figuring it out the hard way."
 author: "MVP Club"
 date: "2026-04-02"
 pillar: "Getting Started with AI"
@@ -59,7 +59,7 @@ This is the most important thing to understand about these tools. AI models like
 
 This is called hallucination, and it happens most often with specific facts: names, dates, statistics, citations, product details, legal or medical specifics. If you ask Claude "what were Apple's Q3 revenues in 2024?" you might get a number. That number might be correct. It might also be confidently fabricated. You need to verify it.
 
-This isn't a reason to distrust AI entirely. It's a reason to treat AI output the way you'd treat a smart colleague's off-the-cuff recollection: useful as a starting point, worth double-checking before you stake anything on it.
+Treat AI output the way you'd treat a smart colleague's off-the-cuff recollection: useful as a starting point, worth double-checking before you stake anything on it.
 
 ### It doesn't know your context
 

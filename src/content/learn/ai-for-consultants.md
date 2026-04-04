@@ -33,7 +33,7 @@ We'll go deep on each of these. But start with whichever one costs you the most 
 
 A lot of consulting research follows the same basic pattern: gather sources, read everything, pull out what's relevant, synthesize into a point of view. The gathering and reading are yours. The synthesis is where AI can dramatically compress your time.
 
-Here's what this looks like in practice. You're preparing for a client in the healthcare technology space. You have a 60-page industry report, three competitor annual reports, and a handful of analyst articles. You need to understand the competitive landscape and identify where your client has differentiated positioning.
+Here's what this looks like in practice. You're preparing for a client in the healthcare technology space. You have a 60-page industry report, three competitor annual reports, and a handful of analyst articles. You need to understand the competitive field and identify where your client has differentiated positioning.
 
 Instead of reading every page front-to-back, you paste the content into Claude (or upload the documents) and ask a specific question: "Read this material and identify the three most significant competitive pressures facing mid-sized health tech companies right now, with evidence from the sources."
 

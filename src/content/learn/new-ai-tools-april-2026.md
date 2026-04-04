@@ -177,6 +177,6 @@ For more on choosing between the major AI tools, see our [ChatGPT vs. Claude com
 
 The one thing worth doing this week: pick one tool from this list and give it 30 minutes. Not to master it. Just to see what it does with a real task from your actual job.
 
-Claude Cowork is the highest-leverage pick if you're already on Pro. Perplexity Custom Skills if you already use Perplexity. Either way, you'll know more on Friday than you do now, and that's how this works.
+Claude Cowork is the best use of your time if you're already on Pro. Perplexity Custom Skills if you already use Perplexity. Either way, you'll know more on Friday than you do now, and that's how this works.
 
 In our weekly sessions, we go through new tools together so you don't have to figure it out alone. [Join us at MVP Club](/community) when you're ready for the next round.

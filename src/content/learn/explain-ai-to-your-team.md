@@ -1,6 +1,6 @@
 ---
 title: "How to Explain AI to Your Boss, Team, or Skeptical Colleague"
-description: "Practical ways to talk about AI with people who aren't convinced yet. No hype, no lectures—just approaches that actually work."
+description: "Practical ways to talk about AI with people who aren't convinced yet. No hype, no lectures. Just approaches that actually work."
 author: "MVP Club"
 date: "2026-04-02"
 pillar: "Getting Started with AI"
@@ -21,7 +21,7 @@ When someone is skeptical about AI, launching into an explanation of large langu
 
 Those are not questions that a list of features answers.
 
-Jill's most useful insight from coaching professionals through this: the people who are quickest to adopt new tools aren't the ones who got the best explanation. They're the ones who felt safe enough to try something imperfect. Your job, when you're talking to a skeptic, isn't to inform them. It's to make the idea feel lower-stakes.
+Jill's most useful insight from coaching professionals through this: the people who are quickest to adopt new tools aren't the ones who got the best explanation. They're the ones who felt safe enough to try something imperfect. Your job, when you're talking to a skeptic, is to make the idea feel lower-stakes, not to deliver more information.
 
 That reframe changes everything about how you have the conversation.
 
@@ -77,11 +77,11 @@ Yes, sometimes. Claude and ChatGPT can get things wrong, especially for anything
 
 **"Isn't this just going to take people's jobs?"**
 
-This is the question underneath most AI anxiety. An honest answer acknowledges the real uncertainty: nobody knows exactly how work will change. But the professionals who are figuring out how to work well *with* AI tend to be the ones who feel most secure, not least. Not because AI can't change roles, but because they're ahead of the shift instead of behind it. That's a real advantage.
+This is the question underneath most AI anxiety. An honest answer acknowledges the real uncertainty: no one can predict exactly how work will change. But the professionals who are figuring out how to work well *with* AI tend to be the ones who feel most secure, not least. Not because AI can't change roles, but because they're ahead of the shift instead of behind it. That's a real advantage.
 
 **"I don't have time to learn a new tool."**
 
-This one is actually worth taking seriously instead of dismissing. They're right that most tool adoptions require significant time investment. AI is genuinely different because you can start getting value in the first session. The bar to entry is knowing how to type and having a task. If you have 15 minutes and a real work task, that's enough to start. The [AI time paradox](/blog/ai-time-paradox) isn't that you have no time to learn AI. It's that using AI is what gives you time back.
+This one is actually worth taking seriously instead of dismissing. They're right that most tool adoptions require significant time investment. AI is genuinely different because you can start getting value in the first session. The bar to entry is knowing how to type and having a task. If you have 15 minutes and a real work task, that's enough to start. The [AI time paradox](/blog/ai-time-paradox): using AI is actually what creates more time.
 
 **"I'm not very technical."**
 
@@ -89,9 +89,9 @@ Neither was Jill when she started. Neither were the majority of MVP Club members
 
 ## One thing worth saying out loud
 
-If you're trying to bring someone along on this, the most useful thing you can do isn't explain AI. It's invite them to try it next to you.
+If you're trying to bring someone along on this, the most useful thing you can do is invite them to try it next to you.
 
-The demystification happens in the doing, not the explaining. That's something the MVP Club founding team learned from running dozens of webinars and coaching sessions with non-technical professionals. As Matt put it during one of our webinars: "The goal isn't to teach advanced AI. It's to make one reusable process feel accessible. It's just a chat window doing stuff."
+The demystification happens in the doing, not the explaining. That's something the MVP Club founding team learned from running dozens of webinars and coaching sessions with non-technical professionals. As Matt put it during one of our webinars: "The goal is to make one reusable process feel accessible. It's just a chat window doing stuff."
 
 When someone types their first real work task into Claude and gets back something genuinely useful, no explanation was ever needed. The experience is its own argument.
 

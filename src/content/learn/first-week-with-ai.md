@@ -101,7 +101,7 @@ That shift doesn't come from a workshop or a tutorial series. It comes from [doi
 
 ## A few practical notes
 
-**Which tool to use:** Claude and ChatGPT are both good starting points. Claude tends to produce writing that sounds more natural and handles nuanced professional situations well. ChatGPT is widely used and has a larger ecosystem of integrations. Try both this week if you're curious. See which one's responses feel more useful for your kind of work.
+**Which tool to use:** Claude and ChatGPT are both good starting points. Claude tends to produce writing that sounds more natural and handles nuanced professional situations well. ChatGPT is widely used and has a larger connects to more tools and services. Try both this week if you're curious. See which one's responses feel more useful for your kind of work.
 
 **How much context to give:** More than you think. When Claude gives you something generic, that's almost always because you gave it generic input. Paste in the actual email thread. Describe the actual person you're dealing with. Tell it what you've already tried. The more real context you provide, the more real the output.
 

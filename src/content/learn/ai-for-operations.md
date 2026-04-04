@@ -27,7 +27,7 @@ AI use cases for operations aren't about removing people from processes. They're
 
 ### Use case 1: Process documentation and SOP drafting
 
-Ask most operations managers what they never have time for, and process documentation comes up immediately. Everyone knows the procedures should be written down. Nobody has time to write them. The result is institutional knowledge that lives entirely in one person's head, which creates fragility, onboarding problems, and handoff failures.
+Ask most operations managers what they never have time for, and process documentation comes up immediately. Everyone knows the procedures should be written down. And yet they rarely get written, because the time never materializes. The result is institutional knowledge that lives entirely in one person's head, which creates fragility, onboarding problems, and handoff failures.
 
 Claude can close this gap significantly. You describe how a process works, in conversational language, the way you'd explain it to a new hire. Claude turns that into a structured SOP with numbered steps, decision points, and edge cases. The draft won't be perfect (it never is), but it gives you something to react to and edit, which is always faster than starting from scratch.
 
@@ -81,7 +81,7 @@ Your edits are where the document becomes real. The goal isn't to accept what Cl
 
 Once you have an SOP you're happy with, save the approach. Copy the prompt you used, note what worked, and keep it somewhere you can find it. Next time you need to document a process, you'll start from a working template instead of figuring it out again.
 
-Matthew Hastings, one of MVP Club's co-founders, describes this pattern as the core habit: "Anything you do more than once, write down how to do it, and then tell Claude: here's how I want you to do it. Just go." For operations managers, that applies to the documentation work itself, not just the processes you're documenting.
+Matt Hastings, one of MVP Club's co-founders, describes this pattern as the core habit: "Anything you do more than once, write down how to do it, and then tell Claude: here's how I want you to do it. Just go." For operations managers, that applies to the documentation work itself, not just the processes you're documenting.
 
 ## Tool recommendations
 

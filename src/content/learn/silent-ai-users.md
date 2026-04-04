@@ -13,7 +13,7 @@ You finish a first draft of a report in twenty minutes using Claude. It took you
 
 That's not unusual. [NEEDS CITATION: verify Anthropic published this study] [Nearly half of employees actively hide their AI use from their employers](https://www.securitymagazine.com/articles/101834-49-of-americans-hide-ai-use-from-employers), according to Security Magazine, and more than a third say it's because they worry others will think they're cutting corners.
 
-There's a whole shadow economy of AI use happening in offices right now. Quietly, efficiently, and completely out of sight.
+There's a whole shadow economy of AI use happening in offices right now. Efficiently and completely out of sight.
 
 ## Why the silence makes total sense
 
@@ -29,7 +29,7 @@ The second cause is identity. A lot of people have spent years, sometimes decade
 
 ## What keeping quiet actually costs you
 
-The silence feels protective. It's also quietly expensive.
+The silence feels protective. It's also more expensive than it looks.
 
 When you work alone with AI tools and don't share what's working, you slow down everyone around you. Your colleague spends three hours on a task you did in twenty minutes. You have the solution to their problem and you don't share it. That's not a small thing.
 
