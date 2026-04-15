@@ -3,11 +3,14 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Navigation from '../../components/layout/NavigationAstro.astro';
 import Footer from '../../components/layout/FooterAstro.astro';
 import { getCollection } from 'astro:content';
+import { isPublishedBlog, isPublishedLearn } from '../../content/publishedSlugs';
 
 const learnArticles = (await getCollection('learn'))
+  .filter((article) => import.meta.env.DEV || isPublishedLearn(article.slug))
   .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
 
 const blogPosts = (await getCollection('blog'))
+  .filter((post) => import.meta.env.DEV || isPublishedBlog(post.slug))
   .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
 
 const hasLearnArticles = learnArticles.length > 0;

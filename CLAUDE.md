@@ -139,6 +139,45 @@ readingTime: 8
 7. AI and Your Career
 8. Human + AI Collaboration
 
+## Publishing and Unpublishing Articles
+
+**Adding a markdown file to `src/content/blog/` or `src/content/learn/` does not publish it.** All articles are gated by an allowlist in `src/content/publishedSlugs.ts`. Only slugs present in the allowlist render in production. Everything else 404s and is excluded from listing pages and the sitemap.
+
+This lets us stage a large backlog of drafts in the repo and only move them to production once they pass editorial review.
+
+### How the allowlist works
+
+```ts
+// src/content/publishedSlugs.ts
+export const PUBLISHED_BLOG_SLUGS = new Set<string>([
+  // add blog slugs here to publish them
+]);
+
+export const PUBLISHED_LEARN_SLUGS = new Set<string>([
+  'how-ai-changes-your-job',
+  'claude-for-professional-work',
+]);
+```
+
+- **Dev mode** (`npm run dev`): the filter is bypassed and every draft renders locally, so you can edit and preview articles before publishing.
+- **Production build** (`npm run build` / Vercel deploy): only slugs in the allowlist render.
+
+The filter is applied in all four content pages: `src/pages/blog/index.astro`, `src/pages/blog/[...slug].astro`, `src/pages/learn/index.astro`, `src/pages/learn/[...slug].astro`.
+
+### To publish an article
+
+1. Finish the article in `src/content/learn/my-article.md` (or `blog/`)
+2. Add the slug (the filename without `.md`) to the appropriate set in `src/content/publishedSlugs.ts`
+3. Commit and push — Vercel will redeploy with the article live
+
+### To unpublish an article
+
+Remove the slug from the set in `src/content/publishedSlugs.ts`. The markdown file stays in the repo and remains editable in dev, it just stops rendering in production. Commit and push.
+
+### Slug naming
+
+The slug is the markdown filename without the `.md` extension, which becomes the URL path. `src/content/learn/claude-for-professional-work.md` has slug `claude-for-professional-work` and renders at `/learn/claude-for-professional-work`.
+
 ## Brand Voice & Editorial Guidelines
 
 **Full brand guide:** See [`docs/brand-guide.md`](docs/brand-guide.md) for the complete editorial reference including:

@@ -1,179 +1,151 @@
 ---
 title: "How to Use Claude for Professional Work"
-description: "A practical guide to Claude Projects, Artifacts, system prompts, and file uploads for professionals. Go beyond basic chat and build real workflows."
-author: "MVP Club"
-date: "2026-04-02"
+description: "A practical guide to Claude Projects, system prompts, and file uploads. The setup I wish someone had walked me through on day one."
+author: "Ryan Brodsky"
+date: "2026-04-15"
 pillar: "AI Tools and Productivity"
 tags: ["claude", "claude-for-professional-work", "ai-tools", "productivity", "how-to", "projects", "system-prompts"]
 difficulty: "beginner"
 readingTime: 12
 ---
 
-Sarah, a marketing manager at a mid-size SaaS company, spent 45 minutes every Friday writing a status update that her director read in 90 seconds. Then she built a Claude Project around it. Now the draft takes her three minutes. The 45 minutes goes back to actual work. That shift is what this guide is about.
+We all have weekly ritual parts of our job that are always the same. We put them off. We brew an extra cup of coffee before starting. We come through the other side of it no wiser or more engaged than before. That's where to start with Claude as a collaborator. Not to take over the interesting creative work you actually care about, but with the rote thing you're already half-resenting on Monday morning.
 
-## What Claude actually is (and why it matters for work)
+## From One-Shot to Intern
 
-Claude is Anthropic's AI. For professional use, the $20/month Claude Pro subscription is where you want to start. The free version is capable, but Pro gives you longer conversations, priority access, and most importantly: full access to Projects.
+Most people's first real use of AI at work is as a one-shot feedback machine. You paste an email draft in and ask Claude to make it sound more professional. You paste a memo in and ask if it's clear. You paste a job description in and ask what questions you should put to the candidate. One prompt, one answer, done. That's a perfectly fine starting point, and it's where almost everyone I know started, including me. For a lot of tasks, one-shot is all you ever need.
 
-If you are comparing options, the [ChatGPT vs. Claude comparison](/learn/chatgpt-at-work) covers where each tool tends to be stronger. The short version: for professional writing, reasoning, and extended work sessions, many MVP Club members land on Claude as their primary tool (though this varies by role and workflow).
+But there's a ceiling on one-shot mode. It's a decent freelance editor for sure, but more likely you want an intern to independently take over parts of your job, and you can review their performance. Once you want Claude the intern, not just Claude the contractor, you need two things.
 
-Claude's interface has four parts that matter for professional work. The standard **Chat** window is where everything starts, back-and-forth conversation that resets each session. **Projects** are persistent workspaces where Claude holds context across multiple conversations, so you're not re-briefing it every time. **Artifacts** are Claude's live-preview output format for documents, tables, and interactive content. And **file uploads** let you drop in PDFs, Word docs, spreadsheets, and images directly into any conversation so Claude works from your actual material.
+## Context engineering and iteration, without the jargon
 
-Each of these changes what Claude can do for you. A lot.
+**Context engineering** just means writing down what you do, in clear instructions, so Claude can do the task the way you'd do it. It sounds intimidating. It's not. If you were training a new hire on this task, what would you tell them in their first week? Write that down. Give it to Claude.
 
-## Start with Projects: your persistent work context
+There are basically two types of context, and that instruction-manual version is only the first one. The second type is reference material: the specific knowledge Claude needs about the actual thing you're working on. Who this client is. How a specific teammate likes to be pinged. What's in last quarter's numbers. What the open threads are with this vendor. 
 
-The biggest workflow shift for professionals comes from Projects. A Project is a persistent workspace. You set it up once, add your context documents, and every conversation inside that Project starts with Claude already knowing your situation.
+The instruction manual can't cover any of that, because it's situation-specific and it changes constantly. The best way to give Claude reference material is to connect it to the tools where you already store this stuff (your CRM, your meeting notes app, your team wiki) and give it a short guide to using those sources. AI meeting transcripts are gold for context engineering, so give Claude access to the folder where you're storing them! The point is that you stop being the middleman copy-pasting reference material into every chat, and Claude just pulls from the source of truth on its own.
 
-Think of it this way: instead of briefing a new assistant every morning, you brief them once and they carry that knowledge into every meeting.
+**Iteration** just means updating those instructions every time Claude gets it not quite right. Your first version will be wrong in small ways. Claude will use a phrase you hate, skip a step you care about, get the tone slightly off. You open the instructions back up and add one sentence. Next time is better. That's the whole loop. It is absolutely an upfront investment to train Claude with feedback, and the first times will go slower and worse than doing it yourself. It's the exact same as an intern! In the end, the reward of a capable intern taking things off your plate after their first awkward month is well worth the investment.
 
-### Setting up your first Project
+Those two ideas are the entire game. Everything else in this guide is just the scaffolding Claude gives you to do those two things well: a place to keep your instructions (Projects), a way to write them, a way to hand Claude your actual working material (file uploads/connectors), and a way to iterate on the output itself. If you walk away remembering only "context engineering plus iteration," you've got the whole thing.
 
-Go to claude.ai, click on "New Project" in the left sidebar, and name it something specific. "Work" is too broad. "Client Communications," "Q2 Marketing Planning," or "Performance Review Prep" are specific enough to be useful.
+A quick aside on the subscription question before we dive in. You can use Claude free at claude.ai, and it's surprisingly capable for one-shot work. The $20/month Claude Pro tier is where Projects unlocks, and Projects is what you actually need for everything below, so if you're trying to embed Claude in your real work, Pro is the right starting point. The free tier is fine for kicking the tires.
 
-Once you're inside a Project, you'll see two things you don't have in a regular chat: a Project Knowledge section and a custom instructions field. Both matter a lot.
+For the rest of this guide I'm going to assume you're using Claude Pro and talk about how to actually use it.
 
-**Project Knowledge** is where you upload the background documents Claude should know. Good candidates:
-- Your team's style guide
-- A summary of your role and responsibilities
-- The context doc for a specific client or project
-- A list of stakeholders and what they care about
-- Previous outputs you want Claude to match in tone and format
+## Three parts of the Claude interface that matter for work
 
-**Custom Instructions** is your system prompt. More on that in a moment.
+1. **Chat.** The regular conversation window. Resets every time you start a new one. This is where one-shot work happens.
+2. **Projects.** Persistent workspaces that hold context across every conversation inside them. This is where your context engineering lives. You can upload core files that are always important direcly into the Project, and share the Project with teammates.
+3. **Connectors.** The interface changes so frequently I won't even try guessing what it is at the time you're reading it: just ask Claude. The core idea remains the same though. Outside resources and tools you sign in with, authorize to read your resources, and allow Claude to explore them when necessary. Things like outlook, hubspot, and google drive all have connectors.
 
-> "When you make a new Project, you could point it at an existing folder. So it's not just stuck within the Claude directory." (Matt Hastings, MVP Club session on Claude CoWork)
+If you only learn one of these, learn Projects. It's the difference between using Claude like a search engine and using it like a colleague who actually remembers your job.
 
-Once a Project is set up, every conversation inside it inherits that knowledge. You can run ten separate conversations on different aspects of the same client engagement, and Claude maintains consistent context across all of them.
+## Projects: the upgrade that changes everything
 
-### One Project per domain of work
+AI moves fast, and there was a time before Projects existed! An archaic, murky time full of copy-pasting.
 
-The most useful pattern is one Project per distinct context. Some examples from how MVP Club members organize their work:
+**Before:** Every morning I opened Claude, pasted in a description of the project I was working on, pasted in the last email I was trying to reply to, and then asked my question. Every morning. Same preamble. Same copy-paste. I was spending the first three or four minutes of every Claude session just reloading context.
 
-- One Project for a specific client (with their background, preferences, and past deliverables uploaded)
-- One Project for a recurring quarterly process (performance reviews, budget planning, all-hands prep)
-- One Project for job search materials (your resume, the types of roles you're targeting, your notes on what to emphasize)
-- One Project for content creation (your brand voice guide, approved examples, the editorial calendar)
+**After:** I made a Project called "Knowledge Base Articles." I uploaded the internal template for a good help desk article, a few example articles, and a two-paragraph system prompt explaining what I was doing and what voice I wanted Claude to use. I connect it with my company's core 80-page PDF guide on how to use your application. Now I open the Project, tell it "let's make a knowledge base article about ____", and Claude already knows what to do. After the first few articles were written, and the instructions changed to avoid the first mistakes, the output became immediately useable without furtherr edits.
 
-You are not limited to one Project. Use as many as you have distinct contexts.
+That's what Projects do. You brief Claude once. Claude remembers for as long as the Project exists. A Project is the container your context engineering lives in.
 
-## System prompts: giving Claude a standing brief
+### How to set up your first Project
 
-Inside any Project, you can write custom instructions. This is your system prompt: the standing brief that Claude reads before every single conversation in that Project.
+Go to claude.ai or the Claude desktop app, click "New Project" in the left sidebar, and name it something specific. "Work" is too broad and you'll end up not using it. "Q2 Board Prep," "Client Communications for [Name]," "Performance Review Cycle" are specific enough to be useful.
 
-A good system prompt is not long. It is clear. You are telling Claude:
+Inside a Project, there are two things you don't have in a regular chat:
 
-1. Who you are and what context matters
-2. How you want it to behave and respond
-3. What to avoid
-4. Any format or tone preferences
+- **Project Knowledge.** The upload area for background docs. This is where you put your style guide, your role summary, a client brief, a list of stakeholders, past work you want Claude to match in tone.
+- **Custom Instructions.** The standing brief Claude reads before every single conversation in that Project. This is where your core set of instructions should go that matter to every chat you open in the project. We'll get to it in a second.
 
-Here's a concrete example for a marketing manager running a client Project:
+### One Project per task, not one big Project for everything
 
-> "You are assisting a B2B marketing manager at a 50-person SaaS company. Our primary client for this project is a financial services firm. They prefer formal language, no contractions, and bullet-point summaries after any analysis. Always ask me to confirm the audience before drafting anything. Our tone internally is direct and casual. Our tone externally is professional and precise. Do not use the phrases 'industry-leading' or 'innovative' (our client finds these meaningless)."
+I tried having a single "Work" Project for like two weeks. It was a disaster. Claude had context from six unrelated things and kept mixing them up. I switched to one Project per domain and it got immediately better.
 
-That is 83 words. It will improve every output in that Project without you having to repeat any of it.
+Patterns I use and recommend:
 
-Files uploaded to a Project are cached in Claude's context, which means repeated references within the same Project are more efficient than re-uploading files across separate conversations. [NEEDS CITATION: Verify current behavior re: file caching and usage limit implications via Anthropic documentation.] The practical takeaway still holds: build the Project once, use it repeatedly.
+- One Project per client or account (with their preferences, past deliverables, and tone)
+- One Project per recurring process (weekly reporting, monthly close, quarterly planning)
+- One Project for a specific technology build or launch
+- One Project for job hunt stuff if you're in that mode (resume, target roles, notes on what to emphasize)
+- One Project for writing where you upload your personal or band voice guide, to act as a personal editor regardless of the context
 
-[NEEDS COMMUNITY QUOTE: A member sharing what they included in their first system prompt and how it changed their workflow. Specific role and use case preferred.]
+You're not billed per Project. Make as many as you need.
 
-## File uploads: give Claude your actual material
+## Instructions: context engineering in one text box
 
-Claude can read files. This is one of its most practically useful features for professional work, and one of the most underused.
+The Custom Instructions field in a Project is a single text box, and what you write in that text box is your instructions for the task, the standing brief Claude reads before every single conversation in that Project. It's one of the highest-leverage things in a project, and its tough to write a good one your first try. Luckily, you have help: Claude! 
 
-You can upload:
-- PDF documents (contracts, reports, research)
+We call this move "prompt for prompt" and its very effective. Rather than starting with a blank page, start a new chat with Claude and explain that you're trying to write a good instructions prompt for this project, and what the project is all about. Tell Claude to interview you and ask probing questions so you can get to a comprehensive first draft together.
+
+Here's what a good instructions prompt actually needs:
+
+1. Who you are and what you do
+2. What this specific Project is for
+3. How you want Claude to respond (format, tone, length)
+4. What Claude should never do
+
+Here's a bit of the project prompt from my actual work at Dualenroll, making new knowledge base articles to help users get answers about using the platform:
+
+#### Purpose & context
+
+Ryan works on help desk documentation for DualEnroll, a dual enrollment platform that connects colleges and high schools to manage student course registrations. His primary role involves creating comprehensive knowledge base articles that address common confusion points and questions from educational administrators, counselors, and students using the system. The documentation targets non-technical users who may be hesitant about automated workflows, requiring clear explanations that build trust and understanding.
+The work focuses on translating complex technical processes into accessible guidance for college administrators, high school counselors, and students navigating dual enrollment registrations. Success is measured by reducing confusion around system features and empowering users to effectively support students through the enrollment process.
+
+
+#### Approach & patterns
+Ryan's documentation approach emphasizes practical, scenario-based guidance that addresses real user pain points. Articles are structured to build confidence in automated systems by providing transparency and clear explanations of what's happening behind the scenes.
+The writing consistently follows help desk best practices: starting with clear definitions, providing step-by-step instructions, including FAQ sections that address common concerns, and offering ready-made responses that administrators can use with students and parents. Content is organized to be easily searchable and cross-referenced within the broader knowledge base system.
+
+#### Tools & resources
+Ryan works within HubSpot for knowledge base management and uses markdown formatting for easy content transfer. The documentation system includes established conventions for article structure, tone, and cross-referencing that ensure consistency across the knowledge base. Articles are designed to integrate seamlessly with DualEnroll's existing help documentation ecosystem.
+
+And that's it! I give Claude instructions, guidelines, and pointed it to the tools it has available. I also uploaded some pdf reference guides on how to use the application so it had a source of knowledge to pull from.
+
+Context = How-To Guides + Reference Materials
+
+
+### The iteration loop
+
+Writing the first version is only half of it. The other half is the thing almost everyone skips: you keep updating it.
+
+The first time Claude gives you back something where you think "ugh, not quite," stop. Don't just manually fix the output and move on. Ask yourself what instruction would've prevented that. Then go back to the system prompt and add one sentence. Thirty seconds of work. The next output's better.
+
+Do that five or ten times over a month and your system prompt ends up being a near-perfect description of how you want this task done. At that point the drafts Claude produces need almost no cleanup. You're not prompting anymore. You're just running the machine.
+
+That's the whole iteration loop. Context engineering is what you write the first time. Iteration is what you do every time Claude's mistaken output reminds you that your instructions were incomplete.
+
+You must extend an incredible amount of grace to your little intern, Claude! Every time it messes up, you own it 100%. "I must not have explained that clearly, let's work on my explanation for next time." Not "this machine is stupid," but, "I didn't set you up for success."
+
+## File uploads: stop describing documents to Claude
+
+Claude can read:
+
+- PDFs (contracts, reports, research papers)
 - Word and Google Docs (paste from Google Docs or export as docx)
-- Excel spreadsheets (Claude reads the data, not formulas)
-- PowerPoint decks (Claude reads the content of each slide)
-- Images, including screenshots of dashboards, whiteboards, and diagrams
-- Plain text files, CSVs, code files
+- Spreadsheets (Claude reads the data, though formulas get flattened)
+- PowerPoint and Keynote exports
+- Images, including screenshots of dashboards, whiteboards, handwritten notes
+- Plain text, CSVs, and code files
 
-The most direct professional use: drop in a document and ask Claude to work from it.
+Ideally, though, you give Claude access to the actual sources and don't need to drag documents into the chat ever again. If you can connect it with your company's OneDrive, give it a clear document in the project knowledge about how to navigate the OneDrive, and it can find what it needs from there. Making this document is a good exercise for Claude! Always collaborate wth Claude on making its own instructions, when possible. 
 
-**Practical examples:**
+## Mistakes I kept making for longer than I want to admit
 
-Upload your last three meeting notes and ask: "Summarize the outstanding decisions from these meetings. Format as a numbered action item list with owner and due date where mentioned."
+**Using chat for everything instead of Projects.** Regular chat resets. If you're doing any repeated work, you should be in a Project. The name is a bit misleading, and I thought Project meant a big deal project. It doesn't have to! I was in chat-only mode for probably my first two months and I wasted a lot of time re-briefing Claude on things it would have already known from a shared project.
 
-Upload a competitor's product announcement PDF and ask: "Identify the three claims they're making that we could counter with our positioning. Draft a talking points doc."
+**Writing a lazy system prompt.** "You are an expert marketer. Help me with marketing work" isn't a system prompt. That's a hope. Your system prompt should be the two paragraphs a new hire would feel great about having on day one. If you got hired to a job and your onboarding manual just said, "you are an expert, make no mistakes," you would probably start looking elsewhere immediately!
 
-Upload a 50-page research report and ask: "I need to present the key findings to a non-technical leadership team. Give me five bullets and a one-paragraph summary."
+**Working on improving the specific output rather than improving the instructions.** The first response is a starting point. Ask Claude to revise on the same thread, and once you get to a better product, always always always go back and update the instructions that led to here with your learnings from this session!
 
-Upload a job description and ask: "Compare this role to my resume above. What are the strongest alignment points? What gaps should I address in my cover letter?"
+## The smallest version of this you can try today
 
-In each case, Claude is working with your actual material, not generating from nothing. The output is specific because the input is specific.
+The thing that works for almost everyone I talk to is: pick one repeated task, make one Project for it, write a two-paragraph system prompt, and run one real work task through it. Focus on improving the instructions, not necessarily on improving the actual first result. You can either always be editing their output, or edit the instructions to the point where you don't have to anymore.
 
-> "It's so luxurious just to know you're never gonna run out, just to keep going." (MVP Club member on paying for Claude Pro)
+You're not trying to figure out everything Claude can do. You're trying to find one task where Claude saves you real time, and then do it again tomorrow. That repetition is the thing that makes it stick. The habit is what changes your week.
 
-That quote was about the flow state of working without hitting limits. The same applies to file uploads: when you are not manually summarizing a 40-page document, you are spending your time on the decision that required the summary.
+## Where to go next
 
-## Artifacts: Claude's live output format
-
-When Claude produces longer, structured content, it sometimes offers it as an Artifact: a separate pane that shows you a preview of the output. Artifacts are especially useful for:
-
-- Documents you want to edit and refine (Claude builds on the Artifact, not just the chat)
-- Interactive content like tables, calculators, or simple data tools
-- Code, HTML, or structured outputs
-
-For professional work, the most immediately useful Artifact types are:
-
-**Markdown documents.** Ask Claude to draft a proposal, a stakeholder brief, or a project plan. When it comes back as an Artifact, you can ask Claude to revise specific sections without rewriting everything.
-
-**Tables.** Ask Claude to compare options, summarize research, or organize data into a table format. The Artifact is cleanly formatted and easy to paste into a presentation or email.
-
-**Simple interactive tools.** Ask Claude to build a scoring rubric that lets you rate options, or a checklist formatted as a working HTML page. You do not need to know how to code. You need to describe what you want.
-
-To request an Artifact explicitly, you can just say: "Give me this as a formatted document I can copy." Claude understands the request.
-
-## Real professional use cases: what this looks like in practice
-
-Here are five workflow patterns that use Projects, file uploads, and Artifacts together.
-
-### 1. The weekly status update machine
-
-Set up a Project called "Weekly Reporting" with a custom instruction that includes your audience's context (who they are, what they care about, the format they prefer). Every week, paste your notes into a new conversation inside that Project and ask for the status update. Claude knows the audience, knows the format, knows your context. For many people, the first draft drops from 20-30 minutes to a few minutes of review and edits. [NEEDS VERIFICATION: Time savings will vary; collect real member examples before citing specific numbers.]
-
-### 2. The client communication filter
-
-Upload a client's last five emails to a Project and add a system prompt: "Match this client's preferred communication style: [describe]. They respond well to direct summaries followed by a clear ask." Now every draft Claude produces for that client matches their register.
-
-### 3. The document synthesis tool
-
-Upload two or three competing documents (two proposals, three research reports, four policy drafts) and ask Claude to identify the areas of agreement, the areas of disagreement, and the gaps none of them address. This is a task that can take hours manually and, for many people, a fraction of that time with Claude. [NEEDS VERIFICATION: Collect real member examples before citing specific time frames.]
-
-### 4. The performance review accelerator
-
-Upload the job description for your direct reports and your notes from the past quarter. Ask Claude to draft evaluation narratives for each competency area. You review, edit, and add the specific examples. You spend your time on judgment and nuance, not on writing from scratch.
-
-### 5. The presentation prep partner
-
-Upload the slide deck for an upcoming presentation. Ask Claude to anticipate the three questions most likely to come from each audience type in the room. Prepare answers to each. Walk into the room ready.
-
-[NEEDS REAL EXAMPLE: A specific project where an MVP Club member applied one of these patterns, with the actual task and the time savings observed.]
-
-## Common mistakes when starting with Claude for work
-
-**Using the general chat for everything.** Regular chat conversations reset each time. Projects persist. If you are doing any kind of repeated work, you should be using Projects.
-
-**Writing vague system prompts.** "Help me with work" is not a system prompt. It is a conversation starter. Your system prompt should tell Claude what it would take a new hire a week to learn about your context.
-
-**Uploading files and not directing Claude.** "Here's a document" by itself gives Claude nothing to do. Upload the document and follow immediately with a specific instruction: "Given this, draft X for Y audience."
-
-**Expecting a perfect first output.** The first response is a starting point. Ask for revisions on the same conversation thread. Claude holds the context and builds on what it produced, which is faster than starting over.
-
-**Treating Claude like a search engine.** "What is the best approach to X?" gets you a general answer. "Here is my situation, my constraints, and my audience. What is the best approach for me specifically?" gets you something useful. See the [guide on getting better AI results](/learn/better-ai-results) for more on building context into your requests.
-
-## The Claude workflow that actually sticks
-
-The pattern that works for most professionals: start one Project, add the context that matters for your most common repeated task, write a two-paragraph system prompt, and run one real work task through it. See what comes back.
-
-The goal for the first week is not to figure out everything Claude can do. The goal is to find one task where Claude saves you meaningful time and do it again tomorrow. That repetition is what builds the habit. The habit is what changes your output.
-
-Matt Hastings describes this in coaching sessions: "Anything you do more than once, write down how to do it, and then tell Claude, hey, here's how I want you to do it. Just go." That is what a skill or a Project instruction actually is: the written-down version of how you want a capable colleague to handle something, so you don't have to explain it every time.
-
-For more on building AI into your daily work, [the AI daily workflow guide](/learn/ai-daily-workflow) covers the 30-minute habit that makes this sustainable. For the underlying skill of giving Claude better direction on any task, [better AI results](/learn/better-ai-results) goes deeper on context engineering.
-
-## Practicing this alongside peers
-
-The professionals who get the most out of Claude are not working alone. They are sharing what works, watching how others set up their Projects, and stealing each other's system prompts. That exchange is what happens in MVP Club's weekly sessions. If you want to see how people in your field are setting up their Claude workflows right now, the [MVP Club community](/community) is where that conversation is happening.
+If you want to see how other people in your field are setting up their Projects right now, that's most of what we do in the weekly MVP Club coworking sessions. Somebody shares their screen, we look at their project setup, we steal each other's setups. The [MVP Club community](/community) is where that's happening.

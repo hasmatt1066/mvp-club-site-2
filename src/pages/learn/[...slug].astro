@@ -1,13 +1,16 @@
 ---
 import BlogLayout from '../../layouts/BlogLayout.astro';
 import { getCollection } from 'astro:content';
+import { isPublishedLearn } from '../../content/publishedSlugs';
 
 export async function getStaticPaths() {
   const articles = await getCollection('learn');
-  return articles.map((article) => ({
-    params: { slug: article.slug },
-    props: { article },
-  }));
+  return articles
+    .filter((article) => import.meta.env.DEV || isPublishedLearn(article.slug))
+    .map((article) => ({
+      params: { slug: article.slug },
+      props: { article },
+    }));
 }
 
 const { article } = Astro.props;

@@ -1,13 +1,16 @@
 ---
 import BlogLayout from '../../layouts/BlogLayout.astro';
 import { getCollection } from 'astro:content';
+import { isPublishedBlog } from '../../content/publishedSlugs';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
-  return posts.map((post) => ({
-    params: { slug: post.slug },
-    props: { post },
-  }));
+  return posts
+    .filter((post) => import.meta.env.DEV || isPublishedBlog(post.slug))
+    .map((post) => ({
+      params: { slug: post.slug },
+      props: { post },
+    }));
 }
 
 const { post } = Astro.props;
