@@ -3,6 +3,7 @@ export const PUBLISHED_BLOG_SLUGS = new Set<string>([]);
 export const PUBLISHED_LEARN_SLUGS = new Set<string>([
   'how-ai-changes-your-job',
   'claude-for-professional-work',
+  'ai-for-learning-development',
 ]);
 
 export const isPublishedBlog = (slug: string) => PUBLISHED_BLOG_SLUGS.has(slug);
