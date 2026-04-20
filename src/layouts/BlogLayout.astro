@@ -134,7 +134,46 @@ const formattedDate = new Date(date).toLocaleDateString('en-US', {
     </section>
 
     <Footer />
+
+    <!-- Image lightbox -->
+    <div class="lightbox" id="article-lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+      <button class="lightbox-close" type="button" aria-label="Close">&times;</button>
+      <img src="" alt="" />
+    </div>
   </div>
+
+  <script is:inline>
+    (() => {
+      const lightbox = document.getElementById('article-lightbox');
+      if (!lightbox) return;
+      const lbImg = lightbox.querySelector('img');
+      const lbClose = lightbox.querySelector('.lightbox-close');
+
+      const open = (src, alt) => {
+        lbImg.src = src;
+        lbImg.alt = alt || '';
+        lightbox.classList.add('open');
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      };
+      const close = () => {
+        lightbox.classList.remove('open');
+        lightbox.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        lbImg.src = '';
+      };
+
+      document.querySelectorAll('.blog-content img').forEach((img) => {
+        img.addEventListener('click', () => open(img.currentSrc || img.src, img.alt));
+      });
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox || e.target === lbClose) close();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && lightbox.classList.contains('open')) close();
+      });
+    })();
+  </script>
 </BaseLayout>
 
 <style is:global>
@@ -179,10 +218,72 @@ const formattedDate = new Date(date).toLocaleDateString('en-US', {
     text-decoration: underline;
   }
   .blog-content img {
+    display: block;
     max-width: 100%;
     height: auto;
     border-radius: 0.5rem;
-    margin: 1.5rem 0;
+    margin: 2rem auto;
+    cursor: zoom-in;
+    transition: opacity 0.15s ease;
+  }
+  .blog-content img:hover {
+    opacity: 0.92;
+  }
+  @media (min-width: 900px) {
+    .blog-content img {
+      width: calc(100vw - 4rem);
+      max-width: 1120px;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Lightbox */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 15, 25, 0.92);
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    cursor: zoom-out;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+  .lightbox.open {
+    display: flex;
+    opacity: 1;
+  }
+  .lightbox img {
+    max-width: 95vw;
+    max-height: 90vh;
+    width: auto;
+    height: auto;
+    border-radius: 0.5rem;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+  }
+  .lightbox-close {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.5rem;
+    background: rgba(255,255,255,0.12);
+    border: none;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .lightbox-close:hover {
+    background: rgba(255,255,255,0.22);
   }
   .blog-content blockquote {
     border-left: 4px solid var(--color-accent);
