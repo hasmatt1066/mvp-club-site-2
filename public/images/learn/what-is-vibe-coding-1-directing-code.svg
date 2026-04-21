@@ -1,0 +1,35 @@
+<svg viewBox="0 0 1280 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="From writing code to directing it: vibe coding shifts you from executing the work to shaping it.">
+  <rect width="1280" height="560" fill="#faf5f0" rx="16"/>
+
+  <text x="60" y="78" font-family="'Zilla Slab', Georgia, 'Times New Roman', serif" font-size="40" fill="#081f3f" font-weight="400">From writing code to directing it</text>
+  <text x="60" y="112" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Arial, sans-serif" font-size="18" fill="#5b6470">Vibe coding shifts you from executing the work to shaping it.</text>
+
+  <rect x="60" y="170" width="540" height="330" fill="#ffffff" stroke="#e8dfd4" stroke-width="1" rx="12"/>
+  <text x="90" y="212" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Arial, sans-serif" font-size="12" fill="#9a8f82" letter-spacing="2" font-weight="600">THE OLD PATH</text>
+  <text x="90" y="252" font-family="'Zilla Slab', Georgia, 'Times New Roman', serif" font-size="30" fill="#081f3f" font-weight="400">Writing Code</text>
+  <text x="90" y="284" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Arial, sans-serif" font-size="16" fill="#5b6470">You execute every line yourself.</text>
+
+  <g font-family="Inter, system-ui, -apple-system, 'Segoe UI', Arial, sans-serif" font-size="15" fill="#3a4150">
+    <text x="90" y="335"><tspan fill="#9a8f82">—</tspan>  Pick a language, learn the syntax</text>
+    <text x="90" y="365"><tspan fill="#9a8f82">—</tspan>  Write every line by hand</text>
+    <text x="90" y="395"><tspan fill="#9a8f82">—</tspan>  Debug what's broken</text>
+    <text x="90" y="425"><tspan fill="#9a8f82">—</tspan>  Speed caps at your skill</text>
+  </g>
+
+  <g transform="translate(615, 335)" stroke="#d97706" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="0" y1="0" x2="50" y2="0"/>
+    <polyline points="36,-10 50,0 36,10"/>
+  </g>
+
+  <rect x="680" y="170" width="540" height="330" fill="#ffffff" stroke="#d97706" stroke-width="1.5" rx="12"/>
+  <text x="710" y="212" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Arial, sans-serif" font-size="12" fill="#9a8f82" letter-spacing="2" font-weight="600">VIBE CODING</text>
+  <text x="710" y="252" font-family="'Zilla Slab', Georgia, 'Times New Roman', serif" font-size="30" fill="#081f3f" font-weight="400">Directing Code</text>
+  <text x="710" y="284" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Arial, sans-serif" font-size="16" fill="#5b6470">You describe the goal. Claude executes.</text>
+
+  <g font-family="Inter, system-ui, -apple-system, 'Segoe UI', Arial, sans-serif" font-size="15" fill="#3a4150">
+    <text x="710" y="335"><tspan fill="#d97706">—</tspan>  Describe what you want in plain English</text>
+    <text x="710" y="365"><tspan fill="#d97706">—</tspan>  Review what Claude builds</text>
+    <text x="710" y="395"><tspan fill="#d97706">—</tspan>  Name what feels off, specifically</text>
+    <text x="710" y="425"><tspan fill="#d97706">—</tspan>  Speed caps at your clarity</text>
+  </g>
+</svg>

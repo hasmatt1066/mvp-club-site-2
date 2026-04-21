@@ -1,15 +1,15 @@
 ---
 title: "What Is Vibe Coding? A Plain-English Explanation"
 description: "Vibe coding lets you build real software by describing what you want in plain English. Here's what it is, how it works, and why it matters."
-author: "Matt Hastings"
-date: "2026-04-03"
+author: "Ryan Brodsky"
+date: "2026-04-21"
 pillar: "Building with AI"
 tags: ["vibe-coding", "building-with-ai", "non-technical", "beginners", "claude-code"]
 difficulty: "beginner"
 readingTime: 7
 ---
 
-A year ago I built a browser-based game. I have a PhD in Educational Foundations. I cannot explain what a for-loop does. And I built a browser-based game. That's vibe coding.
+A year ago, our co-founder Matt built a browser-based game. He has a PhD in Educational Foundations. He has never written a for-loop. And he built a browser-based game. That's vibe coding.
 
 The term was coined by Andrej Karpathy, a co-founder of OpenAI, in February 2025. His description: a new kind of coding where you "fully give in to the vibes, embrace exponentials, and forget that the code even exists." Collins English Dictionary named it their Word of the Year for 2025. Merriam-Webster added it to their slang and trending list.
 
@@ -21,9 +21,17 @@ Vibe coding is a conversational approach to software development. Instead of wri
 
 You're not writing code. You're directing it. The mental model is closer to managing a project than writing a program. You bring the goal, the context, and the judgment. Claude, or whatever AI you're using, brings the technical execution.
 
-The AI doesn't read your mind. Vague instructions produce vague results, and the professionals who get the most out of vibe coding are the ones who learn to describe what they want clearly and evaluate what they get honestly. That's a communication skill, not a technical one. Steering the conversation when things go sideways is part of the job.
+![Vibe coding shifts you from executing the work to shaping it. On the left, the old path of writing code line by line. On the right, directing the work in plain English.](/images/learn/what-is-vibe-coding-1-directing-code.svg)
 
-Community members use vibe coding to build internal dashboards, automate reporting workflows, create client-facing tools, and replace spreadsheets they've been maintaining manually for years.
+## Vibe coding is a strategic, managerial skill
+
+Even before AI, many very intelligent people have brought software to market without writing a line of code. Product managers were the closest thing to vibe coders in the pre-AI era, they just had a team of engineers rather than an LLM to work with. But the skill and practice are the same: be clear about what your team is building, be judgmental in what you choose to build, listen to your users when it comes to feature development...all very important and valuable skills!
+
+At the end of the day, vibe coding is a practiced skill like any other, and it still follows the same fundamental principle of all business processes: garbage in, garbage out. You have to take the time to provide solid input to get a good result.
+
+The AI doesn't read your mind. Vague instructions produce vague results, and the professionals who get the most out of vibe coding are the ones who learn to describe what they want clearly and evaluate what they get honestly. Steering the conversation when things go sideways is part of the job.
+
+Our non-technical community members use vibe coding to build internal dashboards, automate reporting workflows, create client-facing tools, and replace spreadsheets they've been maintaining manually for years. When it comes to internal tools, especially the growing practice of "software for one," vibe coding can produce effective tools at lightning speed.
 
 ## Why this is different from "just using AI"
 
@@ -33,48 +41,46 @@ Vibe coding is different because the output is software. It runs. Other people c
 
 That shift matters. It means non-technical professionals can now build tools they previously had to request from engineering teams, buy off the shelf (often imperfectly), or do without entirely.
 
-One of our members, T Gaines, a non-technical professional who built his first client-facing app through MVP Club's building sessions, put it well: "Getting the app actually impacting the real world" is the turning point that makes vibe coding feel meaningful beyond hobby projects. That moment when someone else is using the thing you made changes how you think about what you're capable of.
+Once you can share your vibe-coded tool with your team and they say "let's start using this," that's the turning point that makes vibe coding feel meaningful beyond hobby projects. That moment when someone else is using the thing you made changes how you think about what you're capable of.
 
 ## What tools do people use?
 
 The most common setup in MVP Club is Claude Code, Anthropic's coding-focused AI. You can run it as a desktop app or through a terminal (a text-based command window, like a chat interface for your computer). The conversation works the same either way: you describe what you want, Claude asks clarifying questions, builds the files, and shows you the result.
 
-Ryan Brodsky, one of our co-founders and a former software engineering instructor, describes the terminal version like this: "Once Claude Code is running, the terminal is just a chat window." He's right. Once the setup is done, the actual work is conversation.
+Don't let the name "Claude Code" fool you: Claude is the one doing the coding, and you're the manager telling it what to create. 
 
 A few other tools people use:
 
-- Lovable: browser-based, good for beginners who want to see visual results quickly
-- Windsurf: popular with people building more complex projects, with a clean interface for reviewing what Claude is doing
+- Lovable or Base44: browser-based, good for beginners who want to see visual results quickly
+- ChatGPT Codex: popular with people building more complex projects, requires more tenacity and curiosity to interact with your project directly
 - Claude Code desktop app: a good middle ground if the terminal feels intimidating
 
 The right tool depends on what you're building and how you like to work. Most people in our community start with Claude Code because it's what we use in our weekly building sessions and there's always someone around to help when you get stuck.
 
+There's sometimes a mysterious layer of vibe coding projects, where you as the creator might not be able to articulate "what" the app is. You just see it running in your browser when Claude tells you the app is running. 
+
+It's definitely worth taking some time conversing with Claude about "what" you actually built and how it can be used or shared by others. Yes, you built an app: what are the pieces of the tech stack? It's worth learning the high-level components and a bit of the jargon, even if you're not the one writing the code. "How do I deploy an express app to google cloud" is a much clearer and actionable next step question than "How do I get this out there?"
+
 ## The skill that actually matters
 
-When I coach people through their first vibe coding project, the thing that trips them up almost never involves code. It involves description.
+When I coach people through their first vibe coding project, the thing that trips them up almost never involves code. It involves description and planning.
 
 "Make it look nicer" is not actionable feedback for Claude. "The button colors feel too bold, and the section headings are harder to read than I'd like" gives Claude something to work with. The more specific you are about what you want and what you see, the faster you get there.
 
-I noticed this most clearly while building Drawn of War, my browser game. I kept getting results that were technically correct but felt wrong. The moment I started describing what I wanted the player to experience instead of what I wanted the interface to look like, things clicked. The evaluation step is the human part. Claude builds fast. Your judgment about whether what it built is actually what you wanted is what steers the project.
-
 A few things that help in practice:
 
-- Start with a clear goal, not a list of features. "I want a tool that lets me log client check-ins without opening a spreadsheet" is better than "I want a database with a form."
-- Review what it builds before asking for more. Vibe coding works in iterations. Approve what's working, fix what isn't, then move forward.
-- Use Claude's clarifying questions. When Claude asks something back at you, it's usually because you left something ambiguous. Answer specifically.
-- Keep a project notes file. Claude doesn't remember previous conversations. A short document summarizing what you've built and what's next keeps things coherent across sessions.
+- **Start with a clear goal, not a list of features.** "I want a tool that lets me log client check-ins without opening a spreadsheet" is better than "I want a database with a form."
+- **Tell the LLM to ask you clarifying questions** to refine your goal into a workable plan, often a PRD (Product Requirements Document).
+- **Review what it plans and make adjustments.** Vibe coding works in iterations. Approve what's working, fix what isn't, then move forward.
+- **Keep a project notes file.** An LLM doesn't remember previous conversations. A short document summarizing what you've built and what's next keeps things coherent across sessions.
 
 ## Who should try this
 
-The short answer: anyone who has ever thought "I wish there was a tool that did X" and assumed they couldn't build it.
+The short answer: anyone who has ever thought "I wish there was a tool that did X" and assumed they couldn't build it. Even if you're not the one who ultimately builds a thing, a vibe coded demo is much farther along as a prototype than a few sketches and an ideas document!
 
-You don't need a technical background. I built a browser game with no CS background. Lesley Richardson, a member of our community who initially wondered "I don't even know if I belong there" when she heard about GitHub (a platform where developers store and share code), started building her own web projects within weeks of her first vibe coding session. Carmella Thompson built a GitHub portfolio site entirely in Claude Code without ever looking at the folder structure or touching a terminal.
+You don't need a technical background. The barrier to starting is now lower than the barrier to learning Excel was fifteen years ago. What used to require years of training or a hefty engineering contract now requires a $20/month Claude subscription and an afternoon.
 
-The barrier to starting is now lower than the barrier to learning Excel was fifteen years ago. What used to require years of training or a hefty engineering contract now requires a $20/month Claude subscription and an afternoon.
-
-If you want a structured starting point, Ryan Brodsky's guide [Getting Started With Claude Code](/blog/getting-started-with-claude-code-non-developer-guide) walks you through setup in plain English, step by step. And the blog post [Vibe Coding: The New Skill of Work](/blog/you-only-use-10-of-your-computer-vibe-coding-and-the-new-skill-of-work) goes deeper into why this matters beyond just the productivity angle.
-
-For more context on where to begin with AI tools generally, [AI in 10 Minutes: What You Actually Need to Know](/learn/ai-in-10-minutes) is a good companion read. And when you're ready to think about what to build first, [Your First Week with AI](/learn/first-week-with-ai) has a practical day-by-day structure you can adapt.
+What you need are a clear goal, an ability to evaluate what's working and articulate what isn't, and the tenacity to stick with the continuous cycle of refinement until you've gotten what you want.
 
 ## The real reason this matters
 
