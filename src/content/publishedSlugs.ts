@@ -5,6 +5,7 @@ export const PUBLISHED_LEARN_SLUGS = new Set<string>([
   'claude-for-professional-work',
   'ai-for-learning-development',
   'what-is-vibe-coding',
+  'ai-learning-path',
 ]);
 
 export const isPublishedBlog = (slug: string) => PUBLISHED_BLOG_SLUGS.has(slug);
