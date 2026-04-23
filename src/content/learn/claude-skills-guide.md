@@ -9,9 +9,9 @@ difficulty: "intermediate"
 readingTime: 10
 ---
 
-Recently, one of my Claude Skills produced a customer history document I usually took an hour to do. Even better, because I share these Skills with my team, I told them to use the skill to do it instead of asking me next time. It took a few improvements to get it perfect, but by the time I shared it with the team, it was already doing the job better than I'd done it, thanks to the combination of my experienced guidance and the AI's diligent, constant application of the rules.
+Recently, one of my Claude Skills produced a customer history document I usually took an hour to do. It took a few improvements to get it perfect, but by the time I shared it with the team, it was already doing the job better than I'd done it, thanks to the combination of my experienced guidance and the AI's diligent, constant application of the rules.
 
-That's when the word "agent" really took off for me. The skill performed actions that I otherwise would have been tied down doing, and even better, it doesn't even have to be ME doing the prompting. Fully hands-off operation of a process I taught it. For most of us in the professional world, that's the dream: not just AI helping us do the work alongside us, but AI actually DOING the work entirely at our command.
+That's when the word "agent" really took off for me. The skill performed actions that I otherwise would have been tied down doing, and even better, it doesn't even have to be ME doing the prompting. Fully hands-off operation of a process I taught it, ready to be performed for any teammate at their request. For most of us in the professional world, that's the dream: not just AI helping us do the work alongside us, but AI actually DOING the work entirely at our command.
 
 Skills are how you get there. This is a practical guide to what they are, when to use them, when to build your own versus install somebody else's, and the one mistake that cost me three weeks before I figured it out.
 
