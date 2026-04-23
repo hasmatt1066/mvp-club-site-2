@@ -8,6 +8,7 @@ export const PUBLISHED_LEARN_SLUGS = new Set<string>([
   'ai-learning-path',
   'ai-beginner-mistakes',
   'claude-skills-guide',
+  'become-the-ai-person',
 ]);
 
 export const isPublishedBlog = (slug: string) => PUBLISHED_BLOG_SLUGS.has(slug);
