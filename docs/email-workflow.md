@@ -69,6 +69,15 @@ Three components collect signups (all in `/src/`):
 | LeadMagnetPopup | `LeadMagnetPopup.jsx` | 20s delay or exit intent | `lead_magnet_popup` |
 | WaitlistOverlay | `WaitlistOverlay.jsx` | Button click | `community_waitlist` |
 
+### Server-side sources (cohort flow)
+
+Two additional source values come from server-side Vercel functions, not the browser. They write rows to the same Sheet but route emails through Resend, not Gmail/Apps Script.
+
+| Source | Triggered by | Sheet write | Email send |
+|---|---|---|---|
+| `cohort_paid` | `api/stripe-webhook.js` after `checkout.session.completed` | Apps Script appendRow | Resend (CohortPaidEmail template) |
+| `cohort_waitlist` | `api/waitlist-signup.js` from `CohortWaitlistOverlay.jsx` | Apps Script appendRow | Resend (CohortWaitlistEmail template) |
+
 ### How Each Component Works
 
 **SignupOverlay:** Full-screen overlay shown on first visit. Collects first name and email. Dismissed state stored in localStorage so returning visitors skip it.
@@ -103,14 +112,40 @@ function doPost(e) {
   var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
   var data = JSON.parse(e.postData.contents);
 
+  // Idempotency: skip if a row already exists for this email + source.
+  if (alreadyRecorded(sheet, data.email, data.source)) {
+    return ContentService.createTextOutput(JSON.stringify({status: 'duplicate'}))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+
   // Save to sheet (columns: firstName, email, timestamp, source)
   sheet.appendRow([data.firstName, data.email, data.timestamp, data.source]);
 
-  // Send welcome email with firstName for personalization
-  sendWelcomeEmail(data.email, data.firstName);
+  // Branch on source.
+  // Cohort sources (cohort_paid, cohort_waitlist): sheet write only.
+  //   Emails for these are sent by Vercel functions via Resend, NOT Apps Script.
+  // All other sources: existing welcome email pipeline (Gmail/Apps Script).
+  if (data.source === 'cohort_paid' || data.source === 'cohort_waitlist') {
+    // intentionally no email send here
+  } else {
+    sendWelcomeEmail(data.email, data.firstName);
+  }
 
   return ContentService.createTextOutput(JSON.stringify({status: 'success'}))
     .setMimeType(ContentService.MimeType.JSON);
+}
+
+function alreadyRecorded(sheet, email, source) {
+  if (!email || !source) return false;
+  var range = sheet.getDataRange().getValues();
+  // Columns: 0=firstName, 1=email, 2=timestamp, 3=source
+  for (var i = 1; i < range.length; i++) {
+    if (String(range[i][1]).toLowerCase() === String(email).toLowerCase() &&
+        String(range[i][3]) === String(source)) {
+      return true;
+    }
+  }
+  return false;
 }
 
 function sendWelcomeEmail(email, firstName) {
@@ -212,11 +247,37 @@ Avoid curly/smart quotes and other special Unicode characters in the Apps Script
    - `src/WaitlistOverlay.jsx`
 7. Commit and push to `main` (Vercel auto-deploys)
 
+## Resend (cohort emails)
+
+Cohort signup confirmations (`cohort_paid`, `cohort_waitlist`) are sent via Resend, not Apps Script/Gmail. The Apps Script still records the sheet row for these sources but skips the email send.
+
+| Setting | Value |
+|---|---|
+| **Dashboard** | https://resend.com/emails |
+| **Domain** | mvpclub.ai (verified, region us-east-1) |
+| **API key** | "MVP Club Site - Cohort Signup" (sending access only) — `RESEND_API_KEY` in Vercel env vars |
+| **From address** | `info@mvpclub.ai` (replies route to the existing Gmail inbox) |
+| **Templates** | `src/emails/CohortPaidEmail.jsx`, `src/emails/CohortWaitlistEmail.jsx` (React Email) |
+| **Idempotency** | Stripe event ID for paid sends, `cohort_waitlist:${email}` for waitlist sends |
+| **Webhooks** | None (V1) — dashboard monitoring is sufficient for 15-seat cohort |
+
+Other (non-cohort) email flows still use the Gmail/Apps Script pipeline above. Migration of those is out of scope.
+
+### Where to look for activity
+
+| Question | Where to check |
+|---|---|
+| Did the welcome email go out? | https://resend.com/emails — search by recipient or subject. Shows Delivered/Bounced/Opened status. |
+| Was the sheet row recorded? | Email-collection Google Sheet — filter column D by source value. |
+| Webhook fired successfully? | Vercel dashboard → mvp-club-site-2 → Functions → `stripe-webhook` → Logs. |
+| Replies to a cohort email? | `info@mvpclub.ai` Gmail inbox (replies route here regardless of how the email was sent). |
+
 ## Change Log
 
 | Date | Change |
 |------|--------|
 | 2026-02-06 | Migrated Apps Script endpoint from personal Google account to company account (info@mvpclub.ai Drive). Updated all three frontend components and confirmed working. |
+| 2026-05-24 | Added cohort signup flow. `cohort_paid` and `cohort_waitlist` are sheet-write-only on Apps Script; emails for these sources sent via Resend from `api/stripe-webhook.js` and `api/waitlist-signup.js` respectively. Added idempotency check via `alreadyRecorded()` to prevent duplicate sheet rows on webhook retries. |
 
 ## Local Storage Keys
 
