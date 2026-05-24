@@ -2,11 +2,11 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Wire `/ai-summer-camp` to a real signup flow: one CTA that swaps between a Stripe Payment Link (when seats remain) and a waitlist email-capture overlay (when full). Cohort signups (paid and waitlist) record rows in the existing Apps Script sheet pipeline. Confirmation emails — "You're in" and "You're on the waitlist" — are sent via Resend using branded React Email templates. Also: remove the stale `REGISTRATION_OPENS_AT` countdown gate that's now in the past.
+**Goal:** Wire `/ai-summer-camp` to a real signup flow: one CTA that swaps between a Stripe Payment Link (when seats remain) and a waitlist email-capture overlay (when full). Cohort signups (paid and waitlist) record rows in a new `Cohort` tab of the `mvp-club-master-list` Google Sheet via the Sheets API + bizopstool's service account. Confirmation emails — "You're in" and "You're on the waitlist" — are sent via Resend using branded React Email templates. Also: remove the stale `REGISTRATION_OPENS_AT` countdown gate that's now in the past.
 
-**Architecture:** Vercel edge function checks Stripe for paid seat count and tells the page which CTA state to render (cached 60s, fail-open). Stripe Payment Link enforces the 15-seat cap. Stripe webhook posts a sheet row to the existing Google Apps Script and sends the "You're in" email via Resend. Waitlist overlay POSTs to a new `/api/waitlist-signup` endpoint that does the same dual-write (sheet via Apps Script + email via Resend).
+**Architecture:** Vercel edge function checks Stripe for paid seat count and tells the page which CTA state to render (cached 60s, fail-open). Stripe Payment Link enforces the 15-seat cap. Stripe webhook appends a row to the Cohort tab via Sheets API and sends the "You're in" email via Resend. Waitlist overlay POSTs to a new `/api/waitlist-signup` endpoint that does the same dual-write (sheet append + Resend email). **Apps Script is uninvolved in the cohort path** — the existing community signup / lead magnet flows on Apps Script are preserved unchanged.
 
-**Tech Stack:** Astro 5 + React 18, Vercel serverless functions (existing `api/chat.js` pattern), Stripe SDK v18, Resend SDK + React Email components, Google Apps Script (existing sheet pipeline — emails for cohort sources are now Resend's job, not Apps Script's).
+**Tech Stack:** Astro 5 + React 18, Vercel serverless functions (existing `api/chat.js` pattern), Stripe SDK v18, Resend SDK + React Email components, `googleapis` for Sheets API access via the bizopstool service account.
 
 **Spec:** `docs/superpowers/specs/2026-05-21-cohort-signup-flow-design.md` (rev 2026-05-24, Resend amendment)
 
@@ -20,8 +20,9 @@
 
 **New (server-side):**
 - `api/cohort-status.js` — Vercel edge function. GET → `{ status, remaining }`. Cached 60s.
-- `api/stripe-webhook.js` — Vercel node function. POST webhook receiver. Verifies signature, writes sheet row via Apps Script, sends paid email via Resend.
-- `api/waitlist-signup.js` — Vercel node function. POST receiver for the waitlist overlay. Writes sheet row via Apps Script, sends waitlist email via Resend.
+- `api/stripe-webhook.js` — Vercel node function. POST webhook receiver. Verifies signature, appends row to Cohort tab via Sheets API, sends paid email via Resend.
+- `api/waitlist-signup.js` — Vercel node function. POST receiver for the waitlist overlay. Appends row to Cohort tab via Sheets API, sends waitlist email via Resend.
+- `src/lib/sheets-client.js` — Server-side helper. Loads service account from env, exports `appendCohortRow()` for the Vercel functions.
 
 **New (config / source of truth):**
 - `src/data/cohort.ts` — capacity, Stripe Payment Link URL, product ID, dates, dismiss key.
@@ -43,8 +44,9 @@
 
 **Out of repo (manual configuration):**
 - Stripe dashboard — create product, Payment Link, configure webhook endpoint. (Verified 2026-05-24: no existing cohort product, link, or webhook.)
-- Google Apps Script — add `cohort_paid` and `cohort_waitlist` branches that **only write rows** (no email send for these sources) + idempotency check.
-- Vercel environment variables — `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, `COHORT_01_PRODUCT_ID`, `APPS_SCRIPT_URL`, `RESEND_API_KEY` (the last already in place as of 2026-05-24).
+- Google Sheet `mvp-club-master-list` — create a new `Cohort` tab with the agreed header row (`timestamp | first_name | email | source | cohort_id | stripe_session_id | status | notes`).
+- Google Cloud / GCP — confirm the bizopstool service account has Editor access to the sheet (should already, since it has access to other tabs). No new service account needed.
+- Vercel environment variables — `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, `COHORT_01_PRODUCT_ID`, `RESEND_API_KEY` (already in place), `GOOGLE_SERVICE_ACCOUNT_KEY` (copy value from bizopstool's Cloud Run env).
 
 ---
 
@@ -70,7 +72,7 @@ Before starting, the engineer needs:
 
 Run:
 ```bash
-npm install stripe@^18.0.0 resend@^4.0.0 @react-email/components@^1.0.12
+npm install stripe@^18.0.0 resend@^4.0.0 @react-email/components@^1.0.12 googleapis@^144.0.0
 ```
 
 Expected: adds three new entries to `package.json` dependencies and updates `package-lock.json`. No errors.
@@ -522,7 +524,9 @@ git commit -m "feat: add React Email templates for cohort paid + waitlist"
 **Files:**
 - Create: `api/stripe-webhook.js`
 
-Receives `checkout.session.completed` events from Stripe. Verifies the signature, writes a sheet row via Apps Script, then sends the "You're in" email via Resend. **Node runtime (not edge)** — signature verification needs the raw request body.
+Receives `checkout.session.completed` events from Stripe. Verifies the signature, appends a row to the Cohort tab via Sheets API (helper in `src/lib/sheets-client.js`), then sends the "You're in" email via Resend. **Node runtime (not edge)** — signature verification needs the raw request body.
+
+> **Pivot note (2026-05-24):** Original plan had this endpoint POST to Apps Script for the sheet write. After the storage pivot, it uses the Sheets API directly via the bizopstool service account. The code in `api/stripe-webhook.js` reflects the new approach; the code sample below is preserved for reference but the actual file is the source-of-truth.
 
 - [ ] **Step 1: Create the webhook handler**
 
@@ -680,7 +684,9 @@ git commit -m "feat: add /api/stripe-webhook with Apps Script + Resend"
 **Files:**
 - Create: `api/waitlist-signup.js`
 
-Server endpoint for the `CohortWaitlistOverlay` form. Receives `{firstName, email}` from the browser, writes a sheet row via Apps Script, sends the waitlist email via Resend.
+Server endpoint for the `CohortWaitlistOverlay` form. Receives `{firstName, email}` from the browser, appends a row to the Cohort tab via Sheets API, sends the waitlist email via Resend.
+
+> **Pivot note (2026-05-24):** Same as Task 5 — uses Sheets API directly instead of Apps Script. See `api/waitlist-signup.js` for the actual implementation.
 
 - [ ] **Step 1: Create the endpoint**
 
@@ -806,12 +812,11 @@ git commit -m "feat: add /api/waitlist-signup endpoint"
 
 ---
 
-## Task 7: Update the Google Apps Script (manual, outside repo)
+## Task 7: ~~Update the Google Apps Script~~ — REMOVED 2026-05-24
 
-**Files:**
-- Modify: Google Apps Script attached to the email-collection Google Sheet (info@mvpclub.ai Drive).
-
-For the cohort sources, Apps Script's job is now **sheet writing only** — no email sending. The existing `sendWelcomeEmail` path for other sources is preserved.
+> **Pivot:** Apps Script is no longer involved in the cohort path. Cohort signups go directly to the `Cohort` tab of `mvp-club-master-list` via Sheets API + bizopstool service account (see `src/lib/sheets-client.js`). The existing Apps Script keeps running unchanged for community signup / lead magnet / community waitlist sources.
+>
+> **No Apps Script changes are needed for this implementation.** Skip the steps below — they reflect the pre-pivot design and are kept for historical reference only.
 
 - [ ] **Step 1: Open the script editor**
 

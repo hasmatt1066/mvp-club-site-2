@@ -71,12 +71,12 @@ Three components collect signups (all in `/src/`):
 
 ### Server-side sources (cohort flow)
 
-Two additional source values come from server-side Vercel functions, not the browser. They write rows to the same Sheet but route emails through Resend, not Gmail/Apps Script.
+Two additional source values come from server-side Vercel functions, not the browser. They **do NOT go through Apps Script** — they write rows to the bizopstool-managed `mvp-club-master-list` Sheet (Cohort tab) via the Sheets API, and send emails via Resend.
 
 | Source | Triggered by | Sheet write | Email send |
 |---|---|---|---|
-| `cohort_paid` | `api/stripe-webhook.js` after `checkout.session.completed` | Apps Script appendRow | Resend (CohortPaidEmail template) |
-| `cohort_waitlist` | `api/waitlist-signup.js` from `CohortWaitlistOverlay.jsx` | Apps Script appendRow | Resend (CohortWaitlistEmail template) |
+| `cohort_paid` | `api/stripe-webhook.js` after `checkout.session.completed` | Sheets API → `mvp-club-master-list` → Cohort tab | Resend (CohortPaidEmail template) |
+| `cohort_waitlist` | `api/waitlist-signup.js` from `CohortWaitlistOverlay.jsx` | Sheets API → `mvp-club-master-list` → Cohort tab | Resend (CohortWaitlistEmail template) |
 
 ### How Each Component Works
 
@@ -112,40 +112,14 @@ function doPost(e) {
   var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
   var data = JSON.parse(e.postData.contents);
 
-  // Idempotency: skip if a row already exists for this email + source.
-  if (alreadyRecorded(sheet, data.email, data.source)) {
-    return ContentService.createTextOutput(JSON.stringify({status: 'duplicate'}))
-      .setMimeType(ContentService.MimeType.JSON);
-  }
-
   // Save to sheet (columns: firstName, email, timestamp, source)
   sheet.appendRow([data.firstName, data.email, data.timestamp, data.source]);
 
-  // Branch on source.
-  // Cohort sources (cohort_paid, cohort_waitlist): sheet write only.
-  //   Emails for these are sent by Vercel functions via Resend, NOT Apps Script.
-  // All other sources: existing welcome email pipeline (Gmail/Apps Script).
-  if (data.source === 'cohort_paid' || data.source === 'cohort_waitlist') {
-    // intentionally no email send here
-  } else {
-    sendWelcomeEmail(data.email, data.firstName);
-  }
+  // Send welcome email with firstName for personalization
+  sendWelcomeEmail(data.email, data.firstName);
 
   return ContentService.createTextOutput(JSON.stringify({status: 'success'}))
     .setMimeType(ContentService.MimeType.JSON);
-}
-
-function alreadyRecorded(sheet, email, source) {
-  if (!email || !source) return false;
-  var range = sheet.getDataRange().getValues();
-  // Columns: 0=firstName, 1=email, 2=timestamp, 3=source
-  for (var i = 1; i < range.length; i++) {
-    if (String(range[i][1]).toLowerCase() === String(email).toLowerCase() &&
-        String(range[i][3]) === String(source)) {
-      return true;
-    }
-  }
-  return false;
 }
 
 function sendWelcomeEmail(email, firstName) {
@@ -247,9 +221,9 @@ Avoid curly/smart quotes and other special Unicode characters in the Apps Script
    - `src/WaitlistOverlay.jsx`
 7. Commit and push to `main` (Vercel auto-deploys)
 
-## Resend (cohort emails)
+## Resend + Sheets API (cohort emails)
 
-Cohort signup confirmations (`cohort_paid`, `cohort_waitlist`) are sent via Resend, not Apps Script/Gmail. The Apps Script still records the sheet row for these sources but skips the email send.
+Cohort signup confirmations (`cohort_paid`, `cohort_waitlist`) bypass Apps Script entirely. The Vercel endpoints `api/stripe-webhook.js` and `api/waitlist-signup.js` write directly to the `Cohort` tab of `mvp-club-master-list` via the Google Sheets API (using the bizopstool service account), and send emails via Resend.
 
 | Setting | Value |
 |---|---|
@@ -268,8 +242,10 @@ Other (non-cohort) email flows still use the Gmail/Apps Script pipeline above. M
 | Question | Where to check |
 |---|---|
 | Did the welcome email go out? | https://resend.com/emails — search by recipient or subject. Shows Delivered/Bounced/Opened status. |
-| Was the sheet row recorded? | Email-collection Google Sheet — filter column D by source value. |
+| Was the cohort signup row recorded? | `mvp-club-master-list` Google Sheet → `Cohort` tab. Filter column D by `cohort_paid` or `cohort_waitlist`. |
+| Was a non-cohort signup recorded? | Email-collection sheet attached to the Apps Script (separate sheet). |
 | Webhook fired successfully? | Vercel dashboard → mvp-club-site-2 → Functions → `stripe-webhook` → Logs. |
+| Sheets append failed? | Same Vercel function logs — `appendCohortRow` errors are logged but don't block the email send. |
 | Replies to a cohort email? | `info@mvpclub.ai` Gmail inbox (replies route here regardless of how the email was sent). |
 
 ## Change Log
@@ -277,7 +253,8 @@ Other (non-cohort) email flows still use the Gmail/Apps Script pipeline above. M
 | Date | Change |
 |------|--------|
 | 2026-02-06 | Migrated Apps Script endpoint from personal Google account to company account (info@mvpclub.ai Drive). Updated all three frontend components and confirmed working. |
-| 2026-05-24 | Added cohort signup flow. `cohort_paid` and `cohort_waitlist` are sheet-write-only on Apps Script; emails for these sources sent via Resend from `api/stripe-webhook.js` and `api/waitlist-signup.js` respectively. Added idempotency check via `alreadyRecorded()` to prevent duplicate sheet rows on webhook retries. |
+| 2026-05-24 | Added cohort signup flow (initial design). `cohort_paid` and `cohort_waitlist` were going to be sheet-write-only on Apps Script. |
+| 2026-05-24 (later) | **Pivot:** Cohort sources moved off Apps Script entirely. Sheet writes now go to a new `Cohort` tab of `mvp-club-master-list` via Sheets API + bizopstool service account. Apps Script `doPost` reverted to the pre-cohort version (community signup / lead magnet / waitlist sources unchanged). |
 
 ## Local Storage Keys
 
