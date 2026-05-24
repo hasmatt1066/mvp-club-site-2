@@ -14,12 +14,15 @@
     "@astrojs/react": "^4.4.2",
     "@astrojs/sitemap": "^3.7.2",
     "@astrojs/tailwind": "^5.1.5",
+    "@react-email/components": "^1.0.12",
     "astro": "^5.18.1",
     "color2k": "^2.0.3",
     "lucide-react": "^0.460.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.30.3",
+    "resend": "^4.8.0",
+    "stripe": "^18.5.0",
     "turndown": "^7.2.2"
   },
   "devDependencies": {
