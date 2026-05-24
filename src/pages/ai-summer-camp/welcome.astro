@@ -1,0 +1,80 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { COHORT } from '../../data/cohort.ts';
+---
+
+<PageLayout
+  title="You're in — AI Summer Camp Cohort 01"
+  description="Welcome to AI Summer Camp Cohort 01. Here's everything you need for the four Fridays in June."
+  path="/ai-summer-camp/welcome"
+  noLeadMagnet={true}
+>
+  <div
+    style="background-color: var(--asc-page-bg, #c9dce6); padding: 64px 24px 88px; min-height: 80vh;"
+  >
+    <div style="max-width: 760px; margin: 0 auto;">
+      <div
+        style="background: white; border-radius: 10px; border-left: 5px solid var(--color-accent); padding: 48px 44px; box-shadow: 0 20px 44px rgba(26,54,93,0.13);"
+      >
+        <div
+          style="font-size: 11px; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 16px;"
+        >
+          You're in
+        </div>
+        <h1
+          style="font-family: 'Zilla Slab', Georgia, serif; font-weight: 400; font-size: 44px; line-height: 1.08; color: var(--color-primary); letter-spacing: -0.015em; margin-bottom: 12px;"
+        >
+          Welcome to <em style="color: var(--color-secondary); font-style: italic;">{COHORT.label}.</em>
+        </h1>
+        <p
+          style="font-family: 'Zilla Slab', Georgia, serif; font-style: italic; font-size: 19px; color: var(--color-secondary); line-height: 1.35; margin-bottom: 32px;"
+        >
+          Four Fridays in June. You, Claude, and a handful of other working professionals.
+        </p>
+
+        <div
+          style="border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0; padding: 18px 0; margin-bottom: 28px;"
+        >
+          <div style="display: grid; grid-template-columns: 110px 1fr; gap: 16px; padding: 10px 0; border-bottom: 1px solid #f1f5f9;">
+            <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-secondary);">Dates</div>
+            <div style="font-size: 15px; color: var(--color-primary); line-height: 1.4;">{COHORT.fridaysFormatted}</div>
+          </div>
+          <div style="display: grid; grid-template-columns: 110px 1fr; gap: 16px; padding: 10px 0; border-bottom: 1px solid #f1f5f9;">
+            <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-secondary);">Time</div>
+            <div style="font-size: 15px; color: var(--color-primary); line-height: 1.4;">{COHORT.timeET}</div>
+          </div>
+          <div style="display: grid; grid-template-columns: 110px 1fr; gap: 16px; padding: 10px 0; border-bottom: 1px solid #f1f5f9;">
+            <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-secondary);">Office Hrs</div>
+            <div style="font-size: 15px; color: var(--color-primary); line-height: 1.4;">{COHORT.officeHoursET} <span style="color: #64748b; font-weight: 400; font-size: 13px;">(optional)</span></div>
+          </div>
+          <div style="display: grid; grid-template-columns: 110px 1fr; gap: 16px; padding: 10px 0;">
+            <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-secondary);">Format</div>
+            <div style="font-size: 15px; color: var(--color-primary); line-height: 1.4;">Live on Google Meet</div>
+          </div>
+        </div>
+
+        <h2
+          style="font-family: 'Zilla Slab', Georgia, serif; font-weight: 400; font-size: 22px; color: var(--color-primary); margin-bottom: 10px;"
+        >
+          What happens next
+        </h2>
+        <p style="font-size: 15px; color: #475569; line-height: 1.6; margin-bottom: 16px;">
+          You'll get a welcome email at the address you used for checkout, plus a separate Stripe receipt. About a week before <strong style="color: var(--color-primary);">Friday, June 5</strong>, we'll send the Google Meet link and a calendar invite.
+        </p>
+        <p style="font-size: 15px; color: #475569; line-height: 1.6; margin-bottom: 16px;">
+          In the meantime, start thinking about <em style="color: var(--color-secondary); font-style: italic;">a real problem from your actual work</em>. Week 1 is about getting Claude into that problem with you.
+        </p>
+        <p style="font-size: 15px; color: #475569; line-height: 1.6; margin-bottom: 28px;">
+          Questions? Reply to the welcome email (it's monitored by all three of us, Matt, Jill, and Ryan).
+        </p>
+
+        <a
+          href="/"
+          style="display: inline-block; padding: 12px 22px; border-radius: 6px; border: 1px solid var(--color-primary); background: white; color: var(--color-primary); font-weight: 600; font-size: 14px; text-decoration: none;"
+        >
+          ← Back to mvpclub.ai
+        </a>
+      </div>
+    </div>
+  </div>
+</PageLayout>
