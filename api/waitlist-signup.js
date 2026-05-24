@@ -1,16 +1,19 @@
 // api/waitlist-signup.js
 //
 // Vercel node function. Receives waitlist form submissions from the
-// CohortWaitlistOverlay component. Writes a sheet row via Apps Script
-// (source='cohort_waitlist') and sends the "You're on the waitlist" email
-// via Resend using CohortWaitlistEmail template.
+// CohortWaitlistOverlay component. Appends a row to the Cohort tab of
+// mvp-club-master-list (Sheets API via the bizopstool service account)
+// and sends the "You're on the waitlist" email via Resend.
 //
-// This endpoint exists (vs. POST-from-browser-direct-to-Apps-Script) because
-// the Resend API key must stay server-side.
+// This endpoint exists (vs. POST-from-browser-direct-to-Sheets) because
+// both the Resend API key and the GCP service account key must stay
+// server-side.
 
 import { Resend } from 'resend';
 import { render } from '@react-email/components';
 import CohortWaitlistEmail from '../src/emails/CohortWaitlistEmail.jsx';
+import { appendCohortRow } from '../src/lib/sheets-client.js';
+import { COHORT } from '../src/data/cohort.ts';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -18,10 +21,10 @@ export default async function handler(req, res) {
     return;
   }
 
-  const appsScriptUrl = process.env.APPS_SCRIPT_URL;
   const resendApiKey = process.env.RESEND_API_KEY;
+  const sheetsKey = process.env.GOOGLE_SERVICE_ACCOUNT_KEY;
 
-  if (!appsScriptUrl || !resendApiKey) {
+  if (!resendApiKey || !sheetsKey) {
     console.error('[waitlist-signup] missing env vars');
     res.status(500).json({ error: 'misconfigured' });
     return;
@@ -45,23 +48,17 @@ export default async function handler(req, res) {
 
   const resend = new Resend(resendApiKey);
 
-  // 1. Record sheet row via Apps Script (best-effort).
+  // 1. Append row to Cohort tab via Sheets API (best-effort).
   try {
-    const appsRes = await fetch(appsScriptUrl, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        firstName,
-        email,
-        timestamp: new Date().toISOString(),
-        source: 'cohort_waitlist',
-      }),
+    await appendCohortRow({
+      firstName,
+      email,
+      source: 'cohort_waitlist',
+      cohortId: COHORT.id,
+      stripeSessionId: '',
     });
-    if (!appsRes.ok) {
-      console.error('[waitlist-signup] apps script returned', appsRes.status);
-    }
   } catch (err) {
-    console.error('[waitlist-signup] apps script forward failed:', err?.message ?? err);
+    console.error('[waitlist-signup] sheets append failed:', err?.message ?? err);
   }
 
   // 2. Send waitlist email via Resend with idempotency key.

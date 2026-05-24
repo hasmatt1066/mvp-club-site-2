@@ -2,7 +2,8 @@
 //
 // Stripe webhook receiver. Subscribes to checkout.session.completed.
 // Verifies the Stripe signature, then:
-//   1. POSTs to Google Apps Script (source='cohort_paid') to record sheet row
+//   1. Appends a row to the Cohort tab of mvp-club-master-list (Sheets API
+//      via the bizopstool service account)
 //   2. Sends "You're in" email via Resend using CohortPaidEmail template
 //
 // Node runtime (not edge) is required because signature verification needs
@@ -13,6 +14,8 @@ import Stripe from 'stripe';
 import { Resend } from 'resend';
 import { render } from '@react-email/components';
 import CohortPaidEmail from '../src/emails/CohortPaidEmail.jsx';
+import { appendCohortRow } from '../src/lib/sheets-client.js';
+import { COHORT } from '../src/data/cohort.ts';
 
 export const config = {
   api: {
@@ -36,10 +39,10 @@ export default async function handler(req, res) {
 
   const secretKey = process.env.STRIPE_SECRET_KEY;
   const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
-  const appsScriptUrl = process.env.APPS_SCRIPT_URL;
   const resendApiKey = process.env.RESEND_API_KEY;
+  const sheetsKey = process.env.GOOGLE_SERVICE_ACCOUNT_KEY;
 
-  if (!secretKey || !webhookSecret || !appsScriptUrl || !resendApiKey) {
+  if (!secretKey || !webhookSecret || !resendApiKey || !sheetsKey) {
     console.error('[stripe-webhook] missing env vars');
     res.status(500).json({ error: 'misconfigured' });
     return;
@@ -81,23 +84,17 @@ export default async function handler(req, res) {
     return;
   }
 
-  // 1. Record sheet row via Apps Script (best-effort, log on failure).
+  // 1. Append row to Cohort tab via Sheets API (best-effort, log on failure).
   try {
-    const appsRes = await fetch(appsScriptUrl, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        firstName,
-        email,
-        timestamp: new Date().toISOString(),
-        source: 'cohort_paid',
-      }),
+    await appendCohortRow({
+      firstName,
+      email,
+      source: 'cohort_paid',
+      cohortId: COHORT.id,
+      stripeSessionId: session.id,
     });
-    if (!appsRes.ok) {
-      console.error('[stripe-webhook] apps script returned', appsRes.status);
-    }
   } catch (err) {
-    console.error('[stripe-webhook] apps script forward failed:', err?.message ?? err);
+    console.error('[stripe-webhook] sheets append failed:', err?.message ?? err);
   }
 
   // 2. Send "You're in" email via Resend with idempotency key = Stripe event ID.
