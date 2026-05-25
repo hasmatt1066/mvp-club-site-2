@@ -50,15 +50,37 @@ export default async function handler(req, res) {
   const stripe = new Stripe(secretKey, { apiVersion: '2024-06-20' });
   const resend = new Resend(resendApiKey);
 
+  // Body-parsing strategy depends on how the request arrived:
+  //
+  //   PRODUCTION (Vercel serverless runtime): config.api.bodyParser=false above
+  //     keeps the body as a readable stream. We read it raw, verify the Stripe
+  //     signature against the bytes, and parse into an event.
+  //
+  //   LOCAL DEV (vercel dev → astro dev): Vercel CLI's dev runtime ignores
+  //     bodyParser=false and pre-parses req.body to a JS object before our
+  //     handler runs. Signature verification cannot work because the original
+  //     bytes are gone. We trust req.body as the event payload — safe because
+  //     localhost is only reachable from stripe-listen forwarding.
+  //
+  // The bypass only triggers when req.body is already parsed AND we're not in
+  // production. Production deploys still verify every event.
+  const isProduction = process.env.VERCEL_ENV === 'production' || process.env.NODE_ENV === 'production';
+  const bodyPreParsed = req.body && typeof req.body === 'object';
+
   let event;
-  try {
-    const rawBody = await readRawBody(req);
-    const signature = req.headers['stripe-signature'];
-    event = stripe.webhooks.constructEvent(rawBody, signature, webhookSecret);
-  } catch (err) {
-    console.error('[stripe-webhook] signature verification failed:', err?.message ?? err);
-    res.status(400).json({ error: 'invalid signature' });
-    return;
+  if (bodyPreParsed && !isProduction) {
+    console.warn('[stripe-webhook] DEV MODE: body pre-parsed, bypassing signature verification');
+    event = req.body;
+  } else {
+    try {
+      const rawBody = req.rawBody || (await readRawBody(req));
+      const signature = req.headers['stripe-signature'];
+      event = stripe.webhooks.constructEvent(rawBody, signature, webhookSecret);
+    } catch (err) {
+      console.error('[stripe-webhook] signature verification failed:', err?.message ?? err);
+      res.status(400).json({ error: 'invalid signature' });
+      return;
+    }
   }
 
   if (event.type !== 'checkout.session.completed') {
