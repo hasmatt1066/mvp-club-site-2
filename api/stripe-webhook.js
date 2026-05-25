@@ -90,7 +90,11 @@ export default async function handler(req, res) {
 
   const session = event.data.object;
 
-  if (session.payment_status !== 'paid') {
+  // Accept both 'paid' (normal $99 checkout) and 'no_payment_required'
+  // (100%-off promo code redemption — Stripe still fires the event with
+  // amount_total=0 and treats the session as completed). Both flows occupy
+  // a real seat, get a sheet row, and receive the "You're in" email.
+  if (session.payment_status !== 'paid' && session.payment_status !== 'no_payment_required') {
     res.status(200).json({ received: true, status: session.payment_status });
     return;
   }
