@@ -9,6 +9,7 @@ const navLinks = [
   { label: 'How We Work', to: '/how-we-work' },
   { label: 'For Organizations', to: '/for-organizations' },
   { label: 'Community', to: '/community' },
+  { label: 'AI Summer Camp', to: '/ai-summer-camp', featured: true },
 ];
 
 const isActive = (path: string) => currentPath === path;
@@ -43,11 +44,19 @@ const isLearnActive = currentPath.startsWith('/learn');
       {navLinks.map((link) => (
         <a
           href={link.to}
-          class="text-sm font-medium transition-colors duration-200 nav-link"
-          style={`color: ${isActive(link.to) ? 'var(--color-accent-lifted)' : 'rgba(255,255,255,0.8)'};`}
+          class={`text-sm font-medium transition-colors duration-200 nav-link ${link.featured ? 'nav-link-featured inline-flex items-center gap-2' : ''}`}
+          style={`color: ${isActive(link.to) ? 'var(--color-accent-lifted)' : link.featured ? 'white' : 'rgba(255,255,255,0.8)'};`}
           data-active={isActive(link.to) ? 'true' : 'false'}
         >
           {link.label}
+          {link.featured && (
+            <span
+              class="text-[9px] font-bold tracking-[0.15em] uppercase"
+              style="background-color: var(--color-accent); color: white; padding: 2px 6px; border-radius: 3px; line-height: 1;"
+            >
+              New
+            </span>
+          )}
         </a>
       ))}
       <!-- Learn nav link hidden until content review is complete
@@ -114,10 +123,18 @@ const isLearnActive = currentPath.startsWith('/learn');
     {navLinks.map((link) => (
       <a
         href={link.to}
-        class="block w-full text-left py-3 text-white/80 hover:text-white transition-colors font-medium"
-        style={`${isActive(link.to) ? 'color: var(--color-accent-lifted);' : ''} text-decoration: none;`}
+        class="flex w-full items-center justify-between py-3 text-white/80 hover:text-white transition-colors font-medium"
+        style={`${isActive(link.to) ? 'color: var(--color-accent-lifted);' : link.featured ? 'color: white;' : ''} text-decoration: none;`}
       >
-        {link.label}
+        <span>{link.label}</span>
+        {link.featured && (
+          <span
+            class="text-[9px] font-bold tracking-[0.15em] uppercase"
+            style="background-color: var(--color-accent); color: white; padding: 2px 6px; border-radius: 3px; line-height: 1;"
+          >
+            New
+          </span>
+        )}
       </a>
     ))}
     <!-- Learn nav link hidden until content review is complete

@@ -1,0 +1,112 @@
+---
+/**
+ * Site-wide announcement bar promoting the active cohort.
+ *
+ * Behavior:
+ *   - Renders above the main nav (fixed top:0, z-60)
+ *   - Pushes the main nav down by 44px when visible (CSS injected below)
+ *   - Suppressed on the cohort page itself (people are already there)
+ *   - Dismissible — choice persists via localStorage for this cohort
+ *   - Inline visibility check runs sync to avoid a paint flash
+ *
+ * To roll over to a new cohort: bump the DISMISS_KEY so previously-dismissed
+ * users see the bar again for the new offering.
+ */
+interface Props {
+  currentPath: string;
+}
+const { currentPath } = Astro.props;
+const isOwnPage = currentPath === '/ai-summer-camp';
+const DISMISS_KEY = 'cohort_bar_dismissed_2026_06';
+---
+
+{!isOwnPage && (
+  <div
+    id="cohort-bar"
+    class="fixed top-0 left-0 right-0 z-[60]"
+    style="background-color: #fffbeb; border-bottom: 1px solid #fed7aa; height: 80px;"
+  >
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-full flex items-center gap-4 sm:gap-5">
+      <span
+        class="hidden sm:inline-flex items-center px-3 py-1 rounded text-[11px] font-bold tracking-[0.18em] uppercase whitespace-nowrap"
+        style="background-color: var(--color-accent); color: white;"
+      >
+        New
+      </span>
+      <a
+        href="/ai-summer-camp"
+        class="flex-1 flex flex-col sm:flex-row sm:items-baseline sm:gap-3 text-center sm:text-left"
+        style="color: var(--color-primary); text-decoration: none;"
+        data-cohort-bar-cta
+      >
+        <span style="font-family: 'Zilla Slab', Georgia, serif; font-size: 20px; line-height: 1.1; font-weight: 500;">
+          AI Summer Camp
+        </span>
+        <span class="hidden md:inline" style="font-size: 15px; color: #475569;">
+          Cohort 01 starts <strong style="color: var(--color-primary); font-weight: 600;">June 5</strong> &middot; 15 seats
+        </span>
+        <span class="md:hidden" style="font-size: 13px; color: #475569;">
+          Starts <strong style="color: var(--color-primary); font-weight: 600;">Jun 5</strong>
+        </span>
+      </a>
+      <a
+        href="/ai-summer-camp"
+        class="hidden sm:inline-flex items-center whitespace-nowrap transition-all"
+        style="background-color: var(--color-accent); color: white; padding: 10px 20px; border-radius: 8px; font-weight: 600; font-size: 14px; text-decoration: none; box-shadow: 0 2px 8px rgba(217,119,6,0.25);"
+        data-cohort-bar-cta
+      >
+        Reserve Your Spot &rarr;
+      </a>
+      <button
+        id="cohort-bar-dismiss"
+        class="p-2 rounded transition-colors flex-shrink-0"
+        style="color: var(--color-primary);"
+        aria-label="Dismiss announcement"
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+          <path d="M18 6 6 18"/>
+          <path d="m6 6 12 12"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+)}
+
+{!isOwnPage && (
+  <style is:global>
+    /* Push main nav and pages down to make room for the announcement bar */
+    #main-nav { top: 80px !important; }
+    main, body > section:first-of-type { scroll-margin-top: 152px; }
+    html.cohort-bar-dismissed #cohort-bar { display: none; }
+    html.cohort-bar-dismissed #main-nav { top: 0 !important; }
+    #cohort-bar-dismiss:hover { background-color: rgba(0,0,0,0.05); }
+  </style>
+)}
+
+<script is:inline define:vars={{ DISMISS_KEY, isOwnPage }}>
+  // Pre-render visibility check — runs synchronously to avoid flash.
+  // If this user already dismissed, mark <html> so CSS hides the bar before paint.
+  (function() {
+    if (isOwnPage) return;
+    try {
+      if (localStorage.getItem(DISMISS_KEY)) {
+        document.documentElement.classList.add('cohort-bar-dismissed');
+      }
+    } catch (e) { /* localStorage unavailable, just show the bar */ }
+  })();
+</script>
+
+<script define:vars={{ DISMISS_KEY }}>
+  document.getElementById('cohort-bar-dismiss')?.addEventListener('click', () => {
+    try { localStorage.setItem(DISMISS_KEY, '1'); } catch (e) {}
+    document.documentElement.classList.add('cohort-bar-dismissed');
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'cohort_bar_dismissed', { event_category: 'engagement' });
+    }
+  });
+  document.querySelector('[data-cohort-bar-cta]')?.addEventListener('click', () => {
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'cohort_bar_click', { event_category: 'conversion', event_label: 'top_bar' });
+    }
+  });
+</script>

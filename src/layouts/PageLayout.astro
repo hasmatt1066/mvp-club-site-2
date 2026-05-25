@@ -2,6 +2,7 @@
 import BaseLayout from './BaseLayout.astro';
 import Navigation from '../components/layout/NavigationAstro.astro';
 import Footer from '../components/layout/FooterAstro.astro';
+import CohortAnnouncementBar from '../components/layout/CohortAnnouncementBar.astro';
 import LeadMagnetPopup from '../LeadMagnetPopup.jsx';
 
 interface Props {
@@ -11,14 +12,16 @@ interface Props {
   type?: string;
   image?: string;
   jsonLd?: object | object[];
+  noLeadMagnet?: boolean;
 }
 
-const props = Astro.props;
+const { noLeadMagnet, ...baseProps } = Astro.props;
 ---
 
-<BaseLayout {...props}>
+<BaseLayout {...baseProps}>
   <div class="min-h-screen" style="background-color: var(--color-background); font-family: Inter, system-ui, sans-serif;">
-    <LeadMagnetPopup client:idle />
+    {!noLeadMagnet && <LeadMagnetPopup client:idle />}
+    <CohortAnnouncementBar currentPath={Astro.url.pathname} />
     <Navigation currentPath={Astro.url.pathname} />
     <slot />
     <Footer />

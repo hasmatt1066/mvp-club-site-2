@@ -1,0 +1,42 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import AISummerCampPage from './AISummerCampPage.jsx';
+
+const eventJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'EducationEvent',
+  name: 'MVP Club AI Summer Camp — Cohort 01',
+  description:
+    'A guided 4-week program for working professionals. Become the AI person at work — during your workday, not on top of it.',
+  startDate: '2026-06-05T14:00:00-04:00',
+  endDate: '2026-06-26T15:00:00-04:00',
+  eventStatus: 'https://schema.org/EventScheduled',
+  eventAttendanceMode: 'https://schema.org/OnlineEventAttendanceMode',
+  location: {
+    '@type': 'VirtualLocation',
+    url: 'https://www.mvpclub.ai/ai-summer-camp',
+  },
+  organizer: {
+    '@type': 'Organization',
+    name: 'MVP Club',
+    url: 'https://www.mvpclub.ai',
+  },
+  offers: {
+    '@type': 'Offer',
+    price: '99',
+    priceCurrency: 'USD',
+    availability: 'https://schema.org/InStock',
+    url: 'https://www.mvpclub.ai/ai-summer-camp',
+  },
+};
+---
+
+<PageLayout
+  title="AI Summer Camp · Cohort 01 — Become the AI person at work"
+  description="A guided 4-week cohort for working professionals. Live with Claude. Starts June 5, 2026. $99 — includes first month of MVP Club community."
+  path="/ai-summer-camp"
+  jsonLd={eventJsonLd}
+  noLeadMagnet={true}
+>
+  <AISummerCampPage client:load />
+</PageLayout>
