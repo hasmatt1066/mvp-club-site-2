@@ -12,10 +12,9 @@
 
 import Stripe from 'stripe';
 import { Resend } from 'resend';
-import { render } from '@react-email/components';
-import CohortPaidEmail from '../src/emails/CohortPaidEmail.jsx';
+import { cohortPaidEmail } from '../src/emails/cohortPaidEmail.js';
 import { appendCohortRow } from '../src/lib/sheets-client.js';
-import { COHORT } from '../src/data/cohort.ts';
+import { COHORT } from '../src/data/cohort.js';
 
 export const config = {
   api: {
@@ -99,7 +98,7 @@ export default async function handler(req, res) {
 
   // 2. Send "You're in" email via Resend with idempotency key = Stripe event ID.
   try {
-    const html = await render(CohortPaidEmail({ firstName: firstName || 'there' }));
+    const html = cohortPaidEmail({ firstName: firstName || 'there' });
     const sendRes = await resend.emails.send(
       {
         from: 'MVP Club <info@mvpclub.ai>',

@@ -11,7 +11,7 @@
 // than block real paying customers because of an infrastructure hiccup.
 
 import React, { useEffect, useState } from 'react';
-import { COHORT } from '../../data/cohort.ts';
+import { COHORT } from '../../data/cohort.js';
 import CohortWaitlistOverlay from './CohortWaitlistOverlay.jsx';
 
 export default function CohortCTA({ variant, location }) {

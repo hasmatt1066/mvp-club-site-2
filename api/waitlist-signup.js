@@ -10,10 +10,9 @@
 // server-side.
 
 import { Resend } from 'resend';
-import { render } from '@react-email/components';
-import CohortWaitlistEmail from '../src/emails/CohortWaitlistEmail.jsx';
+import { cohortWaitlistEmail } from '../src/emails/cohortWaitlistEmail.js';
 import { appendCohortRow } from '../src/lib/sheets-client.js';
-import { COHORT } from '../src/data/cohort.ts';
+import { COHORT } from '../src/data/cohort.js';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -63,7 +62,7 @@ export default async function handler(req, res) {
 
   // 2. Send waitlist email via Resend with idempotency key.
   try {
-    const html = await render(CohortWaitlistEmail({ firstName: firstName || 'there' }));
+    const html = cohortWaitlistEmail({ firstName: firstName || 'there' });
     const sendRes = await resend.emails.send(
       {
         from: 'MVP Club <info@mvpclub.ai>',

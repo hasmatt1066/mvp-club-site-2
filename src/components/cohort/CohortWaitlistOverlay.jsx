@@ -6,7 +6,7 @@
 // Script and sends the waitlist email via Resend.
 
 import React, { useState } from 'react';
-import { COHORT } from '../../data/cohort.ts';
+import { COHORT } from '../../data/cohort.js';
 
 export default function CohortWaitlistOverlay({ open, onClose }) {
   const [firstName, setFirstName] = useState('');
