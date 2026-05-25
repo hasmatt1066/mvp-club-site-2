@@ -1691,3 +1691,55 @@ If you discovered edge cases during testing that warrant additions to the spec o
 - Idempotency keys: Stripe event ID in Task 5, `cohort_waitlist:${email}` in Task 6.
 
 **Out-of-repo ordering:** Task 7 (Apps Script) and Task 12 (Stripe) need account access. They're placed between code tasks so the engineer can pause and coordinate.
+
+---
+
+## Post-execution notes (2026-05-25)
+
+Things that happened during execution that diverged from the plan as written. Future readers should know:
+
+### React Email templates → plain JS template-literal HTML
+
+**Plan said:** Task 4 builds React Email components in `src/emails/CohortPaidEmail.jsx` and `CohortWaitlistEmail.jsx`. Webhook handlers call `render()` from `@react-email/components` to convert to HTML at send time.
+
+**What actually shipped:** `src/emails/cohortPaidEmail.js` and `cohortWaitlistEmail.js` as plain JS modules that export functions returning HTML strings. No JSX. No React Email render call.
+
+**Why:** `vercel dev` delegates to `astro dev` locally, and the Node runtime under astro dev couldn't import `.jsx` files (no JSX loader in the chain). Production Vercel would have handled it via esbuild, but blocking local dev was unacceptable. Switched to plain JS for parity between local and prod. Visual output is identical (verified end-to-end against the approved mockups).
+
+**Side effect:** `src/data/cohort.ts` was also renamed to `cohort.js` — Node also can't natively import `.ts`. TypeScript types lost in the process; `CohortStatus` type was never referenced elsewhere so no breakage.
+
+**Cleanup TODO:** `@react-email/components` is still in `package.json` but unused. Safe to prune in a separate commit.
+
+### Apps Script storage → Google Sheets API direct write
+
+**Plan said:** Task 5 + 6 + 7 — webhook handlers POST to Apps Script, which writes rows to its bound sheet.
+
+**What actually shipped:** Vercel functions write directly to a new `Cohort` tab of `mvp-club-master-list` (bizopstool's source-of-truth sheet) via Google Sheets API + a dedicated service account.
+
+**Why:** Matt requested this mid-execution after seeing that bizopstool already uses the master sheet for newsletter and drip data. Centralizing cohort data in the same sheet enables future cross-system tooling (bizopstool can read cohort members for targeted sends). See spec revision 3 (2026-05-24 later).
+
+**Service account:** `mvp-club-site-cohort-signup@mvp-club-sonar.iam.gserviceaccount.com`. Created fresh (bizopstool's auth is user OAuth, not a service account, so nothing to reuse). Has Editor on the master sheet.
+
+### Stripe signature verification bypass in dev
+
+**Plan said:** Webhook handler verifies Stripe signature against raw request body. `bodyParser: false` keeps body as stream.
+
+**What actually shipped:** Production code path is unchanged (signature verifies normally). But a dev-only branch in `api/stripe-webhook.js` detects when `req.body` was pre-parsed (by `astro dev` ignoring our `bodyParser: false`) and **bypasses signature verification** under `VERCEL_ENV !== 'production'`. Localhost is only reachable from `stripe listen` forwarding, so the security tradeoff is acceptable.
+
+**Why:** Without this, every local webhook test fails verification because the raw bytes are gone by the time our handler runs. Production deploys still bind a real Node runtime that honors `bodyParser: false`, so signature verification works there.
+
+### Stale countdown gate removed
+
+The `REGISTRATION_OPENS_AT` countdown that gated the CTA was pre-existing work-in-progress, set to a date that had already passed by the time we wired things up. Removed during Task 10 (wire-up).
+
+### Files that existed in the working tree pre-session but weren't initially committed
+
+Caught during the first production deploy (which showed the cohort page didn't exist at all). The cohort feature integration into the site shell was already done locally but never staged. Files added in commit `708f600`:
+
+- `src/pages/ai-summer-camp.astro` (the route)
+- `src/styles/ai-summer-camp.css` (the page styles)
+- `src/components/homepage/CohortCallout.jsx`
+- `src/components/layout/CohortAnnouncementBar.astro`
+- (plus modified `HomePage.jsx`, `PageLayout.astro`, `BaseLayout.astro`, `NavigationAstro.astro`)
+
+Lesson: when staging commits in a repo with lots of pre-existing untracked work, audit the import graph of any file you DO commit to make sure dependent files aren't sitting untracked.
