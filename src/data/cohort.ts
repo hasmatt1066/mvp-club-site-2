@@ -34,9 +34,11 @@ export const COHORT = {
   // Capacity
   capacity: 15,
 
-  // Stripe (replace placeholders during Plan Task 12)
-  stripeProductId: 'prod_REPLACE_ME_AFTER_CREATING_IN_STRIPE',
-  stripePaymentLinkUrl: 'https://buy.stripe.com/REPLACE_ME_AFTER_CREATING_LINK',
+  // Stripe — TEST mode values (Plan Task 12, 2026-05-24).
+  // When going live, swap these for live-mode equivalents (no `test_` in the
+  // Payment Link URL, prod_... ID from live mode).
+  stripeProductId: 'prod_UZxdsowkWbTfVI',
+  stripePaymentLinkUrl: 'https://buy.stripe.com/test_4gM5kx1gf3h7bKP2OvfIs00',
   priceUSD: 99,
 
   // Schedule
