@@ -36,11 +36,12 @@ export const COHORT = {
   // Capacity
   capacity: 15,
 
-  // Stripe — TEST mode values (Plan Task 12, 2026-05-24).
-  // When going live, swap these for live-mode equivalents (no `test_` in the
-  // Payment Link URL, prod_... ID from live mode).
-  stripeProductId: 'prod_UZxdsowkWbTfVI',
-  stripePaymentLinkUrl: 'https://buy.stripe.com/test_4gM5kx1gf3h7bKP2OvfIs00',
+  // Stripe — LIVE mode values (Plan Task 12 + live cutover, 2026-05-25).
+  // Test-mode equivalents (kept for reference):
+  //   stripeProductId: 'prod_UZxdsowkWbTfVI'
+  //   stripePaymentLinkUrl: 'https://buy.stripe.com/test_4gM5kx1gf3h7bKP2OvfIs00'
+  stripeProductId: 'prod_Ua0Av4M79xhngq',
+  stripePaymentLinkUrl: 'https://buy.stripe.com/4gM5kx1gf3h7bKP2OvfIs00',
   priceUSD: 99,
 
   // Schedule
