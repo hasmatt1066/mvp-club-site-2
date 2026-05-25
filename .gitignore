@@ -32,6 +32,12 @@ dist-ssr/
 .env.production.local
 .env.development.local
 
+# GCP / Google service account credentials — NEVER commit
+mvp-club-sonar-*.json
+service-account*.json
+*-service-account.json
+gcp-*.json
+
 # Temp files
 *.tmp
 .cache/
