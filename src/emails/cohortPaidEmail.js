@@ -91,7 +91,7 @@ export function cohortPaidEmail({ firstName = 'there' } = {}) {
               <p style="font-size: 15px; color: ${c.bodyText}; line-height: 1.65; margin: 0 0 18px 0;">Hi ${name},</p>
               <p style="font-size: 15px; color: ${c.bodyText}; line-height: 1.65; margin: 0 0 18px 0;">You did it. Your seat in ${COHORT.label} is locked in.</p>
               <p style="font-size: 15px; color: ${c.bodyText}; line-height: 1.65; margin: 0 0 18px 0;">
-                What happens next: about a week before <strong style="color: ${c.navy};">Friday, June 5</strong>, we'll send you a Google Meet link and a calendar invite. Until then, there's nothing you need to do.
+                What happens next: about a week before <strong style="color: ${c.navy};">Friday, June 5</strong>, we'll send you a Google Meet link and a calendar invite. Until then, please make sure you have downloaded the Claude desktop app and have the minimum Pro subscription.
               </p>
               <p style="font-size: 15px; color: ${c.bodyText}; line-height: 1.65; margin: 0 0 18px 0;">
                 One thing worth doing in the meantime: notice a real problem from your actual work. Something you do every week that takes too long, or that you've never quite figured out how to delegate. Week 1 is about getting Claude into that problem with you.
