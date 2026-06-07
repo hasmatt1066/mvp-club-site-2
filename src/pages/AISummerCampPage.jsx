@@ -1,7 +1,8 @@
 import React from 'react';
 import AnimatedSection from '../components/shared/AnimatedSection';
-import CohortCTA from '../components/cohort/CohortCTA.jsx';
 import '../styles/ai-summer-camp.css';
+
+const COMMUNITY_URL = 'https://mvp-club.mn.co/';
 
 const AISummerCampPage = () => {
   return (
@@ -64,14 +65,17 @@ const AISummerCampPage = () => {
               </div>
             </div>
 
-            <div className="asc-deal-price-row">
-              <div className="asc-deal-price">$99</div>
-              <div className="asc-deal-price-note">
-                <strong>One payment.</strong><br />First cohort caps at 15.
-              </div>
+            <a
+              href={COMMUNITY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="asc-deal-button"
+            >
+              Join the community →
+            </a>
+            <div className="asc-deal-finepoint">
+              Registration for Cohort 01 is closed. Join the MVP&nbsp;Club community to be first to hear about the next&nbsp;cohort.
             </div>
-
-            <CohortCTA variant="hero" location="hero_deal" />
           </aside>
         </div>
       </section>
@@ -111,7 +115,7 @@ const AISummerCampPage = () => {
               <div className="asc-nametag-label">For Members &amp; Newcomers</div>
               <div className="asc-nametag-body">
                 <strong>Already in the MVP Club community?</strong> AI Summer Camp is the structured, deepening version of what you've been doing in the weekly sessions — same coaches, smaller cohort, four weeks of focused progression.{' '}
-                <span className="teal">New here?</span> Your $99 covers Camp <em>and</em> your first month of the MVP Club community ($20/mo after) — so you graduate into a group that keeps practicing with&nbsp;you.
+                <span className="teal">New here?</span> Camp graduates step right into the MVP Club community — a group that keeps practicing together every week, and where the next cohort gets announced&nbsp;first.
               </div>
             </div>
           </div>
@@ -344,12 +348,19 @@ const AISummerCampPage = () => {
         <section className="asc-closing">
           <div className="asc-postcard">
             <div className="asc-postcard-left">
-              <div className="asc-postcard-eyebrow">Reserve Your Spot</div>
-              <h3>Four Fridays. $99. A new identity at&nbsp;work.</h3>
+              <div className="asc-postcard-eyebrow">Registration Closed</div>
+              <h3>Four Fridays. A new identity at&nbsp;work.</h3>
               <p>
-                Starts Friday, June 5. Cohort 01 is capped at 15 people — first cohort always fills fast. Reserve your spot, then we'll send the details.
+                Cohort 01 is underway and registration is closed. The next cohort gets announced in the MVP Club community — join us there to be first in&nbsp;line.
               </p>
-              <CohortCTA variant="postcard" location="closing_postcard" />
+              <a
+                href={COMMUNITY_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="asc-postcard-cta"
+              >
+                Join the community →
+              </a>
             </div>
             <div className="asc-postcard-right">
               <div className="asc-stamp">

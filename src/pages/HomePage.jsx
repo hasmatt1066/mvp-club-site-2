@@ -1,6 +1,5 @@
 import React from 'react';
 import NewHero from '../components/homepage/NewHero';
-import CohortCallout from '../components/homepage/CohortCallout';
 import SocialProof from '../components/homepage/SocialProof';
 import HowWeHelp from '../components/homepage/HowWeHelp';
 import TeamSection from '../components/homepage/TeamSection';
@@ -28,7 +27,6 @@ const HomePage = () => (
       }}
     />
     <NewHero />
-    <CohortCallout />
     <SocialProof />
     <HowWeHelp />
     <TeamSection />
