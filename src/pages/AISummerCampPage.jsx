@@ -16,7 +16,7 @@ const AISummerCampPage = () => {
 
         <div className="asc-nameplate">
           <div className="asc-wordmark">AI Summer Camp</div>
-          <div className="asc-wordmark-tag">COHORT 01 · JUNE 2026</div>
+          <div className="asc-wordmark-tag">COHORT 01 · JUNE 2026 · NOW IN SESSION</div>
         </div>
         <div className="asc-nameplate-sub">
           a guided 4-week program for working professionals. During your workday — not on top of&nbsp;it.
@@ -74,7 +74,7 @@ const AISummerCampPage = () => {
               Join the community →
             </a>
             <div className="asc-deal-finepoint">
-              Cohort 01 is underway. A July cohort is coming soon, so keep an eye out for the announcement. The MVP&nbsp;Club community hears it&nbsp;first.
+              Cohort 01 launched in June and admissions are closed. A July cohort is coming soon, so keep an eye out for the announcement. The MVP&nbsp;Club community hears it&nbsp;first.
             </div>
           </aside>
         </div>
@@ -105,7 +105,7 @@ const AISummerCampPage = () => {
               </div>
               <div className="asc-who-item">
                 <div className="asc-who-num">04</div>
-                <div>You can carve out one Friday hour per week in June.</div>
+                <div>You can carve out one Friday hour per week. The July cohort might be your moment.</div>
               </div>
             </div>
           </div>
@@ -115,7 +115,7 @@ const AISummerCampPage = () => {
               <div className="asc-nametag-label">For Members &amp; Newcomers</div>
               <div className="asc-nametag-body">
                 <strong>Already in the MVP Club community?</strong> AI Summer Camp is the structured, deepening version of what you've been doing in the weekly sessions — same coaches, smaller cohort, four weeks of focused progression.{' '}
-                <span className="teal">New here?</span> Camp graduates step right into the MVP Club community — a group that keeps practicing together every week, and where the next cohort gets announced&nbsp;first.
+                <span className="teal">New here?</span> Camp graduates step right into the MVP Club community — a group that keeps practicing together every week, and where the July cohort gets announced&nbsp;first.
               </div>
             </div>
           </div>
@@ -199,7 +199,7 @@ const AISummerCampPage = () => {
               <p>
                 <strong>Summer Camp is the on-ramp.</strong> Four Fridays gets you building. The community keeps you practicing. Whatever's next, you'll have people building it with you.
               </p>
-              <div className="signoff">We're keeping a seat for you. It's yours if you want&nbsp;it.</div>
+              <div className="signoff">Cohort 01 is on the trail right now. We'll keep a seat for you in&nbsp;July.</div>
             </div>
 
             <div className="asc-trail-map">
@@ -232,7 +232,7 @@ const AISummerCampPage = () => {
               </div>
 
               <div className="asc-station asc-station-2">
-                <div className="asc-station-here">you start here</div>
+                <div className="asc-station-here">happening now</div>
                 <div className="asc-station-marker">
                   <div className="asc-icon-star" />
                 </div>
@@ -283,7 +283,7 @@ const AISummerCampPage = () => {
               <div className="asc-mini-label">When we meet</div>
               <h2 className="asc-sched-h2">Built around your <em>real&nbsp;schedule.</em></h2>
               <p className="asc-sched-p">
-                All sessions are live on Google Meet. Block the Fridays. Tuesday office hours are optional but they're where the magic happens for most people.
+                All sessions are live on Google Meet. Cohort 01 is meeting right now, and the July cohort will follow the same rhythm. Tuesday office hours are optional but they're where the magic happens for most people.
               </p>
               <div className="asc-sched-legend">
                 <div className="asc-legend-item"><span className="asc-legend-dot fri" /> Friday main hour</div>
@@ -351,7 +351,7 @@ const AISummerCampPage = () => {
               <div className="asc-postcard-eyebrow">Coming Soon: July Cohort</div>
               <h3>Four Fridays. A new identity at&nbsp;work.</h3>
               <p>
-                Cohort 01 is underway, and a July cohort is coming soon. Keep an eye out for the announcement. It lands in the MVP Club community first, so join us there to be first in&nbsp;line.
+                The June cohort launched and admissions are closed, but a July cohort is coming soon. Keep an eye out for the announcement. It lands in the MVP Club community first, so join us there to be first in&nbsp;line.
               </p>
               <a
                 href={COMMUNITY_URL}
