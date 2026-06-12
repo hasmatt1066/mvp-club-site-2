@@ -32,37 +32,10 @@ const AISummerCampPage = () => {
           </div>
 
           <aside className="asc-deal">
-            <div className="asc-deal-eyebrow">The Deal</div>
-            <div className="asc-deal-promise">Become <em>the AI person</em> at work.</div>
+            <div className="asc-deal-eyebrow">Now In Session</div>
+            <div className="asc-deal-promise">Summer Camp is <em>underway</em>.</div>
             <div className="asc-deal-promise-sub">
-              In four Fridays, with people who'll keep building with&nbsp;you.
-            </div>
-
-            <div className="asc-deal-specs">
-              <div className="asc-deal-spec">
-                <div className="asc-deal-spec-label">Dates</div>
-                <div className="asc-deal-spec-value">Fri Jun 5, 12, 19, 26</div>
-              </div>
-              <div className="asc-deal-spec">
-                <div className="asc-deal-spec-label">Time</div>
-                <div className="asc-deal-spec-value">2–3 PM ET <span className="sub">/ 12–1 MT</span></div>
-              </div>
-              <div className="asc-deal-spec">
-                <div className="asc-deal-spec-label">Office Hrs</div>
-                <div className="asc-deal-spec-value">Tue 1–2 PM ET <span className="sub">/ office hours, optional</span></div>
-              </div>
-              <div className="asc-deal-spec">
-                <div className="asc-deal-spec-label">Tools</div>
-                <div className="asc-deal-spec-value">Claude &amp; Claude Code</div>
-              </div>
-              <div className="asc-deal-spec">
-                <div className="asc-deal-spec-label">Format</div>
-                <div className="asc-deal-spec-value">Live on Google Meet</div>
-              </div>
-              <div className="asc-deal-spec">
-                <div className="asc-deal-spec-label">Includes</div>
-                <div className="asc-deal-spec-value">1st month of the MVP Club community</div>
-              </div>
+              This cohort has started, so you can't join it anymore. Keep an eye out for one in&nbsp;July.
             </div>
 
             <a
@@ -74,7 +47,7 @@ const AISummerCampPage = () => {
               Join the community →
             </a>
             <div className="asc-deal-finepoint">
-              Cohort 01 launched in June and admissions are closed. A July cohort is coming soon, so keep an eye out for the announcement. The MVP&nbsp;Club community hears it&nbsp;first.
+              The July announcement lands in the MVP&nbsp;Club community&nbsp;first.
             </div>
           </aside>
         </div>
