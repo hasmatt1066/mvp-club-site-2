@@ -74,7 +74,7 @@ const AISummerCampPage = () => {
               Join the community →
             </a>
             <div className="asc-deal-finepoint">
-              Registration for Cohort 01 is closed. Join the MVP&nbsp;Club community to be first to hear about the next&nbsp;cohort.
+              Cohort 01 is underway. A July cohort is coming soon, so keep an eye out for the announcement. The MVP&nbsp;Club community hears it&nbsp;first.
             </div>
           </aside>
         </div>
@@ -348,10 +348,10 @@ const AISummerCampPage = () => {
         <section className="asc-closing">
           <div className="asc-postcard">
             <div className="asc-postcard-left">
-              <div className="asc-postcard-eyebrow">Registration Closed</div>
+              <div className="asc-postcard-eyebrow">Coming Soon: July Cohort</div>
               <h3>Four Fridays. A new identity at&nbsp;work.</h3>
               <p>
-                Cohort 01 is underway and registration is closed. The next cohort gets announced in the MVP Club community — join us there to be first in&nbsp;line.
+                Cohort 01 is underway, and a July cohort is coming soon. Keep an eye out for the announcement. It lands in the MVP Club community first, so join us there to be first in&nbsp;line.
               </p>
               <a
                 href={COMMUNITY_URL}
