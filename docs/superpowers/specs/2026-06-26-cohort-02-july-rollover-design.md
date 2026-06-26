@@ -32,10 +32,10 @@ The cohort system was built so a rollover is *mostly* a single edit to `src/data
 - Capture the new **product ID** (`prod_…`) and **Payment Link URL**.
 - Verify the live webhook still subscribes to `checkout.session.completed` (account-level, not product-filtered — no change expected).
 
-### 2. Vercel env var (Matt updates manually)
+### 2. Vercel env var (driven via Matt's browser)
 
-- Update `COHORT_01_PRODUCT_ID` value → new July product ID. **Keep the variable name** to avoid a code change (it is now a slight misnomer but functional). This is required: `api/cohort-status.js` counts paid sessions for this product ID to enforce the seat cap; leaving it on the June product would read the wrong cohort's seats.
-- Redeploy happens automatically on push.
+- Update `COHORT_01_PRODUCT_ID` value → new July product ID in the Vercel project settings. **Keep the variable name** to avoid a code change (it is now a slight misnomer but functional). This is required: `api/cohort-status.js` counts paid sessions for this product ID to enforce the seat cap; leaving it on the June product would read the wrong cohort's seats.
+- Redeploy happens automatically on push (or trigger a redeploy from Vercel so the new env value takes effect immediately).
 
 ### 3. `src/data/cohort.js` (single source of truth)
 
@@ -106,7 +106,7 @@ Keep the previous live values in a reference comment (as the file already does f
 5. Update `ai-summer-camp.astro` meta + JSON-LD.
 6. Sweep emails + welcome page for hardcoded June copy.
 7. `npm run build` to verify the static build is clean.
-8. Matt updates the Vercel env var `COHORT_01_PRODUCT_ID` → new product ID.
+8. Update the Vercel env var `COHORT_01_PRODUCT_ID` → new product ID (browser).
 9. Commit. Push only on explicit confirmation (Vercel auto-deploys on push).
 
 ## Verification
