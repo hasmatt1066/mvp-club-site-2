@@ -79,7 +79,7 @@ export function cohortPaidEmail({ firstName = 'there' } = {}) {
                 Welcome to <em style="font-style: italic; color: ${c.teal};">${COHORT.label}.</em>
               </h1>
               <p style="font-family: 'Zilla Slab', Georgia, serif; font-style: italic; font-size: 18px; color: ${c.teal}; line-height: 1.4; margin: 0 0 32px 0;">
-                Four Fridays in June. You, Claude, and a handful of other working professionals.
+                Four Fridays in July. You, Claude, and a handful of other working professionals.
               </p>
 
               <div style="background: ${c.detailsBg}; border-left: 4px solid ${c.gold}; border-radius: 4px; padding: 8px 24px; margin-bottom: 32px;">
@@ -91,13 +91,13 @@ export function cohortPaidEmail({ firstName = 'there' } = {}) {
               <p style="font-size: 15px; color: ${c.bodyText}; line-height: 1.65; margin: 0 0 18px 0;">Hi ${name},</p>
               <p style="font-size: 15px; color: ${c.bodyText}; line-height: 1.65; margin: 0 0 18px 0;">You did it. Your seat in ${COHORT.label} is locked in.</p>
               <p style="font-size: 15px; color: ${c.bodyText}; line-height: 1.65; margin: 0 0 18px 0;">
-                What happens next: about a week before <strong style="color: ${c.navy};">Friday, June 5</strong>, we'll send you a Google Meet link and a calendar invite. Until then, please make sure you have downloaded the Claude desktop app and have the minimum Pro subscription.
+                What happens next: about a week before <strong style="color: ${c.navy};">Friday, July 10</strong>, we'll send you a Google Meet link and a calendar invite. Until then, please make sure you have downloaded the Claude desktop app and have the minimum Pro subscription.
               </p>
               <p style="font-size: 15px; color: ${c.bodyText}; line-height: 1.65; margin: 0 0 18px 0;">
                 One thing worth doing in the meantime: notice a real problem from your actual work. Something you do every week that takes too long, or that you've never quite figured out how to delegate. Week 1 is about getting Claude into that problem with you.
               </p>
               <p style="font-size: 15px; color: ${c.bodyText}; line-height: 1.65; margin: 0 0 18px 0;">Questions? Just reply to this email. Matt, Jill, and Ryan all see it.</p>
-              <p style="font-size: 15px; color: ${c.bodyText}; line-height: 1.65; margin: 0 0 18px 0;">See you June 5.</p>
+              <p style="font-size: 15px; color: ${c.bodyText}; line-height: 1.65; margin: 0 0 18px 0;">See you July 10.</p>
 
               <div style="font-family: 'Zilla Slab', Georgia, serif; font-size: 17px; color: ${c.navy}; margin-top: 36px; line-height: 1.3;">Matt, Jill, and Ryan</div>
               <div style="font-size: 12px; color: ${c.muted}; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 600; margin-top: 4px;">MVP Club</div>

@@ -52,9 +52,9 @@ export function cohortWaitlistEmail({ firstName = 'there' } = {}) {
 
               <p style="font-size: 15px; color: ${c.bodyText}; line-height: 1.65; margin: 0 0 18px 0;">Hi ${name},</p>
               <p style="font-size: 15px; color: ${c.bodyText}; line-height: 1.65; margin: 0 0 18px 0;">
-                You're on the waitlist for AI Summer Camp ${COHORT.label}. If a seat opens before <strong style="color: ${c.navy};">Friday, June 5</strong> (someone refunds, life happens), we'll email you immediately so you can grab it.
+                You're on the waitlist for AI Summer Camp ${COHORT.label}. If a seat opens before <strong style="color: ${c.navy};">Friday, July 10</strong> (someone refunds, life happens), we'll email you immediately so you can grab it.
               </p>
-              <p style="font-size: 15px; color: ${c.bodyText}; line-height: 1.65; margin: 0 0 18px 0;">Either way, you're first in line for Cohort 02 later this summer. We'll send the registration link to your inbox before it goes anywhere else.</p>
+              <p style="font-size: 15px; color: ${c.bodyText}; line-height: 1.65; margin: 0 0 18px 0;">Either way, you're first in line for the next cohort. We'll send the registration link to your inbox before it goes anywhere else.</p>
               <p style="font-size: 15px; color: ${c.bodyText}; line-height: 1.65; margin: 0 0 18px 0;">In the meantime: come hang out in the MVP Club community while you wait. We run weekly live sessions there with the same coaches you'd meet in the cohort.</p>
 
               <div style="margin: 28px 0 20px; text-align: center;">
