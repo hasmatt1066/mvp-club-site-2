@@ -83,7 +83,7 @@ export default function CohortCTA({ variant, location }) {
         )}
         <div className="asc-deal-finepoint">
           {showWaitlistCTA
-            ? 'Cohort 01 is full. Get on the list for Cohort 02.'
+            ? `${COHORT.label} is full. Join the waitlist for the next cohort.`
             : 'Registration closes when full.'}
         </div>
         <CohortWaitlistOverlay open={waitlistOpen} onClose={() => setWaitlistOpen(false)} />

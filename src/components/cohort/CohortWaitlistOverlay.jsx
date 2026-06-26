@@ -100,10 +100,10 @@ export default function CohortWaitlistOverlay({ open, onClose }) {
               {COHORT.label} · Waitlist
             </div>
             <h2 id="cohort-waitlist-title" style={{ fontFamily: 'Zilla Slab, Georgia, serif', fontSize: 28, lineHeight: 1.15, color: 'var(--color-primary)', marginBottom: 10, fontWeight: 400 }}>
-              Cohort 01 is full. Get on the list.
+              {COHORT.label} is full. Get on the list.
             </h2>
             <p style={{ fontSize: 14.5, color: '#475569', lineHeight: 1.55, marginBottom: 22 }}>
-              We'll email you if a seat opens before June 5, and you'll be first to know about Cohort 02.
+              We'll email you if a seat opens before the cohort starts, and you'll be first to know about the next one.
             </p>
             <form onSubmit={handleSubmit}>
               <input
@@ -142,7 +142,7 @@ export default function CohortWaitlistOverlay({ open, onClose }) {
               Confirmation on its way.
             </h2>
             <p style={{ fontSize: 14.5, color: '#475569', lineHeight: 1.55, marginBottom: 20 }}>
-              Check your inbox in a minute or two. If a seat opens before June 5, we'll email you. Either way, you're first in line for Cohort 02.
+              Check your inbox in a minute or two. If a seat opens before the cohort starts, we'll email you. Either way, you're first in line for the next one.
             </p>
             <button
               onClick={onClose}

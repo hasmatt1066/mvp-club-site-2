@@ -67,7 +67,7 @@ export default async function handler(req, res) {
       {
         from: 'MVP Club <info@mvpclub.ai>',
         to: email,
-        subject: "You're on the AI Summer Camp Cohort 01 waitlist.",
+        subject: `You're on the AI Summer Camp ${COHORT.label} waitlist.`,
         html,
         reply_to: 'info@mvpclub.ai',
       },

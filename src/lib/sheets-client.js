@@ -48,7 +48,7 @@ function getSheetsClient() {
  * @param {string} args.firstName        - User's first name (may be empty)
  * @param {string} args.email            - User's email (required)
  * @param {string} args.source           - 'cohort_paid' | 'cohort_waitlist'
- * @param {string} args.cohortId         - e.g. 'cohort_01' (from COHORT.id)
+ * @param {string} args.cohortId         - e.g. 'cohort_02' (from COHORT.id)
  * @param {string} [args.stripeSessionId] - Stripe Checkout session ID for paid sources
  * @returns {Promise<void>}
  */

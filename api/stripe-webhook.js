@@ -129,7 +129,7 @@ export default async function handler(req, res) {
       {
         from: 'MVP Club <info@mvpclub.ai>',
         to: email,
-        subject: "You're in. Welcome to AI Summer Camp Cohort 01.",
+        subject: `You're in. Welcome to AI Summer Camp ${COHORT.label}.`,
         html,
         reply_to: 'info@mvpclub.ai',
       },
