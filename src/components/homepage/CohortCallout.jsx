@@ -66,7 +66,7 @@ const CohortCallout = () => (
                   marginTop: '2px',
                 }}
               >
-                Jun 5
+                Jul 10
               </div>
               <div
                 style={{
@@ -92,7 +92,7 @@ const CohortCallout = () => (
                   marginBottom: '8px',
                 }}
               >
-                Now Enrolling &middot; Cohort 01
+                Now Enrolling &middot; Cohort 02
               </div>
               <h3
                 style={{
