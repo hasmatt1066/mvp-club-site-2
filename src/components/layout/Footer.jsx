@@ -32,10 +32,10 @@ const Footer = () => {
               Community
             </Link>
             <a
-              href="/blog/"
+              href="/learn/"
               className="text-white/70 hover:text-white text-sm transition-colors"
             >
-              Blog
+              Learn
             </a>
           </div>
           <div className="flex items-center gap-4 text-sm">
@@ -45,7 +45,7 @@ const Footer = () => {
             >
               info@mvpclub.ai
             </a>
-            <span className="text-white/50">&copy; 2025 MVP Club</span>
+            <span className="text-white/50">&copy; {new Date().getFullYear()} MVP Club</span>
           </div>
         </div>
       </div>

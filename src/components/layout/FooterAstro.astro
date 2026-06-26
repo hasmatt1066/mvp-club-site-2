@@ -1,4 +1,5 @@
 ---
+const year = new Date().getFullYear();
 ---
 
 <footer class="py-12" style="background-color: var(--color-primary);">
@@ -36,13 +37,6 @@
         >
           Learn
         </a>
-        <a
-          href="/blog"
-          class="text-white/70 hover:text-white text-sm transition-colors"
-          style="text-decoration: none;"
-        >
-          Blog
-        </a>
       </div>
       <div class="flex items-center gap-4 text-sm">
         <a
@@ -51,7 +45,7 @@
         >
           info@mvpclub.ai
         </a>
-        <span class="text-white/50">&copy; 2025 MVP Club</span>
+        <span class="text-white/50">&copy; {year} MVP Club</span>
       </div>
     </div>
   </div>
