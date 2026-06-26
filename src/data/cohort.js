@@ -29,25 +29,27 @@
 
 export const COHORT = {
   // Identity
-  id: 'cohort_01',
-  label: 'Cohort 01',
-  shortLabel: 'AI Summer Camp · Cohort 01',
+  id: 'cohort_02',
+  label: 'Cohort 02',
+  shortLabel: 'AI Summer Camp · Cohort 02',
 
   // Capacity
   capacity: 15,
 
-  // Stripe — LIVE mode values (Plan Task 12 + live cutover, 2026-05-25).
-  // Test-mode equivalents (kept for reference):
-  //   stripeProductId: 'prod_UZxdsowkWbTfVI'
-  //   stripePaymentLinkUrl: 'https://buy.stripe.com/test_4gM5kx1gf3h7bKP2OvfIs00'
-  stripeProductId: 'prod_Ua0Av4M79xhngq',
-  stripePaymentLinkUrl: 'https://buy.stripe.com/4gM5kx1gf3h7bKP2OvfIs00',
+  // Stripe — LIVE mode values (Cohort 02 rollover, 2026-06-26).
+  // PLACEHOLDER: real values are patched in at the supervised browser
+  // checkout step before deploy. Do NOT push with these placeholders live.
+  // Cohort 01 LIVE values (kept for reference):
+  //   stripeProductId: 'prod_Ua0Av4M79xhngq'
+  //   stripePaymentLinkUrl: 'https://buy.stripe.com/4gM5kx1gf3h7bKP2OvfIs00'
+  stripeProductId: 'PENDING_COHORT_02_PRODUCT_ID',
+  stripePaymentLinkUrl: 'PENDING_COHORT_02_PAYMENT_LINK_URL',
   priceUSD: 99,
 
   // Schedule
-  startISO: '2026-06-05',
-  endISO: '2026-06-26',
-  fridaysFormatted: 'Fri Jun 5, 12, 19, 26',
-  timeET: '2–3 PM ET',
+  startISO: '2026-07-10',
+  endISO: '2026-07-31',
+  fridaysFormatted: 'Fri Jul 10, 17, 24, 31',
+  timeET: '12–1 PM ET',
   officeHoursET: 'Tue 1–2 PM ET',
 };
