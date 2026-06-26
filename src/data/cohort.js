@@ -37,13 +37,11 @@ export const COHORT = {
   capacity: 15,
 
   // Stripe — LIVE mode values (Cohort 02 rollover, 2026-06-26).
-  // PLACEHOLDER: real values are patched in at the supervised browser
-  // checkout step before deploy. Do NOT push with these placeholders live.
   // Cohort 01 LIVE values (kept for reference):
   //   stripeProductId: 'prod_Ua0Av4M79xhngq'
   //   stripePaymentLinkUrl: 'https://buy.stripe.com/4gM5kx1gf3h7bKP2OvfIs00'
-  stripeProductId: 'PENDING_COHORT_02_PRODUCT_ID',
-  stripePaymentLinkUrl: 'PENDING_COHORT_02_PAYMENT_LINK_URL',
+  stripeProductId: 'prod_Um9CC5b27t8OkT',
+  stripePaymentLinkUrl: 'https://buy.stripe.com/4gM7sFbUTbND4in1KrfIs01',
   priceUSD: 99,
 
   // Schedule
