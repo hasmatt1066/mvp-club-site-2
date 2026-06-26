@@ -12,7 +12,7 @@ const AISummerCampPage = () => {
       <section className="asc-hero">
         <div className="asc-topbar">
           <div className="mark"><span className="star" /> MVP CLUB</div>
-          <div>Issue No. 01 · June 2026</div>
+          <div>Issue No. 02 · July 2026</div>
         </div>
 
         <div className="asc-nameplate">
