@@ -59,19 +59,19 @@ const Navigation = () => {
             </Link>
           ))}
           <a
-            href="/blog/"
+            href="/learn/"
             className="text-sm font-medium transition-colors duration-200"
             style={{
-              color: location.pathname.startsWith('/blog') ? 'var(--color-accent-lifted)' : 'rgba(255,255,255,0.8)'
+              color: location.pathname.startsWith('/learn') ? 'var(--color-accent-lifted)' : 'rgba(255,255,255,0.8)'
             }}
             onMouseEnter={(e) => e.currentTarget.style.color = 'var(--color-accent-lifted)'}
             onMouseLeave={(e) => {
-              if (!location.pathname.startsWith('/blog')) {
+              if (!location.pathname.startsWith('/learn')) {
                 e.currentTarget.style.color = 'rgba(255,255,255,0.8)';
               }
             }}
           >
-            Blog
+            Learn
           </a>
           <a
             href="https://calendly.com/d/cybv-947-s8m/discovery-call"
@@ -127,11 +127,11 @@ const Navigation = () => {
             </Link>
           ))}
           <a
-            href="/blog/"
+            href="/learn/"
             className="block w-full text-left py-3 text-white/80 hover:text-white transition-colors font-medium"
             onClick={() => setMenuOpen(false)}
           >
-            Blog
+            Learn
           </a>
         </div>
       )}

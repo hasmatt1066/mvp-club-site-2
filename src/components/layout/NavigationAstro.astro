@@ -13,7 +13,6 @@ const navLinks = [
 ];
 
 const isActive = (path: string) => currentPath === path;
-const isBlogActive = currentPath.startsWith('/blog');
 const isLearnActive = currentPath.startsWith('/learn');
 ---
 
@@ -59,7 +58,6 @@ const isLearnActive = currentPath.startsWith('/learn');
           )}
         </a>
       ))}
-      <!-- Learn nav link hidden until content review is complete
       <a
         href="/learn"
         class="text-sm font-medium transition-colors duration-200 nav-link"
@@ -67,15 +65,6 @@ const isLearnActive = currentPath.startsWith('/learn');
         data-active={isLearnActive ? 'true' : 'false'}
       >
         Learn
-      </a>
-      -->
-      <a
-        href="/blog"
-        class="text-sm font-medium transition-colors duration-200 nav-link"
-        style={`color: ${isBlogActive ? 'var(--color-accent-lifted)' : 'rgba(255,255,255,0.8)'};`}
-        data-active={isBlogActive ? 'true' : 'false'}
-      >
-        Blog
       </a>
       <a
         href="https://calendly.com/d/cybv-947-s8m/discovery-call"
@@ -137,21 +126,12 @@ const isLearnActive = currentPath.startsWith('/learn');
         )}
       </a>
     ))}
-    <!-- Learn nav link hidden until content review is complete
     <a
       href="/learn"
       class="block w-full text-left py-3 text-white/80 hover:text-white transition-colors font-medium"
       style={`${isLearnActive ? 'color: var(--color-accent-lifted);' : ''} text-decoration: none;`}
     >
       Learn
-    </a>
-    -->
-    <a
-      href="/blog"
-      class="block w-full text-left py-3 text-white/80 hover:text-white transition-colors font-medium"
-      style="text-decoration: none;"
-    >
-      Blog
     </a>
   </div>
 </nav>
