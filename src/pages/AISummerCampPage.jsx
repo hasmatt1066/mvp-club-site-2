@@ -1,5 +1,6 @@
 import React from 'react';
 import AnimatedSection from '../components/shared/AnimatedSection';
+import CohortCTA from '../components/cohort/CohortCTA.jsx';
 import '../styles/ai-summer-camp.css';
 
 const COMMUNITY_URL = 'https://mvp-club.mn.co/';
@@ -16,7 +17,7 @@ const AISummerCampPage = () => {
 
         <div className="asc-nameplate">
           <div className="asc-wordmark">AI Summer Camp</div>
-          <div className="asc-wordmark-tag">COHORT 01 · JUNE 2026 · NOW IN SESSION</div>
+          <div className="asc-wordmark-tag">COHORT 02 · JULY 2026 · NOW ENROLLING</div>
         </div>
         <div className="asc-nameplate-sub">
           a guided 4-week program for working professionals. During your workday — not on top of&nbsp;it.
@@ -32,23 +33,20 @@ const AISummerCampPage = () => {
           </div>
 
           <aside className="asc-deal">
-            <div className="asc-deal-eyebrow">Now In Session</div>
-            <div className="asc-deal-promise">Summer Camp is <em>underway</em>.</div>
+            <div className="asc-deal-eyebrow">Now Enrolling</div>
+            <div className="asc-deal-promise">Four Fridays. <em>One real thing</em> you'll&nbsp;use.</div>
             <div className="asc-deal-promise-sub">
-              This cohort has started, so you can't join it anymore. Keep an eye out for one in&nbsp;July.
+              July 10–31, live with Claude. Fifteen seats, first&nbsp;come.
             </div>
 
-            <a
-              href={COMMUNITY_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="asc-deal-button"
-            >
-              Join the community →
-            </a>
-            <div className="asc-deal-finepoint">
-              The July announcement lands in the MVP&nbsp;Club community&nbsp;first.
+            <div className="asc-deal-price-row">
+              <div className="asc-deal-price">$99</div>
+              <div className="asc-deal-price-note">
+                <strong>One payment.</strong><br />Cohort 02 caps at 15.
+              </div>
             </div>
+
+            <CohortCTA variant="hero" location="hero_deal" />
           </aside>
         </div>
       </section>
@@ -78,7 +76,7 @@ const AISummerCampPage = () => {
               </div>
               <div className="asc-who-item">
                 <div className="asc-who-num">04</div>
-                <div>You can carve out one Friday hour per week. The July cohort might be your moment.</div>
+                <div>You can carve out one Friday hour per week. This cohort is built for exactly&nbsp;that.</div>
               </div>
             </div>
           </div>
@@ -88,7 +86,7 @@ const AISummerCampPage = () => {
               <div className="asc-nametag-label">For Members &amp; Newcomers</div>
               <div className="asc-nametag-body">
                 <strong>Already in the MVP Club community?</strong> AI Summer Camp is the structured, deepening version of what you've been doing in the weekly sessions — same coaches, smaller cohort, four weeks of focused progression.{' '}
-                <span className="teal">New here?</span> Camp graduates step right into the MVP Club community — a group that keeps practicing together every week, and where the July cohort gets announced&nbsp;first.
+                <span className="teal">New here?</span> Your $99 covers Camp <em>and</em> your first month of the MVP Club community ($20/mo after), so you graduate into a group that keeps practicing with&nbsp;you.
               </div>
             </div>
           </div>
@@ -114,7 +112,7 @@ const AISummerCampPage = () => {
                 Pick a real problem from your actual work. Have your first real thinking conversation with Claude — the kind that gets you somewhere unexpected.
               </div>
             </div>
-            <div className="asc-friday-date">Friday<span className="big">June 5</span></div>
+            <div className="asc-friday-date">Friday<span className="big">July 10</span></div>
           </div>
 
           <div className="asc-friday">
@@ -125,7 +123,7 @@ const AISummerCampPage = () => {
                 See what Claude can actually build with you. Document what you want to make. Leave with a plan you'd hand to a teammate.
               </div>
             </div>
-            <div className="asc-friday-date">Friday<span className="big">June 12</span></div>
+            <div className="asc-friday-date">Friday<span className="big">July 17</span></div>
           </div>
 
           <div className="asc-friday">
@@ -136,7 +134,7 @@ const AISummerCampPage = () => {
                 Turn your plan into a real, working thing using Claude Code. Your job is to direct and review — not write code. Rough is fine. Broken-at-first is fine.
               </div>
             </div>
-            <div className="asc-friday-date">Friday<span className="big">June 19</span></div>
+            <div className="asc-friday-date">Friday<span className="big">July 24</span></div>
           </div>
 
           <div className="asc-friday">
@@ -147,7 +145,7 @@ const AISummerCampPage = () => {
                 Two-minute demo. Show your screen, tell us the problem, show us the thing. Then meet the community that keeps it going.
               </div>
             </div>
-            <div className="asc-friday-date">Friday<span className="big">June 26</span></div>
+            <div className="asc-friday-date">Friday<span className="big">July 31</span></div>
           </div>
 
           <div className="asc-dispatch">
@@ -172,7 +170,7 @@ const AISummerCampPage = () => {
               <p>
                 <strong>Summer Camp is the on-ramp.</strong> Four Fridays gets you building. The community keeps you practicing. Whatever's next, you'll have people building it with you.
               </p>
-              <div className="signoff">Cohort 01 is on the trail right now. We'll keep a seat for you in&nbsp;July.</div>
+              <div className="signoff">Four Fridays in July. Fifteen seats. We'll keep one for&nbsp;you.</div>
             </div>
 
             <div className="asc-trail-map">
@@ -205,12 +203,12 @@ const AISummerCampPage = () => {
               </div>
 
               <div className="asc-station asc-station-2">
-                <div className="asc-station-here">happening now</div>
+                <div className="asc-station-here">enrolling now</div>
                 <div className="asc-station-marker">
                   <div className="asc-icon-star" />
                 </div>
                 <div className="asc-station-label">Step 1 · The Program</div>
-                <div className="asc-station-title">Four Fridays in June</div>
+                <div className="asc-station-title">Four Fridays in July</div>
                 <div className="asc-station-sub">Build one real thing across four sessions.</div>
               </div>
 
@@ -256,7 +254,7 @@ const AISummerCampPage = () => {
               <div className="asc-mini-label">When we meet</div>
               <h2 className="asc-sched-h2">Built around your <em>real&nbsp;schedule.</em></h2>
               <p className="asc-sched-p">
-                All sessions are live on Google Meet. Cohort 01 is meeting right now, and the July cohort will follow the same rhythm. Tuesday office hours are optional but they're where the magic happens for most people.
+                All sessions are live on Google Meet, Fridays from 12 to 1 PM ET. Tuesday office hours are optional but they're where the magic happens for most people.
               </p>
               <div className="asc-sched-legend">
                 <div className="asc-legend-item"><span className="asc-legend-dot fri" /> Friday main hour</div>
@@ -265,8 +263,8 @@ const AISummerCampPage = () => {
             </div>
 
             <div className="asc-cal">
-              <div className="asc-cal-title">June 2026</div>
-              <div className="asc-cal-sub">Cohort 01</div>
+              <div className="asc-cal-title">July 2026</div>
+              <div className="asc-cal-sub">Cohort 02</div>
               <div className="asc-cal-grid">
                 <div className="asc-cal-dow">S</div>
                 <div className="asc-cal-dow">M</div>
@@ -275,41 +273,41 @@ const AISummerCampPage = () => {
                 <div className="asc-cal-dow">T</div>
                 <div className="asc-cal-dow">F</div>
                 <div className="asc-cal-dow">S</div>
-                <div className="asc-cal-day empty">31</div>
+                <div className="asc-cal-day empty">28</div>
+                <div className="asc-cal-day empty">29</div>
+                <div className="asc-cal-day empty">30</div>
                 <div className="asc-cal-day">1</div>
                 <div className="asc-cal-day">2</div>
                 <div className="asc-cal-day">3</div>
                 <div className="asc-cal-day">4</div>
-                <div className="asc-cal-day fri">5</div>
+                <div className="asc-cal-day">5</div>
                 <div className="asc-cal-day">6</div>
-                <div className="asc-cal-day">7</div>
+                <div className="asc-cal-day tue">7</div>
                 <div className="asc-cal-day">8</div>
-                <div className="asc-cal-day tue">9</div>
-                <div className="asc-cal-day">10</div>
+                <div className="asc-cal-day">9</div>
+                <div className="asc-cal-day fri">10</div>
                 <div className="asc-cal-day">11</div>
-                <div className="asc-cal-day fri">12</div>
+                <div className="asc-cal-day">12</div>
                 <div className="asc-cal-day">13</div>
-                <div className="asc-cal-day">14</div>
+                <div className="asc-cal-day tue">14</div>
                 <div className="asc-cal-day">15</div>
-                <div className="asc-cal-day tue">16</div>
-                <div className="asc-cal-day">17</div>
+                <div className="asc-cal-day">16</div>
+                <div className="asc-cal-day fri">17</div>
                 <div className="asc-cal-day">18</div>
-                <div className="asc-cal-day fri">19</div>
+                <div className="asc-cal-day">19</div>
                 <div className="asc-cal-day">20</div>
-                <div className="asc-cal-day">21</div>
+                <div className="asc-cal-day tue">21</div>
                 <div className="asc-cal-day">22</div>
-                <div className="asc-cal-day tue">23</div>
-                <div className="asc-cal-day">24</div>
+                <div className="asc-cal-day">23</div>
+                <div className="asc-cal-day fri">24</div>
                 <div className="asc-cal-day">25</div>
-                <div className="asc-cal-day fri">26</div>
+                <div className="asc-cal-day">26</div>
                 <div className="asc-cal-day">27</div>
-                <div className="asc-cal-day">28</div>
+                <div className="asc-cal-day tue">28</div>
                 <div className="asc-cal-day">29</div>
-                <div className="asc-cal-day tue">30</div>
+                <div className="asc-cal-day">30</div>
+                <div className="asc-cal-day fri">31</div>
                 <div className="asc-cal-day empty">1</div>
-                <div className="asc-cal-day empty">2</div>
-                <div className="asc-cal-day empty">3</div>
-                <div className="asc-cal-day empty">4</div>
               </div>
             </div>
           </div>
@@ -321,19 +319,12 @@ const AISummerCampPage = () => {
         <section className="asc-closing">
           <div className="asc-postcard">
             <div className="asc-postcard-left">
-              <div className="asc-postcard-eyebrow">Coming Soon: July Cohort</div>
-              <h3>Four Fridays. A new identity at&nbsp;work.</h3>
+              <div className="asc-postcard-eyebrow">Reserve Your Spot</div>
+              <h3>Four Fridays. $99. A new identity at&nbsp;work.</h3>
               <p>
-                The June cohort launched and admissions are closed, but a July cohort is coming soon. Keep an eye out for the announcement. It lands in the MVP Club community first, so join us there to be first in&nbsp;line.
+                Starts Friday, July 10. Cohort 02 is capped at 15 people, and seats go first come. Reserve your spot, then we'll send the details.
               </p>
-              <a
-                href={COMMUNITY_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="asc-postcard-cta"
-              >
-                Join the community →
-              </a>
+              <CohortCTA variant="postcard" location="closing_postcard" />
             </div>
             <div className="asc-postcard-right">
               <div className="asc-stamp">
@@ -342,7 +333,7 @@ const AISummerCampPage = () => {
                 <div className="num">99</div>
                 <div>SUMMER</div>
               </div>
-              <div className="asc-postmark">FIRST<br />SESSION<br />JUN 5</div>
+              <div className="asc-postmark">FIRST<br />SESSION<br />JUL 10</div>
             </div>
           </div>
         </section>
