@@ -36,7 +36,7 @@ const AISummerCampPage = () => {
             <div className="asc-deal-eyebrow">Now Enrolling</div>
             <div className="asc-deal-promise">Four Fridays. <em>One real thing</em> you'll&nbsp;use.</div>
             <div className="asc-deal-promise-sub">
-              July 10–31, live with Claude. Fifteen seats, first&nbsp;come.
+              July 10–31, 2–3 PM ET, live with Claude. Fifteen seats, first&nbsp;come.
             </div>
 
             <div className="asc-deal-price-row">
@@ -100,14 +100,14 @@ const AISummerCampPage = () => {
             <div className="label">The Program</div>
             <h2>In four weeks, you'll build <em>one real thing — for your real&nbsp;work.</em></h2>
             <div className="sub">
-              No slides. No theory. Each Friday is one phase: think, plan, build, show. By Week 4 you have something you actually use — and the muscle to keep building on your own.
+              No slides. No theory. Each Friday is one phase: get clear, document, build, demo. By Week 4 you have something you actually use — and the muscle to keep building on your own.
             </div>
           </div>
 
           <div className="asc-friday">
             <div className="asc-friday-num">01</div>
             <div className="asc-friday-main">
-              <div className="asc-friday-title">Think it through with AI</div>
+              <div className="asc-friday-title">Get clear on what to build</div>
               <div className="asc-friday-desc">
                 Pick a real problem from your actual work. Have your first real thinking conversation with Claude — the kind that gets you somewhere unexpected.
               </div>
@@ -118,7 +118,7 @@ const AISummerCampPage = () => {
           <div className="asc-friday">
             <div className="asc-friday-num">02</div>
             <div className="asc-friday-main">
-              <div className="asc-friday-title">Write the plan</div>
+              <div className="asc-friday-title">Document the plan</div>
               <div className="asc-friday-desc">
                 See what Claude can actually build with you. Document what you want to make. Leave with a plan you'd hand to a teammate.
               </div>
@@ -140,7 +140,7 @@ const AISummerCampPage = () => {
           <div className="asc-friday">
             <div className="asc-friday-num">04</div>
             <div className="asc-friday-main">
-              <div className="asc-friday-title">Show what you made</div>
+              <div className="asc-friday-title">Demo what you made</div>
               <div className="asc-friday-desc">
                 Two-minute demo. Show your screen, tell us the problem, show us the thing. Then meet the community that keeps it going.
               </div>
@@ -254,7 +254,7 @@ const AISummerCampPage = () => {
               <div className="asc-mini-label">When we meet</div>
               <h2 className="asc-sched-h2">Built around your <em>real&nbsp;schedule.</em></h2>
               <p className="asc-sched-p">
-                All sessions are live on Google Meet, Fridays from 12 to 1 PM ET. Tuesday office hours are optional but they're where the magic happens for most people.
+                All sessions are live on Google Meet, Fridays from 2 to 3 PM ET. Tuesday office hours are optional but they're where the magic happens for most people.
               </p>
               <div className="asc-sched-legend">
                 <div className="asc-legend-item"><span className="asc-legend-dot fri" /> Friday main hour</div>

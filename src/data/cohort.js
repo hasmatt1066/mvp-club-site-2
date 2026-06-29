@@ -48,6 +48,6 @@ export const COHORT = {
   startISO: '2026-07-10',
   endISO: '2026-07-31',
   fridaysFormatted: 'Fri Jul 10, 17, 24, 31',
-  timeET: '12–1 PM ET',
+  timeET: '2–3 PM ET',
   officeHoursET: 'Tue 1–2 PM ET',
 };
